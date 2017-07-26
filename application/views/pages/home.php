@@ -13,3 +13,88 @@
         </div>
     </div>		
 </div>
+<div id="fh5co-main">
+    <div class="container">
+        <div class="row" id="fh5co-features">
+
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
+                <div class="fh5co-feature-icon">
+                    <i class="ti-mobile"></i>
+                </div>
+                <h3 class="heading">Mobile</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+            </div>
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+                <div class="fh5co-feature-icon">
+                    <i class="ti-lock"></i>
+                </div>
+                <h3 class="heading">Lock</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
+            </div>
+
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+                <div class="fh5co-feature-icon">
+                    <i class="ti-video-camera"></i>
+                </div>
+                <h3 class="heading">Video</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+            </div>
+
+            <div class="clearfix visible-md-block visible-lg-block"></div>
+
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
+                <div class="fh5co-feature-icon">
+                    <i class="ti-shopping-cart"></i>
+                </div>
+                <h3 class="heading">Shop</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
+            </div>
+
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+                <div class="fh5co-feature-icon">
+                    <i class="ti-palette"></i>
+                </div>
+                <h3 class="heading">Pallete</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+            </div>
+            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+                <div class="fh5co-feature-icon">
+                    <i class="ti-truck"></i>
+                </div>
+                <h3 class="heading">Deliver</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+            </div>
+        </div>
+        <!-- END row -->
+
+        <div class="fh5co-spacer fh5co-spacer-md"></div>
+        <!-- End Spacer -->
+        <div class="fh5co-spacer fh5co-spacer-md"></div>
+        <div class="row">
+            <!-- Start Slider Testimonial -->
+            <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Customer Says...</h2>
+            <div class="fh5co-spacer fh5co-spacer-xs"></div>
+            <div class="owl-carousel-fullwidth animate-box">
+            <div class="item">
+              <p class="text-center quote">&ldquo;Design must be functional and functionality must be translated into visual aesthetics, without any reliance on gimmicks that have to be explained. &rdquo; <cite class="author">&mdash; Ferdinand A. Porsche</cite></p>
+            </div>
+            <div class="item">
+              <p class="text-center quote">&ldquo;Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn’t really do it, they just saw something. It seemed obvious to them after a while. &rdquo;<cite class="author">&mdash; Steve Jobs</cite></p>
+            </div>
+            <div class="item">
+              <p class="text-center quote">&ldquo;I think design would be better if designers were much more skeptical about its applications. If you believe in the potency of your craft, where you choose to dole it out is not something to take lightly. &rdquo;<cite class="author">&mdash; Frank Chimero</cite></p>
+            </div>
+          </div>
+       <!-- End Slider Testimonial -->
+        </div>
+        <!-- END row -->
+        <div class="fh5co-spacer fh5co-spacer-md"></div>
+
+    </div>
+    <!-- END container -->
+</div>
+<!-- END fhtco-main -->
