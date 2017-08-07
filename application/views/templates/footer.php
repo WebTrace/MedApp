@@ -5,17 +5,15 @@
 					<div class="col-md-4 col-sm-6 footer-box">
 						<h3 class="fh5co-footer-heading">About us</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima delectus dolorem fugit totam, commodi ad.</p>
-						<p><a href="#" class="btn btn-outline btn-sm">I'm a button</a></p>
+						
 
 					</div>
 					<div class="col-md-4 col-sm-6 footer-box">
 						<h3 class="fh5co-footer-heading">Links</h3>
 						<ul class="fh5co-footer-links">
 							<li><a href="#">Terms &amp; Conditions</a></li>
-							<li><a href="#">Our Careers</a></li>
 							<li><a href="#">Support &amp; FAQ's</a></li>
-							<li><a href="#">Sign up</a></li>
-							<li><a href="#">Log in</a></li>
+							<li><a href="signin">Signin</a></li>
 						</ul>
 					</div>
 					<div class="col-md-4 col-sm-12 footer-box">
@@ -26,7 +24,7 @@
 							<li><a href="#"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="#"><i class="ti-facebook"></i></a></li>	
 							<li><a href="#"><i class="ti-instagram"></i></a></li>
-							<li><a href="#"><i class="ti-dribbble"></i></a></li>
+							
 						</ul>
 					</div>
 					<div class="col-md-12 footer-box">
