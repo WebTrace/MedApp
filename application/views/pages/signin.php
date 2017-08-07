@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row" class="form-control underline">
-            <form class="form-group" action="method="post">
+            <form class="form-group" action="method=post">
                 <div class="col-lg-4 col-lg-offset-4" >
                     <div class="row">
                     </div>          
