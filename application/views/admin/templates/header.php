@@ -146,7 +146,7 @@
                                 <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Claims</a>
                             </li>
                             <li>
                                 <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
@@ -161,7 +161,7 @@
                                 <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                             </li>
                             <li>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="demo" class="collapse">
                                     <li>
                                         <a href="#">Dropdown Item</a>
@@ -181,6 +181,3 @@
                     </div>
                     <!-- /.navbar-collapse -->
                 </nav>
-                <div id="page-wrapper">
-                    
-                </div>
