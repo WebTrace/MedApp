@@ -7,20 +7,11 @@
         </div>
     </div>		
 </div>
+
 <div id="fh5co-main">
     <div class="container">
         <div class="row" id="fh5co-features">
-            <div class="col-lg-12">
-     
-
-<div id="fh5co-main">
-
-    <div class="container">
- 
-        <div class="row" id="fh5co-features">
-<h2 class="fh5co-uppercase-heading-sm text-center animate-box">Services</h2>
-
-
+            <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Services</h2>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
                 <div class="fh5co-feature-icon">
                     <i class="ti-mobile"></i>
@@ -75,9 +66,7 @@
             </div>
         </div>
         <!-- END row -->
-    <div class="row" id="fh5co-features">
-
-
+        <div class="row" id="fh5co-features">
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
                 <div class="fh5co-feature-icon">
                     <i class="ti-mobile"></i>
@@ -103,42 +92,10 @@
                 <h3 class="heading">Video</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
             </div>
-
-           
-
-        
-
-        
-         
         </div>
        <!--  end row -->
-
-     
         <!-- END row -->
         <div class="fh5co-spacer fh5co-spacer-md"></div>
-
     </div>
     <!-- END container -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-        </div>
-        <!-- END row -->
-    </div>
-    <!-- END container -->
-</div>
-<!-- END fhtco-main -->
