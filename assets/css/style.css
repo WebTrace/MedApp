@@ -75,7 +75,7 @@ a {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
   color: #90d7ea;
-  border-bottom: 1px solid #ccc;
+  /*border-bottom: 1px solid #ccc;*/
 }
 a:hover, a:focus, a:active {
   color: #50c0de;
