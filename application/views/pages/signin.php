@@ -7,37 +7,36 @@
         </div>
     </div>		
 </div>
- <section style="padding-top: 40px;" id="fh5co-features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-               
+<div id="fh5co-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    Signin
+                </div>
             </div>
-        </div>
-        <div class="row" class="form-control underline">
-            <form class="form-group" action="method=post">
-                <div class="col-lg-4 col-lg-offset-4" >
-                    <div class="row">
-                    </div>          
-                    <div class="row signin-label apply-shadow-effect">
-                        <div class="form-group">
-                           <input type="Username" class="form-control underline-input" placeholder="Username"required>
-                        </div>
-                        <a href="forgotpass" class="pull-right mt-10">Forgot Password?</a>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control underline-input" ng-model="user.password" required>
-                        </div>
-                        <div class="form-group text-left mt-20">
-                            <div>
-                                <button type="submit" class="btn btn-greensea b-0 br-2 mr-5">login</button>
-                                <label class="pull-right" class="checkbox checkbox-custom checkbox-custom-sm inline-block">
-                                    <input type="checkbox"><i></i> Remember me
-                                </label>
+            <div class="row" class="form-control underline">
+                <form class="form-group" action="method=post">
+                    <div class="col-lg-4 col-lg-offset-4" >
+                        <div class="signin-label apply-shadow-effect">
+                            <div class="form-group">
+                               <input type="Username" class="form-control" placeholder="Username"required>
+                            </div>
+                            <a href="forgotpassword" class="pull-right mt-10">Forgot Password?</a>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control" ng-model="user.password" required>
+                            </div>
+                            <div class="form-group text-left mt-20">
+                                <div>
+                                    <button type="submit" class="btn btn-greensea b-0 br-2 mr-5">login</button>
+                                    <label class="pull-right" class="checkbox checkbox-custom checkbox-custom-sm inline-block">
+                                        <input type="checkbox"><i></i> Remember me
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    
+</div>
