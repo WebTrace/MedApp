@@ -13,7 +13,7 @@
 						<ul class="fh5co-footer-links">
 							<li><a href="#">Terms &amp; Conditions</a></li>
 							<li><a href="#">Support &amp; FAQ's</a></li>
-							<li><a href="signin">Signin</a></li>
+							<li><a href="signin">Login</a></li>
 						</ul>
 					</div>
 					<div class="col-md-4 col-sm-12 footer-box">
