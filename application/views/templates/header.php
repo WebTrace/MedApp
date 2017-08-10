@@ -62,7 +62,7 @@
                         <li class="active"><a href="services">Features</a></li>
                         <li class="active"><a href="services">Pricing</a></li>
                         <li class="active"><a href="contact">Contact</a></li>
-                        <li class="active"><a href="contact">Login</a></li>
+                        <li class="active"><a href="signin">Login</a></li>
                         <li class="active"><a href="contact">Sign up</a></li>
                     </ul>
                 </nav>

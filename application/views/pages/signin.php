@@ -23,7 +23,7 @@
                         <div class="form-group">
                            <input type="Username" class="form-control underline-input" placeholder="Username"required>
                         </div>
-                        <a href="forgotpass" class="pull-right mt-10">Forgot Password?</a>
+                        <a href="forgotpassword" class="pull-right mt-10">Forgot Password?</a>
                         <div class="form-group">
                             <input type="password" placeholder="Password" class="form-control underline-input" ng-model="user.password" required>
                         </div>
