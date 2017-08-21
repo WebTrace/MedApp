@@ -21,7 +21,6 @@
                 <div class="fh5co-feature-icon">
                     <i class="ti-mobile"></i>
                 </div>
-
                 <h3 class="heading">Live chat</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
             </div>
