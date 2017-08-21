@@ -7,7 +7,7 @@
             <meta name="description" content="">
             <meta name="author" content="">
             <title>SB Admin - Bootstrap Admin Template</title>
-            <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
+            <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
 
@@ -27,7 +27,7 @@
         <body>
             <div id="wrapper">
                 <!-- Navigation -->
-                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <nav class="navbar navbar-fixed-top" role="navigation">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -36,7 +36,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">SB Admin</a>
+                        <a class="navbar-brand" href="index.html">CLAIMA</a>
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
@@ -121,7 +121,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Kgatla E <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -143,15 +143,15 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
                             <li class="active">
-                                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Claims</a>
+                                <a href="claim"><i class="fa fa-fw fa-bar-chart-o"></i> Claims</a>
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Appointments</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
                             </li>
                             <li>
@@ -159,24 +159,27 @@
                             </li>
                             <li>
                                 <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                            </li>
+                            </li>-->
                             <li>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="demo" class="collapse">
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Patients <!--<i class="fa fa-fw fa-caret-down"></i>--></a>
+                                <!--<ul id="demo" class="collapse">
                                     <li>
                                         <a href="#">Dropdown Item</a>
                                     </li>
                                     <li>
                                         <a href="#">Dropdown Item</a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
                             <li>
+                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Manage users</a>
+                            </li>
+                            <li>
+                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Reports</a>
+                            </li>
+                            <!--<li>
                                 <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
