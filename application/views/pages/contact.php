@@ -11,7 +11,57 @@
     <div class="container">
         <div class="row" id="fh5co-features">
             <div class="col-lg-12">
-                his is a column
+               
+
+
+   <div class="container">
+    <div class="row">
+        <form role="form" class="col-md-9 go-right">
+            
+            <div class="form-group">
+           <input type="text" class="form-control" placeholder="name" required>
+           
+        </div>
+          <div class="form-group">
+           <input type="email" class="form-control" placeholder="Email address" required>
+           
+        </div>
+         <div class="form-group">
+           <input type="text" class="form-control" placeholder="Subject" required>
+           
+        </div>
+        <div class="form-group">
+            <textarea  type="text" class="form-control" placeholder="Your Message" required></textarea>
+            
+        </div>
+            <div class="form-group text-left mt-20">
+                                <div>
+                                    <button type="submit" class="btn btn-greensea b-0 br-2 mr-5">Send Message</button>
+                                  
+                                </div>
+                            </div>
+        </form>
+      
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
         <!-- END row -->
