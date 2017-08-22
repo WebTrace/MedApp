@@ -1,3 +1,4 @@
+
 <div id="fh5co-hero">
     <a href="#fh5co-main" class="smoothscroll fh5co-arrow to-animate hero-animate-4"><i class="ti-angle-down"></i></a>
     <!-- End fh5co-arrow -->
@@ -22,14 +23,14 @@
                     <i class="ti-mobile"></i>
                 </div>
                 <h3 class="heading">Live chat</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+        
             </div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
                     <i class="ti-lock"></i>
                 </div>
-                <h3 class="heading">Appointments</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
+                <h3 class="heading">Real time information</h3>
+             
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
@@ -37,30 +38,30 @@
                     <i class="ti-video-camera"></i>
                 </div>
                 <h3 class="heading">Patient management</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+           
             </div>
             <div class="clearfix visible-md-block visible-lg-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
                 <div class="fh5co-feature-icon">
                     <i class="ti-shopping-cart"></i>
                 </div>
-                <h3 class="heading">Reminder</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
+                <h3 class="heading">Appointments</h3>
+              
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
                     <i class="ti-palette"></i>
                 </div>
-                <h3 class="heading">Real time information</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+                <h3 class="heading">Reminder</h3>
+               
             </div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
                     <i class="ti-truck"></i>
                 </div>
-                <h3 class="heading">Task scheduler</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
+                <h3 class="heading">Task Schedular</h3>
+              
             </div>
         </div>
         <!-- END row -->
@@ -69,9 +70,61 @@
                 
             </div>
             <h2 class="fh5co-uppercase-heading-sm text-center animate-box">NewsLetter</h2>
+
+                <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+              
+                <h3 class="heading">Why us</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
+            </div>
+
+          <div class="">
+                
+            </div>
+        <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
+
+
+
+            <div class="container">
+            <form class="form-horizontal">
+            <fieldset>
+             <!-- Form Name -->
+         
+            <div class="form-group">
             
-        </div>
+            <div class="col-md-4">
+
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="email"  name="email" class="form-control" placeholder="email" type="text" required="">
+           </div>
+        
+           </div>
+      <div class="col-md-1">
+        <button id="button-submit" name="button-submit" class="btn btn-primary">Subscribe</button>
+       </div>
+     </div>
+    </fieldset>
+   </form>
+  </div>
+</div>
+
+</div>
+
+<div class="row">
+            <div class="">
+                
+            </div>
+            <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Latest Blog</h2>
+
+          
+
+    
+
+       </div>
         <!--  end row -->
+
+
+
         <div class="fh5co-spacer fh5co-spacer-md"></div>
         <!-- End Spacer -->
         <div class="fh5co-spacer fh5co-spacer-md"></div>
