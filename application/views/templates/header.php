@@ -58,11 +58,11 @@
                 <nav id="fh5co-menu-wrap" role="navigation">
                     <ul class="sf-menu" id="fh5co-primary-menu">
                         <li class="active"><a href="<?Php echo base_url(); ?>">Home</a></li>
-                        <li class="active"><a href="about">How it works</a></li>
-                        <li class="active"><a href="services">Pricing</a></li>
+                        <li class="active"><a href="about">About us</a></li>
+                        <li class="active"><a href="how-it-works">How it works</a></li>
                         <li class="active"><a href="contact">Contact</a></li>
-                        <li class="active"><a href="signin">Signin</a></li>
                         <li class="active"><a href="signup">Sign up</a></li>
+                        <li class="active"><a href="signin">Sign in</a></li>
                     </ul>
                 </nav>
             <!-- </div> -->
