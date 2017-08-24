@@ -10,6 +10,7 @@
 <div id="fh5co-main" class="contact" style="background: #f7f9fa">
     <div class="container">
         <div class="row" id="fh5co-features">
+<<<<<<< HEAD
             <h1>Contact</h1>
             <P>For any query. Please contact us</P>
             <div class="col-md-6 col-lg-6">
@@ -18,6 +19,59 @@
                 <span class="input-group-addon" id="sizing-addon1">
                     <i class="ti-user" aria-hidden="true"></i></span>
                 <input name="FName" type="text" class="form-control" aria-describedby="sizaing-addon1" placeholder="Full Name" required="true">     
+=======
+            <div class="col-lg-12">
+               
+
+
+   <div class="container">
+    <div class="row">
+        <form role="form" class="col-md-9 go-right">
+            
+        <div class="form-group">
+             <input type="text" class="form-control" placeholder="name" required>
+        </div>
+
+        <div class="form-group">
+           <input type="email" class="form-control" placeholder="Email address" required>
+        </div>
+
+         <div class="form-group">
+         <input type="text" class="form-control" placeholder="Subject" required>
+         </div>
+
+         <div class="form-group">
+         <textarea  type="text" class="form-control" placeholder="Your Message" required></textarea>
+         </div>
+
+         <div class="form-group text-left mt-20">
+            <div>
+             <button type="submit" class="btn btn-greensea b-0 br-2 mr-5">Send Message</button>
+            </div>
+         </div>
+        </form>
+      
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> efd08d84fbf57e66732af70e058042a43918e0a5
             </div>
             <div class="input-group input-group-lg">
                 <span class="input-group-addon" id="sizing-addon1">

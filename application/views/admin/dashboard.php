@@ -90,6 +90,12 @@
     </div>
     <div class="col-lg-3">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="x_title">
+                    <h2>Profile</h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
             <div class="col-lg-3">
                 <img src="<?Php echo base_url()?>/assets/images/Prog.jpg" class="img-responsive img-circle">
             </div>
