@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-size: 2em;
+    font-family: "Core Sans N W01 35 Light";
+    font-weight: normal;
+    margin: .67em 0;
+    display: block;
+}
+
+#signin
+{
+    margin-top: 50px;
+}
+
+.signin{
+    padding: 80px;
+}
+
+.signin p
+{
+    padding-bottom: 20px;
+    color:#737377;
+}
+
+.signin h1{
+    margin: 20px 0 20px;
+}
+
+.signin .input-group
+{
+    margin-bottom: 10px;
+}
+
+.signin .form-control{
+    border-radius:  0 :important;
+}
+
+a
+{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: palevioletred;
+    text-decoration: none;
+}

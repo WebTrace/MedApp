@@ -42,6 +42,12 @@
         <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/animate.css">
         <!-- Theme Style -->
         <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/style.css">
+         <!-- Contact Page -->
+        <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/contact.css">
+         <!-- Sign In Page -->
+        <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/signin.css">
+         <!-- Forgot Password Page -->
+        <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/forgotPassword.css">
 
         <!-- Modernizr JS -->
         <script src="<?Php echo base_url()?>assets/js/modernizr-2.6.2.min.js"></script>

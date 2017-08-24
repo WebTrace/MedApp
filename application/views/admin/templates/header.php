@@ -151,6 +151,9 @@
                             <li>
                                 <a href="appointment"><i class="fa fa-fw fa-table"></i> Appointments</a>
                             </li>
+                             <li>
+                                <a href="patients"><i class="fa fa-fw fa-users"></i> Patients</a>
+                            </li>
                             <!--<li>
                                 <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
                             </li>
@@ -160,17 +163,17 @@
                             <li>
                                 <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                             </li>-->
-                            <li>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Patients <!--<i class="fa fa-fw fa-caret-down"></i>--></a>
-                                <!--<ul id="demo" class="collapse">
+                            <!--<li>
+                                <a href="pa" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Patients <!--<i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="demo" class="collapse">
                                     <li>
                                         <a href="#">Dropdown Item</a>
                                     </li>
                                     <li>
                                         <a href="#">Dropdown Item</a>
                                     </li>
-                                </ul>-->
-                            </li>
+                                </ul>
+                        </li>-->
                             <li>
                                 <a href="appointment"><i class="fa fa-fw fa-table"></i> Manage users</a>
                             </li>

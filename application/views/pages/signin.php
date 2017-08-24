@@ -7,36 +7,39 @@
         </div>
     </div>		
 </div>
-<div id="fh5co-main">
+<div id="fh5co-main" class="signin" style="background: #f7f9fa">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    Signin
-                </div>
-            </div>
             <div class="row" class="form-control underline">
                 <form class="form-group" action="method=post">
-                    <div class="col-lg-4 col-lg-offset-4" >
+                    <div class="col-lg-6 col-lg-offset-4" >
                         <div class="signin-label apply-shadow-effect">
-                            <div class="form-group">
-                               <input type="Username" class="form-control" placeholder="Username"required>
-                            </div>
-                            <a href="forgotpassword" class="pull-right mt-10">Forgot Password?</a>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" ng-model="user.password" required>
-                            </div>
-                            <div class="form-group text-left mt-20">
-                                <div>
-                                    <button type="submit" class="btn btn-greensea b-0 br-2 mr-5">login</button>
-                                    <label class="pull-right" class="checkbox checkbox-custom checkbox-custom-sm inline-block">
-                                        <input type="checkbox"><i></i> Remember me
-                                    </label>
-                                </div>
+                           <div class="body-content">
+                               <div class="module">
+                                   <h1>Sign In</h1>
+                                   <form class="form" method="post" autocomplete="off">
+                                      <div class="input-group input-group-lg">
+                                             <span class="input-group-addon" id="sizing-addon1">
+                                               <i class="ti-user" aria-hidden="true"></i></span>
+                                               <input name="username" type="text" class="form-control" aria-describedby="sizaing-addon1" placeholder="Username" required="true">     
+                                                </div>
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-addon" id="sizing-addon1">
+                                                        <i class="ti-lock" aria-hidden="true"></i></span>
+                                                    <input name="password" type="password" class="form-control" aria-describedby="sizaing-addon1" placeholder="Password" required="true">     
+                                                </div>
+                                       
+                                        <div class="input-group input-group-lg">
+                                                    <input name="rememberMe" type="checkbox" title="Remember Me" />     
+                                            <label >Remember Me</label>
+                                                </div>
+                                       <input type="submit" name="signin" class="btn btn-block btn-primary" />
+                                    </form>
+                                    <a href="forgotpassword">Forgot Password?</a>
+                               </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    
 </div>
