@@ -175,10 +175,10 @@
                                 </ul>
                         </li>-->
                             <li>
-                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Manage users</a>
-                            </li>
-                            <li>
                                 <a href="appointment"><i class="fa fa-fw fa-table"></i> Reports</a>
+                            </li>
+                             <li>
+                                <a href="users"><i class="fa fa-fw fa-table"></i> Manage users</a>
                             </li>
                             <!--<li>
                                 <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
