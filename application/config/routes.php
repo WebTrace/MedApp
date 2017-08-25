@@ -54,6 +54,7 @@ $route['dashboard'] = 'admin/dashboard';
 $route['claim'] = 'admin/claim';
 $route['appointment'] = 'admin/appointment';
 $route['users'] = 'admin/users';
+$route['patients'] = 'admin/patients';
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

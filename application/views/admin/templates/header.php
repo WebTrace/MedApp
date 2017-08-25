@@ -148,11 +148,11 @@
                             <li>
                                 <a href="claim"><i class="fa fa-fw fa-bar-chart-o"></i> Claims</a>
                             </li>
-                            <li>
-                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Appointments</a>
-                            </li>
                              <li>
                                 <a href="patients"><i class="fa fa-fw fa-users"></i> Patients</a>
+                            </li>
+                            <li>
+                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Appointments</a>
                             </li>
                             <!--<li>
                                 <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
