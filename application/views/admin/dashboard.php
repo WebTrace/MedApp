@@ -78,7 +78,7 @@
                         <div>
                             <p>Bill boards</p>
                             <div class="">
-                                <div class="progress progress_sm" style="width: 50%">
+                                <div class="progress progress_sm">
                                     <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
                                 </div>
                             </div>
