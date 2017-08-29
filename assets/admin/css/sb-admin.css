@@ -223,6 +223,10 @@ Custom style by: Mannu
     display: inline;
 }
 
+#view-control {
+    display: inline;
+}
+
 #export-option {
     background: #79decf;
     color: #fff;
@@ -231,8 +235,20 @@ Custom style by: Mannu
     border-radius: 2px;
 }
 
-#dropdown-menu-fix {
-    top: 22px;
+#diplay-option {
+    background: #79decf;
+    color: #fff;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 2px;
+}
+
+#width-fix {
+    min-width: auto;
+}
+
+.dropdown-menu-fix {
+    top: 22px !important;
 }
 
 /*************************************************************/

@@ -15,7 +15,7 @@
                         <i class="fa fa-exchange"></i> Export
                         <span class="caret"></span>
                     </button>
-                    <ul id="dropdown-menu-fix" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <ul class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
                         <li><a href="#">PDF</a></li>
                         <li><a href="#">Word</a></li>
                         <li><a href="#">Excel</a></li>
@@ -28,7 +28,20 @@
         <div class="col-lg-2">
             <label id="control-show-lbl">
                 Show 
-                <input type="" name="" id="control-show">
+                <div id="view-control" class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            5
+                        <span class="caret"></span>
+                    </button>
+                    <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">15</a></li>
+                        <li><a href="#">25</a></li>
+                        <li><a href="#">35</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>-->
+                    </ul>
+                </div>
             </label>
         </div>
         <div class="col-lg-2">
@@ -117,14 +130,16 @@
     <div class="col-lg-12">
         <table class="table table-bordered">
             <thead>
-                <th>No.</th>
-                <th>Picture</th>
-                <th>Surname</th>
-                <th>First name</th>
-                <th>Contact number</th>
-                <th>Email address</th>
-                <th>User role</th>
-                <th colspan="4">Action</th>
+                <tr>
+                    <th>No.</th>
+                    <th>Picture</th>
+                    <th>Surname</th>
+                    <th>First name</th>
+                    <th>Contact number</th>
+                    <th>Email address</th>
+                    <th>User role</th>
+                    <th colspan="4">Action</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
