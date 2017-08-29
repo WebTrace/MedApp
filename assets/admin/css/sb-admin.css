@@ -160,6 +160,81 @@ Custom style by: Mannu
     background: #ef5b5b;
 }
 
+.controls {
+    padding: 5px 0px;
+    margin-bottom: 20px;
+}
+
+#search {
+    border: #ccc thin solid;
+    padding: 3px 25px 3px 10px;
+    color: #666;
+    outline: none;
+    width: 100%;
+}
+
+#frm-search {
+    position: relative;
+}
+
+#mg-glass {
+    top: 7px;
+    right: 8px;
+    color: #e47f2d;
+    position: absolute;
+}
+
+.btn-controls {
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 3px 8px;
+    border-radius: 2px;
+}
+
+#add-user {
+    background: #3aabc1;
+    margin-right: 5px;
+}
+
+#email {
+    background: #59d466;
+    margin-right: 5px;
+}
+
+#print {
+    background: #e47f2d;
+    margin-right: 5px;
+}
+
+#control-show-lbl {
+    font-weight: normal;
+}
+
+#control-show {
+    width: 70%;
+    outline: none;
+    padding: 3px;
+    text-align: right;
+    border: #ccc thin solid;
+}
+
+#export-control {
+    display: inline;
+}
+
+#export-option {
+    background: #79decf;
+    color: #fff;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 2px;
+}
+
+#dropdown-menu-fix {
+    top: 22px;
+}
+
 /*************************************************************/
 
 body {
