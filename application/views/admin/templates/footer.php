@@ -21,6 +21,6 @@
 
         <script src="<?Php echo base_url()?>assets/admin/js/bootstrap-progressbar.min.js"></script>
         <!--<script src="<?Php echo base_url()?>assets/admin/js/modal.js"></script>-->
-        <script src="<?Php echo base_url()?>assets/admin/js/custom.js"></script>
+        <script src="<?Php echo base_url()?>assets/admin/js/data.js"></script>
     </body>
 </html>

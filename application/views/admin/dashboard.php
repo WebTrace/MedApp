@@ -38,8 +38,8 @@
                 </div>
                 <div class="">
                     <div class="x_content1">
-                    <div id="graph_bar_group" style="width:100%; height:280px;"></div>
-                  </div>
+                        <div id="graph_bar_group" style="width:100%; height:280px;"></div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
