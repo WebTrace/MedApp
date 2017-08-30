@@ -173,7 +173,7 @@ Custom style by: Mannu
     width: 100%;
 }
 
-#frm-search {
+.search-control {
     position: relative;
 }
 
@@ -227,21 +227,22 @@ Custom style by: Mannu
     display: inline;
 }
 
-#export-option {
+#export-option, #diplay-option {
     background: #79decf;
     color: #fff;
     padding: 3px 8px;
     border: none;
     border-radius: 2px;
+    outline: none;
 }
 
-#diplay-option {
+ /*{
     background: #79decf;
     color: #fff;
     padding: 3px 10px;
     border: none;
     border-radius: 2px;
-}
+}*/
 
 #width-fix {
     min-width: auto;
