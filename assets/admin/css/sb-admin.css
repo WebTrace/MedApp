@@ -7,8 +7,13 @@
 /* Global Styles */
 
 /*
-Custom style by: Mannu
+*Custom style by: Web Trace Team
+*
+*Please use this section to create custom styles to avoid creating new stylesheet.
+*/
 
+/*
+*Mannu section
 */
 .navbar-fixed-top {
     background-color: #325993 !important;
@@ -173,7 +178,7 @@ Custom style by: Mannu
     width: 100%;
 }
 
-#frm-search {
+.search-control {
     position: relative;
 }
 
@@ -227,21 +232,22 @@ Custom style by: Mannu
     display: inline;
 }
 
-#export-option {
+#export-option, #diplay-option {
     background: #79decf;
     color: #fff;
     padding: 3px 8px;
     border: none;
     border-radius: 2px;
+    outline: none;
 }
 
-#diplay-option {
+ /*{
     background: #79decf;
     color: #fff;
     padding: 3px 10px;
     border: none;
     border-radius: 2px;
-}
+}*/
 
 #width-fix {
     min-width: auto;
@@ -251,7 +257,34 @@ Custom style by: Mannu
     top: 22px !important;
 }
 
-/*************************************************************/
+.edit-user {
+    color: #59d466;
+}
+
+.delete-user {
+    color: #e66951;
+}
+
+.delete-user:hover {
+    color: #d43e21
+}
+
+/*Format text boxes*/
+.text-input {
+    border-radius: 2px;
+}
+
+
+/*
+*Joseph section
+*/
+
+
+/*
+*Tshego section
+*/
+
+/*END*************************************************************/
 
 body {
     margin-top: 100px;
