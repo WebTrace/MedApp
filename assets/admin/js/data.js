@@ -125,4 +125,9 @@ $(document).ready(function() {
             }
         })
     }
+    
+    //print buttin
+    $("#print").on("click", function() {
+        window.print();
+    })
 })

@@ -71,13 +71,13 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">First name</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">Surname</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                             </div>
@@ -85,13 +85,13 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">ID number</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">Gender</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                             </div>
@@ -99,13 +99,13 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">Contact number</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">Email address</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <label for="">User role</label>
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="" class="form-control text-input">
                                     </div>
                                 </div>
                             </div>
@@ -151,10 +151,10 @@
                     <td>062 023 6010</td>
                     <td>emmanuel66@live.co.za</td>
                     <td>Manager</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -164,10 +164,10 @@
                     <td>062 023 6010</td>
                     <td>jose@live.co.za</td>
                     <td>Receptionist</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -177,10 +177,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>4</td>
@@ -190,10 +190,10 @@
                     <td>062 023 6010</td>
                     <td>tshego@live.co.za</td>
                     <td>Practitioner</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -203,10 +203,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>6</td>
@@ -216,10 +216,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>7</td>
@@ -229,10 +229,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>8</td>
@@ -242,10 +242,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>9</td>
@@ -255,10 +255,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>10</td>
@@ -268,10 +268,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>11</td>
@@ -281,10 +281,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>12</td>
@@ -294,10 +294,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>13</td>
@@ -307,10 +307,10 @@
                     <td>062 023 6010</td>
                     <td>roy@live.co.za</td>
                     <td>Staff</td>
-                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                     <td><a href="#"><i class="fa fa-eye"></i></a></td>
                     <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                    <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                 </tr>
             </tbody>
         </table>

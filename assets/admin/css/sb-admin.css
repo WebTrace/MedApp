@@ -7,8 +7,13 @@
 /* Global Styles */
 
 /*
-Custom style by: Mannu
+*Custom style by: Web Trace Team
+*
+*Please use this section to create custom styles to avoid creating new stylesheet.
+*/
 
+/*
+*Mannu section
 */
 .navbar-fixed-top {
     background-color: #325993 !important;
@@ -252,7 +257,34 @@ Custom style by: Mannu
     top: 22px !important;
 }
 
-/*************************************************************/
+.edit-user {
+    color: #59d466;
+}
+
+.delete-user {
+    color: #e66951;
+}
+
+.delete-user:hover {
+    color: #d43e21
+}
+
+/*Format text boxes*/
+.text-input {
+    border-radius: 2px;
+}
+
+
+/*
+*Joseph section
+*/
+
+
+/*
+*Tshego section
+*/
+
+/*END*************************************************************/
 
 body {
     margin-top: 100px;
