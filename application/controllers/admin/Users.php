@@ -43,7 +43,7 @@
         *define user permissions
         *
         */
-        pubic function user_Permission()
+        public function user_Permission()
         {
             
         }
