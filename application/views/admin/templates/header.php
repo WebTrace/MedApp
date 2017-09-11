@@ -36,7 +36,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">CLAIMA</a>
+                        <a class="navbar-brand" href="dashboard">CLAIMA</a>
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
@@ -130,7 +130,7 @@
                                     <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                                    <a href="settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -146,13 +146,13 @@
                                 <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="claim"><i class="fa fa-fw fa-bar-chart-o"></i> Claims</a>
-                            </li>
-                             <li>
-                                <a href="patients"><i class="fa fa-fw fa-users"></i> Patients</a>
+                                <a href="consultation"><i class="fa fa-fw fa-user-md"></i> Consultations</a>
                             </li>
                             <li>
-                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Appointments</a>
+                                <a href="claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
+                            </li>
+                            <li>
+                                <a href="appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>
                             <!--<li>
                                 <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
@@ -173,12 +173,15 @@
                                         <a href="#">Dropdown Item</a>
                                     </li>
                                 </ul>
-                        </li>-->
+                            </li>-->
                             <li>
-                                <a href="appointment"><i class="fa fa-fw fa-table"></i> Reports</a>
+                                <a href="invoice"><i class="fa fa-fw fa-bar-chart-o"></i> Invoice</a>
+                            </li>
+                            <li>
+                                <a href="appointment"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
                             </li>
                              <li>
-                                <a href="users"><i class="fa fa-fw fa-table"></i> Manage users</a>
+                                <a href="users"><i class="fa fa-fw fa-users"></i> Manage users</a>
                             </li>
                             <!--<li>
                                 <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
