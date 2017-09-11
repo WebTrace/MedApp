@@ -10,17 +10,15 @@
         <script src="<?Php echo base_url()?>assets/admin/js/bootstrap.min.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/morris.min.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/raphael.min.js"></script>
-        <script type="text/javascript">
-
-        </script>
-
-        <!-- Morris Charts JavaScript -->
-        <!--<script src="<?Php echo base_url()?>assets/admin/js/plugins/morris/raphael.min.js"></script>
-        <script src="<?Php echo base_url()?>assets/admin/js/plugins/morris/morris.min.js"></script>
-        <script src="<?Php echo base_url()?>assets/admin/js/plugins/morris/morris-data.js"></script>-->
-
         <script src="<?Php echo base_url()?>assets/admin/js/bootstrap-progressbar.min.js"></script>
         <!--<script src="<?Php echo base_url()?>assets/admin/js/modal.js"></script>-->
         <script src="<?Php echo base_url()?>assets/admin/js/data.js"></script>
+        
+        <!--Tshego's library references-->
+        <script src='<?php echo base_url();?>assets/admin/js/moment.min.js'></script>
+        <script src="<?php echo base_url();?>assets/admin/js/bootstrapValidator.min.js"></script>
+        <script src="<?php echo base_url();?>assets/admin/js/fullcalendar.min.js"></script>
+        <script src='<?php echo base_url();?>assets/admin/js/bootstrap-colorpicker.min.js'></script>
+        <script src='<?php echo base_url();?>assets/admin/js/main.js'></script>
     </body>
 </html>
