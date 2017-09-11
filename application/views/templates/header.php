@@ -61,8 +61,8 @@
                         <li class="active"><a href="about">About us</a></li>
                         <li class="active"><a href="how-it-works">How it works</a></li>
                         <li class="active"><a href="contact">Contact</a></li>
-                        <li class="active"><a href="signin">Signin</a></li>
-                        <li class="active"><a href="signup">Sign up</a></li>
+                        <li class="active"><a href="signin" target="_blank">Signin</a></li>
+                        <li class="active"><a href="signup" target="_blank">Sign up</a></li>
                     </ul>
                 </nav>
             <!-- </div> -->

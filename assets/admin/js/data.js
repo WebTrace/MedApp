@@ -98,24 +98,26 @@ $(document).ready(function() {
     
     //table search
     $("#search").keyup(function() {
-        var q = $(this).val();
-        search_table(q);
+        //var q = $(this).val();
+        search_table($(this).val());
     });
     
     function search_table(q)
     {
-        $("#user-list tr").each(function() {
+        $("#user-list tr:gt(0)").each(function() {
             var found = "false";
             
+            console.log($(this).val());
+            
             $(this).each(function() {
-                if($(this).text().toLowerCase().indexOf(q.toLowerCase() >= 0))
+                
+                if($(this).text().toLowerCase().indexOf(q.toLowerCase()) >= 0)
                 {
                     found = "true";
-                    console.log("Here: " + $(this).text());
                 }
             });
             
-            if(found == "false")
+            if(found == "true")
             {
                 $(this).show();
             }
@@ -130,4 +132,37 @@ $(document).ready(function() {
     $("#print").on("click", function() {
         window.print();
     })
+    
+    //Change user role text
+    $("#role-list a").on ("click", function() {
+        var text = $(this).text();
+        $("#user-role-text").text(text);
+        $("#user_role").attr("value", text);
+        
+        //Toggle practice details fieldset
+        if(text == "Practitioner")
+        {
+            $("#practice-details").slideDown();
+        }
+        else
+        {
+            $("#practice-details").slideUp();
+        }
+        
+    })
+    
+    //User title
+    $("#title-list a").on("click", function() {
+        var text = $(this).text();
+        $("#title-text").text(text);
+        $("#user_title").attr("value", text)
+    })
+    
+    $("#speciality-list a").on("click", function() {
+        var text = $(this).text();
+        $("#specility-text").text(text);
+        $("#user_speciality").attr("value", text);
+    })
+    
+    //display fulll appointment details using bootstrap popover
 })
