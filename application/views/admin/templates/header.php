@@ -10,18 +10,18 @@
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
-
+            
             <!-- Morris Charts CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/plugins/morris.css" rel="stylesheet">
-
+            
             <!-- Custom Fonts -->
             <link href="<?Php echo base_url();?>assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             
             <!--Tshego's library references-->
-            <link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
+            <!--<link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
             <link href="<?php echo base_url();?>assets/admin/css/bootstrapValidator.min.css" rel="stylesheet" />        
             <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-            <link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />
+            <link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />-->
             
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -160,28 +160,9 @@
                             <li>
                                 <a href="appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>
-                            <!--<li>
-                                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                            </li>
+                            
                             <li>
-                                <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                            </li>
-                            <li>
-                                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                            </li>-->
-                            <!--<li>
-                                <a href="pa" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Patients <!--<i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="demo" class="collapse">
-                                    <li>
-                                        <a href="#">Dropdown Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Dropdown Item</a>
-                                    </li>
-                                </ul>
-                            </li>-->
-                            <li>
-                                <a href="invoice"><i class="fa fa-fw fa-bar-chart-o"></i> Invoice</a>
+                                <a href="invoice"><i class="fa fa-fw fa-money"></i> Invoice</a>
                             </li>
                             <li>
                                 <a href="appointment"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
@@ -189,9 +170,6 @@
                              <li>
                                 <a href="users"><i class="fa fa-fw fa-users"></i> Manage users</a>
                             </li>
-                            <!--<li>
-                                <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                            </li>-->
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
