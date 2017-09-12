@@ -1,57 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Claim</title>
- 
-  <style type="text/css">
-    .form-box{
-      max-width: 900px;
 
-
-    }
-
-    #container {
-    height: 200px;
-    width: 400px;
-    border: 1px solid skyblue;
-    position: relative;
-    border-radius: 12px;
-    padding: 20px; 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
-}
-
-#label {
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    height: 20px;
-    width: 100px;
-    background-color: White;
-    text-align: center;
-}
-#imaginary_container{
-    margin-top:20%
-    right: 20px;
-    width:300px;
-
-
-
-}
-.stylish-input-group .input-group-addon{
-    background: white !important; 
-}
-.stylish-input-group .form-control{
-    border-right:0; 
-    box-shadow:0 0 0; 
-    border-color:skyblue;
-}
-.stylish-input-group button{
-    border:0;
-    background:transparent;
-}
-  </style>
-</head>
-<body>
   <div class="wrapper">
     <div class="container">
       <div class="row">
@@ -178,5 +125,4 @@
   </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html
+
