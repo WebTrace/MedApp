@@ -6,7 +6,7 @@ $(function(){
     $('#color').colorpicker(); // Colopicker
     
 
-    var base_url='http://localhost/MedApp/'; // Here i define the base_url
+    var base_url='http://localhost/fullcalendar/'; // Here i define the base_url
 
     // Fullcalendar
     $('#calendar').fullCalendar({
@@ -17,7 +17,7 @@ $(function(){
         },
         // Get all events stored in database
         eventLimit: true, // allow "more" link when too many events
-        events: base_url+'calendar/getAppointments',
+        events: base_url+'calendar/getEvents',
         selectable: true,
         selectHelper: true,
         editable: true, // Make the event resizable true           
@@ -35,7 +35,7 @@ $(function(){
                         label: 'Add' // Buttons label
                     }
                 },
-                title: 'Add Appointment' // Modal title
+                title: 'Add Event' // Modal title
             });
             }, 
            
@@ -53,7 +53,7 @@ $(function(){
                 start : start,
                 end :end
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event updated successfuly');
+                $('.alert').addClass('alert-success').text('Appointment updated successfuly');
                 hide_notify();
 
 
@@ -76,7 +76,7 @@ $(function(){
                 start : start,
                 end :end
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event updated successfuly');
+                $('.alert').addClass('alert-success').text('Appointment updated successfuly');
                 hide_notify();
 
             });
@@ -121,7 +121,7 @@ $(function(){
                         label: 'Update'
                     }
                 },
-                title: 'Edit Event "' + calEvent.title + '"',
+                title: 'Edit Appointment "' + calEvent.title + '"',
                 event: calEvent
             });
         }
@@ -156,7 +156,7 @@ $(function(){
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event added successfuly');
+                $('.alert').addClass('alert-success').text('Appointment added successfully');
                 $('.modal').modal('hide');
                 $('#calendar').fullCalendar("refetchEvents");
                 hide_notify();
@@ -174,7 +174,7 @@ $(function(){
                 description: $('#description').val(),
                 color: $('#color').val()
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event updated successfuly');
+                $('.alert').addClass('alert-success').text('Appointment updated successfully');
                 $('.modal').modal('hide');
                 $('#calendar').fullCalendar("refetchEvents");
                 hide_notify();
@@ -188,7 +188,7 @@ $(function(){
     // Handle Click on Delete Button
     $('.modal').on('click', '#delete-event',  function(e){
         $.get(base_url+'calendar/deleteEvent?id=' + currentEvent._id, function(result){
-            $('.alert').addClass('alert-success').text('Event deleted successfully !');
+            $('.alert').addClass('alert-success').text('Appointment deleted successfully !');
             $('.modal').modal('hide');
             $('#calendar').fullCalendar("refetchEvents");
             hide_notify();
