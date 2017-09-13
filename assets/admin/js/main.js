@@ -10,6 +10,7 @@ $(function(){
 
     // Fullcalendar
     $('#calendar').fullCalendar({
+        
         header: {
             left: 'prev, next, today',
             center: 'title',
