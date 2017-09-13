@@ -33,7 +33,9 @@
         <div class="row fency-bg">
             <div class="col-lg-4">
                 <div class="x_title">
-                    <h2>Upcoming appointments</h2>
+                    <h2>Upcoming appointments
+                        <a class="data-more pull-right" href="appointment"><i class="fa fa-chevron-right"></i></a>
+                    </h2>
                 </div>
                 <div class="upcoming-appointments">
                     <div class="appointment-preview">
@@ -90,25 +92,32 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                
-            </div>
-            <div class="col-lg-6">
-                
-            </div>
-        </div>
     </div>
     <div class="col-lg-3">
         <div class="x_title">
-            <h2 style="margin-top: 5px;">My Tasks</h2>
+            <h2 style="margin-top: 5px;">My Tasks
+                <a class="data-more pull-right" href="tasks"><i class="fa fa-chevron-right"></i></a>
+            </h2>
         </div>
         <div class="upcoming-appointments">
             <div class="appointment-preview">
                 <a href="#">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="media-heading"><strong>Complete claim</strong>
+                            <h5 class="media-heading"><strong>Complete claim</strong></h5>
+                            <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
+                            <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="upcoming-appointments">
+            <div class="appointment-preview">
+                <a href="#">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="media-heading"><strong>Pending payment</strong>
                             </h5>
                             <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
                             <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
@@ -122,7 +131,7 @@
                 <a href="#">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="media-heading"><strong>Complete claim</strong>
+                            <h5 class="media-heading"><strong>Send invoice</strong>
                             </h5>
                             <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
                             <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
@@ -131,18 +140,20 @@
                 </a>
             </div>
         </div>
-        <div class="upcoming-appointments">
-            <div class="appointment-preview">
-                <a href="#">
-                    <div class="media">
-                        <div class="media-body">
-                            <h5 class="media-heading"><strong>Complete claim</strong>
-                            </h5>
-                            <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
-                            <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
-                        </div>
-                    </div>
-                </a>
+        <div class="monthly-info">
+            <div class="x_title">
+                <h2 style="margin-top: 25px;">Quick monthly information</h2>
+            </div>
+            <div class="quick-info" id="quick-info-1">
+                <p>Amount payable by 05 Oct 2017</p>
+                <span class="quick-info-amount">R 500.00</span>
+                <span class="pull-right"><i class="fa fa-sort-asc"></i> R 35.00</span>
+            </div>
+            <hr>
+            <div style="margin-top: 12px;" class="quick-info" id="quick-info-2">
+                <p>Total amount</p>
+                <span class="quick-info-amount">R 10 000.00</span>
+                <span class="pull-right"><i class="fa fa-sort-desc"></i> R 35.00</span>
             </div>
         </div>
     </div>

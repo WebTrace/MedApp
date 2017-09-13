@@ -86,14 +86,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker11').datetimepicker({
-                                            daysOfWeekDisabled: [0, 6]
-                                        });
-                                    });
-                                </script>
-
                         <div class="col-sm-6">
                             <div class="form-group">
                                     <label class="control-label" for="Amount">Amount</label>
