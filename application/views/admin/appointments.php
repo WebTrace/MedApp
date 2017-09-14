@@ -1,3 +1,23 @@
+
+        <link href="<?php echo base_url();?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
+        <link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
+        <link href="<?php echo base_url();?>assets/admin/css/bootstrapValidator.min.css" rel="stylesheet" />        
+        <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+        <!-- Custom css  -->
+        <link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />
+
+        <script src='<?php echo base_url();?>assets/admin/js/moment.min.js'></script>
+        <script src="<?php echo base_url();?>assets/admin/js/jquery.min.js"></script>
+        <script src="<?php echo base_url();?>assets/admin/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url();?>assets/admin/js/bootstrapValidator.min.js"></script>
+        <script src="<?php echo base_url();?>assets/admin/js/fullcalendar.min.js"></script>
+        <script src='<?php echo base_url();?>assets/admin/js/bootstrap-colorpicker.min.js'></script>
+        
+
+        
+
+        <script src='<?php echo base_url();?>assets/js/main.js'></script>
+
 <div class="row">
     <div class="col-lg-12">
         <!-- Notification -->
