@@ -5,5 +5,5 @@ This is the settings page
 1. Create sub-navigation for settings page<br>
     *Profile<br>
         -Update user profile<br>
-    *General
-    *Security
+*General
+*Security

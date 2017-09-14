@@ -20,7 +20,11 @@
         <script src="<?php echo base_url();?>assets/admin/js/fullcalendar.min.js"></script>
         <script src='<?php echo base_url();?>assets/admin/js/bootstrap-colorpicker.min.js'></script>
         <script src='<?php echo base_url();?>assets/admin/js/main.js'></script>
-    
+        <script src="<?php echo base_url();?>assets/admin/js/bootstrapValidator.min.js"></script>
+        <script src="<?php echo base_url();?>assets/admin/js/fullcalendar.min.js"></script>
+        <script src='<?php echo base_url();?>assets/admin/js/bootstrap-colorpicker.min.js'></script>
+        <script src='<?php echo base_url();?>assets/js/main.js'></script>
+        
         <!--<script type="text/javascript">
             $(function () {
                 $('#datetimepicker11').datetimepicker({
