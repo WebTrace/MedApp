@@ -56,6 +56,7 @@ $route['dashboard'] = 'admin/dashboard';
 $route['claim'] = 'admin/claim';
 $route['appointment'] = 'admin/appointment';
 $route['users'] = 'admin/users';
+$route['tasks'] = 'admin/tasks';
 $route['settings'] = 'admin/settings';
 $route['signin'] = 'admin/signin';
 $route['signup'] = 'admin/signup';

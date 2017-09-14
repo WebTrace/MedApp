@@ -22,7 +22,7 @@
             <link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
             <link href="<?php echo base_url();?>assets/admin/css/bootstrapValidator.min.css" rel="stylesheet" />        
             <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-            <link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />
+            <!--<link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />-->
         </head>
         <body>
             <div id="wrapper">
@@ -154,7 +154,9 @@
                             <li>
                                 <a href="appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>
-                            
+                            <li>
+                                <a href="tasks"><i class="fa fa-check-square-o"></i> Tasks</a>
+                            </li>
                             <li>
                                 <a href="invoice"><i class="fa fa-fw fa-money"></i> Invoice</a>
                             </li>
