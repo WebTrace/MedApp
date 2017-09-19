@@ -22,20 +22,50 @@
                 <input type="hidden" id="start">
                 <input type="hidden" id="end">
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="title">Title</label>
-                        <div class="col-md-4">
+                        <label class="col-md-4 control-label" for="title">Patient First Name(s)</label>
+                        <div class="col-md-6">
                             <input id="title" name="title" type="text" class="form-control input-md" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Patient Last Name</label>
+                        <div class="col-md-6">
+                            <input id="lastName" name="lastName" type="text" class="form-control input-md" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Patient ID No</label>
+                        <div class="col-md-6">
+                            <input id="idNumber" name="idNumber" type="text" class="form-control input-md" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Patient Address</label>
+                        <div class="col-md-6">
+                            <input id="address" name="address" type="text" class="form-control input-md" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Venue</label>
+                        <div class="col-md-6">
+                            <input id="venue" name="venue" type="text" class="form-control input-md" />
+                        </div>
+                    </div>
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Time</label>
+                        <div class="col-md-6">
+                            <input id="time" name="time" type="text" class="form-control input-md" />
                         </div>
                     </div>                            
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="description">Description</label>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <textarea class="form-control" id="description" name="description"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="color">Color</label>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input id="color" name="color" type="text" class="form-control input-md" readonly="readonly" />
                             <span class="help-block">Click to pick a color</span>
                         </div>
