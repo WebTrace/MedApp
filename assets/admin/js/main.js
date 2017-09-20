@@ -36,7 +36,7 @@ $(function(){
                         label: 'Add' // Buttons label
                     }
                 },
-                title: 'Add Event' // Modal title
+                title: 'Add Appointment' // Modal title
             });
             }, 
            
@@ -86,7 +86,7 @@ $(function(){
         // Event Mouseover
         eventMouseover: function(calEvent, jsEvent, view){
 
-            var tooltip = '<div class="event-tooltip">' + calEvent.description + '</div>';
+            var tooltip = '<div class="event-tooltip">' + calEvent.lastName + ' , ' + calEvent.idNumber + ' , ' + calEvent.address + ' , ' + calEvent.venue + ', ' + calEvent.Time + ', ' + calEvent.description + '</div>';
             $("body").append(tooltip);
 
             $(this).mouseover(function(e) {
@@ -136,7 +136,12 @@ $(function(){
         // Clear buttons except Cancel
         $('.modal-footer button:not(".btn-default")').remove();
         // Set input values
-        $('#title').val(data.event ? data.event.title : '');        
+        $('#title').val(data.event ? data.event.title : ''); 
+        $('#lastName').val(data.event ? data.event.lastName : '');
+        $('#idNumber').val(data.event ? data.event.idNumber : '');
+        $('#address').val(data.event ? data.event.address : '');
+        $('#venue').val(data.event ? data.event.venue : '');
+        $('#time').val(data.event ? data.event.time : '');       
         $('#description').val(data.event ? data.event.description : '');
         $('#color').val(data.event ? data.event.color : '#3a87ad');
         // Create Butttons
@@ -149,9 +154,14 @@ $(function(){
 
     // Handle Click on Add Button
     $('.modal').on('click', '#add-event',  function(e){
-        if(validator(['title', 'description'])) {
+        if(validator(['title', 'lastName', 'idNumber', 'address', 'venue', 'time', 'description'])) {
             $.post(base_url+'calendar/addEvent', {
                 title: $('#title').val(),
+                lastName: $('#lastName').val(),
+                idNumber: $('#idNumber').val(),
+                address: $('#address').val(),
+                venue: $('#venue').val(),
+                time: $('#time').val(),
                 description: $('#description').val(),
                 color: $('#color').val(),
                 start: $('#start').val(),
@@ -168,10 +178,15 @@ $(function(){
 
     // Handle click on Update Button
     $('.modal').on('click', '#update-event',  function(e){
-        if(validator(['title', 'description'])) {
+        if(validator(['title', 'lastName', 'idNumber', 'address', 'venue', 'time', 'description'])) {
             $.post(base_url+'calendar/updateEvent', {
                 id: currentEvent._id,
                 title: $('#title').val(),
+                lastName: $('#lastName').val(),
+                idNumber: $('#idNumber').val(),
+                address: $('#address').val(),
+                venue: $('#venue').val(),
+                time: $('#time').val(),
                 description: $('#description').val(),
                 color: $('#color').val()
             }, function(result){
