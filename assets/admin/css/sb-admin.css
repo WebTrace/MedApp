@@ -401,7 +401,7 @@
     border-radius: 2px;
 }
 
-.inp-collection .fa-lock, .inp-collection .fa-user {
+.inp-collection .fa-lock, .inp-collection .fa-user, #env {
     top: 30%;
     left: 10px;
     color: #e89865;
@@ -413,12 +413,12 @@
     outline: none;
     border: #ccc thin solid;
     color: #666;
-    padding: 3px 5px;
+    padding: 6px 5px;
     font-size: 13px;
     border-radius: 2px;
 }
 
-.access-container #username, .access-container #password {
+.access-container #username, .access-container #password, #email-fgt {
     padding-top: 7px;
     padding-bottom: 7px;
 }
@@ -484,8 +484,9 @@ fieldset {
 
 legend {
     color: #65bfbd;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding-bottom: 5px;
+    padding-left: 15px;
 }
 
 .fieldset-reg legend {
@@ -579,6 +580,21 @@ legend {
     .monthly-info {
        margin-bottom: 20px; 
     }
+}
+
+.account-information ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.account-information ul li {
+    list-style-type: none;
+}
+
+#stats-viewer {
+    color: #666;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 /*

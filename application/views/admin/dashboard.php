@@ -82,7 +82,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="x_title">
-                    <h2>Claims overview</h2>
+                    <h2>Claims overview<span class="pull-right" id="stats-viewer"><i class="fa fa-gear"></i></span></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="">
@@ -158,3 +158,72 @@
         </div>
     </div>
 </div>
+<!--<div class="row">
+    <div class="col-lg-12"><hr></div>
+    <div class="col-lg-4">
+        <div class="x_title">
+            <h2 style="margin-top: 25px;">User Details</h2>
+        </div>
+        <div class="account-information">
+            <ul>
+                <li>
+                    <strong>First name</strong>
+                    <p>Emmanuel</p>
+                </li>
+                <li>
+                    <strong>Last name</strong>
+                    <p>Kgatla</p>
+                </li>
+                <li>
+                    <strong>Username</strong>
+                    <p>Mannu</p>
+                </li>
+                <li>
+                    <strong>Status</strong>
+                    <p>Active</p>
+                </li>
+                <li>
+                    <strong>Email address</strong>
+                    <p>emmanuel66@live.co.za</p>
+                </li>
+                <li>
+                    <strong>Data added</strong>
+                    <p>15 Sep 2017</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="x_title">
+            <h2 style="margin-top: 25px;">Practice Details</h2>
+        </div>
+        <div class="account-information">
+            <ul>
+                <li>
+                    <strong>Manager</strong>
+                    <p>Emmanuel Kgatla</p>
+                </li>
+                <li>
+                    <strong>Practice name</strong>
+                    <p>Secret Operations</p>
+                </li>
+                <li>
+                    <strong>Pratice type</strong>
+                    <p>Health</p>
+                </li>
+                <li>
+                    <strong>Email address</strong>
+                    <p>info@soper.co.za</p>
+                </li>
+                <li>
+                    <strong>Location</strong>
+                    <p>Tembisa</p>
+                </li>
+                <li>
+                    <strong>City</strong>
+                    <p>Johannesburg</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>-->

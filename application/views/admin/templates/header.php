@@ -18,11 +18,13 @@
             <link href="<?Php echo base_url();?>assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             
             <!--Tshego's library references-->
-            
             <link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
             <link href="<?php echo base_url();?>assets/admin/css/bootstrapValidator.min.css" rel="stylesheet" />        
             <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-            <!--<link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" />-->
+            <!--<link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" /> //This file conflicts with our styles-->
+            
+            <!--Ace style reference-->
+            <!--<link href="<?Php echo base_url();?>assets/ace.min.css" rel="stylesheet">-->
         </head>
         <body>
             <div id="wrapper">
@@ -50,7 +52,7 @@
                                                 <img class="media-object" src="http://placehold.it/50x50" alt="">
                                             </span>
                                             <div class="media-body">
-                                                <h5 class="media-heading"><strong>John Smith</strong>
+                                                <h5 class="media-heading"><strong>B Maranatha</strong>
                                                 </h5>
                                                 <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                                 <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -65,7 +67,7 @@
                                                 <img class="media-object" src="http://placehold.it/50x50" alt="">
                                             </span>
                                             <div class="media-body">
-                                                <h5 class="media-heading"><strong>John Smith</strong>
+                                                <h5 class="media-heading"><strong>T Mojela</strong>
                                                 </h5>
                                                 <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                                 <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -80,7 +82,7 @@
                                                 <img class="media-object" src="http://placehold.it/50x50" alt="">
                                             </span>
                                             <div class="media-body">
-                                                <h5 class="media-heading"><strong>John Smith</strong>
+                                                <h5 class="media-heading"><strong>S Sakoane</strong>
                                                 </h5>
                                                 <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                                 <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -157,15 +159,15 @@
                             <li>
                                 <a href="tasks"><i class="fa fa-check-square-o"></i> Tasks</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="invoice"><i class="fa fa-fw fa-money"></i> Invoice</a>
-                            </li>
+                            </li>-->
                             <li>
-                                <a href="appointment"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
+                                <a href="reports"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
                             </li>
-                             <li>
+                            <!--<li>
                                 <a href="users"><i class="fa fa-fw fa-users"></i> Manage users</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

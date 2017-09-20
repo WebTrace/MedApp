@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="access-group">
-                            <a href="retrievepassw">Forgot password?</a>
+                            <a href="forgotpassw">Forgot password?</a>
                             <a class="pull-right" href="signup">Sign up</a>
                         </div>
                         <div class="">
