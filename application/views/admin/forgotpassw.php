@@ -11,14 +11,16 @@
                         <h4>Forgot password</h4>
                         <hr>
                     </div>
-                    <form action="authentication/forgot_password" method="POST">
+                    
+                    <?Php echo form_open(base_url() . "signin/forgotpassw"); ?>
                         <div class="access-group">
                             <label class="input-label" for="email">Email address</label>
                             <div class="inp-collection">
-                                <input type="email" name="email" class="input-login-reg" id="email-fgt">
+                                <input type="email" name="email_address" class="input-login-reg" id="email-fgt">
                                 <i class="fa fa-envelope" id="env"></i>
                             </div>
                         </div>
+                        <?Php if(isset($_SESSION['ERR_PASSSW_RESET'])) : echo $this->session->flashdata("ERR_PASSSW_RESET"); endif; ?>
                         <div class="">
                             <input type="submit" name="signin" value="Retrieve password" class="signin-reg" id="signin">
                         </div>
