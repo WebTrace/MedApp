@@ -1,27 +1,10 @@
-<?Php
-defined('BASEPATH') OR exit('No direct script access allowed');
-    class Appointment extends CI_controller
+<?Php  defined('BASEPATH') OR exit('No direct script access allowed');
+    class Appointment extends My_Controller
     {
-        // public function index()
-        // {
-            
-        // }
-
-
-
-
-
-		/*function __construct()
-        {
-            // Call the Model constructor
-            parent::__construct();
-            $this->load->model('admin/Appointment_model');
-        }*/
-
-
-        /*appointment page Calendar view  */
         Public function index()
         {
+            $this->is_user_signin();
+            
             $this->load->view("admin/templates/header");
             $this->load->view("admin/appointments");
             $this->load->view("admin/templates/footer");

@@ -11,7 +11,7 @@
                         <h4>CLAIMA Login</h4>
                         <hr>
                     </div>
-                    <form action="authentication" method="POST">
+                    <?Php echo form_open(base_url() . 'signin/user_signin'); ?>
                         <div class="access-group">
                             <label class="input-label" for="username">Username</label>
                             <div class="inp-collection">
@@ -26,9 +26,14 @@
                                 <i class="fa fa-lock"></i>
                             </div>
                         </div>
+                        <?Php if(isset($_SESSION['SIGNIN_FAILED'])) : ?>
+                            <div class="access-group">
+                                <p class="alert alert-danger"><?Php echo $this->session->flashdata("SIGNIN_FAILED"); ?></p>
+                            </div>
+                        <?Php endif; ?>
                         <div class="access-group">
-                            <a href="forgotpassw">Forgot password?</a>
-                            <a class="pull-right" href="signup">Sign up</a>
+                            <a href="<?Php echo base_url(); ?>signin/forgotpassw">Forgot password?</a>
+                            <a class="pull-right" href="<?Php echo base_url(); ?>signup">Sign up</a>
                         </div>
                         <div class="">
                             <input type="submit" name="signin" value="Sign in" class="signin-reg" id="signin">

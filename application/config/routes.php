@@ -52,6 +52,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/view';
 $route['registration'] = 'admin/authentication/signup';
 $route['authentication'] = 'admin/authentication/signin';
+$route['signin/user_signin'] = 'admin/signin/user_signin';
+$route['signup'] = 'admin/signup';
+$route['signup/signup_practitioner'] = 'admin/signup/signup_practitioner';
+$route['feedback'] = 'admin/signup/feedback';
+$route['activation_link'] = 'admin/communication/activation_link';
+$route['signin/forgotpassw'] = 'admin/signin/forgot_password';
+
+/*
+*private url
+*/
 $route['dashboard'] = 'admin/dashboard';
 $route['claim'] = 'admin/claim';
 $route['appointment'] = 'admin/appointment';
@@ -60,12 +70,11 @@ $route['users'] = 'admin/users';
 $route['tasks'] = 'admin/tasks';
 $route['settings'] = 'admin/settings';
 $route['signin'] = 'admin/signin';
-$route['signup'] = 'admin/signup';
+$route['signout'] = 'admin/signin/user_signout';
 $route['practice'] = 'admin/practice';
-$route['feedback'] = 'admin/signup/feedback';
-$route['forgotpassw'] = 'admin/authentication/forgot_password';
 $route['consultation'] = 'admin/consultation';
-$route['invoice'] = 'admin/invoice';
+
+
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
