@@ -6,7 +6,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="">
             <meta name="author" content="">
-            <title>SB Admin - Bootstrap Admin Template</title>
+            <title>CLAIMA</title>
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">

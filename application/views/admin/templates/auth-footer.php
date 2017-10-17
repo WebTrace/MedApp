@@ -10,6 +10,8 @@
             </div>
         </div>
         <script src="<?Php echo base_url()?>assets/js/jquery.min.js"></script>
+        <script src="<?Php echo base_url()?>assets/admin/js/claima/functions.js"></script>
+        <script src="<?Php echo base_url()?>assets/admin/js/claima/handler.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/claima/data.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/claima/design.js"></script>
     </body>

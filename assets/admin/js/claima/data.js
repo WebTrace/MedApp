@@ -33,7 +33,7 @@ $(document).ready(function() {
         $('.progress .progress-bar').progressbar();
     }
     
-    //display full appointment details using bootstrap popover
+    //TODO : display full appointment details using bootstrap popover
     
     /*
     *
@@ -41,122 +41,11 @@ $(document).ready(function() {
     */
     
     $("#next").on("click", function(e) {
-        //get user inputs
-        var title               = $("#title").val(),
-            fname               = $("#fname").val(),
-            lname               = $("#lname").val(),
-            hpcsa_no            = $("#hpcsa_no").val(),
-            contact_no          = $("#contact_no").val(),
-            tel_no              = $("#tel_no").val(),
-            email_address       = $("#email_address").val(),
-            confirm_email       = $("#confirm_email").val(),
-            username            = $("#username").val(),
-            password            = $("#password").val(),
-            confirm_password    = $("#confirm_password").val(),
-            errcount            = 0;
+        e.preventDefault();
         
-        /*perform client side validation to make sure that user inputs are correct
-        *
-        */
+        var errcount = 0;
         
-        //validate title field
-        //->title must not be empty
-        //->title must not contain specail chars, numbers and spaces
-        if(title.trim() == 0) {
-            errcount ++;
-            $("#err-title").slideDown(300);
-        }
-        else {
-            $("#err-title").slideUp(300);
-        }
-        
-        //validate first name field
-        //->first name must not contain specail chars, numbers and space
-        if(fname.trim() == "") {
-            errcount ++;
-            $("#err-fname").slideDown(300);
-        }
-        else {
-            $("#err-fname").slideUp(300);
-        }
-        
-        //validate last name field
-        if(lname.trim() == "") {
-            errcount ++;
-            $("#err-lname").slideDown(300);
-        }
-        else {
-            $("#err-lname").slideUp(300);
-        }
-        
-        //validate hpcsa number field
-        if(hpcsa_no.trim() == "") {
-            errcount ++;
-            $("#err-hpcsa-no").slideDown(300);
-        }
-        else {
-            $("#err-hpcsa-no").slideUp(300);
-        }
-        
-        //validate contact number field
-        if(contact_no.trim() == "") {
-            errcount ++;
-            $("#err-contact-no").slideDown(300);
-        }
-        else {
-            $("#err-contact-no").slideUp(300);
-        }
-        
-        //validate tel number field if not empty
-        if(tel_no.trim() != "") {
-            
-        }
-        
-        //validate email address field
-        if(email_address.trim() == "") {
-            errcount ++;
-            $("#err-email").slideDown(300);
-        }
-        else {
-            $("#err-email").slideUp(300);
-        }
-        
-        //validate confirm email address field
-        if(confirm_email.trim() == "") {
-            errcount ++;
-            $("#err-confirm-email").slideDown(300);
-        }
-        else {
-            $("#err-confirm-email").slideUp(300);
-        }
-        
-        //validate username field
-        if(username.trim() == "") {
-            errcount ++;
-            $("#err-username").slideDown(300);
-        }
-        else {
-            $("#err-username").slideUp(300);
-        }
-        
-        //validate password field
-        if(password.trim() == "") {
-            errcount ++;
-            $("#err-password").slideDown(300);
-        }
-        else {
-            $("#err-password").slideUp(300);
-        }
-        
-        //validate confirm password field
-        if(confirm_password.trim() == "") {
-            errcount ++;
-            $("#err-confirm-passw").slideDown(300);
-        }
-        else {
-            $("#err-confirm-passw").slideUp(300);
-        }
-        
+        errcount = signupStepOneHandler();
         //disable error checking for testing porpose
         //errcount = 0;
         
@@ -179,138 +68,20 @@ $(document).ready(function() {
         //prevent signup form from sending user data
         e.preventDefault();
         
-        //get user inputs
-        var practice_name           = $("#practice_name").val(),
-            practice_no             = $("#practice_no").val(),
-            practice_type           = $("#practice_type").val(),
-            tel_no                  = $("#practice_tel_no").val(),
-            practice_email          = $("#practice_email").val(),
-            confirm_prac_email      = $("#confirm_practice_email").val(),
-            address_line            = $("#address_line").val(),
-            location                = $("#location").val(),
-            city                    = $("#city").val(),
-            province                = $("#province").val(),
-            terms                   = $("#terms"),
-            errcount                = 0;
+        var errcount = 0;
         
-        /*perform client side validation to make sure that user inputs are correct
-        *
-        */
-        
-        //validate practice name field
-        if(practice_name.trim() == "") {
-            errcount ++;
-            $('#err-practice-name').slideDown(300);
-        }
-        else {
-            $('#err-practice-name').slideUp(300);
-        }
-        
-        //validate practice number field
-        if(practice_no.trim() == "") {
-            errcount ++;
-            $('#err-practice-no').slideDown(300);
-        }
-        else {
-            $('#err-practice-no').slideUp(300);
-        }
-        
-        //validate practice type field
-        if(practice_type.trim() == 0) {
-            errcount ++;
-            $('#err-practice-type').slideDown(300);
-        }
-        else {
-            $('#err-practice-type').slideUp(300);
-        }
-        
-        //validate tel number field
-        if(tel_no.trim() == "") {
-            errcount ++;
-            console.log("Tel no is empty");
-        }
-        else {
-            console.log("Tel no is : " + tel_no);
-        }
-        
-        //validate practice email field
-        if(practice_email.trim() == "") {
-            errcount ++;
-            console.log("Practice email is empty");
-        }
-        else {
-            console.log("Practice email is : " + practice_email);
-        }
-        
-        //validate confirm practice email field
-        if(confirm_prac_email.trim() == "") {
-            errcount ++;
-            console.log("Confirm practice email is empty");
-        }
-        else {
-            console.log("Confirm practice email is : " + confirm_prac_email);
-        }
-        
-        //validate address line
-        if(address_line.trim() == "") {
-            errcount ++;
-            $('#err-prac-address').slideDown(300);
-        }
-        else {
-            $('#err-prac-address').slideUp(300);
-        }
-        
-        //validate location field
-        if(location.trim() == "") {
-            errcount ++;
-            $('#err-prac-location').slideDown(300);
-        }
-        else {
-            $('#err-prac-location').slideUp(300);
-        }
-        
-        //validate city field
-        if(city.trim() == "") {
-            errcount ++;
-            $('#err-prac-city').slideDown(300);
-        }
-        else {
-            $('#err-prac-city').slideUp(300);
-        }
-        
-        //validate province field
-        if(province.trim() == "") {
-            errcount ++;
-            $('#err-prac-province').slideDown(300);
-        }
-        else {
-            $('#err-prac-province').slideUp(300);
-        }
-        
-        //validate terms field
-        if(terms.is(':checked') != true) {
-            errcount ++;
-            $('#err-prac-terms').slideDown(300);
-        }
-        else {
-            $('#err-prac-terms').slideUp(300);
-        }
-        
+        errcount = signupStepTwoHandler();
         //disable error checking for testing porpose
         //errcount = 0;
-        console.log(errcount);
         
         //check if form doesnt have errors
         if(errcount == 0) {
             //hide signup form
             $("#signup_practitioner").hide();
-            
             //show spinner
             $(".spn-parent").show();
-            
             //show signup status
             $(".signup-status").slideDown();
-            
             //ajax object properties
             var url     	= $(this).attr('action'),
                 type        = $(this).attr('method'),
@@ -332,10 +103,36 @@ $(document).ready(function() {
                 }
             })
         }
+    });
+    
+    /*add new system user
+    */
+    
+    $("#frm_add_user").on("submit", function(e) {
+        //prevent the form from submiting by default
+        e.preventDefault();
+        
+        var errcount = 0;
+        errcount = addUserHandler();
+        
+        //display error check for testing the form
+        errcount = 0;
+        
+        if(errcount == 0) {
+           //start ajax
+            var url     = $(this).attr("action"),
+                type    = $(this).attr("method"),
+                data    = $(this).serialize();
+            
+            $.ajax({
+                url     : url,
+                type    : type,
+                data    : data,
+                success : function(response) {
+                    alert(response);
+                }
+            });
+        }
     })
 })
-
-/*function library
-*
-*/
 

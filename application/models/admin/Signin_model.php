@@ -6,24 +6,31 @@
             $username = $this->input->post("username");
             $password = md5($this->input->post("password"));
             
-            $this->db->select("*");
+            /*$this->db->select("*");
             $this->db->from("user u");
+            $this->db->from("role r");
+            $this->db->from("status s");
+            $this->db->join("user_role ur", "r.role_code = ur.role_code");
+            $this->db->join("user_status us", "s.status_code = us.status_code");
             $this->db->join("email_contact e", "u.user_id = e.user_id");
+            $this->db->join("user_branch b", "u.user_id = b.user_id");
             $this->db->where("username", $username);
-            $this->db->where("password", $password);
+            $this->db->where("password", $password);*/
             
-            $query = $this->db->get();
+            
+            $query = $this->data_access->signin_user($username, $password);
             
             if($query->num_rows() == 1)
             {
                 $user_data = array(
                     'USER_ID'           => $query->row(0)->user_id,
-                    'USER_ROLE'         => $query->row(0)->user_role,
-                    'USER_STATUS'       => $query->row(0)->user_status,
+                    'USER_ROLE'         => $query->row(0)->role_code,
+                    'USER_STATUS'       => $query->row(0)->status_code,
                     'FNAME'             => $query->row(0)->first_name,
                     'LNAME'             => $query->row(0)->last_name,
                     'HASH'              => $query->row(0)->hash,
-                    'EMAIL'             => $query->row(0)->email_address
+                    'EMAIL'             => $query->row(0)->email_address,
+                    'BRANCH_ID'         => $query->row(0)->branch_id
                 );
                 
                 $this->session->set_userdata($user_data);

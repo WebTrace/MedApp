@@ -56,7 +56,10 @@
         <div class="clearfix"></div>
     </div>
     <div class="col-lg-12">
-        <form method="post" id="form_add">
+        <?Php
+            $attributes = array('id' => 'add_patient');
+            echo form_open(base_url() . 'consultation/create_consultation', $attributes); 
+        ?>
             <div class="modal fade" id="add_user_modal">
                 <div class="modal-dialog" id="modal-format">
                     <div class="modal-content">
@@ -108,150 +111,216 @@
                                 </div>
                             </div>-->
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <fieldset>
-                                        <legend class="legend-head">Personal Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <div id="title-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="title-text">Title</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="title-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Mr</a></li>
-                                                        <li><a href="#">Mrs</a></li>
-                                                        <li><a href="#">Ms</a></li>
-                                                        <li><a href="#">Dr</a></li>
-                                                        <li><a href="#">Prof</a></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="title" value="0" id="user_title">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="First name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Last name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="ID No.">
-                                                </div>
+                                <div class="col-lg-4 col-lg-offset-8">
+                                    <div class="">
+                                        <input type="search" name="search" class="text-input" placeholder="Search patient">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>Personal details</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <select name="title" id="title" class="text-input">
+                                                    <option value="0">Title</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Date of Birth">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div id="title-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="title-text">Ethnic group</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="title-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Afican</a></li>
-                                                        <li><a href="#">Coloured</a></li>
-                                                        <li><a href="#">White</a></li>
-                                                        <li><a href="#">Indian</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="title" value="0" id="user_title">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="ID number">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="ID number">
-                                                </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend class="legend-head">Contact Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Contact number">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Email address">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Confirm Email address">
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset id="practice-details">
-                                        <legend class="legend-head">Practice Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Practice No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="HPC No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div id="specility-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="specility-text">Speciality</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="speciality-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Dentist</a></li>
-                                                        <li><a href="#">Physiology</a></li>
-                                                        <li><a href="#">Psycology</a></li>
-                                                        <li><a href="#">Optemtrist</a></li>
-                                                        <li><a href="#">General Practitioner</a></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="speciality" value="0" id="user_speciality">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="idno" id="idno"class="text-input" placeholder="ID no. / Passport no.">
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend class="legend-head">Account Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Username">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Confirm password">
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="dob" id="dob" class="text-input" placeholder="Date of Birth">
                                             </div>
                                         </div>
-                                    </fieldset>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <select name="ethnic_group" id="ethnic_group" class="text-input">
+                                                    <option value="0">Ethnic group</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5 class="details-header">Physical address</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="phy_address_line" id="phy_address_line" class="text-input" placeholder="Address line">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="phy_suburb" id="phy_suburb" class="text-input" placeholder="Suburb/Town">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="phy_postal_code" id="phy_postal_code" class="text-input" placeholder="Postal code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5 class="details-header">Postal address</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                Same as above <input type="checkbox" name="same_address" id="same_address" value="3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="pos_suburb" id="pos_suburb" class="text-input" placeholder="Suburb/Town">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="pos_postal_code" id="pos_postal_code" class="text-input" placeholder="Postal code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>Contact details</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>Billing details</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <select name="" id="" class="text-input">
+                                                    <option value="0">Billing type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <select name="med_aid_scheme" id="med_aid_scheme" class="text-input">
+                                                    <option value="0">Medical aid scheme</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <select name="med_aid_option" id="med_aid_option" class="text-input">
+                                                    <option value="0">Medical aid option</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <select name="med_aid_number" id="med_aid_number" class="text-input">
+                                                    <option value="0">Medical aid number</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                Dependant : 
+                                                <input type="radio" name="dependant"> Yes
+                                                <input type="radio" name="dependant"> No
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>Account details</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <input type="text" name="" id="" class="text-input" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="" id="" class="text-input" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    
                                 </div>
                             </div>
                         </div>

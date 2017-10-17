@@ -73,14 +73,8 @@ $(document).ready(function() {
         window.print();
     })
     
-    //change user role text
-    $("#role-list a").on ("click", function() {
-        var text = $(this).text();
-        $("#user-role-text").text(text);
-        $("#user_role").attr("value", text);
-        
-        //Toggle practice details fieldset
-        if(text == "Practitioner")
+    $("#user_role").on("change", function() {
+        if($(this).val() == 3)
         {
             $("#practice-details").slideDown();
         }
@@ -88,19 +82,6 @@ $(document).ready(function() {
         {
             $("#practice-details").slideUp();
         }
-    })
-    
-    //user title
-    $("#title-list a").on("click", function() {
-        var text = $(this).text();
-        $("#title-text").text(text);
-        $("#user_title").attr("value", text)
-    })
-    
-    $("#speciality-list a").on("click", function() {
-        var text = $(this).text();
-        $("#specility-text").text(text);
-        $("#user_speciality").attr("value", text);
     })
     
     $("#back").on("click", function() {
@@ -112,33 +93,3 @@ $(document).ready(function() {
         return false;
     })
 });
-
-/*************************************funnctions reference***********************************
-*
-*/
-
-function search_table(q)
-{
-    $("#user-list tr:gt(0)").each(function() {
-        var found = "false";
-
-        console.log($(this).val());
-
-        $(this).each(function() {
-
-            if($(this).text().toLowerCase().indexOf(q.toLowerCase()) >= 0)
-            {
-                found = "true";
-            }
-        });
-
-        if(found == "true")
-        {
-            $(this).show();
-        }
-        else
-        {
-            $(this).hide();
-        }
-    })
-}

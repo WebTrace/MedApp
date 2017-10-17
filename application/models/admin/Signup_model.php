@@ -36,7 +36,7 @@
             *
             */
             
-            $this->db->trans_start();
+            $this->db->trans_start(); //BEGIN TRANSACTION
             
             //get practitioner personal details
             $user_data = array(
@@ -45,70 +45,84 @@
                 'last_name'         => $lname,
                 'username'          => $username,
                 'password'          => $password,
-                'hash'              => $hash,
-                'user_role'         => 3
+                'hash'              => $hash
             );
             
             //insert user details into user table
             $this->db->insert('user', $user_data);
             
-            //get new user id
-            $user_id = $this->get_new_user_id();
+            /*
+            *retrieve new user id that was generated when a user register. the following insert
+            *statements depend on this new user id.
+            */
+            $user_id = $this->get_new_added_id('user', 'user_id');
             
-            //get phone contact details
-            $phone_data = array(
-                'user_id'       => $user_id,
-                'contact_no'    => $contact_no
-            );
+            //create practitioner
+            $this->practitioner_model->create_practitioner($user_id, $hpcsa_no, $practice_no);
             
-            //insert phone details
-            $this->db->insert('phone_contact', $phone_data);
+            //create user role
+            $this->user_model->create_user_role($user_id, 4);
             
-            //get email contact details
-            $email_data = array(
-                'user_id'           => $user_id,
-                'email_address'     => $email
-            );
+            //create user status
+            $this->user_model->create_user_status($user_id, 2);
             
-            //insert email details
-            $this->db->insert('email_contact', $email_data);
+            //create phone contact
+            $this->communication_model->create_phone_contact($user_id, $contact_no);
             
-            //get practice details
-            $practice_data = array(
-                'user_id'           => $user_id,
-                'hpcsa_no'          => $hpcsa_no,
-                'practice_no'       => $practice_no,
-                'speciality_code'        => $speciality
-            );
+            /*
+            *retrieve new phone contact id that was generated when a user register. the following insert
+            *statements depend on this new user id.
+            */
+            $phone_contact_id = $this->get_new_added_id('phone_contact', 'phone_contact_id');
             
-            //insert practice details
-            $this->db->insert('practice', $practice_data);
+            //create phone contact priority
+            $this->communication_model->create_phone_contact_priority(1, $phone_contact_id);
             
-            //get branch details
-            $branch_data = array(
-                'user_id'           => $user_id,
-                'branch_name'       => $branch_name,
-                'branch_contact'    => $branch_name,
-                'address_line'      => $address_line,
-                'city'              => $city,
-                'province'          => $province,
-                'location'          => $location,
-                'default_branch'    => $default_branch
-            );
+            //create phone contact type
+            $this->communication_model->create_phone_contact_type(1, $phone_contact_id);
             
-            //insert branch details
-            $this->db->insert('branch', $branch_data);
+            //create email contact
+            $this->communication_model->create_email_contact($user_id, $email);
             
-            $this->db->trans_complete();
+            /*
+            *retrieve new email contact id that was generated when a user register. the following insert
+            *statements depend on this new user id.
+            */
+            $email_contact_id = $this->get_new_added_id('email_contact', 'email_contact_id');
             
+            //create email contact priority
+            $this->communication_model->create_contact_email_priority(1, $email_contact_id);
+            
+            //create email contact type
+            $this->communication_model->create_email_contact_type(1, $email_contact_id);
+            
+            //assign practitioner speciality
+            //$this->practitioner_model->create_practitioner_speciality($user_id, $speciality);
+            
+            //create branch
+            $this->branch_model->create_branch($user_id, $branch_name, $address_line, $city, $province, $location, $default_branch);
+            
+            //get new branch id
+            $branch_id = $this->signup_model->get_new_added_id('branch', 'branch_id');
+            
+            //assign branch to a user
+            $this->branch_model->assign_user_branch($user_id, $branch_id);
+            
+            //complete MySQL transaction
+            $this->db->trans_complete(); //COMPLETE TRANSACTION
+            
+            //return transaction status
             return $this->db->trans_status();
         }
         
-        public function get_new_user_id()
+        /*
+        *get new id that was generated
+        */
+        public function get_new_added_id($table, $column)
         {
             //select new user id
-            $query = $this->db->query("SELECT user_id FROM user ORDER BY user_id DESC LIMIT 0, 1");
-            return $query->row(0)->user_id;
+            $query = $this->db->query("SELECT " . $column . " FROM " . $table . " ORDER BY " . $column . " DESC LIMIT 0, 1");
+            return $query->row(0)->$column;
         }
     }
 ?>

@@ -3,7 +3,9 @@
     {
         public function index()
         {
-            $this->load->view("admin/templates/auth-header");
+            $data['title'] = "Sign in";
+            
+            $this->load->view("admin/templates/auth-header", $data);
             $this->load->view("admin/signin");
             $this->load->view("admin/templates/auth-footer");
         }
@@ -28,7 +30,7 @@
                     }
                     else
                     {
-                        if($this->session->userdata("USER_STATUS") == 3)
+                        if($this->session->userdata("USER_STATUS") == 2)
                         {
                             $data['icon'] = '<i class="fa fa-check-circle-o" id="confirm-color"></i>';
                             $data['title'] = '<h4 class="confirm-header">Please confirm your account.</h4>';
@@ -53,7 +55,8 @@
                 }
                 else
                 {
-                    $this->session->set_flashdata("SIGNIN_FAILED", "Error occured. Invalid password or username");
+                    $this->session->set_flashdata("SIGNIN_FAILED", "Error occured. Invalid password or username. Err" . var_dump($this->signin_model->user_signin()));
+                    
                     redirect(base_url() . "signin");
                 }
             }
