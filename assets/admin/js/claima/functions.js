@@ -27,3 +27,34 @@ function clean_string(str)
     }
     return found;
 }
+
+/*
+*search module
+*
+*/
+
+function search_table(q)
+{
+    $("#user-list tr:gt(0)").each(function() {
+        var found = "false";
+
+        console.log($(this).val());
+
+        $(this).each(function() {
+
+            if($(this).text().toLowerCase().indexOf(q.toLowerCase()) >= 0)
+            {
+                found = "true";
+            }
+        });
+
+        if(found == "true")
+        {
+            $(this).show();
+        }
+        else
+        {
+            $(this).hide();
+        }
+    })
+}

@@ -267,9 +267,9 @@
     min-width: auto;
 }
 
-.dropdown-menu-fix {
+/*.dropdown-menu-fix {
     top: 22px !important;
-}
+}*/
 
 .edit-user {
     color: #59d466;
@@ -318,11 +318,11 @@
     margin-bottom: 10px;
 }
 
-.dropdown-caret {
+/*.dropdown-caret {
     position: absolute;
     right: 10px;
     top: 48%;
-}
+}*/
 
 .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, 
 .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, 
@@ -336,11 +336,11 @@
     overflow-x: scroll;
 }
 
-.legend-head {
+/*.legend-head {
     font-size: 15px;
     color: #ada6a6;
     text-transform: uppercase;
-}
+}*/
 
 #practice-details {
     display: none;
@@ -416,6 +416,10 @@
     padding: 6px 5px;
     font-size: 13px;
     border-radius: 2px;
+}
+
+.reg-input:focus {
+    border: #3aabc1 thin solid;
 }
 
 .access-container #username, .access-container #password, #email-fgt {
@@ -530,6 +534,12 @@ legend {
 
 .nav-btn:hover {
     text-decoration: none;
+}
+
+.nav-btn:focus {
+    outline: none;
+    text-decoration: none;
+    border: #3aabc1 thin solid;
 }
 
 .upcoming-appointments {
@@ -694,6 +704,36 @@ legend {
     margin-bottom: 3px;
 }
 
+#icon-calendar {
+    position: absolute;
+    color: #666;
+    top: 7px;
+    right: 3px;
+}
+
+#dob {
+    padding-right: 25px;
+}
+
+.table > tbody > tr > td {
+    padding: 3px;
+}
+
+.icon-size {
+    font-size: 40px;
+    margin: 0px;
+}
+
+.setting-btn {
+    display: block;
+    padding: 10px;
+}
+
+.setting-btn:hover {
+    text-decoration: none;
+}
+
+/******************************************************
 /*
 *Joseph section
 */

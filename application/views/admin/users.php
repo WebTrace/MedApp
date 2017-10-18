@@ -56,7 +56,10 @@
         <div class="clearfix"></div>
     </div>
     <div class="col-lg-12">
-        <form method="post" id="form_add">
+        <?Php
+            $attributes = array('id' => 'frm_add_user');
+            echo form_open(base_url() . "users/create_user", $attributes); 
+            ?>
             <div class="modal fade" id="add_user_modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -67,139 +70,136 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <fieldset>
-                                        <legend class="legend-head">Personal Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div id="gender-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="user-role-text">User role</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="role-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Manager</a></li>
-                                                        <li><a href="#">Practitioner</a></li>
-                                                        <li><a href="#">Staff</a></li>
-                                                        <!--<li role="separator" class="divider"></li>
-                                                        <li><a href="#">Separated link</a></li>-->
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="user_role" value="0" id="user_role">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div id="title-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="title-text">Title</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="title-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Mr</a></li>
-                                                        <li><a href="#">Mrs</a></li>
-                                                        <li><a href="#">Ms</a></li>
-                                                        <li><a href="#">Dr</a></li>
-                                                        <li><a href="#">Prof</a></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="title" value="0" id="user_title">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="First name">
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="error-list">
+                                                <p class="error" id="err-title">Title is required</p>
+                                                <p class="error" id="err-fname">First name is required</p>
+                                                <p class="error" id="err-lname">Last name is required</p>
+                                                <p class="error" id="err-id-no">ID number is required</p>
+                                                <p class="error" id="err-dob">Date of birth is required</p>
+                                                <p class="error" id="err-practice-no">Practice number required</p>
+                                                <p class="error" id="err-hpcsa-no">HPCSA number is required</p>
+                                                <p class="error" id="err-specaility">Speciality is required</p>
+                                                <p class="error" id="err-contact-no">Contact number is required</p>
+                                                <p class="error" id="err-email-address">Email address is required</p>
+                                                <p class="error" id="err-confirm-email">Confirm email don't match</p>
+                                                <p class="error" id="err-username">Username is required</p>
+                                                <p class="error" id="err-password">Password is required</p>
+                                                <p class="error" id="err-confirm-passw">Confirm password don't match</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Last name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="ID No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="ID number">
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <select name="user_branch" id="user_branch" class="text-input">
+                                                    <option value="0">Select branch</option>
+                                                    <?Php if(isset($branches)) : ?>
+                                                        <?Php foreach($branches as $branch) : ?>
+                                                            <option value="<?Php echo $branch['branch_id']; ?>"><?Php echo $branch['branch_name']; ?></option>
+                                                        <?Php endforeach; ?>
+                                                    <?Php endif; ?>
+                                                </select>
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend class="legend-head">Contact Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Contact number">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Email address">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Confirm Email address">
-                                                </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <select name="user_role" id="user_role" class="text-input">
+                                                    <option value="0">Select role</option>
+                                                    <?Php if(isset($roles)) : ?>
+                                                        <?Php foreach($roles as $role) : ?>
+                                                            <?Php if($role['role_code'] != 1 && $role['role_code'] != 5) : ?>
+                                                                <option value="<?Php echo $role['role_code']; ?>"><?Php echo $role['role_name']; ?></option>
+                                                            <?Php endif; ?>
+                                                        <?Php endforeach; ?>
+                                                    <?Php endif; ?>
+                                                </select>
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset id="practice-details">
-                                        <legend class="legend-head">Practice Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Practice No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="HPC No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div id="specility-control" class="dropdown form-input-group">
-                                                    <button class="btn btn-default dropdown-toggle gender-control" type="button" 
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span id="specility-text">Speciality</span>
-                                                        <span class="caret dropdown-caret"></span>
-                                                    </button>
-                                                    <ul id="speciality-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Dentist</a></li>
-                                                        <li><a href="#">Physiology</a></li>
-                                                        <li><a href="#">Psycology</a></li>
-                                                        <li><a href="#">Optemtrist</a></li>
-                                                        <li><a href="#">General Practitioner</a></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="speciality" value="0" id="user_speciality">
+                                        <div class="col-lg-4">
+                                            <div class="dropdown form-input-group">
+                                                <select name="title" id="title" class="text-input">
+                                                    <option value="0">Title</option>
+                                                    <option value="Mr">Mr</option>>
+                                                    <option value="Ms">Ms</option>>
+                                                    <option value="Mrs">Mrs</option>
+                                                    <option value="Dr">Dr</option>
+                                                    <option value="Prof">Prof</option>
+                                                </select>
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend class="legend-head">Account Details</legend>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Username">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-input-group">
-                                                    <input type="text" name="" class="text-input" placeholder="Confirm password">
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
                                             </div>
                                         </div>
-                                    </fieldset>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="id_number" id="id_number" class="text-input" placeholder="ID number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="practice-details">
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="practice_no" id="practice_no" class="text-input" placeholder="Practice No.">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="hpcsa_no" id="hpcsa_no" class="text-input" placeholder="HPCSA No.">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <select name="speciality" class="text-input" id="speciality">
+                                                    <option value="0">Speciality</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="email" id="email_address" class="text-input" placeholder="Email address">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="text" name="username" id="username" class="text-input" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="password" name="password" id="passw" class="text-input" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
+                                                <input type="password" name="confirm_passw" id="confirm_passw" class="text-input" placeholder="Confirm password">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -223,182 +223,35 @@
                         <th>Picture</th>
                         <th>Surname</th>
                         <th>First name</th>
+                        <th>ID number</th>
                         <th>Contact number</th>
                         <th>Email address</th>
                         <th>User role</th>
-                        <th colspan="4">Action</th>
+                        <th>Status</th>
+                        <th>Last login </th>
+                        <th colspan="3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Kgatla</td>
-                        <td>Emmanuel</td>
-                        <td>062 023 6010</td>
-                        <td>emmanuel66@live.co.za</td>
-                        <td>Manager</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Sibiya</td>
-                        <td>Joseph</td>
-                        <td>062 023 6010</td>
-                        <td>jose@live.co.za</td>
-                        <td>Receptionist</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Mojela</td>
-                        <td>Tshego</td>
-                        <td>062 023 6010</td>
-                        <td>tshego@live.co.za</td>
-                        <td>Practitioner</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="35" width="35"></td>
-                        <td>Madella</td>
-                        <td>Lee-Roy</td>
-                        <td>062 023 6010</td>
-                        <td>roy@live.co.za</td>
-                        <td>Staff</td>
-                        <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
-                        <td><a href="#"><i class="fa fa-eye"></i></a></td>
-                        <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                        <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                    </tr>
+                   <?Php if(isset($branches)) : $count = 1; ?>
+                        <?Php foreach($users as $user) : ?>
+                            <tr>
+                                <td><?Php echo $count++; ?></td>
+                                <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="25" width="25"></td>
+                                <td><?Php echo $user['last_name']; ?></td>
+                                <td><?Php echo $user['first_name']; ?></td>
+                                <td><?Php echo $user['id_number']; ?></td>
+                                <td><?Php echo $user['contact_no']; ?></td>
+                                <td><?Php echo $user['email_address']; ?></td>
+                                <td><?Php echo $user['role_name']; ?></td>
+                                <td><?Php echo $user['status_name']; ?></td>
+                                <td><?Php echo $user['role_name']; ?></td>
+                                <td><a class="edit-user" href="#" onclick="return false"><i class="fa fa-pencil"></i></a></td>
+                                <td><a href="#"><i class="fa fa-lock"></i></a></td>
+                                <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        <?Php endforeach; ?>
+                    <?Php endif; ?>
                 </tbody>
             </table>
         </div>

@@ -9,5 +9,10 @@
             $this->load->view("admin/consultations");
             $this->load->view("admin/templates/footer");
         }
+        
+        public function create_consultation()
+        {
+            $this->consultation_model->create_consultation();
+        }
     }
 ?>

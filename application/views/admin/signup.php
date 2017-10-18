@@ -12,7 +12,10 @@
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-4 col-md-offset-4" id="frm-container">
-        <form id="signup_practitioner" action="<?Php echo base_url()?>signup/signup_practitioner" method="POST">
+        <?Php
+            $attributes = array('id' => 'signup_practitioner');
+            echo form_open(base_url() . "signup/signup_practitioner", $attributes);
+            ?>
             <div id="step-one" class="frm-register-wrapper current">
                 <div class="signup-step active">
                     <div class="reg-header">

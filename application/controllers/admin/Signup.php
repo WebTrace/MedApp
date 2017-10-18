@@ -3,9 +3,10 @@
     {
         public function index()
         {
-            $data['specialities'] = $this->practice_model->fetch_speciality();
+            $data['specialities'] = $this->practitioner_model->fetch_speciality();
+            $data['title'] = 'Sign up';
             
-            $this->load->view("admin/templates/auth-header");
+            $this->load->view("admin/templates/auth-header", $data);
             $this->load->view("admin/signup", $data);
             $this->load->view("admin/templates/auth-footer");
         }
@@ -34,8 +35,7 @@
             
             if($this->form_validation->run() == FALSE)
             {
-                echo validation_errors();
-                echo "here";
+                //TODO : handle form errors
             }
             else
             {

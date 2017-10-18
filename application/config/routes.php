@@ -73,6 +73,8 @@ $route['signin'] = 'admin/signin';
 $route['signout'] = 'admin/signin/user_signout';
 $route['practice'] = 'admin/practice';
 $route['consultation'] = 'admin/consultation';
+$route['consultation/create_consultation'] = 'admin/consultation/create_consultation';
+$route['users/create_user'] = 'admin/users/create_user';
 
 
 $route['(:any)'] = 'pages/view/$1';
