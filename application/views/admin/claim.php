@@ -9,101 +9,242 @@
               </div>
               <form action="" method="post">
                             <div class="form-group">
-                                    <label class="control-label" for="ID">Provide Patients ID Number</label>
-                                        <div > 
-                                           <div id="imaginary_container"> 
+                                    <label class="control-label" for="ID">PRACTITIONER DETAILS</label>
+
+                                </div>   
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                                    <label class="control-label" for="Name"></label>
+                                          <div class="form-group"> 
+                                            
                                             <div class="input-group stylish-input-group">
-                                                <input type="text" class="form-control"  placeholder="Provide Patients ID Number" >
+                                                <input type="text" class="form-control"  placeholder="Practitioner" >
                                                 <span class="input-group-addon">
                                                     <button type="submit">
                                                         <span class="glyphicon glyphicon-search" ></span>
                                                     </button>  
                                                 </span>
                                             </div>
-                                        </div>   
-                                        </div>
-                                </div>   
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                                    <label class="control-label" for="Name">Patients Name</label>
-                                        <div >
-                                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Patients Name" required="">
+                                           
                                         </div>
                                 </div>
                                  <div class="form-group">
-                                    <label class="control-label" for="Membership">Membership Number</label>
+                                    <label class="control-label" for="Speciality"></label>
                                         <div >
-                                            <input type="text" class="form-control" id="Membership" name="Membership" placeholder="Membership Number" required="">
+                                            <input type="text" class="form-control" id="Speciality" name="Speciality" placeholder="Speciality" required="">
                                            
                                         </div>
                                 </div>
                     </div>
                   <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label" for="Practice_Name">Practice Name</label>
+                                <label class="control-label" for="Practice_Number"></label>
                                     <div>
-                                        <input type="text" class="form-control" id="Practice_Name" name="Practice_Name" placeholder="Practice Name" required="">
+                                        <input type="text" class="form-control" id="Practice_Number" name="Practice_Number" placeholder=" Practice NO" required="">
                                         
                                     </div>
                             </div>
                  </div>
                  <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label" for="Practice_Number">Practice Number</label>
+                                <label class="control-label" for="Tell_Number"></label>
                                     <div>
-                                        <input type="text" class="form-control" id="Practice_Number" name="Practice_Number" placeholder="Practice Number" required="">
+                                        <input type="text" class="form-control" id="Tell_Number" name="Tell_Number" placeholder="Tell_Number" required="">
                                        
                                     </div>
                             </div>
                  </div>    
                   <div class="col-sm-6">
                     <div class="form-group">
-                                <label class="control-label" for="ICD">ICD-10 Code</label>
-                                    <div>
-                                        <input type="text" class="form-control" id="ICD" name="ICD" placeholder="ICD Code" required="">
-                                    </div>
+                                <label class="control-label" for="Referringdoctor"></label>
+                        
+                                          <div class="form-group"> 
+                                          
+                                            <div class="input-group stylish-input-group">
+                                                <input type="text" class="form-control"  placeholder="Referring doctor" >
+                                                <span class="input-group-addon">
+                                                    <button type="submit">
+                                                        <span class="glyphicon glyphicon-search" ></span>
+                                                    </button>  
+                                                </span>
+                                          
+                                        </div>   
+                                        </div>
                             </div>
                    </div>
-                     <div class="col-sm-6">
-                            <div class="form-group">
 
-                            <div id="container">
-                            <div id="label">Claim Details</div>
-                            </div>
-
-                            </div>
-                     </div> 
                             
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                                     <div class="form-group">
-                                     <label class="control-label" for="Treatment">Treatment Date</label>
-                                        <div class='input-group date' id='datetimepicker11'>
-                                            <input type='text' class="form-control" id="Treatment" name="Treatment" placeholder="/   /   /" required=""/>
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar">
-                                                </span>
-                                            </span>
-                                        </div>
+                                <label class="control-label" for="Practice_Number"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Practice_Number" name="Practice_Number" placeholder="Practice_Number" required="">
+                                       
                                     </div>
+                            </div>
                                 </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
+                                <div class="form-group">
+                                <label class="control-label" for="Authorization_Number"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Authorization_Number" name="Authorization_Number" placeholder="Authorization_Number" required="">
+                                       
+                                    </div>
+                            </div>
+
+                        </div>
+               
+            
+              </form>
+                
+                    <form action="" method="post">
                             <div class="form-group">
-                                    <label class="control-label" for="Amount">Amount</label>
-                                        <div>
-                                            <input type="text" class="form-control" id="Amount" name="Amount" placeholder="0.00" required="" style="width:300px;">
+                                    <label class="control-label" for="ID">PATIENT DETAILS</label>
+
+                                </div>   
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                                    <label class="control-label" for="Name"></label>
+                                          <div class="form-group"> 
+                                         
+                                            <div class="input-group stylish-input-group">
+                                                <input type="text" class="form-control"  placeholder="Search Patient" >
+                                                <span class="input-group-addon">
+                                                    <button type="submit">
+                                                        <span class="glyphicon glyphicon-search" ></span>
+                                                    </button>  
+                                                </span>
+                                            </div>
                                            
                                         </div>
                                 </div>
+                             
+                    
+                  <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label" for="Full_names"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Full_names" name="Full_names" placeholder=" Full_names" required="">
+                                        
+                                    </div>
+                            </div>
+                 </div>
+                 <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label" for="Surname"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Surname" required="">
+                                       
+                                    </div>
+                            </div>
+                 </div>    
+           
+
+                            
+                        <div class="col-sm-6">
+                                    <div class="form-group">
+                                <label class="control-label" for="Age"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Age" name="Age" placeholder="Age" required="">
+                                       
+                                    </div>
+                            </div>
+                                </div>
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                <label class="control-label" for="Cell Number"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Cell Number" name="Cell Number" placeholder="Cell Number" required="">
+                                       
+                                    </div>
+                            </div>
 
                         </div>
-                    <div class="form-group"> 
-                                <div class="row">
-                                    <div class="col-sm-offset-5 col-sm-3  btn-submit">
-                                        <button type="submit" class="btn btn-success">Submit</button>
-                                    </div>
+                        </div>
+            <div class="col-sm-6">
+                    <div class="form-group">
+                                    <label class="control-label" for="Name"></label>
+                                          <div class="form-group"> 
+                                            
+                                            <div class="input-group stylish-input-group">
+                                                <input type="text" class="form-control"  placeholder="Bill to" >
+                                                <span class="input-group-addon">
+                                                    <button type="submit">
+                                                        <span class="glyphicon glyphicon-search" ></span>
+                                                    </button>  
+                                                </span>
+                                            </div>
+                                           
+                                        </div>
                                 </div>
+                              
                     </div>
-            
+                  <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Treatment_Location"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Treatment_Location" name="Treatment_Location" placeholder=" Treatment Location" required="">
+                                        
+                                    </div>
+                            </div>
+                 </div>
+                 <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Treatment_Date"></label>
+                                    <div>
+                                        <input type="text" class="form-control" id="Treatment Date" name="Treatment Date" placeholder="Treatment Date" required="">
+                                       
+                                    </div>
+                            </div>
+                 </div> 
+                   
+                        <div class="row">
+    <div class="col-lg-12">
+        <div class="user-table">
+            <table class="table table-bordered" id="user-list">
+                <thead>
+                    <tr>
+                        <th>Tariff Code</th>
+                        <th>Description</th>
+                        <th>ICD_10_Code</th>
+                        <th>Modifier Code.</th>
+                        <th>Price</th>
+                        <th>Total Amount:</th>
+                        <th>R200</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Kgatla</td>
+                        <td>Emmanuel</td>
+                        <td>956263 5988 026</td>
+                        <td>Male</td>
+                
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Madella</td>
+                        <td>Lee-Roy</td>
+                        <td>962563 2103 251</td>
+                        <td>Male</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Madella</td>
+                        <td>Lee-Roy</td>
+                        <td>962563 2103 251</td>
+                        <td>Male</td>
+                        
+                    </tr>
+              
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
               </form>
             </div>
          
