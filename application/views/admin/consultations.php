@@ -68,48 +68,7 @@
                             <h2 class="modal-title">PATIENT DETAILS</h2>
                         </div>
                         <div class="modal-body">
-                            <!--<div id="fuelux-wizard-container">
-                                <div>
-                                    <ul class="steps">
-                                        <li data-step="1" class="active">
-                                            <span class="step">1</span>
-                                            <span class="title">Personal Details</span>
-                                        </li>
-                                        <li data-step="2">
-                                            <span class="step">2</span>
-                                            <span class="title">Contact Details</span>
-                                        </li>
-                                        <li data-step="3">
-                                            <span class="step">3</span>
-                                            <span class="title">Billing Details</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="step-content post-rel">
-                                    <div class="step-pane" data-step="1">
-                                        <h4>Personal Details</h4>
-                                    </div>
-                                    <div class="step-pane" data-step="2">
-                                        <h4>Personal Details</h4>
-                                    </div>
-                                    <div class="step-pane" data-step="3">
-                                        <h4>Personal Details</h4>
-                                    </div>
-                                </div>
-                                <div class="wizard-actions">
-                                    <div class="wizard-actions">
-                                        <button class="btn">
-                                            <i class="ace-icon fa fa-arrow-left"></i>
-                                            Prev
-                                        </button>
-
-                                        <button class="btn btn-success" data-last="Finish">
-                                            Next
-                                            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>-->
+                         
                             <div class="row">
                                 <div class="col-lg-4 col-lg-offset-8">
                                     <div class="">
