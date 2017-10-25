@@ -30,6 +30,17 @@
             $this->db->insert('practitioner_speciality', $practioner_speciality_data);
         }
         
+        public function fetch_branch_practitioner($branch_id)
+        {
+            $this->db->from("user u");
+            $this->db->join("user_branch ub", "u.user_id = ub.user_id");
+            $this->db->join("user_role ur", "u.user_id = ur.user_id");
+            $this->db->join("practitioner p", "u.user_id = p.user_id");
+            $this->db->where("ub.branch_id", $branch_id);
+            
+            return $this->db->get()->result_array();
+        }
+        
         /*
         *fetch practice specality
         */

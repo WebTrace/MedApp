@@ -72,10 +72,11 @@ $route['settings'] = 'admin/settings';
 $route['signin'] = 'admin/signin';
 $route['signout'] = 'admin/signin/user_signout';
 $route['practice'] = 'admin/practice';
-$route['consultation'] = 'admin/consultation';
-$route['consultation/create_consultation'] = 'admin/consultation/create_consultation';
+$route['patients'] = 'admin/patients';
+$route['patients/create_patient'] = 'admin/patients/create_patient';
+$route['patients/create_diagnosis'] = 'admin/patients/create_diagnosis';
 $route['users/create_user'] = 'admin/users/create_user';
-
+//$route['dashboard/get_apartment/(:num)'] = 'dashboard/get_apartment/$1';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';

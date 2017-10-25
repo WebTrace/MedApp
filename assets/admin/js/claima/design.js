@@ -92,4 +92,66 @@ $(document).ready(function() {
         
         return false;
     })
+    
+    $("#billing_type").on("change", function() {
+        var billing_type = $("#billing_type").val();
+        
+        if(billing_type == 1)
+        {
+            $("#medical-aid-details").slideDown();
+        }
+        else
+        {
+            $("#medical-aid-details").slideUp();
+            if(billing_type == 2)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+    })
+    
+    $("input[name='dependant']").on("click", function() {
+        var dependant = $("input[name='dependant']:checked").val();
+        
+        if(dependant == "Yes")
+        {
+            $("#dependant-relation").slideDown();
+        }
+        else
+        {
+            $("#dependant-relation").slideUp();
+        }
+    })
+    
+    //generate rows
+    $("#add-row").on("click", function() {
+        var row = "<tr>";
+        row += "<td><input type='text' name='tariff_code[]' class='text-input'></td>";
+        row += "<td><input type='text' name='description[]' class='text-input'></td>";
+        row += "<td><input type='text' name='idc_code[]' class='text-input'></td>";
+        row += "<td><input type='text' name='price[]' class='text-input'></td>";
+        row += "<td><input type='text' name='quantity[]' class='text-input'></td>";
+        row += "<td><input type='text' name='sub_total[]' class='text-input'></td>";
+        row += "<tr>"; 
+        
+        $(".add-consultation").append(row);
+        
+        return false;
+    })
+    
+    //
+    $("#same_address").on("click", function() {
+        if($(this).is(':checked') == true)
+        {
+            $(".postal-address").slideUp();
+        }
+        else
+        {
+            $(".postal-address").slideDown();
+        }
+    })
 });

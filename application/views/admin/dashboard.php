@@ -33,7 +33,7 @@
         <div class="row fency-bg">
             <div class="col-lg-4">
                 <div class="x_title">
-                    <h2>Upcoming appointments
+                    <h2>Waiting room
                         <a class="data-more pull-right" href="appointment"><i class="fa fa-chevron-right"></i></a>
                     </h2>
                 </div>

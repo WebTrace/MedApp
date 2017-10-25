@@ -134,5 +134,10 @@ $(document).ready(function() {
             });
         }
     })
+    
+    $(".consultation-btn").on("click", function() {
+        var patient_id = $(this).attr("id");
+        $("#user_id").attr("value", patient_id);
+    })
 })
 
