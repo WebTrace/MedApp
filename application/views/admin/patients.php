@@ -73,12 +73,13 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <ul class="nav nav-pills">
-                                                <li class="active"><a  href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
+                                                <li class="active"><a  href="#patient" data-toggle="tab">Patient</a></li>
+                                                <li><a href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
                                                 <li><a href="#add-dispensing" data-toggle="tab">Dispense</a></li>
                                             </ul>
                                             <div id="diagnosis-group">
                                                 <div class="tab-content clearfix">
-                                                    <div class="tab-pane active" id="add-diagnosis">
+                                                    <div class="tab-pane active" id="patient">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <table class="table">
@@ -166,7 +167,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane" id="add-dispensing">
+                                                    <div class="tab-pane" id="add-diagnosis">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <a href="#" class="" id="add-row">Add</a>
@@ -180,10 +181,10 @@
                                                                             <th>IDC code</th>
                                                                             <th>Price</th>
                                                                             <th>Quantity</th>
-                                                                            <th>Sub total</th>
+                                                                            <th colspan="2">Sub total</th>
                                                                         </tr>
                                                                     </thead>
-                                                                    <tbody>
+                                                                    <tbody id="dispense-collection">
                                                                         <tr>
                                                                             <td><input type="text" name="tariff_code[]" class="text-input"></td>
                                                                             <td><input type="text" name="description[]" class="text-input"></td>
@@ -191,6 +192,35 @@
                                                                             <td><input type="text" name="price[]" class="text-input"></td>
                                                                             <td><input type="text" name="quantity[]" class="text-input"></td>
                                                                             <td><input type="text" name="sub_total[]" class="text-input"></td>
+                                                                            <td><a href="#" title="Remove"><i class="fa fa-times"></a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="add-dispensing">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>NAPPI code</th>
+                                                                            <th>Item number</th>
+                                                                            <th>Days supply</th>
+                                                                            <th>Cost</th>
+                                                                            <th>Dispense fee</th>
+                                                                            <th>Gross</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -214,7 +244,7 @@
             </div>
         </form>
         <?Php
-            $attributes = array('id' => 'add_patient');
+            $attributes = array('id' => 'frm-add-new-patient');
             echo form_open(base_url() . 'patients/create_patient', $attributes); 
             ?>
             <div class="modal fade" id="add_user_modal">
@@ -236,10 +266,10 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav nav-pills">
-                                        <li class="active"><a  href="#add-personal-details" data-toggle="tab">Personal Details</a></li>
-                                        <li><a href="#add-contact-details" data-toggle="tab">Contact details</a></li>
-                                        <li><a href="#add-billing-details" data-toggle="tab">Billing details</a></li>
-                                        <li><a href="#add-account-details" data-toggle="tab">Account details</a></li>
+                                        <li class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
+                                        <li><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
+                                        <li><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
+                                        <li><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
                                     </ul>
                                 </div>
                                 <div class="treatment-group">
@@ -249,7 +279,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <select name="title" id="title" class="text-input">
+                                                            <select name="title" id="title" class="text-input dr-placeholder">
                                                                 <option value="0">Title</option>
                                                                 <option value="Mr">Mr</option>
                                                                 <option value="Ms">Ms</option>
@@ -285,13 +315,13 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <select name="ethnic_group" id="ethnic_group" class="text-input">
+                                                            <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
                                                                 <option value="0">Ethnic group</option>
-                                                                <option value="0">African</option>
-                                                                <option value="0">Coloured</option>
-                                                                <option value="0">White</option>
-                                                                <option value="0">Indian</option>
-                                                                <option value="0">Asian</option>
+                                                                <option value="African">African</option>
+                                                                <option value="Coloured">Coloured</option>
+                                                                <option value="White">White</option>
+                                                                <option value="Indian">Indian</option>
+                                                                <option value="Asian">Asian</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -301,60 +331,64 @@
                                         <div class="tab-pane" id="add-contact-details">
                                             <div class="col-lg-12 tab-content">
                                                 <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <h5 class="details-header">Postal address </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
                                                     <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="phy_address_line" id="phy_address_line" class="text-input" placeholder="Address line">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="phy_suburb" id="phy_suburb" class="text-input" placeholder="Suburb/Town">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="phy_postal_code" id="phy_postal_code" class="text-input" placeholder="Postal code">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <h5 class="details-header">Postal address 
-                                                            <span style="font-size: 14px;" class="pull-right">Same as above 
-                                                                <input type="checkbox" name="same_address" id="same_address" value="3"></span>
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="postal-address">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="form-input-group">
-                                                                <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h5 class="details-header">Physical address </h5>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="phy_address_line" id="phy_address_line" class="text-input" placeholder="Address line">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="phy_suburb" id="phy_suburb" class="text-input" placeholder="Suburb/Town">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="phy_postal_code" id="phy_postal_code" class="text-input" placeholder="Postal code">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-input-group">
-                                                                <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h5 class="details-header">Postal address 
+                                                                    <span style="font-size: 14px;" class="pull-right">Same as above 
+                                                                        <input type="checkbox" name="same_address" id="same_address" value="Yes"></span>
+                                                                </h5>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-input-group">
-                                                                <input type="text" name="pos_suburb" id="pos_suburb" class="text-input" placeholder="Suburb/Town">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-input-group">
-                                                                <input type="text" name="pos_postal_code" id="pos_postal_code" class="text-input" placeholder="Postal code">
+                                                        <div class="postal-address">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-input-group">
+                                                                        <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-input-group">
+                                                                        <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-input-group">
+                                                                        <input type="text" name="pos_suburb" id="pos_suburb" class="text-input" placeholder="Suburb/Town">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-input-group">
+                                                                        <input type="text" name="pos_postal_code" id="pos_postal_code" class="text-input" placeholder="Postal code">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -367,10 +401,15 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
+                                                            <input type="text" name="relative_contact_no" id="relative_contact_no" class="text-input" placeholder="Next of keen number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
                                                             <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-6">
                                                         <div class="form-input-group">
                                                             <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
                                                         </div>
@@ -382,13 +421,8 @@
                                             <div class="col-lg-12 tab-content">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <h5 class="details-header">Billing details</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
                                                         <div class="form-input-group">
-                                                            <select name="billing_type" id="billing_type" class="text-input">
+                                                            <select name="billing_type" id="billing_type" class="text-input dr-placeholder">
                                                                 <option value="0">Billing type</option>
                                                                 <?Php if(count($billing_types) > 0) : ?>
                                                                 <?Php foreach($billing_types as $billing_type) : ?>
@@ -404,14 +438,14 @@
                                                 <div id="medical-aid-details" class="row">
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <select name="med_aid_scheme" id="med_aid_scheme" class="text-input">
+                                                            <select name="med_aid_scheme" id="med_aid_scheme" class="text-input dr-placeholder">
                                                                 <option value="0">Medical aid scheme</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <select name="med_aid_option" id="med_aid_option" class="text-input">
+                                                            <select name="med_aid_option" id="med_aid_option" class="text-input dr-placeholder">
                                                                 <option value="0">Medical aid option</option>
                                                             </select>
                                                         </div>
@@ -423,9 +457,11 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            Dependant : 
-                                                            <input type="radio" name="dependant" value="Yes"> Yes
-                                                            <input type="radio" name="dependant" value="No" checked> No
+                                                            <select name="dependant" id="dependant" class="text-input dr-placeholder">
+                                                                <option value="0">Dependant</option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div id="dependant-relation" class="col-lg-12">
@@ -437,7 +473,7 @@
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <div class="form-input-group">
-                                                                    <select name="dependant_relation" class="text-input">
+                                                                    <select name="dependant_relation" class="text-input dr-placeholder">
                                                                         <option value="0">Dependant relationship</option>
                                                                         <?Php if(count($dependant_relationships) > 0) : ?>
                                                                         <?Php foreach($dependant_relationships as $dependant_relationship) : ?>
@@ -449,6 +485,45 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="cash-payment" class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-input-group">
+                                                            <input type="text" name="cash_amount" class="text-input" id="cash_amount" placeholder="Amount">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="credit-card-payment" class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="Card holder">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="Account number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="Card number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="CCV number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="Branch name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="" name="" id="" class="text-input" placeholder="Branch code">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -485,7 +560,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" name="btn_submit" class="btn btn-save" value="Save" />
+                            <span id="save-patient-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                            <input type="submit" name="btn_submit" class="btn btn-save" id="add-patient" value="Save" />
                             <input type="submit" name="btn_submit" class="btn btn-reset" value="Reset"/>
                         </div>
                     </div>
@@ -498,18 +574,20 @@
     <div class="col-lg-12">
         <div class="user-table">
             <?Php if(count($patients) > 0) : $count = 1; ?>
-                <table class="table table-bordered" id="user-list">
+                <table class="table table-bordered" id="patients-list">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Surname</th>
                             <th>First name</th>
                             <th>ID No.</th>
+                            <th>Date of Birth</th>
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Ethnic</th>
                             <th>Contact number</th>
-                            <th colspan="4">Action</th>
+                            <th>Next of keen</th>
+                            <th colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -519,15 +597,17 @@
                                 <td><?Php echo $patient['last_name']; ?></td>
                                 <td><?Php echo $patient['first_name']; ?></td>
                                 <td><?Php echo $patient['id_number']; ?></td>
-                                <td><?Php echo 20;//$patient['id_number']; ?></td>
+                                <td><?Php echo $patient['dob']; ?></td>
+                                <td><?Php echo $this->patients_model->calculate_age($patient['dob']); ?></td>
                                 <td><?Php echo $patient['gender']; ?></td>
                                 <td><?Php echo $patient['ethnic_group']; ?></td>
+                                <td><?Php echo $patient['contact_no']; ?></td>
                                 <td><?Php echo $patient['contact_no']; ?></td>
                                 <td><a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" title="New consultation"
                                        data-toggle="modal" data-target="#create_cosultation" onclick="return false">
                                     <i class="fa fa-arrow-circle-left"></i></a></td>
                                 <td><a class="" href="#" title="Patient details"><i class="fa fa-eye"></i></a></td>
-                                <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
+                                <!--<td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>-->
                                 <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?Php $count++; endforeach; ?>

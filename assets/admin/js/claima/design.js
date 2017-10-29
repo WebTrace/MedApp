@@ -98,26 +98,52 @@ $(document).ready(function() {
         
         if(billing_type == 1)
         {
+            $("#cash-payment").hide();
+            $("#credit-card-payment").hide();
             $("#medical-aid-details").slideDown();
         }
         else
         {
-            $("#medical-aid-details").slideUp();
+            $("#medical-aid-details").hide();
+            
             if(billing_type == 2)
             {
-                
+                $("#credit-card-payment").hide();
+                $("#cash-payment").slideDown();
             }
             else
             {
-                
+                $("#cash-payment").hide();
+                if(billing_type == 3)
+                {
+                    $("#credit-card-payment").slideDown();        
+                }
+                else
+                {
+                    $("#credit-card-payment").hide();  
+                }
             }
         }
     })
     
-    $("input[name='dependant']").on("click", function() {
+    //radio button code
+    /*$("input[name='dependant']").on("click", function() {
         var dependant = $("input[name='dependant']:checked").val();
         
         if(dependant == "Yes")
+        {
+            $("#dependant-relation").slideDown();
+        }
+        else
+        {
+            $("#dependant-relation").slideUp();
+        }
+    })
+        var dependant = $("input[name='dependant']:checked").val();
+    */
+    
+    $("#dependant").on("change", function() {
+        if($(this).val() == "Yes")
         {
             $("#dependant-relation").slideDown();
         }
@@ -136,6 +162,7 @@ $(document).ready(function() {
         row += "<td><input type='text' name='price[]' class='text-input'></td>";
         row += "<td><input type='text' name='quantity[]' class='text-input'></td>";
         row += "<td><input type='text' name='sub_total[]' class='text-input'></td>";
+        row += "<td><a href='#' class='remove-dispensing' title='Remove'><i class='fa fa-times'></a></td>";
         row += "<tr>"; 
         
         $(".add-consultation").append(row);
@@ -152,6 +179,18 @@ $(document).ready(function() {
         else
         {
             $(".postal-address").slideDown();
+        }
+    })
+    
+    //
+    $(".dr-placeholder").on("change", function() {
+        if($(this).val() != 0)
+        {
+            $(this).css("color", "#444");
+        }
+        else
+        {
+            $(this).css("color", "#bbb");
         }
     })
 });

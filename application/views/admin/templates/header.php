@@ -14,6 +14,9 @@
             <!-- Morris Charts CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/plugins/morris.css" rel="stylesheet">
             
+            <!--Animate css-->
+            <link href="<?Php echo base_url();?>assets/css/animate.css" rel="stylesheet">
+            
             <!-- Custom Fonts -->
             <link href="<?Php echo base_url();?>assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             

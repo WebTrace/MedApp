@@ -139,5 +139,44 @@ $(document).ready(function() {
         var patient_id = $(this).attr("id");
         $("#user_id").attr("value", patient_id);
     })
+    
+    //create patient
+    $("#frm-add-new-patient").on("submit", function(e) {
+        e.preventDefault();
+        //alert($(this).serialize());
+        //show progress
+        $("#save-patient-request").show();
+        
+        //ajax object values
+        var url     = $(this).attr('action'),
+            type    = $(this).attr('method'),
+            data    = $(this).serialize(),
+            type    = 'success',
+            title   = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
+            message = 'Patient saved successfuly.';
+        console.log(data);
+        /*notification_message(type, title, message);
+        $("#add_user_modal").modal('hide');*/
+        //begin ajax request
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success: function(response) {
+                console.log("Data " + response);
+                //hide progress
+                $("#save-patient-request").hide();
+                
+                //close modal
+                $("#add_user_modal").modal('hide');
+                
+                //build a data row
+                //$("#patients-list tbody").html(patient_data_table(response));
+                
+                //show notification
+                notification_message(type, title, message);
+            }
+        });
+    })
 })
 

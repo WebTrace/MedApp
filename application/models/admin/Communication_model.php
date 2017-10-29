@@ -102,6 +102,24 @@
                 'city'                  => $city,
                 'postal_code'           => $postal_code
             );
+            
+            //insert address details
+            $this->db->insert('address', $physical_address_data);
+        }
+        
+
+        /*
+        *
+        */
+        public function create_user_address($address_id, $address_type_code)
+        {
+            $user_address_data = array(
+                'address_id'            => $address_id,
+                'aaddress_type_code'    => $address_type_code
+            );
+            
+            //insert user address type details
+            $this->db->insert('user_address_type', $user_address_data);
         }
         
         /*

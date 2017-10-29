@@ -8,6 +8,9 @@
             
             $branch_id = $this->session->userdata("BRANCH_ID");
             
+            //push counter in patiets data
+            
+            
             $data['patients']                   = $this->patients_model->fetch_all_patient();
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
             $data["dependant_relationships"]    = $this->medical_aid_model->fetch_relationship();
@@ -20,6 +23,7 @@
         
         public function create_patient()
         {
+            //$this->ajax_fetch_patients();
             if($this->patients_model->create_patient() == TRUE)
             {
                 
@@ -33,14 +37,18 @@
         //create diagnosis
         public function create_diagnosis()
         {
-            if($this->patients_model->create_diagnosis() == TRUE)
+            //var_dump($this->patients_model->fetch_all_patient()[0]);
+            
+            //echo $this->patients_model->calculate_age("1991-09-21");
+            $this->ajax_fetch_patients();
+            /*if($this->patients_model->create_diagnosis() == TRUE)
             {
                 
             }
             else
             {
                 
-            }
+            }*/
         }
         
         //search claima patients
@@ -60,6 +68,12 @@
         public function fetch_billing_type()
         {
             
+        }
+        
+        //fetch patients via ajax
+        public function ajax_fetch_patients()
+        {
+            echo json_encode($this->patients_model->fetch_all_patient());
         }
     }
 ?>

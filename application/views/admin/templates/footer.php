@@ -12,6 +12,7 @@
         <script src="<?Php echo base_url()?>assets/admin/js/raphael.min.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/bootstrap-progressbar.min.js"></script>
         <!--<script src="<?Php echo base_url()?>assets/admin/js/modal.js"></script>-->
+        <script src="<?Php echo base_url()?>assets/js/bootstrap-notify.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/claima/functions.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/claima/handler.js"></script>
         <script src="<?Php echo base_url()?>assets/admin/js/claima/data.js"></script>

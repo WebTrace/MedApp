@@ -742,7 +742,8 @@ legend {
     margin: 10px 0px;
 }
 
-#medical-aid-details, #dependant-relation {
+#medical-aid-details, #dependant-relation, 
+#cash-payment, #credit-card-payment {
     display: none;
 }
 
@@ -760,6 +761,15 @@ legend {
     padding: 10px 15px;
     border-radius: 0px;
     background: #eee;
+}
+
+#save-patient-request {
+    display: none;
+}
+
+#dispense-collection .text-input {
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .tab-content {
@@ -783,6 +793,10 @@ legend {
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #bbb;
+}
+
+.dr-placeholder {
     color: #bbb;
 }
 

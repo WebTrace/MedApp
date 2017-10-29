@@ -4,6 +4,9 @@
         public function create_patient()
         {
             //get patients inputs - personal details
+            
+            
+            
             $title                          = $this->input->post('title');
             $first_name                     = $this->input->post('fname');
             $last_name                      = $this->input->post('lname');
@@ -11,8 +14,13 @@
             $dob                            = $this->input->post('dob');
             $ethnic_group                   = $this->input->post('ethnic_group');
             
+            echo 'This is a method call ';
+            echo 'Title' . $_POST['title'];
+            echo 'First name' . $first_name;
+            echo 'Last name' . $last_name;
+            
             //get patient details - contact details
-            $contact_number                 = $this->input->post('contact_no');
+            /*$contact_number                 = $this->input->post('contact_no');
             $email_address                  = $this->input->post('email_address'); //optional
             
             //get patient details - physical address details
@@ -27,45 +35,60 @@
             $pos_street                     = $this->input->post('pos_street_name');
             $pos_suburb                     = $this->input->post('pos_suburb');
             $pos_postal_code                = $this->input->post('pos_postal_code');
+            $address_type_code              = 1;
             
             //get patient details - billing details
             $billing_type                   = $this->input->post("billing_type");
             
             //get patient inputs - medical aid details if set
-            $medical_aid_name               = "Momentum";//$this->input->post('med_aid_scheme');
-            $medical_aid_option             = "Ingwe";$this->input->post('med_aid_option');
-            $medical_aid_number             = "1023654";$this->input->post('med_aid_number');
+            $medical_aid_name               = $this->input->post('med_aid_scheme');
+            $medical_aid_option             = $this->input->post('med_aid_option');
+            $medical_aid_number             = $this->input->post('med_aid_number');
             $price_option                   = "Test";//$this->input->post('med_aid_price');
             
             //get patient inputs - dependant details
             $dependant_no                   = $this->input->post('dependant_no');
             $relaltionship_code             = $this->input->post('dependant_relation');
-            $is_dependant                   = $this->input->post('dependant');
+            $is_dependant                   = $this->input->post('dependant');*/
             
             //get patients inputs - account details
-            $username                       = $this->input->post('username'); //optional
+            /*$username                       = $this->input->post('username'); //optional
             $password                       = $this->input->post('password'); //optionals
+            
+            
+            
+            /*echo $title . ' ';
+            echo $first_name . ' ';
+            echo $last_name . ' ';
+            echo $id_number . ' ';
+            echo $dob . ' ';
+            echo $ethnic_group . ' ';
+            echo $username . ' ';
+            echo $password . ' ';
+            
             
             /*Begin transaction for creating a patient
             *
             */
-            $this->db->trans_start(); //BEGIN TRANSACTION
+            //$this->db->trans_start(); //BEGIN TRANSACTION
             
             //create user type of patient
-            $this->new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password);
+            //$this->new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password);
+            //$this->new_patient_user('Mr', 'Noma', 'Mahlangu', '123456', '2000-09-06', 'African', 'noma', '12345');
+            
+           
             
             //get new user id
-            $user_id = $this->signup_model->get_new_added_id('user', 'user_id');
+            //$user_id = $this->signup_model->get_new_added_id('user', 'user_id');
             
             //generate new unique file no
-            $file_no = $this->new_file_no($user_id);
+            //$file_no = $this->new_file_no($user_id);
             
             //create new patient
-            $this->new_patient($user_id, $file_no);
+            //$this->new_patient(190/*$user_id*/, 12563/*$file_no*/);
             
             //get new patient id
-            
-            $patient_id = $this->signup_model->get_new_added_id('patient', 'patient_id');
+            /*$patient_id = $this->signup_model->get_new_added_id('patient', 'patient_id');
                 
             //create patient phone contact
             $this->communication_model->create_phone_contact($user_id, $contact_number);
@@ -90,6 +113,29 @@
             
             //create email contact priority
             $this->communication_model->create_contact_email_priority(1, $email_contact_id);
+            
+            //create physical address
+            $this->communication_model->create_address($user_id, $phy_address_line, $phy_street, $phy_suburb, $phy_postal_code);
+            
+            //get new address id
+            $address_id = $this->signup_model->get_new_added_id('address', 'address_id');
+            
+            //create user address type
+            $this->communication_model->create_address_type($address_id, $address_type_code);
+            
+            if($same_address == "Yes")
+            {
+                $address_type_code = 1;
+                
+                //create postal address
+                $this->communication_model->create_address($user_id, $pos_address_line, $pos_street, $pos_suburb, $pos_postal_code);
+                
+                //get new address id
+                $address_id = $this->signup_model->get_new_added_id('address', 'address_id');
+                
+                //create user address type
+                $this->communication_model->create_address_type($address_id, $address_type_code);
+            }
             
             //create treatment branch
             $this->create_treatment_branch($this->session->userdata('BRANCH_ID'), $patient_id);
@@ -121,17 +167,17 @@
                 
                 //create dependant
                 $this->medical_aid_model->create_dependant($patient_id, $medical_aid_id, $dependant_no, $relaltionship_code);
-            }
+            }*/
             
             //TODO : create cash billing
             
             //TODO : create account
             
             
-            $this->db->trans_complete();//END TRANSACTION
+            //$this->db->trans_complete();//END TRANSACTION
             
             //tranaction status
-            return $this->db->trans_status();
+            //return $this->db->trans_status();
         }
         
         public function new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password)
@@ -145,7 +191,7 @@
                 'first_name'        => $first_name,
                 'last_name'         => $last_name,
                 'id_number'         => $id_number,
-                'dob'               => $dob,
+                'dob'               => $this->to_mysql_date($dob),
                 'gender'            => $gender,
                 'ethnic_group'      => $ethnic_group
             );
@@ -351,7 +397,13 @@
         //convert date to MySQL date
         public function to_mysql_date($row_date)
         {
-            
+            return date('Y-m-d', strtotime(str_replace('-', '/', $row_date)));
+        }
+        
+        //calculate age
+        public function calculate_age($date_of_birth)
+        {
+            return date_diff(date_create($date_of_birth), date_create('now'))->y;
         }
         
         //generate a new file number
