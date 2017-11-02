@@ -52,15 +52,15 @@
         }
         
         //search claima patients
-        public function search_claima_patient($patient_id)
+        public function search_claima_patient()
         {
-            if($this->patients_model->search_claima_patient($patient_id) == TRUE)
+            if($this->patients_model->search_claima_patient() == TRUE)
             {
-                
+               echo json_encode($this->patients_model->fetch_patient());
             }
             else
             {
-                
+                echo 'Not found';
             }
         }
         

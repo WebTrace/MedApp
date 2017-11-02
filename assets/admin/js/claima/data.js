@@ -107,7 +107,6 @@ $(document).ready(function() {
     
     /*add new system user
     */
-    
     $("#frm_add_user").on("submit", function(e) {
         //prevent the form from submiting by default
         e.preventDefault();
@@ -143,20 +142,18 @@ $(document).ready(function() {
     //create patient
     $("#frm-add-new-patient").on("submit", function(e) {
         e.preventDefault();
-        //alert($(this).serialize());
+        
         //show progress
         $("#save-patient-request").show();
         
         //ajax object values
-        var url     = $(this).attr('action'),
-            type    = $(this).attr('method'),
-            data    = $(this).serialize(),
-            type    = 'success',
-            title   = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
-            message = 'Patient saved successfuly.';
-        console.log(data);
-        /*notification_message(type, title, message);
-        $("#add_user_modal").modal('hide');*/
+        var url             = $(this).attr('action'),
+            type            = $(this).attr('method'),
+            data            = $(this).serialize(),
+            message_type    = 'success',
+            title           = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
+            message         = 'Patient saved successfuly.';
+        
         //begin ajax request
         $.ajax({
             url: url,
@@ -168,15 +165,54 @@ $(document).ready(function() {
                 $("#save-patient-request").hide();
                 
                 //close modal
-                $("#add_user_modal").modal('hide');
-                
-                //build a data row
-                //$("#patients-list tbody").html(patient_data_table(response));
+                $("#add_user_modal").modal('hide');s
                 
                 //show notification
-                notification_message(type, title, message);
+                notification_message(message_type, title, message);
             }
         });
+    })
+    
+    //search patient exisitng in claima application
+    $("#frm-search").on('submit', function(e) {
+        e.preventDefault();
+        
+        //hide magnifying glass icon
+        $("#search-waiting").removeClass('glyphicon glyphicon-search');
+        
+        //show progress icon
+        $("#search-waiting").addClass('fa fa-circle-o-notch fa-spin');
+        
+        var q       = $("#q").val(),
+            type    = $(this).attr('method'),
+            url     = $(this).attr('action'),
+            data    = $(this).serialize();
+            
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+                //show magnifying glass icon
+                $("#search-waiting").addClass('glyphicon glyphicon-search');
+                
+                //hide progress icon
+                $("#search-waiting").removeClass('fa fa-circle-o-notch fa-spin');
+                console.log(response[0].first_name);
+                
+                //
+                var title   = '<h4><i class="fa fa-check-circle-o"></i> User found</h4>',
+                    message_type = 'success',
+                    message = response[0].first_name + ' ' + response[0].last_name;
+                
+                //show notification
+                notification_message(message_type, title, message);
+            },
+            error: function() {
+                
+            }
+        })
     })
 })
 

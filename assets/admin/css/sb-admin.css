@@ -776,6 +776,28 @@ legend {
     margin-top: 15px;
 }
 
+.patient-search-grp {
+    position: relative;
+}
+
+.btn-search-icon:hover {
+    color: #fff;
+    outline: none;
+    background: #65bfbd;
+}
+
+.btn-search-icon:focus {
+    outline: none;
+}
+
+.btn-search-icon {
+    position: absolute;
+    padding: 9px 10px;
+    border: none;
+    right: 0px;
+    top: 0px;
+}
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #bbb;
 }

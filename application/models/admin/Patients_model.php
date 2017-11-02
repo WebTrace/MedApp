@@ -14,13 +14,8 @@
             $dob                            = $this->input->post('dob');
             $ethnic_group                   = $this->input->post('ethnic_group');
             
-            echo 'This is a method call ';
-            echo 'Title' . $_POST['title'];
-            echo 'First name' . $first_name;
-            echo 'Last name' . $last_name;
-            
             //get patient details - contact details
-            /*$contact_number                 = $this->input->post('contact_no');
+            $contact_number                 = $this->input->post('contact_no');
             $email_address                  = $this->input->post('email_address'); //optional
             
             //get patient details - physical address details
@@ -49,46 +44,32 @@
             //get patient inputs - dependant details
             $dependant_no                   = $this->input->post('dependant_no');
             $relaltionship_code             = $this->input->post('dependant_relation');
-            $is_dependant                   = $this->input->post('dependant');*/
+            $is_dependant                   = $this->input->post('dependant');
             
             //get patients inputs - account details
-            /*$username                       = $this->input->post('username'); //optional
+            $username                       = $this->input->post('username'); //optional
             $password                       = $this->input->post('password'); //optionals
-            
-            
-            
-            /*echo $title . ' ';
-            echo $first_name . ' ';
-            echo $last_name . ' ';
-            echo $id_number . ' ';
-            echo $dob . ' ';
-            echo $ethnic_group . ' ';
-            echo $username . ' ';
-            echo $password . ' ';
             
             
             /*Begin transaction for creating a patient
             *
             */
-            //$this->db->trans_start(); //BEGIN TRANSACTION
+            $this->db->trans_start(); //BEGIN TRANSACTION
             
             //create user type of patient
-            //$this->new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password);
-            //$this->new_patient_user('Mr', 'Noma', 'Mahlangu', '123456', '2000-09-06', 'African', 'noma', '12345');
-            
-           
+            $this->new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password);
             
             //get new user id
-            //$user_id = $this->signup_model->get_new_added_id('user', 'user_id');
+            $user_id = $this->signup_model->get_new_added_id('user', 'user_id');
             
             //generate new unique file no
-            //$file_no = $this->new_file_no($user_id);
+            $file_no = $this->new_file_no($user_id);
             
             //create new patient
-            //$this->new_patient(190/*$user_id*/, 12563/*$file_no*/);
+            $this->new_patient($user_id, $file_no);
             
             //get new patient id
-            /*$patient_id = $this->signup_model->get_new_added_id('patient', 'patient_id');
+            $patient_id = $this->signup_model->get_new_added_id('patient', 'patient_id');
                 
             //create patient phone contact
             $this->communication_model->create_phone_contact($user_id, $contact_number);
@@ -167,17 +148,17 @@
                 
                 //create dependant
                 $this->medical_aid_model->create_dependant($patient_id, $medical_aid_id, $dependant_no, $relaltionship_code);
-            }*/
+            }
             
             //TODO : create cash billing
             
             //TODO : create account
             
             
-            //$this->db->trans_complete();//END TRANSACTION
+            $this->db->trans_complete();//END TRANSACTION
             
             //tranaction status
-            //return $this->db->trans_status();
+            return $this->db->trans_status();
         }
         
         public function new_patient_user($title, $first_name, $last_name, $id_number, $dob, $ethnic_group, $username, $password)
@@ -210,7 +191,7 @@
                     'password'          => $password
                 );
             }
-                
+            
             //create new user
             $this->db->insert('user', $patient_data);
         }
@@ -226,12 +207,23 @@
             $this->db->insert('patient', $patient_data);
         }
         
-        public function fetch_all_patient()
+        //fetch all patient data
+        public function fetch_patient()
         {
-            $this->db->from("user u");
-            $this->db->join("patient p", "u.user_id = p.user_id");
-            $this->db->join("phone_contact pc", "u.user_id = pc.user_id");
-            $this->db->join("treatment_branch tb", "p.patient_id = tb.patient_id");
+            $unique_id = $this->input->post('q');
+            
+            $this->db->from('user u');
+            $this->db->join('patient p', 'u.user_id = p.user_id');
+            //$this->db->join('medical_aid m', 'p.patient_id = m.patient_id', 'left');
+            //$this->db->join('dependant d', 'm.medical_aid_id = d.medical_aid_id', 'left');
+            //$this->db->join('treatment t', 'p.patient_id = t.patient_id');
+            //$this->db->join('billing b', 't.treatment_id = b.treatment_id');
+            //$this->db->join('billing_type bt', 'bt.billing_type_code = b.billing_type_code');
+            //$this->db->join('address a', 'u.user_id = a.user_id');
+            //$this->db->join('phone_contact pc', 'u.user_id = pc.user_id');
+            //$this->db->join('email_contact ec', 'u.user_id = ec.user_id');
+            $this->db->where('id_number', $unique_id);
+            
             return $this->db->get()->result_array();
         }
         
@@ -243,6 +235,16 @@
         public function delete_patient()
         {
             
+        }
+        
+        public function fetch_all_patient()
+        {
+            $this->db->from("user u");
+            $this->db->join("patient p", "u.user_id = p.user_id");
+            $this->db->join("phone_contact pc", "u.user_id = pc.user_id");
+            $this->db->join("treatment_branch tb", "p.patient_id = tb.patient_id");
+            $this->db->where('tb.branch_id', $this->session->userdata('BRANCH_ID'));
+            return $this->db->get()->result_array();
         }
         
         //
@@ -363,8 +365,10 @@
             return $this->db->get("medical_aid");
         }
         
-        public function search_claima_patient($id_number)
+        public function search_claima_patient()
         {
+            $id_number = $this->input->post('q');
+            
             $this->db->where('id_number', $id_number);
             
             if($this->db->get('user')->num_rows() == 1)

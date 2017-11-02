@@ -9,5 +9,10 @@
             $this->load->view("admin/claim");
             $this->load->view("admin/templates/footer");
         }
+        
+           public function create_claim()
+        {
+            $this->claim_model->create_claim();
+        }
     }
 ?>

@@ -3,8 +3,8 @@
     {
         public function create_user()
         {
-            $user_branch        = $this->input->post("user_branch");
-            $user_role          = $this->input->post("user_role");
+            $branch_id          = $this->input->post("user_branch");
+            $role_code          = $this->input->post("user_role");
             $title              = $this->input->post("title");
             $fname              = $this->input->post("fname");
             $lname              = $this->input->post("lname");
@@ -27,7 +27,7 @@
                 'last_name'     => $lname,
                 'id_number'     => $id_number,
                 'username'      => $username,
-                'password'      => $password
+                'password'      => md5($password)
             );
             
             //insert user details
@@ -43,12 +43,12 @@
             $this->create_user_role($user_id, $role_code);
             
             //create user status
-            $this->create_user_status($user_id, $status_code);
+            $this->create_user_status($user_id, 2);
             
-            if($user_role == 4)
+            if($role_code == 3 || $role_code == 4)
             {
                 //create practitioner
-                $this->practitioner_model->create_practitioner($user_id, $branch_name, $address_line, $city, $province, $location, $default_branch);
+                $this->practitioner_model->create_practitioner($user_id, $hpcsa_no, $practice_no);
             }
             
             //assign branch to a user
@@ -64,13 +64,13 @@
             $phone_contact_id = $this->signup_model->get_new_added_id('phone_contact', 'phone_contact_id');
             
             //phone contact priority
-            $this->communication_model->create_phone_contact_priority($priority_code, $phone_contact_id);
+            $this->communication_model->create_phone_contact_priority(1, $phone_contact_id);
             
             //create phone contact type
-            $this->communication_model->create_phone_contact_type($contact_type_code, $phone_contact_id);
+            $this->communication_model->create_phone_contact_type(1, $phone_contact_id);
             
             //create  email contact
-            $this->communication_model->create_email_contact($user_id, $email);
+            $this->communication_model->create_email_contact($user_id, $email_address);
             
             /*
             *retrieve new email contact id that was generated when a user register. the following insert
@@ -79,10 +79,10 @@
             $email_contact_id = $this->signup_model->get_new_added_id('email_contact', 'email_contact_id');
             
             //create email contact type
-            $this->communication_model->create_email_contact_type($contact_type_code, $email_contact_id);
+            $this->communication_model->create_email_contact_type(1, $email_contact_id);
             
             //email contact priority
-            $this->communication_model->create_email_contact_priority($priority_code, $email_contact_id);
+            $this->communication_model->create_contact_email_priority(1, $email_contact_id);
             
             //complete transaction
             $this->db->trans_complete();

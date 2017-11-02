@@ -24,8 +24,8 @@
                     JOIN user_status us ON us.user_id = u.user_id
                     JOIN status s ON s.status_code = us.status_code
                     JOIN email_contact ec ON u.user_id = ec.user_id
-                    JOIN branch b ON u.user_id = b.user_id
-                    WHERE(u.username = '$username' AND u.password = '$password' AND default_branch = 'YES')";
+                    JOIN user_branch ub ON u.user_id = ub.user_id
+                    WHERE(u.username = '$username' AND u.password = '$password')";
             
             return $this->db->query($sql);
         }

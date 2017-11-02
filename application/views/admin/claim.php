@@ -58,8 +58,8 @@
         </div>
         <div class="col-lg-12">
             <?Php
-                $attributes = array('id' => 'add_patient');
-                echo form_open(base_url() . 'consultation/create_consultation', $attributes); 
+                $attributes = array('id' => 'add_claim');
+                echo form_open(base_url() . 'claim/create_claim', $attributes); 
             ?>
                 <div class="modal fade" id="add_user_modal">
                     <div class="modal-dialog" id="modal-format">
@@ -253,7 +253,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="Treatment_Date"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Treatment Date" name="Treatment Date" placeholder="Treatment Date" required="">
+                                            <input type="text" class="form-control" id="Treatment_Date" name="Treatment_Date" placeholder="Treatment_Date" required="">
 
                                         </div>
                                 </div>

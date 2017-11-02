@@ -243,331 +243,335 @@
                 </div>
             </div>
         </form>
-        <?Php
-            $attributes = array('id' => 'frm-add-new-patient');
-            echo form_open(base_url() . 'patients/create_patient', $attributes); 
-            ?>
-            <div class="modal fade" id="add_user_modal">
-                <div class="modal-dialog" id="modal-format">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h2 class="modal-title">PATIENT DETAILS</h2>
-                        </div>
-                        <div class="modal-body">
+        <div class="modal fade" id="add_user_modal">
+            <div class="modal-dialog" id="modal-format">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">PATIENT DETAILS</h2>
+                    </div>
+                    <div class="modal-body">
+                        <?Php
+                            $attribute = array('id' => 'frm-search');
+                            echo form_open(base_url() . 'patients/search_claima_patient', $attribute);
+                            ?>
                             <div class="row">
                                 <div class="col-lg-4 col-lg-offset-8">
-                                    <div class="">
-                                        <input type="search" name="search" class="text-input" placeholder="Search patient">
+                                    <div class="form-input-group">
+                                        <div class="patient-search-grp">
+                                            <input type="search" name="q" id="q" class="text-input" placeholder="Search patient">
+                                            <button type="submit" class="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr class="hr-margin">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <ul class="nav nav-pills">
-                                        <li class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
-                                        <li><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
-                                        <li><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
-                                        <li><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
-                                    </ul>
-                                </div>
-                                <div class="treatment-group">
-                                    <div class="tab-content clearfix">
-                                        <div class="tab-pane active" id="add-personal-details">
-                                            <div class="col-lg-12 tab-content">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <select name="title" id="title" class="text-input dr-placeholder">
-                                                                <option value="0">Title</option>
-                                                                <option value="Mr">Mr</option>
-                                                                <option value="Ms">Ms</option>
-                                                                <option value="Mrs">Mrs</option>
-                                                                <option value="Dr">Dr</option>
-                                                                <option value="Prof">Prof</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="idno" id="idno"class="text-input" placeholder="ID no. / Passport no.">
-                                                        </div>
+                        </form>
+                        <hr class="hr-margin">
+                        <?Php
+                            $attributes = array('id' => 'frm-add-new-patient');
+                            echo form_open(base_url() . 'patients/create_patient', $attributes); 
+                            ?>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="nav nav-pills">
+                                    <li class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
+                                    <li><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
+                                    <li><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
+                                    <li><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
+                                </ul>
+                            </div>
+                            <div class="treatment-group">
+                                <div class="tab-content clearfix">
+                                    <div class="tab-pane active" id="add-personal-details">
+                                        <div class="col-lg-12 tab-content">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <select name="title" id="title" class="text-input dr-placeholder">
+                                                            <option value="0">Title</option>
+                                                            <option value="Mr">Mr</option>
+                                                            <option value="Ms">Ms</option>
+                                                            <option value="Mrs">Mrs</option>
+                                                            <option value="Dr">Dr</option>
+                                                            <option value="Prof">Prof</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="dob" id="dob" class="text-input" placeholder="Date of Birth">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
-                                                                <option value="0">Ethnic group</option>
-                                                                <option value="African">African</option>
-                                                                <option value="Coloured">Coloured</option>
-                                                                <option value="White">White</option>
-                                                                <option value="Indian">Indian</option>
-                                                                <option value="Asian">Asian</option>
-                                                            </select>
-                                                        </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="add-contact-details">
-                                            <div class="col-lg-12 tab-content">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <h5 class="details-header">Physical address </h5>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="phy_address_line" id="phy_address_line" class="text-input" placeholder="Address line">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="phy_suburb" id="phy_suburb" class="text-input" placeholder="Suburb/Town">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="phy_postal_code" id="phy_postal_code" class="text-input" placeholder="Postal code">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <h5 class="details-header">Postal address 
-                                                                    <span style="font-size: 14px;" class="pull-right">Same as above 
-                                                                        <input type="checkbox" name="same_address" id="same_address" value="Yes"></span>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="postal-address">
-                                                            <div class="row">
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-input-group">
-                                                                        <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-input-group">
-                                                                        <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-input-group">
-                                                                        <input type="text" name="pos_suburb" id="pos_suburb" class="text-input" placeholder="Suburb/Town">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-input-group">
-                                                                        <input type="text" name="pos_postal_code" id="pos_postal_code" class="text-input" placeholder="Postal code">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="relative_contact_no" id="relative_contact_no" class="text-input" placeholder="Next of keen number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
-                                                        </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="idno" id="idno"class="text-input" placeholder="ID no. / Passport no.">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="add-billing-details">
-                                            <div class="col-lg-12 tab-content">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="form-input-group">
-                                                            <select name="billing_type" id="billing_type" class="text-input dr-placeholder">
-                                                                <option value="0">Billing type</option>
-                                                                <?Php if(count($billing_types) > 0) : ?>
-                                                                <?Php foreach($billing_types as $billing_type) : ?>
-                                                                <option value="<?Php echo $billing_type['billing_code']; ?>"><?Php echo $billing_type['billing_name']; ?></option>
-                                                                <?Php endforeach; ?>
-                                                                <?Php else : ?>
-                                                                <option value="0">No billing type defined</option>
-                                                                <?Php endif; ?>
-                                                            </select>
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="dob" id="dob" class="text-input" placeholder="Date of Birth">
                                                     </div>
                                                 </div>
-                                                <div id="medical-aid-details" class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <select name="med_aid_scheme" id="med_aid_scheme" class="text-input dr-placeholder">
-                                                                <option value="0">Medical aid scheme</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <select name="med_aid_option" id="med_aid_option" class="text-input dr-placeholder">
-                                                                <option value="0">Medical aid option</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="med_aid_number" id="med_aid_number" class="text-input" placeholder="Medical aid number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <select name="dependant" id="dependant" class="text-input dr-placeholder">
-                                                                <option value="0">Dependant</option>
-                                                                <option value="No">No</option>
-                                                                <option value="Yes">Yes</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div id="dependant-relation" class="col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="dependant_no" id="dependant_no" class="text-input" placeholder="Dependant number">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-input-group">
-                                                                    <select name="dependant_relation" class="text-input dr-placeholder">
-                                                                        <option value="0">Dependant relationship</option>
-                                                                        <?Php if(count($dependant_relationships) > 0) : ?>
-                                                                        <?Php foreach($dependant_relationships as $dependant_relationship) : ?>
-                                                                        <option value="<?Php echo $dependant_relationship['relationship_code']; ?>"><?Php echo $dependant_relationship['relationship_name']; ?></option>
-                                                                        <?Php endforeach; ?>
-                                                                        <?Php else : ?>
-                                                                        <option value="0">No relationship type defined</option>
-                                                                        <?Php endif; ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="cash-payment" class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="cash_amount" class="text-input" id="cash_amount" placeholder="Amount">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="credit-card-payment" class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="Card holder">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="Account number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="Card number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="CCV number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="Branch name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="" name="" id="" class="text-input" placeholder="Branch code">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="add-account-details">
-                                            <div class="col-lg-12 tab-content">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="" id="" class="text-input" placeholder="Username">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="" id="" class="text-input" placeholder="Password">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
-                                                        </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
+                                                            <option value="0">Ethnic group</option>
+                                                            <option value="African">African</option>
+                                                            <option value="Coloured">Coloured</option>
+                                                            <option value="White">White</option>
+                                                            <option value="Indian">Indian</option>
+                                                            <option value="Asian">Asian</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="tab-pane" id="add-contact-details">
+                                        <div class="col-lg-12 tab-content">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <h5 class="details-header">Physical address </h5>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <input type="text" name="phy_address_line" id="phy_address_line" class="text-input" placeholder="Address line">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <input type="text" name="phy_suburb" id="phy_suburb" class="text-input" placeholder="Suburb/Town">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <input type="text" name="phy_postal_code" id="phy_postal_code" class="text-input" placeholder="Postal code">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <h5 class="details-header">Postal address 
+                                                                <span style="font-size: 14px;" class="pull-right">Same as above 
+                                                                    <input type="checkbox" name="same_address" id="same_address" value="Yes"></span>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="postal-address">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="pos_suburb" id="pos_suburb" class="text-input" placeholder="Suburb/Town">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="pos_postal_code" id="pos_postal_code" class="text-input" placeholder="Postal code">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="relative_contact_no" id="relative_contact_no" class="text-input" placeholder="Next of keen number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="add-billing-details">
+                                        <div class="col-lg-12 tab-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <select name="billing_type" id="billing_type" class="text-input dr-placeholder">
+                                                            <option value="0">Billing type</option>
+                                                            <?Php if(count($billing_types) > 0) : ?>
+                                                            <?Php foreach($billing_types as $billing_type) : ?>
+                                                            <option value="<?Php echo $billing_type['billing_type_code']; ?>"><?Php echo $billing_type['billing_name']; ?></option>
+                                                            <?Php endforeach; ?>
+                                                            <?Php else : ?>
+                                                            <option value="0">No billing type defined</option>
+                                                            <?Php endif; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="medical-aid-details" class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <select name="med_aid_scheme" id="med_aid_scheme" class="text-input dr-placeholder">
+                                                            <option value="0">Medical aid scheme</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <select name="med_aid_option" id="med_aid_option" class="text-input dr-placeholder">
+                                                            <option value="0">Medical aid option</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="med_aid_number" id="med_aid_number" class="text-input" placeholder="Medical aid number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <select name="dependant" id="dependant" class="text-input dr-placeholder">
+                                                            <option value="0">Dependant</option>
+                                                            <option value="No">No</option>
+                                                            <option value="Yes">Yes</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div id="dependant-relation" class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <input type="text" name="dependant_no" id="dependant_no" class="text-input" placeholder="Dependant number">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-input-group">
+                                                                <select name="dependant_relation" class="text-input dr-placeholder">
+                                                                    <option value="0">Dependant relationship</option>
+                                                                    <?Php if(count($dependant_relationships) > 0) : ?>
+                                                                    <?Php foreach($dependant_relationships as $dependant_relationship) : ?>
+                                                                    <option value="<?Php echo $dependant_relationship['relationship_code']; ?>"><?Php echo $dependant_relationship['relationship_name']; ?></option>
+                                                                    <?Php endforeach; ?>
+                                                                    <?Php else : ?>
+                                                                    <option value="0">No relationship type defined</option>
+                                                                    <?Php endif; ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="cash-payment" class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="cash_amount" class="text-input" id="cash_amount" placeholder="Amount">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="credit-card-payment" class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="Card holder">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="Account number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="Card number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="CCV number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="Branch name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="" name="" id="" class="text-input" placeholder="Branch code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="add-account-details">
+                                        <div class="col-lg-12 tab-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="" id="" class="text-input" placeholder="Username">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="" id="" class="text-input" placeholder="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <span id="save-patient-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
-                            <input type="submit" name="btn_submit" class="btn btn-save" id="add-patient" value="Save" />
-                            <input type="submit" name="btn_submit" class="btn btn-reset" value="Reset"/>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="btn_submit" class="btn btn-save" id="add-patient">
+                            Save <span id="save-patient-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                        </button>
+                        <input type="submit" name="btn_submit" class="btn btn-reset" value="Reset"/>
+                    </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -587,7 +591,7 @@
                             <th>Ethnic</th>
                             <th>Contact number</th>
                             <th>Next of keen</th>
-                            <th colspan="3">Action</th>
+                            <th colspan="4">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -606,14 +610,15 @@
                                 <td><a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" title="New consultation"
                                        data-toggle="modal" data-target="#create_cosultation" onclick="return false">
                                     <i class="fa fa-arrow-circle-left"></i></a></td>
-                                <td><a class="" href="#" title="Patient details"><i class="fa fa-eye"></i></a></td>
-                                <!--<td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>-->
-                                <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
+                                <td><a class="" href="#" title="Patient medical details"><i class="fa fa-eye"></i></a></td>
+                                <td><a class="edit-user" href="#" title="Edit patient"><i class="fa fa-pencil"></i></a></td>
+                                <td><a class="delete-user" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?Php $count++; endforeach; ?>
                     </tbody>
                 </table>
             <?Php else : ?>
+            <h4>No patients found.</h4>
             <?Php endif; ?>
         </div>
         <div class="pagination-container">

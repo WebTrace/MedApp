@@ -75,9 +75,12 @@ $route['practice'] = 'admin/practice';
 $route['patients'] = 'admin/patients';
 $route['patients/create_patient'] = 'admin/patients/create_patient';
 $route['patients/create_diagnosis'] = 'admin/patients/create_diagnosis';
+$route['patients/search_claima_patient'] = 'admin/patients/search_claima_patient';
+$route['consultation'] = 'admin/consultation';
+$route['consultation/create_consultation'] = 'admin/consultation/create_consultation';
+$route['claim/create_claim'] = 'admin/claim/create_claim';
 $route['users/create_user'] = 'admin/users/create_user';
 //$route['dashboard/get_apartment/(:num)'] = 'dashboard/get_apartment/$1';
-
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -35,7 +35,7 @@ function clean_string(str)
 */
 function search_table(q)
 {
-    $("#user-list tr:gt(0)").each(function() {
+    $("#patients-list tr:gt(0)").each(function() {
         var found = "false";
 
         console.log($(this).val());
