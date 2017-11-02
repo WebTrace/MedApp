@@ -91,7 +91,7 @@
             //create dependant
             $this->medical_aid_model->create_dependant($user_id, $medical_aid_id, $dependant_code, $relaltionship_code);
             //TODO : create cash billing
-            //TODO : create account
+            //TODO : create account 
             
             $this->db->trans_complete();//END TRANSACTION
             
