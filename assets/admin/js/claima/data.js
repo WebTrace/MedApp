@@ -34,11 +34,7 @@ $(document).ready(function() {
     }
     
     //TODO : display full appointment details using bootstrap popover
-    
-    /*
-    *
-    *
-    */
+
     
     $("#next").on("click", function(e) {
         e.preventDefault();
@@ -109,7 +105,7 @@ $(document).ready(function() {
     */
     $("#frm_add_user").on("submit", function(e) {
         //prevent the form from submiting by default
-        e.preventDefault();
+        //e.preventDefault();
         
         var errcount = 0;
         errcount = addUserHandler();

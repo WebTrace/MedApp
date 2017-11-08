@@ -7,24 +7,23 @@
         public function index()
         {
             $this->load->view("admin/templates/header");
-            //load partial template for specific user role
             
-            
+            //load partial template for specific user roles
             if($this->session->userdata("ROLE_NAME") == "MANAGER")
             {
-                $this->load->view("admin/partial/_manager");
+                $this->load->view("admin/partial/dashboard/_manager");
             }
             else if($this->session->userdata("ROLE_NAME") == "PRACTITIONER")
             {
-                $this->load->view("admin/partial/_practitioner");
+                $this->load->view("admin/partial/dashboard/_practitioner");
             }
             else if($this->session->userdata("ROLE_NAME") == "RECEPTIONIST")
             {
-                $this->load->view("admin/partial/_receptionist");
+                $this->load->view("admin/partial/dashboard/_receptionist");
             }
             else if($this->session->userdata("ROLE_NAME") == "PATIENT")
             {
-                $this->load->view("admin/partial/_patient");
+                $this->load->view("admin/partial/dashboard/_patient");
             }
             
             $this->load->view("admin/templates/footer");

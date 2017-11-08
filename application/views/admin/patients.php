@@ -81,35 +81,35 @@
                                                 <div class="tab-content clearfix">
                                                     <div class="tab-pane active" id="patient">
                                                         <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class='media'>
+                                                                    <span class='pull-left format-span'>
+                                                                        <i class="fa fa-user-o"></i>
+                                                                    </span>
+                                                                    <div class='media-body'>
+                                                                        <h4 class='media-heading'>Patient name</h4>
+                                                                        <p id='patient_name'>Emmanuel Kgatla</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='media'>
+                                                                    <span class='pull-left format-span'>
+                                                                        <i class="fa fa-hashtag"></i>
+                                                                    </span>
+                                                                    <div class='media-body'>
+                                                                        <h4 class='media-heading'>ID number</h4>
+                                                                        <p id='id_no'>001256 3566 985</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <select name="" class="text-input">
+                                                                    <option value="0"></option>
+                                                                </select>
+                                                                <select name="" class="text-input">
+                                                                    <option value="0"></option>
+                                                                </select>
+                                                            </div>
                                                             <div class="col-lg-12">
-                                                                <table class="table">
-                                                                    <tr>
-                                                                        <td>First name</td>
-                                                                        <td>Emmauel</td>
-                                                                        <td>Price list</td>
-                                                                        <td>
-                                                                            <select name="" class="text-input">
-                                                                                <option value="0"></option>
-                                                                            </select>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Last name</td>
-                                                                        <td>Kgatla</td>
-                                                                        <td>Treatment time</td>
-                                                                        <td>
-                                                                            <select name="" class="text-input">
-                                                                                <option value="0"></option>
-                                                                            </select>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Age</td>
-                                                                        <td>20</td>
-                                                                        <td>20</td>
-                                                                        <td>20</td>
-                                                                    </tr>
-                                                                </table>
                                                                 <hr>
                                                             </div>
                                                         </div>
