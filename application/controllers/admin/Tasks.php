@@ -1,13 +1,13 @@
 <?Php
-    class Tasks extends CI_Controller
+    class Tasks extends My_Controller
     {
         public function index()
         {
-            $this->send_email('no-reply', 'emmkga@gmail.com', 'Test', 'This is a test message');
+            //$this->send_email('no-reply', 'emmkga@gmail.com', 'Test', 'This is a test message');
             
-            /*$this->load->view("admin/templates/header");
+            $this->load->view("admin/templates/header");
             $this->load->view("admin/tasks");
-            $this->load->view("admin/templates/footer");*/
+            $this->load->view("admin/templates/footer");
         }
         
         private function send_email($from, $to, $subject, $message)

@@ -4,6 +4,7 @@
         function __construct()
         {
             parent::__construct();
+            $this->is_user_signin();
         }
         
         protected function is_user_signin()

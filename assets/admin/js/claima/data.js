@@ -165,7 +165,7 @@ $(document).ready(function() {
                 $("#save-patient-request").hide();
                 
                 //close modal
-                $("#add_user_modal").modal('hide');s
+                $("#add_user_modal").modal('hide');
                 
                 //show notification
                 notification_message(message_type, title, message);
@@ -176,7 +176,6 @@ $(document).ready(function() {
     //search patient exisitng in claima application
     $("#frm-search").on('submit', function(e) {
         e.preventDefault();
-        
         //hide magnifying glass icon
         $("#search-waiting").removeClass('glyphicon glyphicon-search');
         
@@ -199,12 +198,55 @@ $(document).ready(function() {
                 
                 //hide progress icon
                 $("#search-waiting").removeClass('fa fa-circle-o-notch fa-spin');
-                console.log(response[0].first_name);
                 
                 //
-                var title   = '<h4><i class="fa fa-check-circle-o"></i> User found</h4>',
-                    message_type = 'success',
-                    message = response[0].first_name + ' ' + response[0].last_name;
+                var title           = '',
+                    message_type    = '',
+                    message         = '';
+                console.log(response);
+                //
+                //patient_search_result(response);
+                
+                if(response.length > 0) 
+                {
+                    //hide new patient form
+                    $("#frm-add-new-patient").hide();
+                    //hide reset button
+                    $("#btn-reset").hide();
+                    
+                    var full_name           = response[0].first_name + ' ' + response[0].last_name,
+                        date_of_birth       = response[0].dob,
+                        id_number           = response[0].id_number,
+                        gender              = response[0].gender,
+                        physical_address    = response[0].address_line + ', ' + response[0].suburb + ', ' + response[0].city + ', ' +response[0].postal_code,
+                        postal_address      = "",
+                        contact_no          = response[0].contact_no,
+                        email_address       = response[0].email_address,
+                        patient_id          = response[0].patient_id;
+                    
+                    title                   = '<h4><i class="fa fa-check-circle-o"></i> User found</h4>';
+                    message_type            = 'success';
+                    message                 = response[0].first_name + ' ' + response[0].last_name;
+
+                    $("#full-name").text(full_name);
+                    $("#data-of-birth").text(date_of_birth);
+                    $("#id-number").text(id_number);
+                    $("#gender").text(gender);
+                    $("#physical-address").text(physical_address);
+                    $("#postal-address").text();
+                    $("#contact-number").text(contact_no);
+                    $("#email-address").text(email_address);
+                    $("#q_patient_id").val(patient_id);
+                    
+                    //show search results
+                    $("#claima-patient").show();
+                }
+                else
+                {
+                    title                   = '<h4><i class="fa fa-times-circle-o"></i> User not found</h4>',
+                    message_type            = 'danger',
+                    message                 = 'Patient with ID number ' + q + ' does not exist.';
+                }
                 
                 //show notification
                 notification_message(message_type, title, message);
@@ -213,6 +255,17 @@ $(document).ready(function() {
                 
             }
         })
+    })
+    
+    $("#cancel-search").on("click", function() {
+        //hide search results
+        $("#claima-patient").hide();
+        
+        //show new patient form
+        $("#frm-add-new-patient").show();
+        
+        //show reset button
+        $("#btn-reset").show();
     })
 })
 

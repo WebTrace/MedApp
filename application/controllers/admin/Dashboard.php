@@ -6,11 +6,27 @@
     {
         public function index()
         {
-            //check if users have signed in. if not redirect 
-            $this->is_user_signin();
+            $this->load->view("admin/templates/header");
+            //load partial template for specific user role
             
-            $this->load->view("admin/templates/header");   
-            $this->load->view("admin/dashboard");
+            
+            if($this->session->userdata("ROLE_NAME") == "MANAGER")
+            {
+                $this->load->view("admin/partial/_manager");
+            }
+            else if($this->session->userdata("ROLE_NAME") == "PRACTITIONER")
+            {
+                $this->load->view("admin/partial/_practitioner");
+            }
+            else if($this->session->userdata("ROLE_NAME") == "RECEPTIONIST")
+            {
+                $this->load->view("admin/partial/_receptionist");
+            }
+            else if($this->session->userdata("ROLE_NAME") == "PATIENT")
+            {
+                $this->load->view("admin/partial/_patient");
+            }
+            
             $this->load->view("admin/templates/footer");
         }
     }

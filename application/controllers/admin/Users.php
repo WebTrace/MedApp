@@ -3,8 +3,6 @@
     {
         public function index()
         {
-            $this->is_user_signin();
-            
             //get logedin user id
             $user_id = $this->session->userdata("USER_ID");
             

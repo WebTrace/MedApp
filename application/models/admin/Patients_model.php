@@ -207,24 +207,28 @@
             $this->db->insert('patient', $patient_data);
         }
         
-        //fetch all patient data
+        //fetch all patient data if search query is true
         public function fetch_patient()
         {
             $unique_id = $this->input->post('q');
             
             $this->db->from('user u');
+            $this->db->join("address ad", "u.user_id = ad.user_id","LEFT");
+            $this->db->join("user_address_type uat", "ad.address_id = uat.address_id", "LEFT");
+            $this->db->join("address_type at", "at.address_type_code = uat.address_type_code");
+            $this->db->join('phone_contact pc', 'u.user_id = pc.user_id');
+            $this->db->join('phone_contact_type pct', 'pc.phone_contact_id = pct.phone_contact_id');
+            $this->db->join('contact_type ct', 'ct.contact_type_code = pct.contact_type_code');
+            $this->db->join('email_contact ec', 'u.user_id = ec.user_id');
             $this->db->join('patient p', 'u.user_id = p.user_id');
-            //$this->db->join('medical_aid m', 'p.patient_id = m.patient_id', 'left');
-            //$this->db->join('dependant d', 'm.medical_aid_id = d.medical_aid_id', 'left');
-            //$this->db->join('treatment t', 'p.patient_id = t.patient_id');
-            //$this->db->join('billing b', 't.treatment_id = b.treatment_id');
-            //$this->db->join('billing_type bt', 'bt.billing_type_code = b.billing_type_code');
-            //$this->db->join('address a', 'u.user_id = a.user_id');
-            //$this->db->join('phone_contact pc', 'u.user_id = pc.user_id');
-            //$this->db->join('email_contact ec', 'u.user_id = ec.user_id');
             $this->db->where('id_number', $unique_id);
             
             return $this->db->get()->result_array();
+        }
+        
+        public function fetch_address()
+        {
+            
         }
         
         public function update_patient()
@@ -355,7 +359,7 @@
             );
             
             //create treatment branch
-            $this->db->insert('treatment_branch', $treatment_branch_data);
+            return $this->db->insert('treatment_branch', $treatment_branch_data);
         }
         
         //fetch medical aid number
@@ -368,6 +372,8 @@
         public function search_claima_patient()
         {
             $id_number = $this->input->post('q');
+            
+            $query = "SELECT id_number F";
             
             $this->db->where('id_number', $id_number);
             

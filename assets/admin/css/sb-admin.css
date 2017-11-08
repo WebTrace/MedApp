@@ -354,6 +354,11 @@
     background: #66c7b9;
 }
 
+.btn-save:focus {
+    color: #fff;
+    outline: none !important;
+}
+
 .btn-reset {
     border-radius: 2;
     background: #e89865;
@@ -364,6 +369,13 @@
     color: #fff;
     background: #ca7e4e;
 }
+
+.btn-reset:focus {
+    color: #fff;
+    outline: none !important;
+}
+
+
 
 #body-container {
     /*background: #90d7ea;*/
@@ -796,6 +808,36 @@ legend {
     border: none;
     right: 0px;
     top: 0px;
+}
+
+.format-span {
+    padding: 0px !important;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    text-align: center;
+    display: block;
+    margin-right: 10px;
+    border: #ccc thin solid;
+}
+
+.media-body h4 {
+    font-size: 17px;
+    color: #65bfbd;
+}
+
+.media-bodyp {
+    font-size: 14px;
+}
+
+.format-span i {
+    font-size: 20px;
+    color: #999;
+}
+
+#claima-patient {
+    display: none;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

@@ -45,7 +45,7 @@
                                 <div class="reg-group">
                                     <div class="inp-collection">
                                         <!--<input type="text" name="title" class="reg-input" id="title" placeholder="Title">-->
-                                        <select class="reg-input" name="title" id="title">
+                                        <select class="reg-input dr-placeholder" name="title" id="title">
                                             <option value="0">Title</option>
                                             <option value="Mr">Mr</option>
                                             <option value="Ms">Ms</option>
@@ -191,7 +191,7 @@
                                 <div class="reg-group">
                                     <div class="inp-collection">
                                         <!--<input type="text" name="practice_type" class="reg-input" id="practice_type" placeholder="Practice type">-->
-                                        <select name="practice_type" class="reg-input" id="practice_type">
+                                        <select name="practice_type" class="reg-input dr-placeholder" id="practice_type">
                                             <option value="0">Practice type</option>
                                             <?Php if(count($specialities) > 0) : ?>
                                                 <?Php foreach($specialities as $speciality) : ?>
@@ -205,11 +205,11 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">
-                                        <input type="text" name="tel_no" class="reg-input" id="practice_tel_no" placeholder="Tel no">
+                                        <input type="text" name="street_name" class="reg-input" id="street_name" placeholder="Street name">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                        <!--<div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">
                                         <input type="text" name="practice_email" class="reg-input" id="practice_email" placeholder="Practice email">
@@ -222,7 +222,7 @@
                                         <input type="text" name="confirm_practice_email" class="reg-input" id="confirm_practice_email" placeholder="Confirm email">
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         <!--</fieldset>-->
                     </div>
                     <div class="row">

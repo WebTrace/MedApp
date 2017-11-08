@@ -25,6 +25,7 @@
                 $user_data = array(
                     'USER_ID'           => $query->row(0)->user_id,
                     'USER_ROLE'         => $query->row(0)->role_code,
+                    'ROLE_NAME'         => $query->row(0)->role_name,
                     'USER_STATUS'       => $query->row(0)->status_code,
                     'FNAME'             => $query->row(0)->first_name,
                     'LNAME'             => $query->row(0)->last_name,

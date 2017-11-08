@@ -287,9 +287,7 @@ function signupStepTwoHandler()
     var practice_name           = $("#practice_name").val(),
         practice_no             = $("#practice_no").val(),
         practice_type           = $("#practice_type").val(),
-        tel_no                  = $("#practice_tel_no").val(),
-        practice_email          = $("#practice_email").val(),
-        confirm_prac_email      = $("#confirm_practice_email").val(),
+        street_name             = $("#street_name").val(),
         address_line            = $("#address_line").val(),
         location                = $("#location").val(),
         city                    = $("#city").val(),
@@ -328,33 +326,6 @@ function signupStepTwoHandler()
         $('#err-practice-type').slideUp(300);
     }
 
-    //validate tel number field
-    if(tel_no.trim() == "") {
-        errcount ++;
-        console.log("Tel no is empty");
-    }
-    else {
-        console.log("Tel no is : " + tel_no);
-    }
-
-    //validate practice email field
-    if(practice_email.trim() == "") {
-        errcount ++;
-        console.log("Practice email is empty");
-    }
-    else {
-        console.log("Practice email is : " + practice_email);
-    }
-
-    //validate confirm practice email field
-    if(confirm_prac_email.trim() == "") {
-        errcount ++;
-        console.log("Confirm practice email is empty");
-    }
-    else {
-        console.log("Confirm practice email is : " + confirm_prac_email);
-    }
-
     //validate address line
     if(address_line.trim() == "") {
         errcount ++;
@@ -363,6 +334,15 @@ function signupStepTwoHandler()
     else {
         $('#err-prac-address').slideUp(300);
     }
+    
+    //validate street name field
+    /*if(street_name.trim() == "") {
+        errcount ++;
+        console.log("Street name no is empty");
+    }
+    else {
+        console.log("Tel no is : " + tel_no);
+    }*/
 
     //validate location field
     if(location.trim() == "") {

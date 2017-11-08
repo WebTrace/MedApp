@@ -2,10 +2,7 @@
     class Patients extends My_Controller
     {
         public function index()
-        {
-            //check if user is signed in
-            $this->is_user_signin();
-            
+        {  
             $branch_id = $this->session->userdata("BRANCH_ID");
             
             //push counter in patiets data
@@ -34,6 +31,15 @@
             }
         }
         
+        public function add_claima_patient()
+        {
+            $branch_id      = $this->input->post('branch_id');
+            $patient_id     = $this->input->post('patient_id');
+            
+            $this->patients_model->create_treatment_branch($branch_id, $patient_id);
+            
+        }
+        
         //create diagnosis
         public function create_diagnosis()
         {
@@ -56,11 +62,16 @@
         {
             if($this->patients_model->search_claima_patient() == TRUE)
             {
-               echo json_encode($this->patients_model->fetch_patient());
+                //if patient is found, call fetch_patient method()
+                echo json_encode($this->patients_model->fetch_patient());
             }
             else
             {
-                echo 'Not found';
+                $error = array(
+                    'not_found' => 'Patient with ID number ' + $this->input->post('q') + ' does not exist.'
+                );
+                
+                echo json_encode($error);
             }
         }
         

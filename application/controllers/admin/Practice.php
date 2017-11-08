@@ -3,7 +3,6 @@
     {
         public function index()
         {
-            $this->is_user_signin();
             
             $this->load->view("admin/templates/auth-header");
             $this->load->view("admin/add-practice");

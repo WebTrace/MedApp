@@ -125,4 +125,9 @@ function calculate_date(dob)
     return date_of_birth;
 }
 
-//alert(calculate_date('1991-09-21'));
+function patient_search_result(data)
+{
+    //data[0].first_name + ' ' + data[0].last_name;
+    
+    $("#ajax-search-patient-details").html(patient_detials);
+}
