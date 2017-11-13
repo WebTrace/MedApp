@@ -185,7 +185,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="Full_names"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Full_names" name="Full_names" placeholder=" Full_names" required="">
+                                            <input type="text" class="form-control" id="Full_names" name="Full_names" placeholder=" Full Names" >
 
                                         </div>
                                 </div>
@@ -194,7 +194,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="Surname"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Surname" required="">
+                                            <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Surname">
 
                                         </div>
                                 </div>
@@ -206,7 +206,7 @@
                                         <div class="form-group">
                                     <label class="control-label" for="Age"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Age" name="Age" placeholder="Age" required="">
+                                            <input type="text" class="form-control" id="Age" name="Age" placeholder="Age" >
 
                                         </div>
                                 </div>
@@ -215,7 +215,7 @@
                                     <div class="form-group">
                                     <label class="control-label" for="Cell Number"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Cell Number" name="Cell Number" placeholder="Cell Number" required="">
+                                            <input type="text" class="form-control" id="Cell Number" name="Cell Number" placeholder="Cell Number" >
 
                                         </div>
                                 </div>
@@ -244,7 +244,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="Treatment_Location"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Treatment_Location" name="Treatment_Location" placeholder=" Treatment Location" required="">
+                                            <input type="text" class="form-control" id="Treatment_Location" name="Treatment_Location" placeholder=" Treatment Location">
 
                                         </div>
                                 </div>
@@ -253,13 +253,27 @@
                                 <div class="form-group">
                                     <label class="control-label" for="Treatment_Date"></label>
                                         <div>
-                                            <input type="text" class="form-control" id="Treatment Date" name="Treatment Date" placeholder="Treatment Date" required="">
+                                            <input type="text" class="form-control" id="Treatment Date" name="Treatment Date" placeholder="Treatment Date" >
 
                                         </div>
                                 </div>
                      </div> 
 
-                            <div class="row">
+                        <div class="row">
+                        <div style="margin-left: 73%; margin-bottom: 2%;">
+                            <button type="button" id="Add_Field" class="Add_Field_button">Add Field</button>
+
+                        </div>
+
+                            <div style="margin-left: 85%; margin-bottom: 2%; margin-top:-20%;">
+                            <button type="button" id="Remove_Field" class="Delete_Field_button">Delete Field</button>
+                            </div>
+                            
+                        </div>
+
+
+
+    <div class="row">
         <div class="col-lg-12">
             <div >
                 <table class="table table-bordered" id="user-list">
@@ -268,38 +282,20 @@
                             <th>Tariff Code</th>
                             <th>Description</th>
                             <th>ICD_10_Code</th>
-                            <th>Modifier Code.</th>
+                            <th>Modifier Code</th>
                             <th>Price</th>
-                            <th>Total Amount:</th>
-                            <th>R200</th>
+                            <th>Sub Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Kgatla</td>
-                            <td>Emmanuel</td>
-                            <td>956263 5988 026</td>
-                            <td>Male</td>
-
+                            <td><input type="text" class="form-control" id="Tariff_Code" name="Tariff_Code"  placeholder="Tariff Code" ></td>
+                            <td><input type="text" class="form-control" id="Description"  name="Description" placeholder="Description" ></td>
+                            <td><input type="text" class="form-control" id="ICD_10_Code" name="ICD_10_Code" placeholder="ICD Code" ></td>
+                            <td><input type="text" class="form-control" id="Modifier_Code" name="Modifier_Code" placeholder="Modifier Code" ></td>
+                            <td><input type="text" class="form-control" id="Price" name="Price" placeholder="Price" ></td>
+                            <td><input type="text" class="form-control" id="Total" name="Total" placeholder="Sub Total"></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Madella</td>
-                            <td>Lee-Roy</td>
-                            <td>962563 2103 251</td>
-                            <td>Male</td>
-
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Madella</td>
-                            <td>Lee-Roy</td>
-                            <td>962563 2103 251</td>
-                            <td>Male</td>
-
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -319,6 +315,7 @@
             </form>
         </div>
     </div>
+    
 
     <div class="row">
         <div class="col-lg-12">

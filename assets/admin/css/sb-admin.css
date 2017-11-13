@@ -733,6 +733,14 @@ legend {
     text-decoration: none;
 }
 
+.details-header {
+    font-size: 16px;
+}
+
+.hr-margin {
+    margin: 10px 0px;
+}
+
 /******************************************************
 /*
 *Joseph section
@@ -752,6 +760,27 @@ legend {
 /*
 *Spenzer section
 */
+.Add_Field_button{
+    background-color: #4caf50;
+    border:none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px; 
+    color: white;
+
+
+}
+.Delete_Field_button{
+    background-color: #ff3333;
+    border:none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px; 
+    color: white;
+
+
+}
+
 
 .form-box{
       max-width: 900px;

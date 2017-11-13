@@ -3,7 +3,7 @@
         <div class="col-lg-7">
             <div class="btn-controls-group">
                 <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#add_user_modal">
-                    <i class="fa fa-plus"></i> New consultation
+                    <i class="fa fa-plus"></i> New patient
                 </button>
                 <!--<button class="btn-controls" id="export-pdf" type="submit">Export PDF</button>
                 <button class="btn-controls" id="" type="submit">Export Excel</button>-->
@@ -59,7 +59,7 @@
         <?Php
             $attributes = array('id' => 'add_patient');
             echo form_open(base_url() . 'consultation/create_consultation', $attributes); 
-        ?>
+            ?>
             <div class="modal fade" id="add_user_modal">
                 <div class="modal-dialog" id="modal-format">
                     <div class="modal-content">
@@ -117,12 +117,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <hr class="hr-margin">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h5>Personal details</h5>
+                                            <h5 class="details-header">Personal details</h5>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -194,14 +194,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h5 class="details-header">Postal address</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-input-group">
-                                                Same as above <input type="checkbox" name="same_address" id="same_address" value="3">
-                                            </div>
+                                            <h5 class="details-header">Postal address 
+                                                <span style="font-size: 14px;" class="pull-right">Same as above 
+                                                    <input type="checkbox" name="same_address" id="same_address" value="3"></span>
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -230,7 +226,7 @@
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h5>Contact details</h5>
+                                            <h5 class="details-header">Contact details</h5>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -252,14 +248,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h5>Billing details</h5>
+                                            <h5 class="details-header">Billing details</h5>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-input-group">
-                                                <select name="" id="" class="text-input">
+                                                <select name="billing_type" id="billing_type" class="text-input">
                                                     <option value="0">Billing type</option>
+                                                    <?Php if(count($billing_types) > 0) : ?>
+                                                        <?Php foreach($billing_types as $billing_type) : ?>
+                                                            <option value="<?Php echo $billing_type['billing_code']; ?>"><?Php echo $billing_type['billing_name']; ?></option>
+                                                        <?Php endforeach; ?>
+                                                    <?Php else : ?>
+                                                        <option value="0">No billing type defined</option>
+                                                    <?Php endif; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -296,7 +299,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h5>Account details</h5>
+                                            <h5 class="details-header">Account details</h5>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -334,7 +337,6 @@
         </form>
     </div>
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <div class="user-table">

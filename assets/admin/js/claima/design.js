@@ -92,4 +92,33 @@ $(document).ready(function() {
         
         return false;
     })
+
+
+//Spencer
+
+
+    $("#Add_Field").on("click", function() {
+
+        var str = "<tr>";
+            str += "<td><input type='text' name='Tariff_Code[]' id='Tariff_Code' placeholder='Terrif Code'></td>";
+            str += "<td><input type='text' name='Description[]' id='Description' placeholder='Description'></td>";
+            str += "<td><input type='text' name='ICD_10_Code[]' id='ICD_10_Code' placeholder='ICD 10 Code'></td>";
+            str += "<td><input type='text' name='Modifier_Code[]' id='Modifier_Code' placeholder='Modifier Code'></td>";
+            str += "<td><input type='text' name='Price[]' id='Price' placeholder='Price'></td>";
+            str += "<td><input type='text' name='Total[]' id='Total' placeholder='Total'></td>";
+            str += "</tr>";
+
+        $("#user-list").append(str);
+
+    })
+
+    $("#Remove_Field").on("click", function(){
+
+      $("#user-list").find("td:not(:Last)").remove();
+
+    })
+
+
+
+
 });

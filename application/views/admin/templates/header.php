@@ -149,7 +149,7 @@
                                 <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="consultation"><i class="fa fa-fw fa-user-md"></i> Consultations</a>
+                                <a href="consultation"><i class="fa fa-fw fa-user-md"></i> Patients</a>
                             </li>
                             <li>
                                 <a href="claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
