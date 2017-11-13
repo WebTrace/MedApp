@@ -91,9 +91,17 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group user-search">
+                                                <input type="search" name="q" id="" class="text-input" placeholder="Search user">
+                                                <button type="submit" class="btn-search-icon" id="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-input-group">
-                                                <select name="user_branch" id="user_branch" class="text-input">
+                                                <select name="user_branch" id="user_branch" class="text-input dr-placeholder">
                                                     <option value="0">Select branch</option>
                                                     <?Php if(isset($branches)) : ?>
                                                         <?Php foreach($branches as $branch) : ?>
@@ -105,7 +113,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-input-group">
-                                                <select name="user_role" id="user_role" class="text-input">
+                                                <select name="user_role" id="user_role" class="text-input dr-placeholder">
                                                     <option value="0">Select role</option>
                                                     <?Php if(isset($roles)) : ?>
                                                         <?Php foreach($roles as $role) : ?>
@@ -119,7 +127,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="dropdown form-input-group">
-                                                <select name="title" id="title" class="text-input">
+                                                <select name="title" id="title" class="text-input dr-placeholder">
                                                     <option value="0">Title</option>
                                                     <option value="Mr">Mr</option>>
                                                     <option value="Ms">Ms</option>>

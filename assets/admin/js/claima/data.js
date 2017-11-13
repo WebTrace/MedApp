@@ -34,7 +34,6 @@ $(document).ready(function() {
     }
     
     //TODO : display full appointment details using bootstrap popover
-
     
     $("#next").on("click", function(e) {
         e.preventDefault();
@@ -130,9 +129,21 @@ $(document).ready(function() {
         }
     })
     
+    //get patient details for new consultation modal
     $(".consultation-btn").on("click", function() {
         var patient_id = $(this).attr("id");
         $("#user_id").attr("value", patient_id);
+        
+        $.ajax({
+            url: $(this).attr('data-url'),
+            type: 'post',
+            dataType: 'json',
+            data: { id: patient_id },
+            success: function (response) {
+                $('#patient_full_name').text(response.first_name);
+                $('#id_number').text(response.id_number);
+            }
+        });
     })
     
     //create patient

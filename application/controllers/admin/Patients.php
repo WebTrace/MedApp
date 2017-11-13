@@ -10,6 +10,7 @@
             
             $data['patients']                   = $this->patients_model->fetch_all_patient();
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
+            $data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
             $data["dependant_relationships"]    = $this->medical_aid_model->fetch_relationship();
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
@@ -29,6 +30,14 @@
             {
                 
             }
+        }
+        
+        public function edit_patient($patient_id)
+        {
+            $data['patient'] = $patient_id;
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/edit_patient", $data);
+            $this->load->view("admin/templates/footer");
         }
         
         public function add_claima_patient()
@@ -79,6 +88,15 @@
         public function fetch_billing_type()
         {
             
+        }
+        
+        //
+        public function ajax_fetch_single_user()
+        {
+            $patient_id = $this->input->post('id');
+            
+            $single_user = $this->patients_model->fetch_single_user($patient_id);
+            echo json_encode($single_user);
         }
         
         //fetch patients via ajax

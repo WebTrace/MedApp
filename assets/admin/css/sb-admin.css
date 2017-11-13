@@ -737,11 +737,18 @@ legend {
 }
 
 .setting-btn {
+    color: #bbb;
     display: block;
     padding: 10px;
 }
 
+.setting-btn {
+    
+    border: #ccc thin solid;
+}
+
 .setting-btn:hover {
+    background: #ddd;
     text-decoration: none;
 }
 
@@ -752,6 +759,10 @@ legend {
 
 .hr-margin {
     margin: 10px 0px;
+}
+
+.row-col-margin {
+    margin-bottom: 10px;
 }
 
 #medical-aid-details, #dependant-relation, 
@@ -777,6 +788,11 @@ legend {
 
 #save-patient-request {
     display: none;
+}
+
+#diagnose-collection .text-input {
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 #dispense-collection .text-input {
@@ -810,6 +826,10 @@ legend {
     top: 0px;
 }
 
+.user-search {
+    position: relative;
+}
+
 .format-span {
     padding: 0px !important;
     height: 40px;
@@ -840,6 +860,64 @@ legend {
     display: none;
 }
 
+.dr-placeholder {
+    color: #bbb;
+}
+
+#add-row, #add-row-dispense {
+    margin-bottom: 10px;
+}
+
+#add-row:hover {
+    text-decoration: none;
+}
+
+#add-row:focus {
+    text-decoration: none;
+}
+
+#add-row-dispense:hover {
+    text-decoration: none;
+}
+
+#add-row-dispense:focus {
+    text-decoration: none;
+}
+
+.remove-row {
+    color: #e76969;
+    font-size: 20px;
+}
+
+.remove-row:hover {
+    color: #c13a3a;
+}
+
+.remove-row:focus {
+    color: #c13a3a;
+}
+
+.remove-row-dispense {
+    color: #e76969;
+    font-size: 20px;
+}
+
+.remove-row-dispense:hover {
+    color: #c13a3a;
+}
+
+.remove-row-dispense:focus {
+    color: #c13a3a;
+}
+
+.patient-details {
+    cursor: pointer;
+}
+
+.patient-details:hover {
+    background: #ddd;
+}
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #bbb;
 }
@@ -860,9 +938,6 @@ legend {
     color: #bbb;
 }
 
-.dr-placeholder {
-    color: #bbb;
-}
 
 /******************************************************
 /*
@@ -913,13 +988,11 @@ legend {
     background-color: White;
     text-align: center;
 }
+
 #imaginary_container{
     margin-top:20%
     right: 20px;
     width:300px;
-
-
-
 }
 .stylish-input-group .input-group-addon{
     background: white !important; 

@@ -149,25 +149,25 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
                             <li class="active">
-                                <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                <a href="<?Php echo base_url(); ?>dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="patients"><i class="fa fa-fw fa-user-md"></i> Patients</a>
+                                <a href="<?Php echo base_url(); ?>patients"><i class="fa fa-fw fa-user-md"></i> Patients</a>
                             </li>
                             <li>
-                                <a href="claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
+                                <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
                             </li>
                             <li>
-                                <a href="appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
+                                <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>
                             <li>
-                                <a href="tasks"><i class="fa fa-check-square-o"></i> Tasks</a>
+                                <a href="<?Php echo base_url(); ?>tasks"><i class="fa fa-check-square-o"></i> Tasks</a>
                             </li>
                             <!--<li>
                                 <a href="invoice"><i class="fa fa-fw fa-money"></i> Invoice</a>
                             </li>-->
                             <li>
-                                <a href="reports"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
+                                <a href="<?Php echo base_url(); ?>reports"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
                             </li>
                             <!--<li>
                                 <a href="users"><i class="fa fa-fw fa-users"></i> Manage users</a>

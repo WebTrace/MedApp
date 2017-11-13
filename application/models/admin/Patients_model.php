@@ -5,8 +5,6 @@
         {
             //get patients inputs - personal details
             
-            
-            
             $title                          = $this->input->post('title');
             $first_name                     = $this->input->post('fname');
             $last_name                      = $this->input->post('lname');
@@ -49,7 +47,6 @@
             //get patients inputs - account details
             $username                       = $this->input->post('username'); //optional
             $password                       = $this->input->post('password'); //optionals
-            
             
             /*Begin transaction for creating a patient
             *
@@ -150,6 +147,9 @@
                 $this->medical_aid_model->create_dependant($patient_id, $medical_aid_id, $dependant_no, $relaltionship_code);
             }
             
+            //create patient billing type
+            $this->billing_model->create_patient_billing_type($patient_id, $billing_type);
+            
             //TODO : create cash billing
             
             //TODO : create account
@@ -205,6 +205,14 @@
             
             //create new patient
             $this->db->insert('patient', $patient_data);
+        }
+        
+        public function fetch_single_user($patient_id)
+        {
+            $this->db->from('patient p');
+            $this->db->join('user u', 'p.user_id = u.user_id');
+            $this->db->where('patient_id', $patient_id);
+            return $this->db->get()->row_array();
         }
         
         //fetch all patient data if search query is true

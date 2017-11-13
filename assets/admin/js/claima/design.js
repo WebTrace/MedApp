@@ -153,7 +153,7 @@ $(document).ready(function() {
         }
     })
     
-    //generate rows
+    //generate rows and add a row
     $("#add-row").on("click", function() {
         var row = "<tr>";
         row += "<td><input type='text' name='tariff_code[]' class='text-input'></td>";
@@ -162,12 +162,18 @@ $(document).ready(function() {
         row += "<td><input type='text' name='price[]' class='text-input'></td>";
         row += "<td><input type='text' name='quantity[]' class='text-input'></td>";
         row += "<td><input type='text' name='sub_total[]' class='text-input'></td>";
-        row += "<td><a href='#' class='remove-dispensing' title='Remove'><i class='fa fa-times'></a></td>";
+        row += "<td><a href='#' class='remove-row' title='Remove'><i class='fa fa-times-circle'></a></td>";
         row += "<tr>"; 
         
         $(".add-consultation").append(row);
         
         return false;
+    })
+    
+    //remove diagnosis table row
+    $(".remove-row").on("click", function() {
+        var row = $(this).parents('tr').first();
+        row.remove();
     })
     
     //
@@ -192,5 +198,9 @@ $(document).ready(function() {
         {
             $(this).css("color", "#bbb");
         }
+    })
+    
+    $(".patient-details").on("click", function () {
+        $("#patient-details-modal").modal('show');
     })
 });

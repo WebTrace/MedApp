@@ -61,11 +61,8 @@
         //
         public function fetch_user_branch()
         {
-            //get user id from a session
-            $user_id = $this->session->userdata("USER_ID");
-            
-            $this->db->where('user_id', $user_id);
-            return $this->db->get('branch')->result_array();
+            $this->db->where('BRANCH_ID', $this->session->userdata("BRANCH_ID"));
+            return $this->db->get('user_branch')->result_array();
         }
     }
 ?>
