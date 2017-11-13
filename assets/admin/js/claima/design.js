@@ -114,7 +114,7 @@ $(document).ready(function() {
 
     $("#Remove_Field").on("click", function(){
 
-      $("#user-list").find("td:not(:Last)").remove();
+      $("#user-list").find("td:not(:First)").remove();
 
     })
 
