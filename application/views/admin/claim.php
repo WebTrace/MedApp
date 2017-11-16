@@ -32,14 +32,16 @@
                     <div id="view-control" class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Show all
+                                Show all Claims
                             <span class="caret"></span>
                         </button>
                         <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">15</a></li>
-                            <li><a href="#">25</a></li>
-                            <li><a href="#">35</a></li>
+                            <li><a style="color:#FF0000"; href="#">Rejected Claims</a></li>
+                            <li><a style="color:#000000"; href="#">Claims Waiting for Response</a></li>
+                            <li><a style="color:#00ff80"; href="#">Fully Accepted Claims</a></li>
+                            <li><a style="color:#ff8000"; href="#">Partially Accepted</a></li>
+                            <li><a style="color:#00bfff"; href="#">Cash and Private patient</a></li>
+                            <li><a style="color:#ffff00"; href="#">Draft Consultation</a></li>
                             <!--<li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>-->
                         </ul>
@@ -321,202 +323,180 @@
     </div>
 
     <div class="row">
+           
+           <div class="col-lg-7"   text-align: justify;  
+    -moz-text-align-last: right; 
+    text-align-last: right;>
+              
+                   <li><a style="color:#FF0000"; href="#">Rejected Claims</a></li>
+                   <li><a style="color:#000000"; href="#">Claims Waiting for Response</a></li>
+                   <li><a style="color:#00ff80"; href="#">Fully Accepted Claims</a></li>
+                   <li><a style="color:#ff8000"; href="#">Partially Accepted</a></li>
+                   <li><a style="color:#00bfff"; href="#">Cash and Private patient</a></li>
+                  <li><a style="color:#ffff00"; href="#">Draft Consultation</a></li>
+
+           
+            </div>
+    
         <div class="col-lg-12">
             <div class="user-table">
                 <table class="table table-bordered" id="user-list">
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Date</th>
                             <th>Surname</th>
                             <th>First name</th>
-                            <th>ID No.</th>
-                            <th>Gender</th>
-                            <th>Ethnic</th>
-                            <th>Contact number</th>
-                            <th>Email address</th>
-                            <th>User role</th>
+                            <th>Amount (ZAR)</th>
+                            <th>Balance (ZAR)</th>
                             <th colspan="3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr style="color:#00bfff"; >
                             <td>1</td>
+                            <th>16/9/2017</th>
                             <td>Kgatla</td>
                             <td>Emmanuel</td>
-                            <td>956263 5988 026</td>
-                            <td>Male</td>
-                            <td>African</td>
-                            <td>062 023 6010</td>
-                            <td>emmanuel66@live.co.za</td>
-                            <td>Manager</td>
+                            <td>R200</td>
+                            <td>R250</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#000000";>
                             <td>2</td>
+                            <th>16/11/2016</th>
                             <td>Sibiya</td>
                             <td>Joseph</td>
-                            <td>952363 2561 021</td>
-                            <td>Male</td>
-                            <td>African</td>
-                            <td>062 023 6010</td>
-                            <td>jose@live.co.za</td>
-                            <td>Receptionist</td>
+                            <td>R400</td>
+                            <td>R400</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#ff8000";>
                             <td>3</td>
+                            <th>6/1/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>962563 2103 251</td>
-                            <td>Male</td>
-                            <td>Coloured</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R440</td>
+                            <td>R430</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#FF0000"; >
                             <td>4</td>
+                            <th>6/11/2017</th>
                             <td>Mojela</td>
                             <td>Tshego</td>
-                            <td>789456 8523 542</td>
-                            <td>Tshego</td>
-                            <td>Tshego</td>
-                            <td>062 023 6010</td>
-                            <td>tshego@live.co.za</td>
-                            <td>Practitioner</td>
+                            <td>R400</td>
+                            <td>R403</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#00bfff";>
                             <td>5</td>
+                            <th>16/11/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>463214 7854 152</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R300</td>
+                            <td>R470</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#00ff80";>
                             <td>6</td>
+                            <th>6/11/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>874569 1452 214</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R200</td>
+                            <td>R5000</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#ff8000";>
                             <td>7</td>
+                            <th>1/2/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>564265 2352 120</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R123</td>
+                            <td>R23</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#FF0000"; >
                             <td>8</td>
+                            <th>1/1/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>1203256 4586 852</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R4586</td>
+                            <td>R400</td>
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#00ff80";>
                             <td>9</td>
+                            <th>6/11/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>142510 1256 321</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R156 </td>
+                            <td>R4440</td>
+                          
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#ffff00";>
                             <td>10</td>
+                            <th>1/11/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>894562 1452 256</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R256</td>
+                            <td>R300</td>
+                           
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#000000";>
                             <td>11</td>
+                            <th>16/1/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>582365 0325 758</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R230</td>
+                            <td>R220</td>
+                          
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#FF0000"; >
                             <td>12</td>
+                            <th>16/11/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>985632 0123 145</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R130</td>
+                            <td>R2302</td>
+                         
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
-                        <tr>
+                        <tr style="color:#00ff80";>
                             <td>13</td>
+                            <th>16/4/2017</th>
                             <td>Madella</td>
                             <td>Lee-Roy</td>
-                            <td>125896 2563 320</td>
-                            <td>Lee-Roy</td>
-                            <td>Lee-Roy</td>
-                            <td>062 023 6010</td>
-                            <td>roy@live.co.za</td>
-                            <td>Staff</td>
+                            <td>R123</td>
+                            <td>R123</td>
+                          
                             <td><a href="#"><i class="fa fa-arrow-circle-left"></i></a></td>
                             <td><a class="edit-user" href="#"><i class="fa fa-pencil"></i></a></td>
                             <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
