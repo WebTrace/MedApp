@@ -84,6 +84,7 @@
                             <h2 class="modal-title">NEW CONSULTATION</h2>
                         </div>
                         <div class="modal-body">
+                            
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
