@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="fh5co-hero-wrap">
                 <div class="fh5co-hero-intro">
-                    <h1 class="to-animate hero-animate-1">CLAIMS APPLICATION</h1>
+                    <h1 class="to-animate hero-animate-1">BILLING APPLICATION</h1>
                     
                     <p class="to-animate hero-animate-3"><a href="signup" class="btn btn-outline btn-lg">Subscribe</a></p>
                 </div>
@@ -36,7 +36,7 @@
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
                     <i class="ti-heart"></i>
-                </div>
+                </div>   
                 <h3 class="heading">Patient management</h3>
            
             </div>
