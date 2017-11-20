@@ -4,7 +4,8 @@
         public function index()
             
         {
-              $branch_id = $this->session->userdata("BRANCH_ID");
+            //Tshegofatso code
+            $branch_id = $this->session->userdata("BRANCH_ID");
             
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
