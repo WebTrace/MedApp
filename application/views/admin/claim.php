@@ -38,8 +38,7 @@
                                     <li><a style="color:#ff8000"; href="#">Partially Accepted</a></li>
                                     <li><a style="color:#00bfff"; href="#">Cash and Private patient</a></li>
                                     <li><a style="color:#ffff00"; href="#">Draft Consultation</a></li>
-                                    <!--<li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>-->
+                                   
                                 </ul>
                                 <input type="hidden" name="rows" id="rows" value="5">
                             </div>
@@ -57,7 +56,7 @@
                 <div class="col-lg-12">
                     <?Php
                            $attributes = array('id' => 'add_diagnosis');
-                            echo form_open(base_url() . 'patients/create_diagnosis', $attributes);  
+                            echo form_open(base_url() . 'claim/create_diagnosis', $attributes);  
                     ?>
                         <div class="modal fade" id="add_user_modal">
                             <div class="modal-dialog" id="modal-format">
@@ -292,8 +291,8 @@
             <div class="row">
 
                    <div class="col-lg-7"   text-align: justify;  
-            -moz-text-align-last: right; 
-            text-align-last: right;>
+                                            -moz-text-align-last: right; 
+                                                    text-align-last: right;>
 
                            <li><a style="color:#FF0000"; href="#">Rejected Claims</a></li>
                            <li><a style="color:#000000"; href="#">Claims Waiting for Response</a></li>
