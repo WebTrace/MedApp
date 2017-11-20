@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="fh5co-hero-wrap">
                 <div class="fh5co-hero-intro">
-                    <h1 class="to-animate hero-animate-1">BILLING APPLICATION</h1>
+                    <h1 class="to-animate hero-animate-1">CLAIMS APPLICATION</h1>
                     
                     <p class="to-animate hero-animate-3"><a href="signup" class="btn btn-outline btn-lg">Subscribe</a></p>
                 </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
-                    <i class="ti-lock"></i>
+                    <i class="ti-pulse"></i>
                 </div>
                 <h3 class="heading">Real time information</h3>
              
@@ -35,7 +35,7 @@
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
-                    <i class="ti-video-camera"></i>
+                    <i class="ti-heart"></i>
                 </div>
                 <h3 class="heading">Patient management</h3>
            
@@ -43,7 +43,7 @@
             <div class="clearfix visible-md-block visible-lg-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
                 <div class="fh5co-feature-icon">
-                    <i class="ti-shopping-cart"></i>
+                    <i class="ti-timer"></i>
                 </div>
                 <h3 class="heading">Appointments</h3>
               
@@ -51,14 +51,14 @@
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
-                    <i class="ti-palette"></i>
+                    <i class="ti-calendar"></i>
                 </div>
                 <h3 class="heading">Reminder</h3>
                
             </div>
             <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
                 <div class="fh5co-feature-icon">
-                    <i class="ti-truck"></i>
+                    <i class="ti-wheelchair"></i>
                 </div>
                 <h3 class="heading">Task Schedular</h3>
               
