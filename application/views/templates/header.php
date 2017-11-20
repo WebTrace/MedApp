@@ -51,7 +51,7 @@
         <div class="container">
             <!-- <div id="fh5co-menu-logo"> -->
                 <!-- START #fh5co-logo -->
-                <h1 id="fh5co-logo" class="pull-left"><a href="<?Php echo base_url(); ?>">Claima</a></h1>
+                <h1 id="fh5co-logo" class="pull-left"><a href="<?Php echo base_url(); ?>"><img src="assets/images/_claima.png" 				                 width="100" height="80" alt="Claima"></a></h1>
 
                 <!-- START #fh5co-menu-wrap -->
                 <nav id="fh5co-menu-wrap" role="navigation">
