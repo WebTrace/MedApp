@@ -160,11 +160,11 @@
                         <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    <label for="scheduleStart">Scheduled Start</label>
-					    	        <input type="date" class="form-control" id="scheduleStart" placeholder="Scheduled Start">
+					    	        <input type="datetime-local" class="form-control" id="scheduleStart" placeholder="Scheduled Start">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    	<label for="scheduleEnd">Schedule End</label>
-					    	    <input type="date" class="form-control" id="scheduleEnd" placeholder="Schedule End">
+					    	    <input type="datetime-local" class="form-control" id="scheduleEnd" placeholder="Schedule End">
                                 </div>
                             </div>
                         <div class="form-group">
@@ -175,15 +175,15 @@
                                     </option>
 
                                     <option value="service">
-                                        priorities
+                                        High
                                     </option>
 
                                     <option value="suggestions">
-                                        priorities
+                                        Medium
                                     </option>
 
                                     <option value="product">
-                                       priorities
+                                       Low
                                     </option>
                                 </select>
 			  			    </div>
