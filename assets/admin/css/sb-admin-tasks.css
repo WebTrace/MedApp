@@ -128,10 +128,8 @@ textarea.form-control {
    /* margin-top: px;*/
 }
 
-.submit{
-  font-size: 1.1em;
-  float: right;
-  width: 150px;
-  color: black;
-
+button{
+    border-radius: 0px;
 }
+
+

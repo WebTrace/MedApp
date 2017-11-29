@@ -165,6 +165,11 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    	<label for="scheduleEnd">Schedule End</label>
 					    	    <input type="datetime-local" class="form-control" id="scheduleEnd" placeholder="Schedule End">
+                                    
+                                    <label for="scheduleEnd">
+                                        <input type="checkbox" id="noDueDate">
+                                        No due date
+                                    </label>
                                 </div>
                             </div>
                         <div class="form-group">
@@ -194,7 +199,10 @@
 			  			 	<textarea  class="form-control" id="description" placeholder="Enter Your Description"></textarea>
 			         </div>
 			  			<div>
-			  				<button type="button" style="background-color:#7B7D7D; color: #E5E8E8" class="btn btn-success submit"><i class="fa fa-plus" aria-hidden="true"></i>  Add Task</button>
+                          <nav class="btn-bar nav-dark">
+                              <button type="button" class="btn btn-glass btn-success"><i class="fa fa-plus" aria-hidden="true"></i>  Add Task</button>
+                            <button type="reset" style="margin-right: 5px" class="btn btn-glass btn-danger"><i class="fa fa-refresh" aria-hidden="true"></i>  Reset </button>
+                          </nav>
 			  			</div>
 			  			
 					</div>

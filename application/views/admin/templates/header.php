@@ -27,6 +27,7 @@
             <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
             <!--<link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" /> //This file conflicts with our styles-->
             
+            
             <!--Ace style reference-->
             <!--<link href="<?Php echo base_url();?>assets/ace.min.css" rel="stylesheet">-->
         </head>
