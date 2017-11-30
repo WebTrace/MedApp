@@ -31,7 +31,7 @@
          </div>
 
          <div class="form-group">
-         <textarea  type="text" class="form-control" placeholder="Your Message" required></textarea>
+         <textarea cols="10" rows="10" class="form-control" placeholder="Your Message" required></textarea>
          </div>
 
          <div class="form-group text-left mt-20">
@@ -40,7 +40,8 @@
             </div>
          </div>
         </form>
-      
+              
+                    
     </div>
 </div>
 
