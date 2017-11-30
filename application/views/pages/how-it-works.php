@@ -11,88 +11,25 @@
 <div id="fh5co-main">
     <div class="container">
         <div class="row" id="fh5co-features">
-            <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Services</h2>
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
-                <div class="fh5co-feature-icon">
-                    <i class="ti-mobile"></i>
-                </div>
+            <h1 class="fh5co-uppercase-heading-sm text-center animate-box">How it works</h1>
+           
 
-                <h3 class="heading">Mobile</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-lock"></i>
-                </div>
-                <h3 class="heading">Lock</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
-            </div>
+          <div style="margin-left:-20%;"> 
+		  <img src="assets/images/How-it-Works-01.png" width="1500" height="600" />
 
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-video-camera"></i>
-                </div>
-                <h3 class="heading">Video</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
-
-            <div class="clearfix visible-md-block visible-lg-block"></div>
-
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
-                <div class="fh5co-feature-icon">
-                    <i class="ti-shopping-cart"></i>
-                </div>
-                <h3 class="heading">Shop</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
-            </div>
-
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-palette"></i>
-                </div>
-                <h3 class="heading">Pallete</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-truck"></i>
-                </div>
-                <h3 class="heading">Deliver</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
         </div>
-        <!-- END row -->
-        <div class="row" id="fh5co-features">
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
-                <div class="fh5co-feature-icon">
-                    <i class="ti-mobile"></i>
-                </div>
+            <div  class="fh5co-feature feature-box">
+            <h2 align="center">Functions</h2>
+                <p class="works">Sero quo voluptatus rae eum doluptatqui ipsam volectotas plaborrore vitatetur archiliqui omnihitatur, teni dolorem voluptat.
+                Tur rerrum quam hil erum lab is ut rero qui occuptus explab iusapel experio. Nequis plabo. Ex etus magnit ipsum etus eum res eiciur? Qui tem cum ute de ipsandam eturio. Eperatibus, ut rem. Itatem eligent ento est ut is sit quis solorer ehendit veleniendem re pa coruntem. Git et aut quassus, cuptaturio volest, nu-met maximus nobis et facimus ciatustis dolupta erovid essinctiscid unt.</p>
 
-                <h3 class="heading">Why Us</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-lock"></i>
-                </div>
-                <h3 class="heading">Lock</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam. </p>
-            </div>
-
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box"> 
-                <div class="fh5co-feature-icon">
-                    <i class="ti-video-camera"></i>
-                </div>
-                <h3 class="heading">Video</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.</p>
-            </div>
+            <li><strong><a href="#">Read more...</a></strong>
+            </li>
         </div>
+
+
+            
+
        <!--  end row -->
         <!-- END row -->
         <div class="fh5co-spacer fh5co-spacer-md"></div>
