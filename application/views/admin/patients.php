@@ -1,3 +1,15 @@
+<?Php 
+    if(isset($_SESSION['title']))
+    {
+        $title          = $this->session->flashdata('title');
+        $message_type   = $this->session->flashdata('message_type');
+        $message        = $this->session->flashdata('message');
+        
+        $output = '<script>';
+        $output .= 'notification_message(' . $message_type . ', ' . $title . ', ' . $message. ')';
+        $output .= '</script>';
+    }
+?>
 <div class="row">
     <div class="controls">
         <div class="col-lg-7">
@@ -55,17 +67,29 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="col-lg-6">
-        <div class="modal fade" id="patient-details-modal">
-            <div class="modal-dialog" id="treatment-modal">
+    <div class="col-lg-12">
+        <div class="modal fade" id="remove-confirm">
+            <div class="modal-dialog" id="remove-confirm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
-                        <h2 class="modal-title">PATIENT DETAILS</h2>
+                        <h2 class="modal-title">Remove</h2>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Are you sure you want to remove this patient?</h4>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
+                        <?Php 
+                            $attr = array('id' => 'frm-remove-patient');
+                            echo form_open(base_url() . 'patients/remove_patient', $attr); ?>
+                            <input type="hidden" name="patient_id" id="remove_patient_id">
+                            <a href="#" id="dismiss-remove-patient" class="btn btn-save" onclick="return false;">No</a>
+                            <input type="submit" name="btn_submit" class="btn btn-reset" value="Yes"/>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -92,6 +116,7 @@
                                                 <li class="active"><a  href="#patient" data-toggle="tab">Patient</a></li>
                                                 <li><a href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
                                                 <li><a href="#add-dispensing" data-toggle="tab">Dispense</a></li>
+                                                <li><a href="#add-notes" data-toggle="tab">Additional notes</a></li>
                                             </ul>
                                             <div id="diagnosis-group">
                                                 <div class="tab-content clearfix">
@@ -265,6 +290,13 @@
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="add-notes">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                Additional notes
                                                             </div>
                                                         </div>
                                                     </div>
@@ -715,6 +747,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <a href="#">Appointment reason</a>
+                                <input type="hidden" name="appointment_doc_id" id="appointment_doc_id">
+                                <input type="hidden" name="appointment_reason" id="appointment_reason">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -770,9 +807,9 @@
                                 <td><a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
                                        title="New consultation" data-toggle="modal" data-target="#create_cosultation" onclick="return false">
                                     <i class="fa fa-arrow-circle-left"></i></a></td>
-                                <td><a class="" href="#" title="Patient medical details"><i class="fa fa-eye"></i></a></td>
+                                <td><a class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Patient medical details"><i class="fa fa-eye"></i></a></td>
                                 <td><a class="edit-user" href="<?Php echo base_url(); ?>patients/edit_patient/<?Php echo $patient['patient_id']; ?>" title="Edit patient"><i class="fa fa-pencil"></i></a></td>
-                                <td><a class="delete-user" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>
+                                <td><a class="delete-user" id="<?Php echo $patient['patient_id']; ?>" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?Php $count++; endforeach; ?>
                     </tbody>

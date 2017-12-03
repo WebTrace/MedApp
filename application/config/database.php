@@ -74,15 +74,19 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	//'hostname' => 'localhost',
-	'hostname' => 'sql2.freesqldatabase.com',
-	//'username' => 'root',
-	'username' => 'sql2204000',
-	//'password' => '',
-	'password' => 'aD8!wB4!',
-	//'database' => 'claima',
-    'database' => 'sql2204000',
+    //Online database connection
+    /*'hostname' => '154.0.164.193',
+    'username' => 'webtritk_mannu',
+    'password' => '@500Kgatla',
+    'database' => 'webtritk_claima',*/
+    
+    //Local database connection
+    'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'claima',
+    //
+    'dsn'	=> '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

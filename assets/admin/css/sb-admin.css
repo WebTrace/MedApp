@@ -389,7 +389,8 @@
 
 .access-container {
     padding: 10px 15px;
-    /*background: #4fa7a6;*/
+    margin-top: 120px;
+    background: #fbfbfb;
     box-shadow: #dadada 0px 0px 8px 0px;
 }
 
@@ -402,26 +403,26 @@
 .input-login-reg {
     width: 100%;
     outline: none;
-    border: #ccc thin solid;
+    border: #ededed thin solid;
     color: #666;
     padding: 2px 5px 3px 30px;
-    font-size: 13px;
+    font-size: 15px;
     border-radius: 2px;
 }
 
 .inp-collection .fa-lock, .inp-collection .fa-user, #env {
-    top: 30%;
+    top: 32%;
     left: 10px;
-    color: #e89865;
+    color: #b1b1b1;
     position: absolute;
 }
 
 .reg-input {
     width: 100%;
     outline: none;
-    border: #ccc thin solid;
+    border: #ededed thin solid;
     color: #666;
-    padding: 6px 5px;
+    padding: 8px 5px;
     font-size: 13px;
     border-radius: 2px;
 }
@@ -431,8 +432,8 @@
 }
 
 .access-container #username, .access-container #password, #email-fgt {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .access-group {
@@ -469,8 +470,8 @@
     width: 100%;
     color: #fff;
     outline: none;
-    border-radius: 2px;
-    background: #79decf;
+    /*border-radius: 2px;*/
+    background: #4fbbab;
 }
 
 #btn-register {
@@ -478,7 +479,7 @@
 }
 
 .signin-reg {
-    padding: 4px;
+    padding: 6px;
     border: none;
 }
 
@@ -523,6 +524,7 @@ legend {
     margin-bottom: 50px;
     padding: 15px;
     position: relative;
+    background: #fbfbfb;
     box-shadow: #dadada 0px 0px 8px 0px;
 }
 
@@ -535,8 +537,8 @@ legend {
 }
 
 .nav-btn {
-    border: #ccc thin solid;
-    border-radius: 2px;
+    color: #fff;
+    background: #4fbbab;
     padding: 5px 10px;
 }
 
@@ -918,6 +920,23 @@ legend {
     background: #ddd;
 }
 
+@media (min-width: 768px) {
+    #modal-format {
+        width: 700px;
+    }
+
+    #treatment-modal {
+        width: 650px;
+    }
+
+    #remove-confirm {
+        /*width: 500px;*/
+    }
+}
+
+.pane-format {
+    background: #f7f7f7;
+}
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #bbb;
 }
@@ -943,17 +962,6 @@ legend {
 /*
 *Joseph section
 */
-
-
-@media (min-width: 768px) {
-    #modal-format {
-        width: 700px;
-    }
-    
-    #treatment-modal {
-        width: 650px;
-    }
-}
 
 /*
 *Tshego section

@@ -89,13 +89,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <!--<div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">
                                         <input type="text" name="tel_no" class="reg-input" id="tel_no" placeholder="Tel no">
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">
@@ -110,18 +110,18 @@
                                     </div>
                                 </div>
                             </div>
-                        <!--</fieldset>-->
-                    </div>
-                    <div class="row">
-                        <!--<fieldset class="fieldset-reg">
-                            <legend><span class="step-numbering">3</span> ACCOUNT DETAILS</legend>-->
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">
                                         <input type="text" name="username" class="reg-input" id="username" placeholder="Username">
                                     </div>
                                 </div>
                             </div>
+                        <!--</fieldset>-->
+                    </div>
+                    <div class="row">
+                        <!--<fieldset class="fieldset-reg">
+                            <legend><span class="step-numbering">3</span> ACCOUNT DETAILS</legend>-->
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="reg-group">
                                     <div class="inp-collection">

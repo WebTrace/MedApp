@@ -200,7 +200,14 @@ $(document).ready(function() {
         }
     })
     
-    $(".patient-details").on("click", function () {
-        $("#patient-details-modal").modal('show');
+    $(".delete-user").on("click", function (e) {
+        var patient_id = $(this).attr('id');
+        $('#remove_patient_id').attr('value', patient_id);
+        $("#remove-confirm").modal('show');
+        return false;
+    })
+    
+    $('#dismiss-remove-patient').on("click", function() {
+        $("#remove-confirm").modal('hide');
     })
 });

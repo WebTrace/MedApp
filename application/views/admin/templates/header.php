@@ -55,8 +55,7 @@
                                                 <img class="media-object" src="http://placehold.it/50x50" alt="">
                                             </span>
                                             <div class="media-body">
-                                                <h5 class="media-heading"><strong>B Maranatha</strong>
-                                                </h5>
+                                                <h5 class="media-heading"><strong>B Maranatha</strong></h5>
                                                 <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                                 <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                             </div>
@@ -154,9 +153,11 @@
                             <li>
                                 <a href="<?Php echo base_url(); ?>patients"><i class="fa fa-fw fa-user-md"></i> Patients</a>
                             </li>
-                            <li>
-                                <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
-                            </li>
+                            <?Php if($this->session->userdata("USER_ROLE") != 2) : ?>
+                                <li>
+                                    <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
+                                </li>
+                            <?Php endif; ?>
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>

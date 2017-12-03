@@ -244,9 +244,12 @@
             
         }
         
-        public function delete_patient()
+        public function remove_patient()
         {
+            $patient_id = $this->input->post('patient_id');
             
+            $this->db->where('patient_id', $patient_id);
+            return $this->db->delete('treatment_branch');
         }
         
         public function fetch_all_patient()

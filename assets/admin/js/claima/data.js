@@ -275,4 +275,3 @@ $(document).ready(function() {
         $("#btn-reset").show();
     })
 })
-

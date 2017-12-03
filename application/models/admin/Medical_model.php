@@ -1,5 +1,5 @@
 <?Php
-    class Medical_Aid_model extends CI_Model
+    class Medical_model extends CI_Model
     {
         public function create_medical_aid($patient_id, $medical_aid_no, $medical_aid_scheme, $medical_aid_option, $price_option)
         {

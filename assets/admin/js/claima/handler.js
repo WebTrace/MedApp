@@ -168,7 +168,7 @@ function signupStepOneHandler()
         lname               = $("#lname").val(),
         hpcsa_no            = $("#hpcsa_no").val(),
         contact_no          = $("#contact_no").val(),
-        tel_no              = $("#tel_no").val(),
+        /*tel_no              = $("#tel_no").val(),*/
         email_address       = $("#email_address").val(),
         confirm_email       = $("#confirm_email").val(),
         username            = $("#username").val(),
@@ -229,9 +229,9 @@ function signupStepOneHandler()
     }
 
     //validate tel number field if not empty
-    if(tel_no.trim() != "") {
+    /*if(tel_no.trim() != "") {
 
-    }
+    }*/
 
     //validate email address field
     if(email_address.trim() == "") {

@@ -7,11 +7,10 @@
             
             //push counter in patiets data
             
-            
             $data['patients']                   = $this->patients_model->fetch_all_patient();
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
             $data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
-            $data["dependant_relationships"]    = $this->medical_aid_model->fetch_relationship();
+            $data["dependant_relationships"]    = $this->medical_model->fetch_relationship();
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
             $this->load->view("admin/templates/header");
@@ -35,9 +34,30 @@
         public function edit_patient($patient_id)
         {
             $data['patient'] = $patient_id;
+            
             $this->load->view("admin/templates/header");
             $this->load->view("admin/edit_patient", $data);
             $this->load->view("admin/templates/footer");
+        }
+        
+        public function remove_patient()
+        {
+            if($this->patients_model->remove_patient() == TRUE)
+            {
+                $this->session->set_flashdata('title', '<h4><i class="fa fa-check-circle-o"></i> Patient removed</h4>.');
+                $this->session->set_flashdata('message_type', 'success.');
+                $this->session->set_flashdata('message', 'Patient deleted successfully.');
+                
+                redirect(base_url() . 'patients');
+            }
+            else
+            {
+                $this->session->set_flashdata('title', '<h4><i class="fa fa-times-circle-o"></i> Failed</h4>.');
+                $this->session->set_flashdata('message_type', 'danger');
+                $this->session->set_flashdata('message', 'Error occured. Patient was not removed.');
+                
+                redirect(base_url() . 'patients');
+            }
         }
         
         public function add_claima_patient()
@@ -103,6 +123,13 @@
         public function ajax_fetch_patients()
         {
             echo json_encode($this->patients_model->fetch_all_patient());
+        }
+        
+        public function medical_details($patient_id)
+        {
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/patient_medical_details");
+            $this->load->view("admin/templates/footer");
         }
     }
 ?>
