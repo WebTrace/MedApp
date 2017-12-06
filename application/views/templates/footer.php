@@ -37,8 +37,7 @@
 							<li><a href="#"><i class="ti-twitter-alt"></i></a></li>
 							<li><a href="#"><i class="ti-facebook"></i></a></li>	
 							<li><a href="#"><i class="ti-instagram"></i></a></li>
-							<li><p>@info@webtrace.com <br>
-							       info@webtrace.com  </p>
+							<li><p>@info@webtrace.com</p>
 							 </li>
 						</ul>
 					</div>
