@@ -11,6 +11,21 @@
     }
 ?>
 <div class="row">
+    <!--<ul class="nav navbar collapse-controls">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="collapse-btn"></span>
+                <span class="collapse-btn"></span>
+                <span class="collapse-btn"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#" class="" id=""><i class="fa fa-plus"></i> New patient</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+    </ul>-->
     <div class="controls">
         <div class="col-lg-7">
             <div class="btn-controls-group">
@@ -66,6 +81,46 @@
             </div>
         </div>
         <div class="clearfix"></div>
+    </div>
+    <div class="col-lg-12">
+        <div class="modal fade waiting_room" id="create_waiting_room">
+            <div class="modal-dialog" id="waiting-room-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">ADD VISITING REASON</h2>
+                    </div>
+                    <?Php
+                        $form_attr = array('id' => 'add-wating-room');
+                        echo form_open(base_url() . "appointment/waiting_room", $form_attr);
+                        ?>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-input-group">
+                                        <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
+                                            <option value="0">Select practitioner</option>
+                                            <option value="">Bongs Maranatha</option>
+                                        </select>
+                                        <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-input-group">
+                                        <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-save">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-lg-12">
         <div class="modal fade" id="remove-confirm">
@@ -748,7 +803,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <a href="#">Appointment reason</a>
+                                <a href="#" id="add_visiting_reason">Visiting reason</a>
                                 <input type="hidden" name="appointment_doc_id" id="appointment_doc_id">
                                 <input type="hidden" name="appointment_reason" id="appointment_reason">
                             </div>
@@ -788,25 +843,40 @@
                             <th>Ethnic</th>
                             <th>Contact number</th>
                             <th>Next of keen</th>
-                            <th colspan="4">Action</th>
+                            <th colspan="
+                                        <?Php
+                                            $is_visible = FALSE;
+                                            if($this->session->userdata("USER_ROLE") != 2) {
+                                                echo 4;
+                                                $is_visible = TRUE;
+                                            } else {
+                                                echo 3;
+                                            }
+                                        ?>
+                                        ">Action
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?Php foreach($patients as $patient) : ?>
-                            <tr class="patient-details">
-                                <td><?Php echo $count; ?></td>
-                                <td><?Php echo $patient['last_name']; ?></td>
-                                <td><?Php echo $patient['first_name']; ?></td>
-                                <td><?Php echo $patient['id_number']; ?></td>
-                                <td><?Php echo $patient['dob']; ?></td>
-                                <td><?Php echo $this->patients_model->calculate_age($patient['dob']); ?></td>
-                                <td><?Php echo $patient['gender']; ?></td>
-                                <td><?Php echo $patient['ethnic_group']; ?></td>
-                                <td><?Php echo $patient['contact_no']; ?></td>
-                                <td><?Php echo $patient['contact_no']; ?></td>
-                                <td><a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
+                            <tr class="patient-details" data-target="<?Php echo $patient['patient_id']; ?>">
+                                <td class="add-waiting-room"><?Php echo $count; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['last_name']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['first_name']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['id_number']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['dob']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $this->patients_model->calculate_age($patient['dob']); ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['gender']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['ethnic_group']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>
+                                <td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>
+                                <?Php if($is_visible == TRUE) : ?>
+                                <td>
+                                    <a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
                                        title="New consultation" data-toggle="modal" data-target="#create_cosultation" onclick="return false">
-                                    <i class="fa fa-arrow-circle-left"></i></a></td>
+                                        <i class="fa fa-arrow-circle-left"></i></a>
+                                </td>
+                                <?Php endif; ?>
                                 <td><a class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Patient medical details"><i class="fa fa-eye"></i></a></td>
                                 <td><a class="edit-user" href="<?Php echo base_url(); ?>patients/edit_patient/<?Php echo $patient['patient_id']; ?>" title="Edit patient"><i class="fa fa-pencil"></i></a></td>
                                 <td><a class="delete-user" id="<?Php echo $patient['patient_id']; ?>" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>

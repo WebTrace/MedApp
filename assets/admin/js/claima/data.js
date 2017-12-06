@@ -274,4 +274,5 @@ $(document).ready(function() {
         //show reset button
         $("#btn-reset").show();
     })
+
 })

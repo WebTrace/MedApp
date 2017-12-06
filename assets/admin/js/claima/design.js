@@ -210,4 +210,22 @@ $(document).ready(function() {
     $('#dismiss-remove-patient').on("click", function() {
         $("#remove-confirm").modal('hide');
     })
+    
+    $(".add-waiting-room").on("click", function() {
+        var patient_id = $(this).parent().attr('data-target');
+        
+        $("#waiting_room_patient").attr("value", patient_id);
+        $("#create_waiting_room").modal("show");
+    })
+    
+    $("#add_visiting_reason").on("click", function() {
+        $("#create_waiting_room").modal("show");
+        $("#add_user_modal").modal("hide");
+    })
+    
+    /*check if add visiting reason modal is close*/
+    /*if(!$("#add_visiting_reason").is(":visible"))
+    {
+        $("#add_user_modal").modal("show");
+    }*/
 });

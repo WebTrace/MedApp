@@ -283,10 +283,6 @@
     color: #d43e21
 }
 
-/*Format text boxes*/
-.text-input {
-    border-radius: 2px;
-}
 
 .modal-header {
     padding: 10px;
@@ -312,6 +308,22 @@
 
 .text-input:focus {
     border: #59d466 thin solid;
+}
+
+/*Format text boxes*/
+.text-input {
+    border-radius: 2px;
+}
+
+.textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 50px;
+    max-height: 50px;
+    outline: none;
+    padding: 10px;
+    border-radius: 2px;
+    border: #ccc thin solid;
 }
 
 .form-input-group {
@@ -920,6 +932,16 @@ legend {
     background: #ddd;
 }
 
+.collapse-btn {
+    margin-bottom: 6px;
+    height: 4px;
+    width: 4px;
+    background: #555;
+    display: block;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
 @media (min-width: 768px) {
     #modal-format {
         width: 700px;
@@ -928,9 +950,17 @@ legend {
     #treatment-modal {
         width: 650px;
     }
+    
+    #waiting-room-modal {
+        width: 500px;
+    }
 
     #remove-confirm {
         /*width: 500px;*/
+    }
+    
+    .top-nav {
+        padding: 0;
     }
 }
 

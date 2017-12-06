@@ -4,30 +4,29 @@
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <div class="data-dashboard" id="data-dashboard1">
                     <span class="count_top"><i class="fa fa-user"></i> Accepted claims</span>
-                    <div class="count">2500</div>
-                    <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+                    <div class="count">200</div>
+                    <span class="count_bottom"><i class="green">4% </i> Last Week</span>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <div class="data-dashboard" id="data-dashboard2">
                     <span class="count_top"><i class="fa fa-user"></i> Partially accepted</span>
-                    <div class="count green">2,500</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                    <div class="count green">210</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Last Week</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <div class="data-dashboard" id="data-dashboard3">
                     <span class="count_top"><i class="fa fa-clock-o"></i> Rejected claims</span>
-                    <div class="count">123.50</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+                    <div class="count">123</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> Last Week</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <div class="data-dashboard" id="data-dashboard4">
                     <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                    <div class="count green">2,500</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                    <div class="count green">250</div>
+                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Last Week</span>
                 </div>
             </div>
         </div>
@@ -106,7 +105,7 @@
                     <div class="media">
                         <div class="media-body">
                             <h5 class="media-heading"><strong>Complete claim</strong></h5>
-                            <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
+                            <p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-calendar-o"></i> Due date: 23 Jan 2017 | 4:32 PM</p>
                             <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
                         </div>
                     </div>
@@ -120,7 +119,7 @@
                         <div class="media-body">
                             <h5 class="media-heading"><strong>Pending payment</strong>
                             </h5>
-                            <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
+                            <p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-calendar-o"></i> Due date: 23 Jan 2017 | 4:32 PM</p>
                             <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
                         </div>
                     </div>
@@ -134,7 +133,7 @@
                         <div class="media-body">
                             <h5 class="media-heading"><strong>Send invoice</strong>
                             </h5>
-                            <!--<p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 at 4:32 PM</p>-->
+                            <p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-calendar-o"></i> Due date: 23 Jan 2017 | 4:32 PM</p>
                             <p style="margin-bottom: 0px;" class="appointment-desc">Lorem ipsum dolor sit consectetur...</p>
                         </div>
                     </div>

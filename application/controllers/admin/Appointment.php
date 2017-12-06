@@ -3,12 +3,32 @@
     {
         Public function index()
         {
-            $this->is_user_signin();
-            
             $this->load->view("admin/templates/header");
             $this->load->view("admin/appointments");
             $this->load->view("admin/templates/footer");
         }
+        
+        public function waiting_room()
+        {
+            if($this->appointment_model->create_waiting_room() == TRUE)
+            {
+                $this->load->view("admin/templates/header");
+                echo "added";
+                $this->load->view("admin/templates/footer");
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         /*Get all Appointments */
 
