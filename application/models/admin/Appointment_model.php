@@ -11,6 +11,7 @@
         public function create_waiting_room()
         {
             $patient_id             = $this->input->post("waiting_room_patient");
+            $billing_type_id        = $this->input->post("appointment_billing_id");
             $visiting_reason        = $this->input->post("visiting_reason");
             $pratitioner_id         = $this->input->post("appointment_practitioner");
             $appointment_date       = $this->input->post("");
@@ -24,10 +25,13 @@
             //get new added appointment id
             $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
             
+            //create appointment billing
+            $this->create_appointment_billing($appointment_id, $billing_type_id);
+            
             //create appointment type
             $this->create_appointment_type($appointment_id, $appointment_type_code);
             
-            //assing appointment to a practitioner if pratitioner is selected
+            //assign appointment to a practitioner if pratitioner is selected
             if($pratitioner_id != 0)
             {
                 $this->create_practitioner_appointment($appointment_id, $pratitioner_id);
@@ -62,10 +66,20 @@
         {
             $practitioner_app_data = array(
                 'practitioner_id' => $pratitioner_id,
-                'appointme=nt_id' => $appointment_id
+                'appointment_id' => $appointment_id
             );
             
             $this->db->insert('practitioner_appointment', $practitioner_app_data);
+        }
+        
+        public function create_appointment_billing($appointment_id, $patient_billing_type_id)
+        {
+            $data = array(
+                'appointment_id'            => $appointment_id,
+                'patient_billing_type_id'   => $patient_billing_type_id
+            );
+            
+            $this->db->insert('appointment_billing', $data);
         }
         
         public function create_appointment_type($appointment_id, $appointment_type_code)

@@ -12,7 +12,7 @@
             $data['users']      = $this->data_access->fetch_user_across_branch($user_id);
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/users", $data);
+            $this->load->view("admin/users/users", $data);
             $this->load->view("admin/templates/footer");
         }
         

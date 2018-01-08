@@ -10,7 +10,7 @@
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
-            <link href="<?Php echo base_url();?>assets/admin/css/sb-admin-tasks.css" rel="stylesheet">
+            <!--<link href="<?Php echo base_url();?>assets/admin/css/sb-admin-tasks.css" rel="stylesheet">-->
             
             <!-- Morris Charts CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/plugins/morris.css" rel="stylesheet">
@@ -159,6 +159,9 @@
                                     <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
                                 </li>
                             <?Php endif; ?>
+                            <li>
+                                <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-fw fa-calendar"></i> Waiting room</a>
+                            </li>
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>

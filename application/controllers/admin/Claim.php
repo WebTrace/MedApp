@@ -10,7 +10,7 @@
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/claim", $data);
+            $this->load->view("admin/claims/claim", $data);
             $this->load->view("admin/templates/footer");
         }
         

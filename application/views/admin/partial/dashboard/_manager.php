@@ -91,6 +91,11 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="x_title">
+                    <h2 style="margin-top: 25px;">Appointments</h2>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-lg-3">

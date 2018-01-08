@@ -6,7 +6,7 @@
             //$this->send_email('no-reply', 'emmkga@gmail.com', 'Test', 'This is a test message');
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/tasks");
+            $this->load->view("admin/tasks/tasks");
             $this->load->view("admin/templates/footer");
         }
         

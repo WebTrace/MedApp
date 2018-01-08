@@ -14,7 +14,7 @@
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/patients", $data);
+            $this->load->view("admin/patients/patients", $data);
             $this->load->view("admin/templates/footer");
         }
         
@@ -36,7 +36,7 @@
             $data['patient'] = $patient_id;
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/edit_patient", $data);
+            $this->load->view("admin/patients/edit_patient", $data);
             $this->load->view("admin/templates/footer");
         }
         
@@ -66,7 +66,6 @@
             $patient_id     = $this->input->post('patient_id');
             
             $this->patients_model->create_treatment_branch($branch_id, $patient_id);
-            
         }
         
         //create diagnosis
@@ -97,7 +96,7 @@
             else
             {
                 $error = array(
-                    'not_found' => 'Patient with ID number ' + $this->input->post('q') + ' does not exist.'
+                    'not_found' => 'Patient with ID number ' . $this->input->post('q') . ' does not exist.'
                 );
                 
                 echo json_encode($error);

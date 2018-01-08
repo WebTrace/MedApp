@@ -53,8 +53,17 @@
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-            <label id="control-show-lbl">
-                Show 
+            Show
+            <select name="" id="" class="">
+                <option value="0">---</option>
+                <option value="">10</option>
+                <option value="">20</option>
+                <option value="">30</option>
+                <option value="">40</option>
+                <option value="">50</option>
+                <option value="">Show all</option>
+            </select>
+            <!--<label id="control-show-lbl">
                 <div id="view-control" class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -67,11 +76,11 @@
                         <li><a href="#">25</a></li>
                         <li><a href="#">35</a></li>
                         <!--<li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>-->
+                        <li><a href="#">Separated link</a></li>
                     </ul>
                     <input type="hidden" name="rows" id="rows" value="5">
                 </div>
-            </label>
+            </label>-->
         </div>
         <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
             <div class="search-control">
@@ -96,13 +105,21 @@
                         ?>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-input-group">
                                         <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
                                             <option value="0">Select practitioner</option>
-                                            <option value="">Bongs Maranatha</option>
+                                            <option value="1">Bongs Maranatha</option>
                                         </select>
                                         <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-input-group">
+                                        <select name="appointment_billing_id" id="appointment_billing_id" class="text-input dr-placeholder">
+                                            <option value="0">Billing</option>
+                                            <option value="1">Cash</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -831,7 +848,7 @@
     <div class="col-lg-12">
         <div class="user-table">
             <?Php if(count($patients) > 0) : $count = 1; ?>
-                <table class="table table-bordered" id="patients-list">
+                <table class="table table-bordered" id="user-list">
                     <thead>
                         <tr>
                             <th>No.</th>

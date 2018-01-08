@@ -6,7 +6,7 @@
             $data['title'] = "Sign in";
             
             $this->load->view("admin/templates/auth-header", $data);
-            $this->load->view("admin/signin");
+            $this->load->view("admin/authentication/signin");
             $this->load->view("admin/templates/auth-footer");
         }
         

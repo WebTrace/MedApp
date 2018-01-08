@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //Grah for representing claims overview
+    //Graph for representing claims overview
     if ($('#graph_bar_group').length )
     {
         Morris.Bar({

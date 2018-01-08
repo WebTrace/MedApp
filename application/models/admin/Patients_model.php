@@ -4,7 +4,6 @@
         public function create_patient()
         {
             //get patients inputs - personal details
-            
             $title                          = $this->input->post('title');
             $first_name                     = $this->input->post('fname');
             $last_name                      = $this->input->post('lname');
