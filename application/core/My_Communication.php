@@ -4,10 +4,10 @@
         //send account activation link
         public function activation_link()
         {
-            $from = "";
-            $to = "";
-            $subejct = "";
-            $message = "";
+            $from       = "no-repy@webtrace.co.za";
+            $to         = "";
+            $subejct    = "";
+            $message    = "";
             
             if($this->send_email($from, $to, $subejct, $message) == TRUE)
             {
@@ -37,15 +37,14 @@
             $this->email->subject($subject);
             $this->email->message($message);
 
-            /*if($this->email->send())
+            if($this->email->send())
             {
                 return TRUE;
             }
             else
             {
                 return FALSE;
-            }*/
-            return TRUE;
+            }
         }
         
         public function send_sms()

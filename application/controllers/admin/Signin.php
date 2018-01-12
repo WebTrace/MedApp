@@ -82,7 +82,7 @@
             $this->session->unset_userdata("HASH");
             $this->session->unset_userdata("EMAIL");
             
-            /*$this->session->session_destroy();*/
+            $this->session->sess_destroy();
             redirect(base_url() . "signin");
         }
         

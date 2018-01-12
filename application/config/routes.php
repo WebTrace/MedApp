@@ -86,6 +86,7 @@ $route['patients/medical_details/(:num)']           = 'admin/patients/medical_de
 $route['patients/remove_patient']                   = 'admin/patients/remove_patient';
 $route['billing/patient_billing_type']              = 'admin/billing/patient_billing_type';
 $route['consultation']                              = 'admin/consultation';
+$route['signup/feeedback']                          = 'admin/signup/feeedback';
 $route['consultation/create_consultation']          = 'admin/consultation/create_consultation';
 $route['claim/create_claim']                        = 'admin/claim/create_claim';
 $route['users/create_user']                         = 'admin/users/create_user';
