@@ -264,6 +264,7 @@ $(document).ready(function() {
         })
     })
     
+    //clear claima patient search results
     $("#cancel-search").on("click", function() {
         //hide search results
         $("#claima-patient").hide();
@@ -274,5 +275,63 @@ $(document).ready(function() {
         //show reset button
         $("#btn-reset").show();
     })
-
+    
+    //search branch patients
+    $(".waiting-input").slideUp();
+    
+    $("#branch-patient-search").on("click", function() {
+        var q = $("#q").val();
+        
+        $.ajax({
+            url     : $("#search_url").val(),
+            type    : "POST",
+            data    : { q: q },
+            dataType: 'json',
+            success : function(response) {
+                if(response.length > 0)
+                {
+                    $("#waiting_room_patient").attr("value", response[0].patient_id);
+                    
+                    $.ajax({
+                        url     : $("#billing_type_url").val(),
+                        type    : "POST",
+                        data    : { patient_id: $("#waiting_room_patient").val() },
+                        dataType: 'json',
+                        success : function(res) {
+                            if(res.length > 0)
+                            {
+                                var billing_type = "";
+                                
+                                for(var i = 0; i < res.length; i++)
+                                {
+                                    billing_type += "<option value='" + res[i].patient_billing_type_id + "'>" + res[i].billing_name + "</option>";
+                                }
+                                
+                                $("#appointment_billing_id").append(billing_type);
+                            }
+                            else
+                            {
+                                
+                            }
+                        }
+                    });
+                    
+                    $(".waiting-input").slideDown();
+                }
+                else
+                {
+                    $(".waiting-input").slideUp();
+                }
+            }
+        })
+    })
+    
+    $(".manage-waiting").on("click", function() {
+        $("#appointment_id").attr("value", $(this).attr("data"));
+        console.log($(this).attr("data"));
+    })
+    
+    /*$(".appointment-details").on("mouseover", function() {
+        console.log($(this).children());
+    })*/
 })

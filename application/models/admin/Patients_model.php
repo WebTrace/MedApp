@@ -43,6 +43,10 @@
             $relaltionship_code             = $this->input->post('dependant_relation');
             $is_dependant                   = $this->input->post('dependant');
             
+            //get visiting reason data
+            $visiting_reason                = $this->input->post('visiting_reason');
+            $practitioner_appointment       = $this->input->post('appointment_practitioner');
+            
             //get patients inputs - account details
             $username                       = $this->input->post('username'); //optional
             $password                       = $this->input->post('password'); //optionals
@@ -146,13 +150,26 @@
                 $this->medical_aid_model->create_dependant($patient_id, $medical_aid_id, $dependant_no, $relaltionship_code);
             }
             
+            //create cash billing
+            if($billing_type != 2)
+            {
+                $this->billing_model->create_patient_billing_type($patient_id, 2);
+            }
+            
             //create patient billing type
             $this->billing_model->create_patient_billing_type($patient_id, $billing_type);
             
-            //TODO : create cash billing
+            //add patient to waiting room
+            $this->appointment_mode->waiting_room_data($patient_id, $visiting_reason);
             
-            //TODO : create account
-            
+            if($practitioner_appointment != 0)
+            {
+                //get new appointment id
+                $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
+                
+                //assign patient in waiting room to a practitioner
+                $this->appointment_model->create_practitioner_appointment($practitioner_appointment, $appointment_id);
+            }
             
             $this->db->trans_complete();//END TRANSACTION
             
@@ -379,11 +396,30 @@
             return $this->db->get("medical_aid");
         }
         
+        //search branch patients
+        public function search_branch_patient($branch_id, $q)
+        {
+            $this->db->from('user u');
+            $this->db->join('patient p', 'u.user_id = p.user_id');
+            $this->db->join('treatment_branch t', 'p.patient_id = t.patient_id');
+            $this->db->where('id_number', $q);
+            $this->db->where('branch_id', $this->session->userdata('BRANCH_ID'));
+            
+            if($this->db->get()->num_rows() > 0)
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        
         public function search_claima_patient()
         {
             $id_number = $this->input->post('q');
             
-            $query = "SELECT id_number F";
+            //$query = "SELECT id_number F";
             
             $this->db->where('id_number', $id_number);
             

@@ -9,7 +9,7 @@
             
             $data['patients']                   = $this->patients_model->fetch_all_patient();
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
-            $data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
+            //$data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
             $data["dependant_relationships"]    = $this->medical_model->fetch_relationship();
             $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
             
@@ -85,6 +85,22 @@
             }*/
         }
         
+        //search branch patient
+        public function search_branch_patient()
+        {
+            $q = $this->input->post("q");
+            
+            if($this->patients_model->search_branch_patient($this->session->userdata("BRANCH_ID"), $q) == TRUE)
+            {
+                echo json_encode($this->patients_model->fetch_patient());
+            }
+            else
+            {
+                $not_found = array();
+                echo json_encode($not_found);
+            }
+        }
+        
         //search claima patients
         public function search_claima_patient()
         {
@@ -127,7 +143,7 @@
         public function medical_details($patient_id)
         {
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/patient_medical_details");
+            $this->load->view("admin/patients/patient_medical_details");
             $this->load->view("admin/templates/footer");
         }
     }

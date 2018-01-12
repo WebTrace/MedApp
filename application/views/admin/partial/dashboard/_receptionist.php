@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row top-spacing">
     <div class="col-lg-8">
         <div class="row tile_count" id="bgcolor">
             <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count">

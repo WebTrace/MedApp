@@ -10,8 +10,15 @@
         
         public function waiting_room()
         {
+            //get patient id
+            $patient_id = $this->input->post('patient_id');
+            
+            $data['practitioners'] = $this->practitioner_model->fetch_branch_practitioner($this->session->userdata('BRANCH_ID'));
+            $data['patient_billing_type'] = $this->billing_model->fetch_patient_billing_type($patient_id);
+            $data['waiting_room_patients'] = $this->appointment_model->fetch_waiting_room();
+            
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/appointments/waiting_room");
+            $this->load->view("admin/appointments/waiting_room", $data);
             $this->load->view("admin/templates/footer");
         }
         
@@ -20,7 +27,7 @@
             
         }
         
-        public function creatre_waiting_room()
+        public function create_waiting_room()
         {
             if($this->appointment_model->create_waiting_room() == TRUE)
             {
@@ -32,7 +39,7 @@
             }
             
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/waiting_room", $data);
+            $this->load->view("admin/appointments/waiting_room", $data);
             $this->load->view("admin/templates/footer");
         }
         

@@ -18,10 +18,11 @@
             return $this->db->get("billing_type")->result_array();
         }
         
-        public function fetch_patient_billing_type()
+        public function fetch_patient_billing_type($patient_id)
         {
             $this->db->from('billing_type bt');
             $this->db->join('patient_billing_type pb', 'bt.billing_type_code = pb.billing_type_code');
+            $this->db->where('pb.patient_id', $patient_id);
             
             return $this->db->get()->result_array();
         }

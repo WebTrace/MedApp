@@ -172,6 +172,11 @@
 .controls {
     padding: 5px 0px;
     margin-bottom: 20px;
+    background-position: center;
+}
+
+.top-spacing {
+    padding-top: 10px;
 }
 
 #search {
@@ -792,12 +797,62 @@ legend {
     margin-top: 10px;
 }
 
-.nav-pills > li > a {
+/*.nav-pills > li > a {
     position: relative;
     display: block;
     padding: 10px 15px;
     border-radius: 0px;
     background: #eee;
+}*/
+
+.nav-tabs { 
+    border-bottom: 2px solid #DDD;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { 
+    border-width: 0;
+}
+
+.nav-tabs > li > a { 
+    border: none;
+    color: #666; 
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+    border: none; 
+    color: #3aabc1 !important;
+    background: transparent;
+}
+
+.nav-tabs > li > a::after { 
+    content: ""; 
+    background: #3aabc1;
+    height: 2px; 
+    position: absolute;
+    width: 100%;
+    left: 0px; 
+    bottom: -1px; 
+    transition: all 250ms ease 0s; 
+    transform: scale(0);
+}
+
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+    transform: scale(1);
+}
+
+.tab-nav > li > a::after { 
+    background: #21527d none repeat scroll 0% 0%;
+    color: #fff; 
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
 
 #save-patient-request {
@@ -942,9 +997,23 @@ legend {
     border-radius: 4px;
 }
 
+.manage-waiting {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 25px;
+    border: thin solid #ccc;
+}
+
+.manage-waiting:hover {
+    background: #ddd;
+}
+
 @media (min-width: 768px) {
     #modal-format {
-        width: 700px;
+        width: 736px;
     }
 
     #treatment-modal {
@@ -1083,9 +1152,16 @@ body {
     }
 
     #page-wrapper {
-        padding: 10px;
+        /*padding: 10px;*/
         padding-left: 0px;
     }
+}
+
+.limit {
+    padding: 4px 10px;
+    outline: none;
+    border: #ddd thin solid;
+    border-radius: 20px;
 }
 
 /* Top Navigation */

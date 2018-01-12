@@ -160,7 +160,7 @@
                                 </li>
                             <?Php endif; ?>
                             <li>
-                                <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-fw fa-calendar"></i> Waiting room</a>
+                                <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-files-o"></i> Waiting room</a>
                             </li>
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>

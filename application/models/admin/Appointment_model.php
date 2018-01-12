@@ -34,7 +34,7 @@
             //assign appointment to a practitioner if pratitioner is selected
             if($pratitioner_id != 0)
             {
-                $this->create_practitioner_appointment($appointment_id, $pratitioner_id);
+                $this->create_practitioner_appointment($pratitioner_id, $appointment_id);
             }
             
             $this->db->trans_complete(); //END SQL TRANSACTION
@@ -62,7 +62,7 @@
             $this->db->insert('appointment', $visiting_reason_data);
         }
         
-        public function create_practitioner_appointment($appointment_id, $pratitioner_id)
+        public function create_practitioner_appointment($pratitioner_id, $appointment_id)
         {
             $practitioner_app_data = array(
                 'practitioner_id' => $pratitioner_id,
@@ -90,6 +90,17 @@
             );
             
             $this->db->insert('app_type', $app_type_data);
+        }
+        
+        public function fetch_waiting_room()
+        {
+            $this->db->from('user u');
+            $this->db->join('patient p', 'u.user_id = p.user_id');
+            $this->db->join('appointment a', 'p.patient_id = a.patient_id');
+            $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'RIGHT');
+            $this->db->where('appointment_type_code', 2);
+            
+            return $this->db->get()->result_array();
         }
         
         

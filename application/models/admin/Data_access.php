@@ -29,5 +29,13 @@
             
             return $this->db->query($sql);
         }
+        
+        public function search_branch_patient($id_number)
+        {
+            $sql = "SELECT * FROM user WHERE($id_number IN(SELECT id_number FROM 
+                    user u JOIN patient p ON u.user_id = p.user_id JOIN treatment_branch t ON p.patient_id = t.patient_id)";
+            
+            return $this->db->query($sql);
+        }
     }
 ?>

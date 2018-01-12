@@ -26,7 +26,7 @@
             </ul>
         </li>
     </ul>-->
-    <div class="controls" style="background-image: url(<?Php echo base_url(); ?>assets/images/slide4.jpg)">
+    <div class="controls">
         <div class="col-lg-7">
             <div class="btn-controls-group">
                 <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#add_user_modal" accesskey="t">
@@ -53,17 +53,8 @@
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-            Show
-            <select name="limit" id="limit" class="limit">
-                <option value="0">---</option>
-                <option value="">10</option>
-                <option value="">20</option>
-                <option value="">30</option>
-                <option value="">40</option>
-                <option value="">50</option>
-                <option value="">Show all</option>
-            </select>
-            <!--<label id="control-show-lbl">
+            <label id="control-show-lbl">
+                Show 
                 <div id="view-control" class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -76,11 +67,11 @@
                         <li><a href="#">25</a></li>
                         <li><a href="#">35</a></li>
                         <!--<li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">Separated link</a></li>-->
                     </ul>
                     <input type="hidden" name="rows" id="rows" value="5">
                 </div>
-            </label>-->
+            </label>
         </div>
         <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
             <div class="search-control">
@@ -105,21 +96,13 @@
                         ?>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-input-group">
                                         <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
                                             <option value="0">Select practitioner</option>
-                                            <option value="1">Bongs Maranatha</option>
+                                            <option value="">Bongs Maranatha</option>
                                         </select>
                                         <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-input-group">
-                                        <select name="appointment_billing_id" id="appointment_billing_id" class="text-input dr-placeholder">
-                                            <option value="0">Billing</option>
-                                            <option value="1">Cash</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -180,6 +163,7 @@
                             <h2 class="modal-title">NEW CONSULTATION</h2>
                         </div>
                         <div class="modal-body">
+                            
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
@@ -404,7 +388,7 @@
                                 <div class="col-lg-4 col-lg-offset-8">
                                     <div class="form-input-group">
                                         <div class="patient-search-grp">
-                                            <input type="search" name="q" id="q" class="text-input" placeholder="Search by patient ID no" maxlength="13">
+                                            <input type="search" name="q" id="q" class="text-input" placeholder="Search patient" maxlength="13">
                                             <button type="submit" class="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
                                         </div>
                                     </div>
@@ -532,11 +516,10 @@
                             ?>
                         <div class="row">
                             <div class="col-lg-12">
-                                <ul class="nav nav-tabs">
+                                <ul class="nav nav-pills">
                                     <li class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
                                     <li><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
                                     <li><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
-                                    <li><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
                                     <li><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
                                 </ul>
                             </div>
@@ -797,31 +780,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="add-visiting-reason">
-                                        <div class="col-lg-12 tab-content">
-                                            <?Php
-                                                $form_attr = array('id' => 'add-wating-room');
-                                                echo form_open(base_url() . "appointment/waiting_room", $form_attr);
-                                                ?>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="form-input-group">
-                                                            <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
-                                                                <option value="0">Select practitioner</option>
-                                                                <option value="1">Bongs Maranatha</option>
-                                                            </select>
-                                                            <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-input-group">
-                                                            <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
                                     <div class="tab-pane" id="add-account-details">
                                         <div class="col-lg-12 tab-content">
                                             <div class="row">
@@ -844,6 +802,11 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <a href="#" id="add_visiting_reason">Visiting reason</a>
+                                <input type="hidden" name="appointment_doc_id" id="appointment_doc_id">
+                                <input type="hidden" name="appointment_reason" id="appointment_reason">
                             </div>
                         </div>
                     </div>
@@ -868,7 +831,7 @@
     <div class="col-lg-12">
         <div class="user-table">
             <?Php if(count($patients) > 0) : $count = 1; ?>
-                <table class="table table-bordered" id="user-list">
+                <table class="table table-bordered" id="patients-list">
                     <thead>
                         <tr>
                             <th>No.</th>
