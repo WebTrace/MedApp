@@ -328,6 +328,11 @@ $(document).ready(function() {
     
     $(".manage-waiting").on("click", function() {
         $("#appointment_id").attr("value", $(this).attr("data"));
+        
+    })
+        
+    $(".practitioner_refer_id").on("click", function() {
+        $("#practitioner_app_id").attr("value", $(this).attr("data"));
         console.log($(this).attr("data"));
     })
     

@@ -162,14 +162,14 @@
             //add patient to waiting room
             $this->appointment_mode->waiting_room_data($patient_id, $visiting_reason);
             
-            if($practitioner_appointment != 0)
-            {
-                //get new appointment id
-                $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
-                
-                //assign patient in waiting room to a practitioner
-                $this->appointment_model->create_practitioner_appointment($practitioner_appointment, $appointment_id);
-            }
+            //get new appointment id
+            $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
+            
+            //create appointment status
+            $this->appointment_model->create_appointment_status($appointment_id);
+
+            //assign patient in waiting room to a practitioner
+            $this->appointment_model->create_practitioner_appointment($practitioner_appointment, $appointment_id);
             
             $this->db->trans_complete();//END TRANSACTION
             

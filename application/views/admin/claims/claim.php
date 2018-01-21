@@ -1,55 +1,57 @@
 <div class="row">
-    <div class="controls">
-        <div class="col-lg-7">
-            <div class="btn-controls-group">
-                <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#add_user_modal">
-                    <i class="fa fa-plus"></i> New Consultation
-                </button>
-                   <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
-                <div id="export-control" class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="export-option" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="fa fa-exchange"></i> Export
-                        <span class="caret"></span>
+    <div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
+        <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
+            <div class="col-lg-7">
+                <div class="btn-controls-group">
+                    <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#add_user_modal">
+                        <i class="fa fa-plus"></i> New claim
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">PDF</a></li>
-                        <li><a href="#">Word</a></li>
-                        <li><a href="#">Excel</a></li>
-                    </ul>
-                </div>
-                <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
+                       <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
+                    <div id="export-control" class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="export-option" 
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-exchange"></i> Export
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">PDF</a></li>
+                            <li><a href="#">Word</a></li>
+                            <li><a href="#">Excel</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
 
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-            <label id="control-show-lbl">
-                <div id="view-control" class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Show all Claims
-                        <span class="caret"></span>
-                    </button>
-                    <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-                        <li><a style="color:#FF0000"; href="#">Rejected Claims</a></li>
-                        <li><a style="color:#000000"; href="#">Claims Waiting for Response</a></li>
-                        <li><a style="color:#00ff80"; href="#">Fully Accepted Claims</a></li>
-                        <li><a style="color:#ff8000"; href="#">Partially Accepted</a></li>
-                        <li><a style="color:#00bfff"; href="#">Cash and Private patient</a></li>
-                        <li><a style="color:#ffff00"; href="#">Draft Consultation</a></li>
-                    </ul>
-                    <input type="hidden" name="rows" id="rows" value="5">
                 </div>
-            </label>
-        </div>
-        <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
-            <div class="search-control">
-                <input type="search" id="search" name="search" class="search">
-                <span id = "mg-glass" class="glyphicon glyphicon-search"></span>
-                <div class="clearfix"></div>
             </div>
+            <div class="fix-spacing col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                <!--<label id="control-show-lbl">
+                    <div id="view-control" class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Show all Claims
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
+                            <li><a style="color:#FF0000"; href="#">Rejected Claims</a></li>
+                            <li><a style="color:#000000"; href="#">Claims Waiting for Response</a></li>
+                            <li><a style="color:#00ff80"; href="#">Fully Accepted Claims</a></li>
+                            <li><a style="color:#ff8000"; href="#">Partially Accepted</a></li>
+                            <li><a style="color:#00bfff"; href="#">Cash and Private patient</a></li>
+                            <li><a style="color:#ffff00"; href="#">Draft Consultation</a></li>
+                        </ul>
+                        <input type="hidden" name="rows" id="rows" value="5">
+                    </div>
+                </label>-->
+            </div>
+            <div class="fix-spacing col-lg-3 col-md-8 col-sm-8 col-xs-8">
+                <div class="search-control">
+                    <input type="search" id="search" name="search" class="search">
+                    <span id = "mg-glass" class="glyphicon glyphicon-search"></span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
     </div>
     <div class="col-lg-12">
         <?Php
@@ -80,7 +82,7 @@
                                                 <button type="submit" class="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
                                             </div>
                                         </div>
-                                        <ul class="nav nav-pills">
+                                        <ul class="nav nav-tabs">
                                             <li class="active"><a  href="#patient" data-toggle="tab">Patient</a></li>
                                             <li><a href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
                                             <li><a href="#add-dispensing" data-toggle="tab">Dispense</a></li>

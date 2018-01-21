@@ -25,6 +25,9 @@
             //get new added appointment id
             $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
             
+            //create appointment status
+            $this->create_appointment_status($appointment_id);
+            
             //create appointment billing
             $this->create_appointment_billing($appointment_id, $billing_type_id);
             
@@ -32,14 +35,25 @@
             $this->create_appointment_type($appointment_id, $appointment_type_code);
             
             //assign appointment to a practitioner if pratitioner is selected
-            if($pratitioner_id != 0)
-            {
-                $this->create_practitioner_appointment($pratitioner_id, $appointment_id);
-            }
+            $this->create_practitioner_appointment($pratitioner_id, $appointment_id);
             
             $this->db->trans_complete(); //END SQL TRANSACTION
             
             return $this->db->trans_status();
+        }
+        
+        public function update_waiting_room()
+        {
+            $data = array(
+                
+            );
+        }
+        
+        public function remove_waiting_room()
+        {
+            $data = array(
+                
+            );
         }
         
         public function create_appointment_schedule($appointment_id, $appointment_date)
@@ -65,11 +79,61 @@
         public function create_practitioner_appointment($pratitioner_id, $appointment_id)
         {
             $practitioner_app_data = array(
-                'practitioner_id' => $pratitioner_id,
-                'appointment_id' => $appointment_id
+                'practitioner_id'   => $pratitioner_id,
+                'appointment_id'    => $appointment_id
             );
             
             $this->db->insert('practitioner_appointment', $practitioner_app_data);
+        }
+        
+        public function create_reffer_patient()
+        {
+            $practitioner_app_id        = $this->input->post('practitioner_app_id');
+            $practitioner_id            = $this->input->post('practitioner_id');
+            $referring_reason           = $this->input->post('referring_reason');
+            $appointment_id             = '';
+                
+            $this->db->trans_start(); //START SQL TRANSACTION
+            
+            //create appointment refer
+            $this->create_reffer_patient_data($practitioner_app_id, $practitioner_id, $referring_reason);
+            
+            //update appointment status
+            $this->update_appointment_status(3);
+            
+            $this->db->trans_complete(); //END SQL TRANSACTION
+            
+            return $this->db->trans_status();
+        }
+        
+        public function create_reffer_patient_data($practitioner_app_id, $practitioner_id, $referring_reason)
+        {
+            $data = array(
+                'practitioner_appointment_id'  => $practitioner_app_id,
+                'referred_practitioner'        => $practitioner_id,
+                'referring_reason'             => $referring_reason
+            );
+
+            $this->db->insert('appointment_referrer', $data);
+        }
+        
+        public function create_appointment_status($appointment_id)
+        {
+            $data = array(
+                'appointment_id'    => $appointment_id
+            );
+            
+            $this->db-insert('patient_appoinment_status', $data);
+        }
+        
+        public function update_appointment_status($appointment_status_code)
+        {
+            $updata_data = array(
+                'appointment_status_code'   => $appointment_status_code
+            );
+
+            $this->db->where('appoinment_id', $this->input->post(''));
+            $this->db->update('patient_appointment_status', $updata_data);
         }
         
         public function create_appointment_billing($appointment_id, $patient_billing_type_id)
@@ -97,13 +161,12 @@
             $this->db->from('user u');
             $this->db->join('patient p', 'u.user_id = p.user_id');
             $this->db->join('appointment a', 'p.patient_id = a.patient_id');
-            $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'RIGHT');
+            $this->db->join('practitioner_appointment pa', 'a.appointment_id = pa.appointment_id', 'left');
+            $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'right');
             $this->db->where('appointment_type_code', 2);
             
             return $this->db->get()->result_array();
         }
-        
-        
         
         
         

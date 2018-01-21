@@ -1,66 +1,68 @@
 <div class="row">
-    <div class="controls">
-        <div class="col-lg-7">
-            <div class="btn-controls-group">
-                <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#create_waiting_room" accesskey="t">
-                    <i class="fa fa-plus"></i> Add
-                </button>
-                <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
-                <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
-                <div id="export-control" class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="export-option" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="fa fa-exchange"></i> Export
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">PDF</a></li>
-                        <li><a href="#">Word</a></li>
-                        <li><a href="#">Excel</a></li>
-                        <!--<li role="separator" class="divider"></li>
-<li><a href="#">Separated link</a></li>-->
-                    </ul>
+    <div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
+        <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
+            <div class="col-lg-7">
+                <div class="btn-controls-group">
+                    <a href="<?Php echo base_url(); ?>patients" id="back-btn" class="back-btn" title="Back"><i class="fa fa-arrow-left"></i></a>
+                    <a href="#" class="btn-controls" id="add-user"data-toggle="modal" data-target="#create_waiting_room" accesskey="t">
+                        <i class="fa fa-plus"></i> Add
+                    </a>
+                    <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
+                    <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
+                    <div id="export-control" class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="export-option" 
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-exchange"></i> Export
+                            <span class="caret"></span>
+                        </button>
+                        <ul style="margin: 12px 0px 0px -2px; border-radius: 0px; font-size: 13px;
+                                   border: none;" class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">PDF</a></li>
+                            <li><a href="#">Word</a></li>
+                            <li><a href="#">Excel</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
-            Show
-            <select name="limit" id="limit" class="limit">
-                <option value="0">---</option>
-                <option value="">10</option>
-                <option value="">20</option>
-                <option value="">30</option>
-                <option value="">40</option>
-                <option value="">50</option>
-                <option value="">Show all</option>
-            </select>
-            <label id="control-show-lbl">
-                <!--<div id="view-control" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Show all
-            <span class="caret"></span>
-            </button>
-            <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-            <li><a href="#">5</a></li>
-            <li><a href="#">15</a></li>
-            <li><a href="#">25</a></li>
-            <li><a href="#">35</a></li>
-            <!--<li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            </ul>
-            <input type="hidden" name="rows" id="rows" value="5">
-            </div>-->
-            </label>
-        </div>
-        <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
-            <div class="search-control">
-                <input type="search" id="search" name="search" class="search">
-                <span id = "mg-glass" class="glyphicon glyphicon-search"></span>
-                <div class="clearfix"></div>
+            <div class="fix-spacing col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                Show
+                <select name="limit" id="limit" class="limit">
+                    <option value="0">---</option>
+                    <option value="">10</option>
+                    <option value="">20</option>
+                    <option value="">30</option>
+                    <option value="">40</option>
+                    <option value="">50</option>
+                    <option value="">Show all</option>
+                </select>
+                <label id="control-show-lbl">
+                    <!--<div id="view-control" class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Show all
+                <span class="caret"></span>
+                </button>
+                <ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
+                <li><a href="#">5</a></li>
+                <li><a href="#">15</a></li>
+                <li><a href="#">25</a></li>
+                <li><a href="#">35</a></li>
+                <!--<li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                </ul>
+                <input type="hidden" name="rows" id="rows" value="5">
+                </div>-->
+                </label>
             </div>
+            <div class="fix-spacing col-lg-3 col-md-8 col-sm-8 col-xs-8">
+                <div class="search-control">
+                    <input type="search" id="search" name="search" class="search">
+                    <span id = "mg-glass" class="glyphicon glyphicon-search"></span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
     </div>
     <div class="col-lg-12">
         <div class="modal fade waiting_room" id="create_waiting_room">
@@ -127,6 +129,52 @@
         </div>
     </div>
     </div>
+    <div class="col-lg-6">
+        <div class="modal fade appointment_referrer" id="create_appointment_referrer">
+            <div class="modal-dialog" id="appointment_referrer">
+                <div class="modal-content">
+                    <?Php
+                        $attrib = array('id' => 'frmpractitioner_refer');
+                        echo form_open(base_url() . 'appointment/create_reffer_patient');
+                        ?>
+                        <div class="modal-header">
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                            <h2 class="modal-title"><i class="fa fa-share-square-o"></i> REFER APPOINTMENT</h2>
+</div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-input-group">
+                                        <select name="practitioner_id" id="practitioner_id" class="text-input dr-placeholder">
+                                            <option value="0">Select practitioner</option>
+                                            <?Php if(count($practitioners) > 0) : ?>
+                                                <?Php foreach($practitioners as $practitioner) : ?>
+                                                    <option value="<?Php echo $practitioner['practitioner_id']; ?>"><?Php echo $practitioner['first_name'] . " " . $practitioner['last_name']; ?></option>
+                                                <?Php endforeach; ?>
+                                            <?Php else : ?>
+                                                <option value="0">No practitioners found.</option>
+                                            <?Php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-input-group">
+                                        <input type="hidden" name="practitioner_app_id" id="practitioner_app_id">
+                                        <textarea class="text-input" placeholder="Referring reason" id="referring_reason" name="referring_reason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-save">
+                            Update
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-12">
         <div class="modal fade waiting_room" id="edit_waiting_room">
             <div class="modal-dialog" id="waiting-room-modal">
@@ -146,11 +194,11 @@
                                     <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
                                         <option value="0">Select practitioner</option>
                                         <?Php if(count($practitioners) > 0) : ?>
-                                        <?Php foreach($practitioners as $practitioner) : ?>
-                                        <option value="<?Php echo $practitioner['practitioner_id']; ?>"><?Php echo $practitioner['first_name'] . " " . $practitioner['last_name']; ?></option>
-                                        <?Php endforeach; ?>
+                                            <?Php foreach($practitioners as $practitioner) : ?>
+                                                <option value="<?Php echo $practitioner['practitioner_id']; ?>"><?Php echo $practitioner['first_name'] . " " . $practitioner['last_name']; ?></option>
+                                            <?Php endforeach; ?>
                                         <?Php else : ?>
-                                        <option value="0">No practitioners found.</option>
+                                            <option value="0">No practitioners found.</option>
                                         <?Php endif; ?>
                                     </select>
                                     <input type="hidden" name="appointment_id" id="appointment_id">
@@ -177,14 +225,14 @@
                             Update
                         </button>
                     </div>
-                    </form>
+                </form>
             </div>
         </div>
     </div>
     </div>
     <div class="col-lg-6">
         <div class="x_title">
-            <h2>Waiting room list</h2>
+            <h2>Manage waiting room list</h2>
         </div>
         <?Php if(count($waiting_room_patients) > 0) : ?>
             <?Php foreach($waiting_room_patients as $waiting_room_patient) : ?>
@@ -193,11 +241,15 @@
                         <a class="appointment-details" href="#" onclick="return false;">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="media-heading">
-                                        <strong><?Php echo $waiting_room_patient['first_name'] . " " . $waiting_room_patient['last_name']; ?></strong>
+                                    <h5 style="text-transform: uppercase; margin-bottom: 10px;" class="media-heading">
+                                        <?Php echo $waiting_room_patient['first_name'] . " " . $waiting_room_patient['last_name']; ?>
                                         <div class="pull-right">
-                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" class="manage-waiting" data-toggle="modal" data-target="#edit_waiting_room"><i class="fa fa-pencil"></i></span>
-                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" class="manage-waiting"><i class="fa fa-times"></i></span>
+                                            <span data="<?Php echo $waiting_room_patient['practitioner_appointment_id']; ?>" title="Reffer to another practitioner" 
+                                                  class="practitioner_refer_id" data-toggle="modal" data-target="#create_appointment_referrer"><i class="fa fa-share-square-o"></i></span>
+                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Edit" 
+                                                  class="manage-waiting" data-toggle="modal" data-target="#edit_waiting_room"><i class="fa fa-pencil"></i></span>
+                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Remove" 
+                                                  class="manage-waiting"><i class="fa fa-times"></i></span>
                                         </div>
                                     </h5>
                                     <div class="pull-left">

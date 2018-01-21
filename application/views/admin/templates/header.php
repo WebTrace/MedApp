@@ -42,7 +42,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="dashboard">CLAIMA</a>
+                        <a class="navbar-brand" href="<?Php echo base_url(); ?>dashboard">CLAIMA</a>
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
@@ -159,9 +159,9 @@
                                     <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
                                 </li>
                             <?Php endif; ?>
-                            <li>
+                            <!--<li>
                                 <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-files-o"></i> Waiting room</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>

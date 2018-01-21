@@ -27,6 +27,14 @@
             
         }
         
+        public function create_reffer_patient()
+        {
+            if($this->appointment_model->create_reffer_patient() == TRUE)
+            {
+                
+            }
+        }
+        
         public function create_waiting_room()
         {
             if($this->appointment_model->create_waiting_room() == TRUE)

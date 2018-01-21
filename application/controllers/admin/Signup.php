@@ -78,9 +78,34 @@
         
         public function feedback()
         {
-            $this->load->view("admin/templates/auth-header");
-            $this->load->view("admin/feedback/feedback");
-            $this->load->view("admin/templates/auth-footer");
+            $from       = "no-repy@webtrace.co.za";
+            $to         = "emmanuel66@live.co.za";
+            $subejct    = "CLAIMA Test email";
+            $message    = "Hi. This is a test email from CLAIMA applciation";
+
+            /*if($this->send_email($from, $to, $subejct, $message) == TRUE)
+            {
+                $data['icon'] = "<i class='fa fa-envelope-o'></i>";
+                $data['title'] = "<h4>Email was successfully sent to you.</h4>";
+                $data['content'] = "<p>Visit your emails and click on the link sent to acivate your account.</p>";
+            }
+            else
+            {
+                $data['icon'] = "<i class='fa fa-times-circle-o error-color'></i>";
+                $data['title'] = "<h4>Email could not be sent.</h4>";
+                $data['content'] = "<p>An error occrued while sending a confirmation email.</p>";
+            }*/
+            if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
+            {
+                echo "working";
+            }
+            else
+            {
+                echo "Not working";
+            }
+            //$this->load->view("admin/templates/auth-header");
+            //$this->load->view("admin/feedback/feedback");
+            //$this->load->view("admin/templates/auth-footer");
         }
     }
 ?>

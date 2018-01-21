@@ -1,5 +1,5 @@
 <?Php
-    class Communication extends CI_Controller
+    class MY_Communication extends CI_Controller
     {
         //send account activation link
         public function activation_link()
@@ -27,25 +27,7 @@
             $this->load->view("admin/templates/auth-footer");
         }
         
-        //send 
-        
-        private function send_email($from, $to, $subject, $message)
-        {
-            //send email to a user to confirm their account
-            $this->email->from($from);
-            $this->email->to($to);
-            $this->email->subject($subject);
-            $this->email->message($message);
-
-            if($this->email->send())
-            {
-                return TRUE;
-            }
-            else
-            {
-                return FALSE;
-            }
-        }
+        //send
         
         public function send_sms()
         {
