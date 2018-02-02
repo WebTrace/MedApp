@@ -2,15 +2,15 @@ $(document).ready(function() {
     //Manage users table search
     
     //Table pagination
-    var table = "#user-list";
+    var table = "#patients-list";
     
     //assign value to the hidden field
-    $("#width-fix a").click(function() {
+    $("#limit").change(function() {
         var numRoms = $(this).text() + ' <span class="caret"></span>',
-            rowsVal = $(this).text();
+            rowsVal = $(this).val();
         
-        $("#diplay-option").html(numRoms);
-        $("#rows").attr("value", rowsVal);
+        //$("#diplay-option").html(numRoms);
+        //$("#rows").attr("value", rowsVal);
         
         //Start with pagination
         $(".pagination").html("");

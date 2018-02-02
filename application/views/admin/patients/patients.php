@@ -28,7 +28,7 @@
     </ul>-->
     <div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
         <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
-            <div class="col-lg-7">
+            <div class="col-lg-7 col-md-8 col-sm-8">
                 <div class="btn-controls-group">
                     <a href="#" class="btn-controls" id="add-user" data-toggle="modal" data-target="#add_user_modal" onclick="return false;" accesskey="t">
                         <i class="fa fa-plus"></i> New patient
@@ -56,11 +56,12 @@
                 Show
                 <select name="limit" id="limit" class="limit">
                     <option value="0">---</option>
-                    <option value="">10</option>
-                    <option value="">20</option>
-                    <option value="">30</option>
-                    <option value="">40</option>
-                    <option value="">50</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
                     <option value="">Show all</option>
                 </select>
                 <label id="control-show-lbl">
@@ -178,7 +179,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h2 class="modal-title">NEW CONSULTATION</h2>
+                            <h2 class="modal-title">NEW DIAGNOSIS</h2>
                         </div>
                         <div class="modal-body">
                             <div class="row">

@@ -230,7 +230,7 @@
         </div>
     </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-5 col-md-5 col-sm-6">
         <div class="x_title">
             <h2>Manage waiting room list</h2>
         </div>
@@ -265,5 +265,14 @@
         <?Php else : ?>
         
         <?Php endif; ?>
+    </div>
+    <div class="col-lg-7 col-md-7 col-sm-6">
+        <div class="x_title">
+            <h2>Details</h2>
+        </div>
+        <div style="text-align: center; margin-top: 140px;">
+            <div style="font-size: 100px; color: #ddd;"><i class="fa fa-folder-open-o"></i></div>
+            <p>No waiting room list selected.</p>
+        </div>
     </div>
 </div>
