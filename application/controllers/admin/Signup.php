@@ -39,20 +39,34 @@
             }
             else
             {
-                
                 if($this->signup_model->signup_practioner() == TRUE)
                 {
                     //get email and hash from session
-                    $email = $this->session->userdata("registration_email");
-                    $hash = $this->session->userdata("hash");
+                    $to             = $this->session->userdata("registration_email");
+                    $hash           = $this->session->userdata("hash");
+                    $from           = "no-reply@webtrace.co.za";
+                    $subejct        = "CLAIMA Account Activation";
+                    $url            = base_url() . "signup/accout_activation/" . $hash;
+                    $message        = $this->email_model->signup_content("");
+                    
+                    //send an email
+                    if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
+                    {
+                        
+                    }
+                    else
+                    {
+                        
+                    }
                     
                     //notiy user that their account was created successfully 
                     $output = "<div class='feedback-header text-center'>";
                     $output .= "<i class='fa fa-check-circle' id='account-success'></i>";
                     $output .= "</div>";
                     $output .= "<h4 class='confirm-header'>Thank you for choosing CLAIMA.</h4>";
-                    $output .= "<p>Your account was created successfully. An email with instructions on how activating your account was sent to you.</p>";
-
+                    $output .= "<p>Your account was created successfully. An email with instructions 
+                    on how activating your account was sent to you.</p>";
+                    
                     echo $output;
                 }
                 else
@@ -67,7 +81,8 @@
                     
                     echo $output;
                 }
-                echo validation_errors();
+                
+                //echo validation_errors();
             }
         }
         
@@ -78,11 +93,23 @@
         
         public function feedback()
         {
-            $from       = "no-repy@webtrace.co.za";
+            //echo $this->patients_model->new_password();
+            echo $this->diagnosis_model->generate_treatment_reference();
+            /*$from       = "no-repy@webtrace.co.za";
             $to         = "emmanuel66@live.co.za";
             $subejct    = "CLAIMA Test email";
-            $message    = "Hi. This is a test email from CLAIMA applciation";
+            $message    = $this->email_model->signup_content(base_url());
 
+            if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
+            {
+                echo "Email sent";
+                //mail("emmanuel66@live.co.za", "Mail function", "This is sent from php mail");
+            }
+            else
+            {
+                echo "Email not sent";
+            }
+            
             /*if($this->send_email($from, $to, $subejct, $message) == TRUE)
             {
                 $data['icon'] = "<i class='fa fa-envelope-o'></i>";
@@ -95,14 +122,14 @@
                 $data['title'] = "<h4>Email could not be sent.</h4>";
                 $data['content'] = "<p>An error occrued while sending a confirmation email.</p>";
             }*/
-            if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
+            /*if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
             {
                 echo "working";
             }
             else
             {
                 echo "Not working";
-            }
+            }*/
             //$this->load->view("admin/templates/auth-header");
             //$this->load->view("admin/feedback/feedback");
             //$this->load->view("admin/templates/auth-footer");

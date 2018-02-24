@@ -172,7 +172,7 @@
     <div class="col-lg-12">
         <?Php
             $attributes = array('id' => 'add_diagnosis');
-            echo form_open(base_url() . 'patients/create_diagnosis', $attributes); 
+            echo form_open(base_url() . 'diagnosis/create_diagnosis', $attributes); 
             ?>
             <div class="modal fade" id="create_cosultation">
                 <div class="modal-dialog" id="treatment-modal">
@@ -191,6 +191,8 @@
                                                 <li><a href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
                                                 <li><a href="#add-dispensing" data-toggle="tab">Dispense</a></li>
                                                 <li><a href="#add-notes" data-toggle="tab">Additional notes</a></li>
+                                                <li><a href="#attach-docs" data-toggle="tab">Attach docs</a></li>
+                                                <li><a href="#next-checkup" data-toggle="tab">Next checkup</a></li>
                                             </ul>
                                             <div id="diagnosis-group">
                                                 <div class="tab-content clearfix">
@@ -232,18 +234,19 @@
                                                                         <?Php endif; ?>
                                                                     </select>
                                                                 </div>-->
-                                                                <h4 style="margin-top: 0px; font-size: 15px;"><i class="fa fa-file-text"></i> Visiting reason</h4>
-                                                                <p>
-                                                                    This is an appointment reason. its only text that descibe what bothers the 
-                                                                    patient and the reason to visit a practitioner
-                                                                </p>
+                                                                <h4 style="margin-top: 0px; font-size: 15px;">
+                                                                    <i class="fa fa-file-text"></i> 
+                                                                    <span id="reason-header"></span>
+                                                                </h4>
+                                                                <p id="appointment_reason"></p>
+                                                                <input type="hidden" name="waiting_app_id" id="waiting_app_id">
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <hr style="margin-top: 0px;">
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-lg-4">
+                                                            <!--<div class="col-lg-4">
                                                                 <div class="form-input-group">
                                                                     <select name="practitioner" id="practitioner" class="text-input">
                                                                         <option value="0">Practitioner</option>
@@ -265,39 +268,46 @@
                                                                 <div class="form-input-group">
                                                                     <input type="text" name="referring_doctor" id="referring_doctor" class="text-input" placeholder="Referring Dr's practice no">
                                                                 </div>
+                                                            </div>-->
+                                                            <div class="col-lg-12">
+                                                                <h4 style="margin-top: 0px; font-size: 17px;">Treatment details</h4>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-3">
                                                                 <div class="form-input-group">
-                                                                    <input type="text" name="auth_number" id="auth_number" class="text-input" placeholder="Authorization number">
+                                                                    <input type="hidden" name="practitioner" value="<?Php echo $practitioner_id; ?>">
+                                                                    <input type="hidden" name="patient_id" id="patient_id">
+                                                                    <input type="hidden" name="billing" value="">
+                                                                    <input type="hidden" name="" value="">
+                                                                    <input type="text" name="auth_number" id="auth_number" class="text-input" placeholder="Authorization no">
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-3">
                                                                 <div class="form-input-group">
                                                                     <select name="place" id="place" class="text-input">
                                                                         <option value="0">Treatment place</option>
+                                                                        <option value="1">Hospital</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-3">
                                                                 <div class="form-input-group">
                                                                     <input type="text" name="treatment_date" id="treatment_date" class="text-input" placeholder="Treatment date">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-3">
                                                                 <div class="form-input-group">
-                                                                    <select name="place" id="place" class="text-input dr-placeholder">
-                                                                        <option value="0">Billing</option>
-                                                                    </select>
+                                                                    <input type="time" name="treatment_time" id="treatment_timee" class="text-input" placeholder="Treatment time">
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="row">
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane" id="add-diagnosis">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <a href="#" class="pull-right" id="add-row"><i class="fa fa-plus"></i> Add</a>
+                                                                <div class="clearfix"></div>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <table class="table table-bordered add-consultation">
@@ -305,29 +315,22 @@
                                                                         <tr class="">
                                                                             <th>Tariff code</th>
                                                                             <th>Description</th>
-                                                                            <th>IDC code</th>
+                                                                            <th>ICD code</th>
+                                                                            <th>Modifier code</th>
                                                                             <th>Price</th>
                                                                             <th>Quantity</th>
                                                                             <th colspan="2">Sub total</th>
                                                                         </tr>
                                                                     </thead>
-                                                                    <tbody id="diagnose-collection">
-                                                                        <tr>
-                                                                            <td><input type="text" name="tariff_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="description[]" class="text-input"></td>
-                                                                            <td><input type="text" name="idc_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="price[]" class="text-input"></td>
-                                                                            <td><input type="text" name="quantity[]" class="text-input"></td>
-                                                                            <td><input type="text" name="sub_total[]" class="text-input"></td>
-                                                                            <td><a href="#" class="remove-row" title="Remove"><i class="fa fa-times-circle"></a></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><input type="text" name="tariff_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="description[]" class="text-input"></td>
-                                                                            <td><input type="text" name="idc_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="price[]" class="text-input"></td>
-                                                                            <td><input type="text" name="quantity[]" class="text-input"></td>
-                                                                            <td><input type="text" name="sub_total[]" class="text-input"></td>
+                                                                    <tbody id="diagnose-collection" class="remove-outer-border">
+                                                                        <tr id="append-tr">
+                                                                            <td><input type="text" name="tariff_code[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="description[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="icd_code[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="modifier_code[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="price[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="quantity[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="sub_total[]" class="diagnosis-input text-input"></td>
                                                                             <td><a href="#" class="remove-row" title="Remove"><i class="fa fa-times-circle"></a></td>
                                                                         </tr>
                                                                     </tbody>
@@ -339,9 +342,10 @@
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <a href="#" class="pull-right" id="add-row-dispense"><i class="fa fa-plus"></i> Add</a>
+                                                                <div class="clearfix"></div>
                                                             </div>
                                                             <div class="col-lg-12">
-                                                                <table class="table table-bordered">
+                                                                <table class="table table-bordered add-dispensing">
                                                                     <thead>
                                                                         <tr>
                                                                             <th>NAPPI code</th>
@@ -352,15 +356,15 @@
                                                                             <th colspan="2">Gross</th>
                                                                         </tr>
                                                                     </thead>
-                                                                    <tbody id="dispense-collection">
-                                                                        <tr>
-                                                                            <td><input type="text" name="nappi_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="item_code[]" class="text-input"></td>
-                                                                            <td><input type="text" name="days_supply[]" class="text-input"></td>
-                                                                            <td><input type="text" name="cost[]" class="text-input"></td>
-                                                                            <td><input type="text" name="dispense_fee[]" class="text-input"></td>
-                                                                            <td><input type="text" name="gross[]" class="text-input"></td>
-                                                                            <td><a href="#" class="remove-row-dispense" title="Remove"><i class="fa fa-times-circle"></a></td>
+                                                                    <tbody id="dispense-collection" class="remove-outer-border">
+                                                                        <tr id="dispense-row">
+                                                                            <td><input type="text" name="nappi_code[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="item_code[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="days_supply[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="cost[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="dispense_fee[]" class="diagnosis-input text-input"></td>
+                                                                            <td><input type="text" name="gross[]" class="diagnosis-input text-input"></td>
+                                                                            <td><a href="#" class="remove-row-dispense" title="Remove"><i class="fa fa-times-circle"></i></a></td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -374,6 +378,32 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="tab-pane" id="attach-docs">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                Attach documents
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="next-checkup">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <p>Do you wnat to set a next checkup day for [Title] [patient name]?</p>
+                                                                <p>
+                                                                    <input type="radio" name="next_date" id="next_date_no" checked="checked"/> No
+                                                                    <input type="radio" name="next_date" id="next_date_yes" /> Yes
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-12 cls-checkup-date">
+                                                                <div class="form-input-group">
+                                                                    <input type="text" name="checkup_date" id="checkup_date" class="text-input" placeholder="Next checkup date" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -382,7 +412,6 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="patient_id" id="patient_id">
                             <input type="submit" name="btn_submit" class="btn btn-save" value="Save" />
                             <input type="submit" name="btn_submit" class="btn btn-reset" value="Reset"/>
                         </div>
@@ -538,7 +567,7 @@
                                         <div class="tab-pane active" id="add-personal-details">
                                             <div class="col-lg-12 tab-content">
                                                 <div class="row">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-4">
                                                         <div class="form-input-group">
                                                             <select name="title" id="title" class="text-input dr-placeholder">
                                                                 <option value="0">Title</option>
@@ -550,34 +579,51 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-4">
                                                         <div class="form-input-group">
                                                             <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
                                                         </div>
                                                     </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-input-group">
+                                                            <input type="text" name="midname" id="midname" class="text-input" placeholder="Middle name">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-4">
                                                         <div class="form-input-group">
                                                             <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-4">
+                                                        <div class="form-input-group">
+                                                            <input type="text" name="dob" id="dob" class="text-input" placeholder="Date of Birth">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
                                                         <div class="form-input-group">
                                                             <input type="text" name="idno" id="idno"class="text-input" placeholder="ID no. / Passport no.">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-input-group">
-                                                            <input type="text" name="dob" id="dob" class="text-input" placeholder="Date of Birth">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-4">
                                                         <div class="form-input-group">
                                                             <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
                                                                 <option value="0">Ethnic group</option>
+                                                                <option value="African">African</option>
+                                                                <option value="Coloured">Coloured</option>
+                                                                <option value="White">White</option>
+                                                                <option value="Indian">Indian</option>
+                                                                <option value="Asian">Asian</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-input-group">
+                                                            <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
+                                                                <option value="0">Select country</option>
                                                                 <option value="African">African</option>
                                                                 <option value="Coloured">Coloured</option>
                                                                 <option value="White">White</option>
@@ -823,7 +869,16 @@
                                                             <input type="text" name="" id="" class="text-input" placeholder="Username">
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-12">
+                                                        <div class="">
+                                                            <h5 style="font-size: 18px;">Automatic password</h5>
+                                                            <p>
+                                                                The system will generate automatic password and send it to patient through provided email.
+                                                                This password can be changed at anytime.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="col-lg-6">
                                                         <div class="form-input-group">
                                                             <input type="text" name="" id="" class="text-input" placeholder="Password">
                                                         </div>
@@ -832,7 +887,7 @@
                                                         <div class="form-input-group">
                                                             <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -900,9 +955,12 @@
                                 <td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>
                                 <?Php if($is_visible == TRUE) : ?>
                                 <td>
-                                    <a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
+                                    <a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" 
+                                       href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
+                                       data-url-patient-watitng = "<?Php echo base_url(); ?>appointment/patient_wating_room"
                                        title="New consultation" data-toggle="modal" data-target="#create_cosultation" onclick="return false">
-                                        <i class="fa fa-arrow-circle-left"></i></a>
+                                        <i class="fa fa-arrow-circle-left"></i>
+                                    </a>
                                 </td>
                                 <?Php endif; ?>
                                 <td><a class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Patient medical details"><i class="fa fa-eye"></i></a></td>

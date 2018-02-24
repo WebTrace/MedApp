@@ -123,7 +123,7 @@
                 'appointment_id'    => $appointment_id
             );
             
-            $this->db-insert('patient_appoinment_status', $data);
+            $this->db->insert('patient_appointment_status', $data);
         }
         
         public function update_appointment_status($appointment_status_code)
@@ -131,8 +131,8 @@
             $updata_data = array(
                 'appointment_status_code'   => $appointment_status_code
             );
-
-            $this->db->where('appoinment_id', $this->input->post(''));
+            
+            $this->db->where('appointment_id', $this->input->post(''));
             $this->db->update('patient_appointment_status', $updata_data);
         }
         
@@ -158,20 +158,85 @@
         
         public function fetch_waiting_room()
         {
-            $this->db->from('user u');
+            /*$this->db->from('user u');
             $this->db->join('patient p', 'u.user_id = p.user_id');
             $this->db->join('appointment a', 'p.patient_id = a.patient_id');
-            $this->db->join('practitioner_appointment pa', 'a.appointment_id = pa.appointment_id', 'left');
-            $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'right');
-            $this->db->where('appointment_type_code', 2);
+            $this->db->join('practitioner_appointment pa', 'a.appointment_id = pa.appointment_id', 'RIGHT');
+            $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'RIGHT');
+            $this->db->where('appointment_type_code', 2);*/
+            
+            return $this->data_access->fetch_waiting_room()->result_array();
+        }
+        
+        public function fetch_single_waiting_room($waiting_room_id, $is_ajax)
+        {
+            $this->db->from("appointment a");
+            $this->db->join("patient p", "a.patient_id = p.patient_id");
+            $this->db->join("user u", "p.user_id = u.user_id");
+            $this->db->join("app_type at", "a.appointment_id = at.appointment_id");
+            $this->db->where("a.appointment_id = $waiting_room_id");
+
+            if($is_ajax == FALSE)
+            {
+                return $this->db->get()->result_array();
+            }
+            else
+            {
+                echo json_encode($this->db->get()->result_array());
+            }
+        }
+        
+        public function fetch_patient_wating_room($patient_id, $is_ajax)
+        {
+            /*$this->db->from("appointment a");
+            $this->db->join("app_type at", "a.appointment_id = at.appointment_id");
+            $this->db->join("patient_appointment_status s", "a.appointment_id = s.appointment_id", "LEFT");
+            $this->db->join("appointment_status ap", "s.appointment_status_code = ap.appointment_status_code");
+            $this->db->where("s.appointment_status_code", 1);
+            $this->db->or_where("(s.appointment_status_code", "2)");
+            $this->db->where("a.patient_id", $patient_id);*/
+            
+            $data = $this->data_access->fetch_patient_wating_room($patient_id)->result_array();
+            
+            if($is_ajax == FALSE)
+            {
+                return $data;
+            }
+            else
+            {
+                echo json_encode($data);
+            }
+        }
+        
+        public function create_checkup($check_date_id, $days_due)
+        {
+            $data = array(
+                'checkup_date_id'       => $check_date_id,
+                'days_due'               => $days_due
+            );
+
+            $this->db->insert("checkup", $data);
+        }
+        
+        public function create_patient_checkup_status($checkup_id)
+        {
+            $data = array(
+                'checkup_id'        => $checkup_id
+            );
+            
+            $this->db->insert('patient_appointment_status', $data);
+        }
+        
+        public function fetch_checkup_appointment($patient_id)
+        {
+            $this->db->from('patient p');
+            $this->db->join('appointment a', 'p.patient_id = a.patient_id');
+            $this->db->join('appointment_treatment at', 'a.appointment_id = at.appointment_id', 'left');
+            $this->db->join('checkup_date cd', 'at.appointment_treatment_id = cd.appointment_treatment_id');
+            $this->db->where('p.patient_id', 33);
             
             return $this->db->get()->result_array();
         }
-        
-        
-        
-        
-        
         
         
         

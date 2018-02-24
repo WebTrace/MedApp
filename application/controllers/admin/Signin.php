@@ -93,7 +93,7 @@
             if($this->form_validation->run() == FALSE)
             {
                 $this->load->view("admin/templates/auth-header");
-                $this->load->view("admin/forgotpassw");
+                $this->load->view("admin/authentication/forgotpassw");
                 $this->load->view("admin/templates/auth-footer");
             }
             else

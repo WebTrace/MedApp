@@ -48,5 +48,11 @@
         {
             return $this->db->get('speciality')->result_array();
         }
+        
+        public function fetch_practitioner_id($user_id)
+        {
+            $this->db->where('user_id', $user_id);
+            return $this->db->get('practitioner')->row(0)->practitioner_id;
+        }
     }
 ?>

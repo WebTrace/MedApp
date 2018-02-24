@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'database', 'email', 'form_validation');
+$autoload['libraries'] = array('session', 'database', 'email', 'form_validation', 'email');
 
 /*
 | -------------------------------------------------------------------
@@ -136,6 +136,6 @@ $autoload['model'] = array('admin/signup_model', 'admin/signin_model',
     'admin/practitioner_model', 'admin/user_model', 'admin/branch_model',
     'admin/data_access', 'admin/communication_model', 'admin/patients_model',
     'admin/billing_model', 'admin/data_access', 'admin/communication_model', 
-    'admin/consultation_model', 'admin/medical_model', 'admin/claim_model',
-    'admin/appointment_model'
+    'admin/diagnosis_model', 'admin/medical_model', 'admin/claim_model',
+    'admin/appointment_model', 'admin/email_model'
 );

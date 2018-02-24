@@ -131,8 +131,11 @@ $(document).ready(function() {
     
     //get patient details for new consultation modal
     $(".consultation-btn").on("click", function() {
-        var patient_id = $(this).attr("id");
+        var patient_id = $(this).attr("id"),
+            appointnemt_id = $(this).attr('data-url-patient-watitng');
+        
         $("#user_id").attr("value", patient_id);
+        $("#patient_id").attr("value", patient_id);
         
         $.ajax({
             url: $(this).attr('data-url'),
@@ -144,7 +147,27 @@ $(document).ready(function() {
                 $('#id_number').text(response.id_number);
             }
         });
-    })
+        
+        $.ajax({
+            url: $(this).attr('data-url-patient-watitng'),
+            type: 'post',
+            dataType: 'json',
+            data: { id: patient_id },
+            success: function (response) {
+                if(response.length == 1)
+                {
+                    $('#waiting_app_id').attr('value', response[0].appointment_id);
+                    $('#reason-header').text(response[0].appointment_title);
+                    $('#appointment_reason').text(response[0].reason);
+                }
+                else
+                {
+                    $('#reason-header').text('');
+                    $('#appointment_reason').text('');
+                }
+            }
+        });
+    });
     
     //create patient
     $("#frm-add-new-patient").on("submit", function(e) {
@@ -276,6 +299,8 @@ $(document).ready(function() {
         $("#btn-reset").show();
     })
     
+    /*waiting room seaction*/
+    
     //search branch patients
     $(".waiting-input").slideUp();
     
@@ -292,26 +317,30 @@ $(document).ready(function() {
                 {
                     $("#waiting_room_patient").attr("value", response[0].patient_id);
                     
+                    var billing_type = "",
+                        url = $("#billing_type_url").val(),
+                        data = $("#waiting_room_patient").val();
+                    
                     $.ajax({
-                        url     : $("#billing_type_url").val(),
+                        url     : url,
                         type    : "POST",
-                        data    : { patient_id: $("#waiting_room_patient").val() },
+                        data    : { patient_id: data },
                         dataType: 'json',
                         success : function(res) {
                             if(res.length > 0)
                             {
-                                var billing_type = "";
-                                
+                                billing_type += "<option>Select billing type</options>";
                                 for(var i = 0; i < res.length; i++)
                                 {
                                     billing_type += "<option value='" + res[i].patient_billing_type_id + "'>" + res[i].billing_name + "</option>";
                                 }
-                                
-                                $("#appointment_billing_id").append(billing_type);
+
+                                $("#appointment_billing_id").html(billing_type);
                             }
                             else
                             {
-                                
+                                billing_type += "<option value='0'>No billing type found.</option>";
+                                $("#appointment_billing_id").html(billing_type);
                             }
                         }
                     });
@@ -323,20 +352,104 @@ $(document).ready(function() {
                     $(".waiting-input").slideUp();
                 }
             }
-        })
-    })
+        });
+    });
     
     $(".manage-waiting").on("click", function() {
         $("#appointment_id").attr("value", $(this).attr("data"));
         
-    })
+    });
+    
+    //create waiting room
+    $("#add-wating-room").on("submit", function(e) {
+        e.preventDefault();
+        var url     = $(this).attr('action'),
+            type    = $(this).attr('method'),
+            data    = $(this).serialize(),
+            link    = $("#link").val();
         
-    $(".practitioner_refer_id").on("click", function() {
+        $.ajax({
+            url     : url,
+            type    : type,
+            data    : data,
+            dataType: 'json',
+            success: function(response) {
+                if(response.length > 0)
+                {
+                    var output = "";
+                    
+                    for(i = 0; i < response.length; i++)
+                    {
+                        output += "<div class='upcoming-appointments'>" +
+                                "<div class='appointment-preview fency'>" +
+                                    "<a class='appointment-details' href='" + link + "'" + 
+                                        "data-prac-app-id='" + response[i].practitioner_appointment_id + "'" + 
+                                        "data-value='" + response[i].appointment_id + "'>" +
+                                        "<div class='media'>" +
+                                            "<div class='media-body'>" +
+                                                "<h5 style='text-transform: uppercase; margin-bottom: 10px;' class='media-heading'>" +
+                                                    response[i].first_name + ' ' + response[i].last_name +
+                                                "</h5>" +
+                                                "<div class='pull-left'>" +
+                                                    "<p style='margin-bottom: 2px;' class='small text-muted'><i class='fa fa-clock-o'></i> 23 Jan 2017 | 4:32 PM</p>" +
+                                                    "<p style='margin-bottom: 0px;' class='appointment-desc'>" + response[i].reason + "</p>" +
+                                                "</div>" +
+                                            "</div>" +
+                                        "</div>" +
+                                    "</a>" +
+                                "</div>" +
+                            "</div>"
+                        ;
+                        $("#create_waiting_room").modal('hide');
+                        $(".refresh-waiting-room-data").hide();
+                        $(".refresh-waiting-room-data").html(output).fadeIn();
+                    }
+                }
+            }
+        });
+    });
+    
+    $("#add-to-waiting-room").on("click", function() {
+        $("#create_waiting_room").modal('show');
+    });
+        
+    /*$(".appointment-details").on("click", function() {
         $("#practitioner_app_id").attr("value", $(this).attr("data"));
-        console.log($(this).attr("data"));
+    });*/
+    
+    $("#add_diagnosis").on("submit", function() {
+        $.ajax({
+            url: $(this).attr("action"),
+            type: $(this).attr("method"),
+            data: $(this).serialize(),
+            success: function(res) {
+                
+            }
+        });
     })
     
-    /*$(".appointment-details").on("mouseover", function() {
-        console.log($(this).children());
-    })*/
-})
+    $(".fency").on("click", ".appointment-details", function() {
+        var appointment_id = $(this).attr("data-value"),
+            practitioner_app_id = $(this).attr("data-prac-app-id");
+        
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'POST',
+            data: { appointment_id: appointment_id, practitioner_app_id: practitioner_app_id },
+            success: function(response) {
+                $("#waiting-room-data").hide();
+                $("#waiting-room-data").fadeIn(2000).html(response);
+            }
+        });
+        
+        
+        
+        return false;
+    });
+    
+    $("").on("click", function() {
+        $.ajax({
+            
+        });
+    });
+});

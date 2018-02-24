@@ -9,9 +9,10 @@
             
             $data['patients']                   = $this->patients_model->fetch_all_patient();
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
-            //$data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
             $data["dependant_relationships"]    = $this->medical_model->fetch_relationship();
-            $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
+            //$data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
+            //$data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
+            $data["practitioner_id"]            = $this->practitioner_model->fetch_practitioner_id($this->session->userdata('USER_ID'));
             
             $this->load->view("admin/templates/header");
             $this->load->view("admin/patients/patients", $data);

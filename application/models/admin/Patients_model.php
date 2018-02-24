@@ -118,6 +118,12 @@
                 $this->communication_model->create_address_type($address_id, $address_type_code);
             }
             
+            //create patient credentials if requested
+            if(1 > 2)
+            {
+                $this->signin_model->create_credentials($user_id, $username, $password);
+            }
+            
             //create treatment branch
             $this->create_treatment_branch($this->session->userdata('BRANCH_ID'), $patient_id);
             
@@ -231,14 +237,25 @@
             return $this->db->get()->row_array();
         }
         
+        public function create_treatment_branch($branch_id, $patient_id)
+        {
+            $treatment_branch_data = array(
+                'branch_id'     => $branch_id,
+                'patient_id'    => $patient_id
+            );
+
+            //create treatment branch
+            return $this->db->insert('treatment_branch', $treatment_branch_data);
+        }
+        
         //fetch all patient data if search query is true
         public function fetch_patient()
         {
             $unique_id = $this->input->post('q');
             
             $this->db->from('user u');
-            $this->db->join("address ad", "u.user_id = ad.user_id","LEFT");
-            $this->db->join("user_address_type uat", "ad.address_id = uat.address_id", "LEFT");
+            $this->db->join("address ad", "u.user_id = ad.user_id");
+            $this->db->join("user_address_type uat", "ad.address_id = uat.address_id");
             $this->db->join("address_type at", "at.address_type_code = uat.address_type_code");
             $this->db->join('phone_contact pc', 'u.user_id = pc.user_id');
             $this->db->join('phone_contact_type pct', 'pc.phone_contact_id = pct.phone_contact_id');
@@ -275,118 +292,8 @@
             $this->db->join("phone_contact pc", "u.user_id = pc.user_id");
             $this->db->join("treatment_branch tb", "p.patient_id = tb.patient_id");
             $this->db->where('tb.branch_id', $this->session->userdata('BRANCH_ID'));
+            
             return $this->db->get()->result_array();
-        }
-        
-        //
-        public function create_diagnosis()
-        {
-            //get treatment details
-            $patient_id             = $this->input->post("patient_id");
-            $practitioner_id        = $this->input->post("practitioner");
-            $treatment_place        = $this->input->post("treatment_place");
-            $treatment_date         = $this->input->post("treatment_date");
-            $treatment_time         = $this->input->post("treatment_time");
-            
-            //get diagnosis details
-            $icd_code               = $this->input->post("icd_code");
-            $tariff_code            = $this->input->post("tariff_code");
-            $description            = $this->input->post("description");
-            $modifier_code          = $this->input->post("modifier_code");
-            $quantity               = $this->input->post("quantity");
-            $unit_price             = $this->input->post("unit_price");
-            $subtotal               = $this->input->post("sub_total");
-            
-            //get dispensing details
-            $nappi_code             = $this->input->post("");
-            $item_no                = $this->input->post("");
-            $days_supply            = $this->input->post("");
-            $cost                   = $this->input->post("");
-            $dispense_fee           = $this->input->post("");
-            $gross                  = $this->input->post("");
-            
-            //
-            $this->db->trans_start(); //BEGIN SQL TRANSACTION
-            
-            //create treatment
-            $this->treatment_details($patient_id, $practitioner_id, $treatment_place, $treatment_date, $treatment_time);
-            
-            //get new treatment id
-            $treatment_id = $this->signup_mode->get_new_added_id('treatment', 'treatment_id');
-            
-            //create diagnosis
-            $this->diagnosis_details($treatment_id, $idc_code, $tariff_code, $description, $modifier_code, $quantity, $unit_price, $subtotal);
-            
-            //create dispensing
-            if(count($nappi_code) > 0)
-            {
-                $this->create_despensing($nappi_code, $item_no, $days_supply , $cost, $dispense_fee, $gross);
-            }
-                
-            $this->db->trans_complete(); //END SQL TRANSACTION
-            
-            //return transaction status
-            return $this->db->trans_status();
-        }
-        
-        public function treatment_details($patient_id, $practitioner_id, $treatment_place, $treatment_date, $treatment_time)
-        {
-            $treatment_data = array(
-                'patient_id'        => $patient_id,
-                'practitioner_id'   => $practitioner_id,
-                'service_place'     => $treatment_place,
-                'treatment_date'    => $treatment_date,
-                'treatment_time'    => $treatment_time 
-            );
-            
-            $this->db->insert('treatment', $treatment_data);
-        }
-        
-        public function diagnosis_details($treatment_id, $idc_code, $tariff_code, $description, $modifier_code, $quantity, $unit_price, $subtotal)
-        {
-            for($i = 0; $i < count($idc_code); $i++)
-            {
-                $diagnosis_data = array(
-                    'treatment_id'      => $treatment_id,
-                    'IDC_code'          => $idc_code[$i],
-                    'tariff_code'       => $tariff_code[$i],
-                    'description'       => $description[$i],
-                    'modifier_code'     => $modifier_code[$i],
-                    'quantity'          => $quantity[$i],
-                    'unit_price'        => $unit_price[$i],
-                    'sub_total'         => $subtotal[$i]
-                );
-
-                $this->insert('medicine', $diagnosis_data);
-            }
-        }
-        
-        public function create_despensing($nappi_code, $item_no, $days_supply , $cost, $dispense_fee, $gross)
-        {
-            for($i = 0; $i < count($nappi_code); $i++)
-            {
-                $dispensing_data = array(
-                    'nappi_code'            => $nappi_code[$i],
-                    'item_no'               => $item_no[$i],
-                    'days_supply'           => $days_supply[$i],
-                    'cost'                  => $cost[$i],
-                    'dispense_fee'          => $dispense_fee[$i],
-                    'gross'                 => $gross[$i]
-                );
-                
-                $this->db->insert('dispensing', $dispensing_data);
-            }
-        }
-        
-        public function create_treatment_branch($branch_id, $patient_id)
-        {
-            $treatment_branch_data = array(
-                'branch_id'     => $branch_id,
-                'patient_id'    => $patient_id
-            );
-            
-            //create treatment branch
-            return $this->db->insert('treatment_branch', $treatment_branch_data);
         }
         
         //fetch medical aid number
@@ -396,14 +303,14 @@
             return $this->db->get("medical_aid");
         }
         
-        //search branch patients
+        //search branch patients //function call: waititng room
         public function search_branch_patient($branch_id, $q)
         {
             $this->db->from('user u');
             $this->db->join('patient p', 'u.user_id = p.user_id');
             $this->db->join('treatment_branch t', 'p.patient_id = t.patient_id');
             $this->db->where('id_number', $q);
-            $this->db->where('branch_id', $this->session->userdata('BRANCH_ID'));
+            $this->db->where('t.branch_id', $this->session->userdata("BRANCH_ID"));
             
             if($this->db->get()->num_rows() > 0)
             {
@@ -418,8 +325,6 @@
         public function search_claima_patient()
         {
             $id_number = $this->input->post('q');
-            
-            //$query = "SELECT id_number F";
             
             $this->db->where('id_number', $id_number);
             
@@ -475,6 +380,13 @@
             }
             
             return $file_no;
+        }
+        
+        public function new_password()
+        {
+            $password = bin2hex(openssl_random_pseudo_bytes(4));
+            
+            return $password;
         }
     }
 ?>

@@ -11,7 +11,7 @@
             $fname              = $this->input->post("fname");
             $lname              = $this->input->post("lname");
             $username           = $this->input->post("username");
-            $password           = md5($this->input->post("password"));
+            $password           = $this->input->post("password");
             $confirm_passw      = $this->input->post("confirm_password");
             $contact_no         = $this->input->post('contact_no');
             $email              = $this->input->post('email_address');
@@ -29,8 +29,8 @@
             $t_and_c            = $this->input->post("terms");;
             
             //pass email address and hash through a session
-            $this->session->set_userdata("registration_email");
-            $this->session->set_userdata("hash");
+            $this->session->set_userdata("registration_email", $email);
+            $this->session->set_userdata("hash", $hash);
             
             /*Begin transaction for signing a practitioner
             *
@@ -43,8 +43,6 @@
                 'title'             => $title,
                 'first_name'        => $fname,
                 'last_name'         => $lname,
-                'username'          => $username,
-                'password'          => $password,
                 'hash'              => $hash
             );
             
@@ -59,6 +57,9 @@
             
             //create practitioner
             $this->practitioner_model->create_practitioner($user_id, $hpcsa_no, $practice_no);
+            
+            //create login credentials
+            $this->signup_model->create_credentials($user_id, $username, $password);
             
             //create user role
             $this->user_model->create_user_role($user_id, 4);

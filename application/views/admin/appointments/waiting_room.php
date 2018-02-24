@@ -4,7 +4,7 @@
             <div class="col-lg-7">
                 <div class="btn-controls-group">
                     <a href="<?Php echo base_url(); ?>patients" id="back-btn" class="back-btn" title="Back"><i class="fa fa-arrow-left"></i></a>
-                    <a href="#" class="btn-controls" id="add-user"data-toggle="modal" data-target="#create_waiting_room" accesskey="t">
+                    <a href="#" class="btn-controls" id="add-to-waiting-room" accesskey="t">
                         <i class="fa fa-plus"></i> Add
                     </a>
                     <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
@@ -101,7 +101,9 @@
                                             <?Php endif; ?>
                                         </select>
                                         <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
-                                        <input type="hidden" name="billing_type_url" id="billing_type_url" value="<?Php echo base_url(); ?>billing/patient_billing_type">                                    </div>
+                                        <input type="hidden" name="link" id="link" value="<?Php echo base_url(); ?>appointment/single_waiting_room">
+                                        <input type="hidden" name="billing_type_url" id="billing_type_url" value="<?Php echo base_url(); ?>billing/patient_billing_type">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-input-group">
@@ -140,7 +142,7 @@
                         <div class="modal-header">
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
                             <h2 class="modal-title"><i class="fa fa-share-square-o"></i> REFER APPOINTMENT</h2>
-</div>
+                        </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -164,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-</div>
+                        </div>
                         <div class="modal-footer">
                         <button type="submit" class="btn btn-save">
                             Update
@@ -184,95 +186,104 @@
                         <h2 class="modal-title">EDIT</h2>
                     </div>
                     <?Php
-                    $form_attr = array('id' => 'add-wating-room');
-                    echo form_open(base_url() . "appointment/create_waiting_room", $form_attr);
-                    ?>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-input-group">
-                                    <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
-                                        <option value="0">Select practitioner</option>
-                                        <?Php if(count($practitioners) > 0) : ?>
-                                            <?Php foreach($practitioners as $practitioner) : ?>
-                                                <option value="<?Php echo $practitioner['practitioner_id']; ?>"><?Php echo $practitioner['first_name'] . " " . $practitioner['last_name']; ?></option>
-                                            <?Php endforeach; ?>
-                                        <?Php else : ?>
-                                            <option value="0">No practitioners found.</option>
-                                        <?Php endif; ?>
-                                    </select>
-                                    <input type="hidden" name="appointment_id" id="appointment_id">
-                                    <input type="hidden" name="edit_waiting_url" id="edit_waiting_url" value="<?Php echo base_url(); ?>billing/patient_billing_type">    
+                        $form_attr = array('id' => 'add-wating-room');
+                        echo form_open(base_url() . "appointment/create_waiting_room", $form_attr);
+                        ?>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-input-group">
+                                        <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
+                                            <option value="0">Select practitioner</option>
+                                            <?Php if(count($practitioners) > 0) : ?>
+                                                <?Php foreach($practitioners as $practitioner) : ?>
+                                                    <option value="<?Php echo $practitioner['practitioner_id']; ?>"><?Php echo $practitioner['first_name'] . " " . $practitioner['last_name']; ?></option>
+                                                <?Php endforeach; ?>
+                                            <?Php else : ?>
+                                                <option value="0">No practitioners found.</option>
+                                            <?Php endif; ?>
+                                        </select>
+                                        <input type="hidden" name="appointment_id" id="appointment_id">
+                                        <input type="hidden" name="edit_waiting_url" id="edit_waiting_url" value="<?Php echo base_url(); ?>billing/patient_billing_type">    
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-input-group">
-                                    <select name="appointment_billing_id" id="appointment_billing_id" class="text-input dr-placeholder">
-                                        <option value="0">Billing</option>
+                                <div class="col-lg-6">
+                                    <div class="form-input-group">
+                                        <select name="appointment_billing_id" id="appointment_billing_id" class="text-input dr-placeholder">
+                                            <option value="0">Billing</option>
 
-                                    </select>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-input-group">
-                                    <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
+                                <div class="col-lg-12">
+                                    <div class="form-input-group">
+                                        <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
+                        <div class="modal-footer">
                         <button type="submit" class="btn btn-save">
                             Update
                         </button>
                     </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    </div>
     <div class="col-lg-5 col-md-5 col-sm-6">
-        <div class="x_title">
-            <h2>Manage waiting room list</h2>
-        </div>
-        <?Php if(count($waiting_room_patients) > 0) : ?>
-            <?Php foreach($waiting_room_patients as $waiting_room_patient) : ?>
-                <div class="upcoming-appointments">
-                    <div class="appointment-preview">
-                        <a class="appointment-details" href="#" onclick="return false;">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h5 style="text-transform: uppercase; margin-bottom: 10px;" class="media-heading">
-                                        <?Php echo $waiting_room_patient['first_name'] . " " . $waiting_room_patient['last_name']; ?>
-                                        <div class="pull-right">
-                                            <span data="<?Php echo $waiting_room_patient['practitioner_appointment_id']; ?>" title="Reffer to another practitioner" 
-                                                  class="practitioner_refer_id" data-toggle="modal" data-target="#create_appointment_referrer"><i class="fa fa-share-square-o"></i></span>
-                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Edit" 
-                                                  class="manage-waiting" data-toggle="modal" data-target="#edit_waiting_room"><i class="fa fa-pencil"></i></span>
-                                            <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Remove" 
-                                                  class="manage-waiting"><i class="fa fa-times"></i></span>
+        <div style="">
+            <?Php //var_dump($waiting_room_patients);?>
+            <div class="x_title">
+                <h2>Manage waiting room list</h2>
+            </div>
+            <div class="refresh-waiting-room-data">
+                <?Php if(count($waiting_room_patients) > 0) : ?>
+                    <?Php foreach($waiting_room_patients as $waiting_room_patient) : ?>
+                        <div class="upcoming-appointments">
+                            <div class="appointment-preview fency">
+                                <a class="appointment-details" href="<?Php echo base_url(); ?>appointment/single_waiting_room" 
+                                   data-prac-app-id="<?Php echo $waiting_room_patient['practitioner_appointment_id']; ?>" 
+                                   data-value="<?Php echo $waiting_room_patient['appointment_id']; ?>">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h5 style="text-transform: uppercase; margin-bottom: 10px;" class="media-heading">
+                                                <?Php echo $waiting_room_patient['first_name'] . " " . $waiting_room_patient['last_name']; ?>
+                                                <!--<div class="pull-right">
+                                                    <span data="<?Php echo $waiting_room_patient['practitioner_appointment_id']; ?>" title="Reffer to another practitioner" 
+                                                          class="practitioner_refer_id" data-toggle="modal" data-target="#create_appointment_referrer"><i class="fa fa-share-square-o"></i></span>
+                                                    <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Edit" 
+                                                          class="manage-waiting" data-toggle="modal" data-target="#edit_waiting_room"><i class="fa fa-pencil"></i></span>
+                                                    <span data="<?Php echo $waiting_room_patient['appointment_id']; ?>" title="Remove" 
+                                                          class="manage-waiting"><i class="fa fa-times"></i></span>
+                                                </div>-->
+                                            </h5>
+                                            <div class="pull-left">
+                                                <p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 | 4:32 PM</p>
+                                                <p style="margin-bottom: 0px;" class="appointment-desc"><?Php echo $waiting_room_patient['reason']; ?></p>
+                                            </div>
                                         </div>
-                                    </h5>
-                                    <div class="pull-left">
-                                        <p style="margin-bottom: 2px;" class="small text-muted"><i class="fa fa-clock-o"></i> 23 Jan 2017 | 4:32 PM</p>
-                                        <p style="margin-bottom: 0px;" class="appointment-desc"><?Php echo $waiting_room_patient['reason']; ?></p>
                                     </div>
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            <?Php endforeach; ?>
-        <?Php else : ?>
-        
-        <?Php endif; ?>
+                        </div>
+                    <?Php endforeach; ?>
+                <?Php else : ?>
+
+                <?Php endif; ?>
+            </div>
+        </div>
     </div>
     <div class="col-lg-7 col-md-7 col-sm-6">
         <div class="x_title">
             <h2>Details</h2>
         </div>
-        <div style="text-align: center; margin-top: 140px;">
-            <div style="font-size: 100px; color: #ddd;"><i class="fa fa-folder-open-o"></i></div>
-            <p>No waiting room list selected.</p>
+        <div style="" id="waiting-room-data">
+            <div style="margin-top: 140px; text-align: center;">
+                <span style="font-size: 100px; color: #ddd;"><i class="fa fa-folder-open-o"></i></span>
+                <p>No waiting room list selected.</p>
+            </div>
         </div>
     </div>
 </div>

@@ -135,20 +135,12 @@
         
         public function send_email($from, $to, $subject, $message)
         {
-            //send email to a user to confirm their account
             $this->email->from($from);
             $this->email->to($to);
             $this->email->subject($subject);
             $this->email->message($message);
-
-            if($this->email->send())
-            {
-                return TRUE;
-            }
-            else
-            {
-                return FALSE;
-            }
+            
+            return $this->email->send();
         }
     }
 ?>

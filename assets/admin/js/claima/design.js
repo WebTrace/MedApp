@@ -151,30 +151,46 @@ $(document).ready(function() {
         {
             $("#dependant-relation").slideUp();
         }
-    })
+    });
     
-    //generate rows and add a row
+    //generate diagnosis table rows and
     $("#add-row").on("click", function() {
-        var row = "<tr>";
-        row += "<td><input type='text' name='tariff_code[]' class='text-input'></td>";
-        row += "<td><input type='text' name='description[]' class='text-input'></td>";
-        row += "<td><input type='text' name='idc_code[]' class='text-input'></td>";
-        row += "<td><input type='text' name='price[]' class='text-input'></td>";
-        row += "<td><input type='text' name='quantity[]' class='text-input'></td>";
-        row += "<td><input type='text' name='sub_total[]' class='text-input'></td>";
-        row += "<td><a href='#' class='remove-row' title='Remove'><i class='fa fa-times-circle'></a></td>";
-        row += "<tr>"; 
+        /*var row = "<tr>";
+        row += "<td><input type='text' name='tariff_code[]' class='diagnosis-input text-input'></td>";
+        row += "<td><input type='text' name='description[]' class='diagnosis-input text-input'></td>";
+        row += "<td><input type='text' name='idc_code[]' class='diagnosis-input text-input'></td>";
+        row += "<td><input type='text' name='price[]' class='diagnosis-input text-input'></td>";
+        row += "<td><input type='text' name='quantity[]' class='diagnosis-input text-input'></td>";
+        row += "<td><input type='text' name='sub_total[]' class='diagnosis-input text-input'></td>";
+        row += "<td><a href='#' class='remove-row' title='Remove'><i class='fa fa-times-circle'></i></a></td>";
+        row += "</tr>"; */
         
-        $(".add-consultation").append(row);
+        var row = $("#append-tr"),
+            trcopy = row.clone(true, true).find('input').val('').end();
+        
+        $(".add-consultation").append(trcopy);
         
         return false;
-    })
+    });
     
     //remove diagnosis table row
     $(".remove-row").on("click", function() {
         var row = $(this).parents('tr').first();
         row.remove();
-    })
+    });
+    
+    //generate dispensing table rows
+    $("#add-row-dispense").on("click", function() {
+        var row = $("#dispense-row"),
+            trcopy = row.clone(true, true).find('input').val('').end();
+        $(".add-dispensing").append(trcopy);
+    });
+    
+    //remove dispensing table rows
+    $(".remove-row-dispense").on("click", function() {
+        var row = $(this).parents('tr').first();
+        row.remove();
+    });
     
     //
     $("#same_address").on("click", function() {
@@ -186,7 +202,7 @@ $(document).ready(function() {
         {
             $(".postal-address").slideDown();
         }
-    })
+    });
     
     //
     $(".dr-placeholder").on("change", function() {
@@ -198,30 +214,30 @@ $(document).ready(function() {
         {
             $(this).css("color", "#bbb");
         }
-    })
+    });
     
     $(".delete-user").on("click", function (e) {
         var patient_id = $(this).attr('id');
         $('#remove_patient_id').attr('value', patient_id);
         $("#remove-confirm").modal('show');
         return false;
-    })
+    });
     
     $('#dismiss-remove-patient').on("click", function() {
         $("#remove-confirm").modal('hide');
-    })
+    });
     
-    $(".add-waiting-room").on("click", function() {
+    /*$(".add-waiting-room").on("click", function() {
         var patient_id = $(this).parent().attr('data-target');
         
         $("#waiting_room_patient").attr("value", patient_id);
         $("#create_waiting_room").modal("show");
-    })
+    })*/
     
     $("#add_visiting_reason").on("click", function() {
         $("#create_waiting_room").modal("show");
         $("#add_user_modal").modal("hide");
-    })
+    });
     
     /*check if add visiting reason modal is close*/
     /*if(!$("#add_visiting_reason").is(":visible"))

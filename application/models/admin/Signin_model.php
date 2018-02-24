@@ -1,22 +1,21 @@
 <?Php
     class Signin_model extends CI_Model
     {
+        public function create_credentials($user_id, $username, $password)
+        {
+            $data = array(
+                'user_id'       => $user_id,
+                'username'      => $username,
+                'password'      => md5($password)
+            );
+            
+            $this->db->insert('login', $data);
+        }
+        
         public function user_signin()
         {
             $username = $this->input->post("username");
             $password = md5($this->input->post("password"));
-            
-            /*$this->db->select("*");
-            $this->db->from("user u");
-            $this->db->from("role r");
-            $this->db->from("status s");
-            $this->db->join("user_role ur", "r.role_code = ur.role_code");
-            $this->db->join("user_status us", "s.status_code = us.status_code");
-            $this->db->join("email_contact e", "u.user_id = e.user_id");
-            $this->db->join("user_branch b", "u.user_id = b.user_id");
-            $this->db->where("username", $username);
-            $this->db->where("password", $password);*/
-            
             
             $query = $this->data_access->signin_user($username, $password);
             
@@ -56,6 +55,7 @@
             {
                 $this->session->set_userdata("PASSW_RET_EMAIL", $query->row(0)->email_address);
                 $this->session->set_userdata("PASSW_RET_USRID", $query->row(0)->user_id);
+                
                 return TRUE;
             }
             else
