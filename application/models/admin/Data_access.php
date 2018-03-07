@@ -44,6 +44,8 @@
             $sql = "SELECT * FROM appointment a JOIN app_type at ON a.appointment_id = at.appointment_id
                     LEFT JOIN patient_appointment_status s ON a.appointment_id = s.appointment_id
                     JOIN appointment_status ap ON s.appointment_status_code = ap.appointment_status_code
+                    JOIN appointment_billing ab ON a.appointment_id = ab.appointment_id
+                    JOIN patient_billing_type pb ON ab.patient_billing_type_id = pb.patient_billing_type_id
                     WHERE((s.appointment_status_code = 1 OR s.appointment_status_code = 2) AND a.patient_id = $patient_id)";
             
             return $this->db->query($sql);
@@ -61,6 +63,28 @@
                     WHERE((s.appointment_status_code = 1 OR s.appointment_status_code = 3) AND at.appointment_type_code = 2)";
             
             return $this->db->query($sql);
+        }
+        
+        public function fetch_checkup_appointment($patient_id)
+        {
+            $sql = "SELECT * FROM patient p JOIN appointment a ON p.patient_id = a.patient_id
+                    JOIN appointment_treatment t ON a.appointment_id = t.appointment_id
+                    JOIN treatment m ON m.treatment_id = t.treatment_id
+                    JOIN checkup_date d ON d.appointment_treatment_id = t.appointment_treatment_id
+                    JOIN patient_checkup_status cs ON cs.checkup_date_id = d.checkup_date_id
+                    WHERE(p.patient_id = $patient_id AND (cs.checkup_status_code = 1 OR cs.checkup_status_code = 2))";
+            
+            return $this->db->query($sql)->result_array();
+        }
+        
+        public function is_patient_waiting($id_number)
+        {
+            $sql = "select COUNT(*) AS is_patient_waiting from user u JOIN patient p ON u.user_id = p.user_id JOIN appointment a ON p.patient_id = a.patient_id
+                    JOIN app_type at ON a.appointment_id = at.appointment_id
+                    JOIN patient_appointment_status pa ON a.appointment_id = pa.appointment_id
+                    WHERE((pa.appointment_status_code = 1 OR pa.appointment_status_code = 2) AND at.appointment_type_code = 2 AND u.id_number = $id_number)";
+            
+            return $this->db->query($sql)->result_array();
         }
     }
 ?>

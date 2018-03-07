@@ -179,7 +179,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h2 class="modal-title">NEW DIAGNOSIS</h2>
+                            <h2 class="modal-title">NEW DIAGNOSIS 
+                                <span style="display: inline-block; margin-right: 20px;" class="pull-right">
+                                    <span style="display: inline-block; font-size: 10px; border: #ddd thin 
+                                                 solid; height: 20px; width: 20px; text-align: center; line-height: 17px; border-radius: 50%;">
+                                        <i class="fa fa-user-o"></i></span> <span style="font-size: 13px;" id="patient-name"></span>
+                                </span>
+                            </h2>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -188,9 +194,9 @@
                                         <div class="col-lg-12">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a  href="#patient" data-toggle="tab">Patient</a></li>
+                                                <li><a href="#add-notes" data-toggle="tab">Detailed reason</a></li>
                                                 <li><a href="#add-diagnosis" data-toggle="tab">Diagnosis</a></li>
                                                 <li><a href="#add-dispensing" data-toggle="tab">Dispense</a></li>
-                                                <li><a href="#add-notes" data-toggle="tab">Additional notes</a></li>
                                                 <li><a href="#attach-docs" data-toggle="tab">Attach docs</a></li>
                                                 <li><a href="#next-checkup" data-toggle="tab">Next checkup</a></li>
                                             </ul>
@@ -242,10 +248,10 @@
                                                                 <input type="hidden" name="waiting_app_id" id="waiting_app_id">
                                                             </div>
                                                             <div class="col-lg-12">
-                                                                <hr style="margin-top: 0px;">
+                                                                <hr id="hr-divider" style="margin-top: 0px;">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row treatment-details-frm">
                                                             <!--<div class="col-lg-4">
                                                                 <div class="form-input-group">
                                                                     <select name="practitioner" id="practitioner" class="text-input">
@@ -276,7 +282,7 @@
                                                                 <div class="form-input-group">
                                                                     <input type="hidden" name="practitioner" value="<?Php echo $practitioner_id; ?>">
                                                                     <input type="hidden" name="patient_id" id="patient_id">
-                                                                    <input type="hidden" name="billing" value="">
+                                                                    <input type="hidden" name="billing_code" id="billing_code">
                                                                     <input type="hidden" name="" value="">
                                                                     <input type="text" name="auth_number" id="auth_number" class="text-input" placeholder="Authorization no">
                                                                 </div>
@@ -316,7 +322,7 @@
                                                                             <th>Tariff code</th>
                                                                             <th>Description</th>
                                                                             <th>ICD code</th>
-                                                                            <th>Modifier code</th>
+                                                                            <th>Mod code</th>
                                                                             <th>Price</th>
                                                                             <th>Quantity</th>
                                                                             <th colspan="2">Sub total</th>
@@ -374,7 +380,16 @@
                                                     <div class="tab-pane" id="add-notes">
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                Additional notes
+                                                                <h5 style="font-size: 16px;">Detailed visiting reason</h5>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <p>
+                                                                    <span style="display: block; margin-top: 6px;" class="pull-left">Did Mr Bongs see another practitioner for the same disease?</span>
+                                                                    <label class="switch pull-right">
+                                                                        <input id="has_been_treated" type="checkbox" name="has_been_treated" value="No">
+                                                                        <span class="slider round"></span>
+                                                                    </label>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -390,17 +405,21 @@
                                                             <div class="col-lg-12">
                                                                 <p>Do you wnat to set a next checkup day for [Title] [patient name]?</p>
                                                                 <p>
-                                                                    <input type="radio" name="next_date" id="next_date_no" checked="checked"/> No
-                                                                    <input type="radio" name="next_date" id="next_date_yes" /> Yes
+                                                                    <input type="radio" name="next_date[]" value="No" id="next_date_no" checked="checked" /> No
+                                                                    <input type="radio" name="next_date[]" value="Yes" id="next_date_yes"  /> Yes
                                                                 </p>
                                                             </div>
-                                                            <div class="col-lg-12 cls-checkup-date">
-                                                                <div class="form-input-group">
-                                                                    <input type="text" name="checkup_date" id="checkup_date" class="text-input" placeholder="Next checkup date" />
+                                                            <div class="set-checkup-appointment">
+                                                                <div class="col-lg-12 cls-checkup-date">
+                                                                    <div class="form-input-group">
+                                                                        <input type="text" name="checkup_date" id="checkup_date" class="text-input" placeholder="Next checkup date" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-input-group">
+                                                                        <textarea name="checkup-desc" id="checkup-desc" class="text-input" placeholder="Checkup short description"></textarea>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -418,7 +437,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        <?Php echo form_close(); ?>
     </div>
     <div class="col-lg-12">
         <div class="modal fade" id="add_user_modal">
@@ -445,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        <?Php echo form_close(); ?>
                         <hr class="hr-margin">
                         <div class='row' id='claima-patient'>
                             <div class="col-lg-12">
@@ -855,10 +874,13 @@
                                                     <div class="col-lg-12">
                                                         <div class="form-input-group">
                                                             <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace('visiting_reason');
+                                                            </script>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                </form>
+                                                <?Php echo form_close(); ?>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="add-account-details">
@@ -894,7 +916,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        <?Php echo form_close(); ?>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" name="btn_reset" class="btn btn-reset" id="btn-reset">
@@ -957,13 +979,13 @@
                                 <td>
                                     <a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" 
                                        href="#" data-url="<?Php echo base_url(); ?>patients/ajax_fetch_single_user"
-                                       data-url-patient-watitng = "<?Php echo base_url(); ?>appointment/patient_wating_room"
-                                       title="New consultation" data-toggle="modal" data-target="#create_cosultation" onclick="return false">
+                                       data-url-patient-watitng = "<?Php echo base_url(); ?>appointment/patient_waiting_room"
+                                       title="New consultation" onclick="return false">
                                         <i class="fa fa-arrow-circle-left"></i>
                                     </a>
                                 </td>
                                 <?Php endif; ?>
-                                <td><a class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Patient medical details"><i class="fa fa-eye"></i></a></td>
+                                <td><a style="font-size: 12px;" class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Pull patient file"><i class="fa fa-fw fa-file-text-o"></i></a></td>
                                 <td><a class="edit-user" href="<?Php echo base_url(); ?>patients/edit_patient/<?Php echo $patient['patient_id']; ?>" title="Edit patient"><i class="fa fa-pencil"></i></a></td>
                                 <td><a class="delete-user" id="<?Php echo $patient['patient_id']; ?>" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>
                             </tr>

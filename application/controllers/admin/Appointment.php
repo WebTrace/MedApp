@@ -13,18 +13,30 @@
             //get patient id
             $patient_id = $this->input->post('patient_id');
             
-            $data['practitioners'] = $this->practitioner_model->fetch_branch_practitioner($this->session->userdata('BRANCH_ID'));
-            $data['patient_billing_type'] = $this->billing_model->fetch_patient_billing_type($patient_id);
-            $data['waiting_room_patients'] = $this->appointment_model->fetch_waiting_room();
+            $data['practitioners']          = $this->practitioner_model->fetch_branch_practitioner($this->session->userdata('BRANCH_ID'));
+            $data['patient_billing_type']   = $this->billing_model->fetch_patient_billing_type($patient_id);
+            $data['waiting_room_patients']  = $this->appointment_model->fetch_waiting_room();
             
             $this->load->view("admin/templates/header");
             $this->load->view("admin/appointments/waiting_room", $data);
             $this->load->view("admin/templates/footer");
         }
         
+        public function create_checkup()
+        {
+            if($this->appointment_model->create_checkup())
+            {
+                echo "Created";
+            }
+            else
+            {
+                echo "Failed";
+            }
+        }
+        
         public function fetch_wating_room()
         {
-            $patient_id = 37;//$this->input->post("patient_id");
+            $patient_id = $this->input->post("patient_id");
             echo json_encode($this->appointment_model->fetch_wating_room($patient_id));
         }
         
@@ -102,7 +114,7 @@
             echo json_encode($data);
         }
         
-        public function patient_wating_room()
+        public function patient_waiting_room()
         {
             $patient_id = $this->input->post('id');
             
@@ -111,12 +123,18 @@
         
         public function fetch_checkup_appointment()
         {
-            $patient_id = 33;//$this->input->post('patient_id');
-            echo "Controller is right here";
-            var_dump($this->appointment_model->fetch_checkup_appointment($patient_id));
+            $patient_id = 37;//$this->input->post('id');
+            
+            $data = $this->data_access->fetch_checkup_appointment($patient_id);
+            
+            echo json_encode($data);
         }
         
-        
+        public function is_patient_waiting()
+        {
+            $id_number = $this->input->post('id_number');
+            echo json_encode($this->data_access->is_patient_waiting($id_number));
+        }
         
         
         

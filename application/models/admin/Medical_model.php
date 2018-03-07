@@ -31,5 +31,15 @@
             $this->db->select("*");
             return $this->db->get("dependant_relationship")->result_array();
         }
+        
+        public function fetch_patient_medical_aid($patient_id)
+        {
+            $this->db->from("patient p");
+            $this->db->join("patient_medical_aid m", "p.patient_id = m.patient_id");
+            $this->db->join("medical_aid d", "m.medical_aid_id = d.medical_aid_id");
+            $this->db->where('m.patient_id', $patient_id);
+            
+            return $this->db->get()->result_array();
+        }
     }
 ?>

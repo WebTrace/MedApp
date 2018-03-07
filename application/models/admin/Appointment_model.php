@@ -12,15 +12,18 @@
         {
             $patient_id             = $this->input->post("waiting_room_patient");
             $billing_type_id        = $this->input->post("appointment_billing_id");
+            $billing_code           = $this->input->post("patient_billing_code");
             $visiting_reason        = $this->input->post("visiting_reason");
+            $appointment_title      = $this->input->post("appointment_title");
             $pratitioner_id         = $this->input->post("appointment_practitioner");
             $appointment_date       = $this->input->post("");
+            $medical_aid_id         = $this->input->post("medical_aid_scheme");
             $appointment_type_code  = 2;
             
             $this->db->trans_start(); //START SQL TRANSACTION
             
             //create appointment type of wating room
-            $this->waiting_room_data($patient_id, $visiting_reason);
+            $this->waiting_room_data($patient_id, $visiting_reason, $appointment_title);
             
             //get new added appointment id
             $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
@@ -30,6 +33,16 @@
             
             //create appointment billing
             $this->create_appointment_billing($appointment_id, $billing_type_id);
+            
+            //create medical aid billing
+            if($billing_code == 1)
+            {
+                //get new added appointment billing id
+                $appointment_billing_id = $this->signup_model->get_new_added_id('appointment_billing', 'appointment_billing_id');
+                
+                //create medical aid billing
+                $this->create_medical_aid_billing($appointment_billing_id, $medical_aid_id);
+            }
             
             //create appointment type
             $this->create_appointment_type($appointment_id, $appointment_type_code);
@@ -66,11 +79,12 @@
             $this->db->insert('appointment_schedulde', $appointment_data);
         }
         
-        public function waiting_room_data($patient_id, $visiting_reason)
+        public function waiting_room_data($patient_id, $visiting_reason, $appointment_title)
         {
             $visiting_reason_data = array(
-                'patient_id'    => $patient_id,
-                'reason'        => $visiting_reason
+                'patient_id'            => $patient_id,
+                'reason'                => $visiting_reason,
+                'appointment_title'     => $appointment_title
             );
             
             $this->db->insert('appointment', $visiting_reason_data);
@@ -146,6 +160,16 @@
             $this->db->insert('appointment_billing', $data);
         }
         
+        public function create_medical_aid_billing($appointment_billing_id, $medical_aid_id)
+        {
+            $data = array(
+                'medical_aid_id'                => $medical_aid_id,
+                'appointment_billing_id'        => $appointment_billing_id
+            );
+            
+            $this->db->insert('medical_aid_billing', $data);
+        }
+        
         public function create_appointment_type($appointment_id, $appointment_type_code)
         {
             $app_type_data = array(
@@ -208,20 +232,54 @@
             }
         }
         
-        public function create_checkup($check_date_id, $days_due)
+        public function create_checkup()
+        {
+            $check_date_id      = $this->input->post("checkup_date_id");
+            $checkup_date       = $this->input->post("checkup_date");
+            $billing_type       = $this->input->post("patient_billing_type");
+            $today              = date("Y-m-d");
+            $days_due           = date_diff($today, $checkup_date);
+            
+            $this->db->trans_start(); //START TRANSACTION
+            
+            //create checkup
+            $this->db->checkup_data($check_date_id, $days_due);
+            
+            //get new checkup id
+            $checkup_id = $this->signup_model->get_new_added_id('checkup', 'checkup_id');
+            
+            //create checkup billing
+            $this->db->create_checkup_billing($checkup_id, $patient_billing_type_id);
+            
+            $this->db->trans_complete(); //END TRANSACTION
+            
+            return $this->db->trans_status(); //RETURN TRANSACTION STATUS
+        }
+        
+        public function checkup_data($check_date_id, $days_due)
         {
             $data = array(
                 'checkup_date_id'       => $check_date_id,
-                'days_due'               => $days_due
+                'days_due'              => $days_due
             );
-
-            $this->db->insert("checkup", $data);
+            
+            return $this->db->insert("checkup", $data);
         }
         
-        public function create_patient_checkup_status($checkup_id)
+        public function create_checkup_billing($checkup_id, $patient_billing_type_id)
         {
             $data = array(
-                'checkup_id'        => $checkup_id
+                'checkup_id'                => $checkup_id,
+                'patient_billing_type_id'   => $patient_billing_type_id
+            );
+            
+            $this->db->insert("checkip_billing", $data);
+        }
+        
+        public function create_patient_checkup_status($checkup_date_id)
+        {
+            $data = array(
+                'checkup_date_id'        => $checkup_date_id
             );
             
             $this->db->insert('patient_appointment_status', $data);
@@ -231,12 +289,17 @@
         {
             $this->db->from('patient p');
             $this->db->join('appointment a', 'p.patient_id = a.patient_id');
-            $this->db->join('appointment_treatment at', 'a.appointment_id = at.appointment_id', 'left');
+            $this->db->join('appointment_treatment at', 'a.appointment_id = at.appointment_id');
             $this->db->join('checkup_date cd', 'at.appointment_treatment_id = cd.appointment_treatment_id');
-            $this->db->where('p.patient_id', 33);
+            $this->db->where('p.patient_id', $patient_id);
             
             return $this->db->get()->result_array();
         }
+        
+        
+        
+        
+        
         
         
         

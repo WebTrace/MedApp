@@ -142,6 +142,49 @@ $(document).ready(function() {
         var dependant = $("input[name='dependant']:checked").val();
     */
     
+    $("input[name='next_date[]']").on("click", function() {
+        var next_date = $("input[name='next_date[]']:checked").val();
+        if(next_date == "Yes")
+        {
+            $(".set-checkup-appointment").slideDown();
+        }
+        else
+        {
+            $(".set-checkup-appointment").slideUp();
+        }
+    });
+    
+    $(".checkup-list").on("click", "a", function() {
+        var billing_data = $(this).find(".checkup-billing-data");
+        billing_data.addClass("checkup-active");
+        
+        if(billing_data.hasClass("checkup-active"))
+        {
+            $(this).find(".checkup-billing-data").slideDown(200);
+            billing_data.removeClass("checkup-active");
+        }
+        else
+        {
+            $(this).find(".checkup-billing-data").slideUp(200);
+        }
+    });
+    
+    //checkbox
+    $(".switch").on("click", function() {
+        if($("#is_waiting_room").is(":checked"))
+        {
+            $(".modal-footer").slideUp(200);
+            $(".checkup-list").slideDown(200);
+            $("#add-new-wating-room").slideUp(200);
+        }
+        else
+        {
+            $(".modal-footer").slideDown(200);
+            $(".checkup-list").slideUp(200);
+            $("#add-new-wating-room").slideDown(200);
+        }
+    });
+    
     $("#dependant").on("change", function() {
         if($(this).val() == "Yes")
         {

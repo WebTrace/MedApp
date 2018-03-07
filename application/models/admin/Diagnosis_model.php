@@ -13,9 +13,10 @@
             $checkup_id             = "";
             $treatment_reference    = "D0000001";
             $check_date             = '2018-02-28';//$this->input->post("checkup_date");
-            $has_next_checkup_date  = "YES";
+            $checkup_description    = $this->input->post("checkup_desc");
+            $has_next_checkup_date  = $this->input->post("next_date");
             $is_checkup_appointment = "NO"; //if ahould come with checkup_date_id
-
+            
             //get diagnosis details
             $icd_code               = $this->input->post("icd_code");
             $tariff_code            = $this->input->post("tariff_code");
@@ -52,9 +53,9 @@
             $appointment_treatment_id = $this->signup_model->get_new_added_id('appointment_treatment', 'appointment_treatment_id');
             
             //create checkup treatment
-            if($has_next_checkup_date == "YES")
+            if($has_next_checkup_date == "Yes")
             {
-                $this->create_checkup_date($appointment_treatment_id, $check_date);
+                $this->create_checkup_date($appointment_treatment_id, $check_date, $checkup_description);
             }
             
             if($is_checkup_appointment == "YES")
@@ -72,6 +73,12 @@
             {
                 $this->create_despensing($nappi_code, $item_no, $days_supply , $cost, $dispense_fee, $gross);
             }
+            
+            //create claim
+            /*if() //billing is equal to medical aid
+            {
+                //TODO: create claim
+            }*/
 
             $this->db->trans_complete(); //END SQL TRANSACTION
 
@@ -127,14 +134,25 @@
             $this->db->insert('appointment_treatment', $data);
         }
         
-        public function create_checkup_date($appointment_treatment_id, $checkup_date)
+        public function create_checkup_date($appointment_treatment_id, $checkup_date, $checkup_description)
         {
             $data = array(
-                'appointment_treatment_id'  => $appointment_treatment_id,
-                'checkup_date'                => $checkup_date
+                'appointment_treatment_id'      => $appointment_treatment_id,
+                'checkup_date'                  => $checkup_date,
+                'checkup_description'           => $checkup_description
             );
             
             $this->db->insert('checkup_date', $data);
+        }
+        
+        public function create_checkup($check_date_id, $days_due)
+        {
+            $data = array(
+                'check_date_id'     => $check_date_id,
+                'days_due'          => $days_due
+            );
+            
+            $this->db->insert('checkup', $data);
         }
         
         public function create_checkup_treatment($chekup_id, $treatment_id)

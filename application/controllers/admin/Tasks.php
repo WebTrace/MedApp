@@ -3,29 +3,31 @@
     {
         public function index()
         {
-            //$this->send_email('no-reply', 'emmkga@gmail.com', 'Test', 'This is a test message');
-            
             $this->load->view("admin/templates/header");
             $this->load->view("admin/tasks/tasks");
             $this->load->view("admin/templates/footer");
         }
         
-        private function send_email($from, $to, $subject, $message)
+        public function create_task()
         {
-            //send email to a user to confirm their account
-            $this->email->from($from);
-            $this->email->to($to);
-            $this->email->subject($subject);
-            $this->email->message($message);
-
-            if($this->email->send())
-            {
-                return TRUE;
-            }
-            else
-            {
-                return FALSE;
-            }
+            //$this->tasks_model->create_task();
+        }
+        
+        public function edit_task()
+        {
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/tasks/tasks");
+            $this->load->view("admin/templates/footer");
+        }
+        
+        public function fetch_task()
+        {
+            
+        }
+        
+        public function fetch_single($task_id)
+        {
+            //
         }
     }
 ?>

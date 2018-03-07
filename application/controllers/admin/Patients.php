@@ -89,17 +89,15 @@
         //search branch patient
         public function search_branch_patient()
         {
-            $q = $this->input->post("q");
+            $q      = $this->input->post("q");
+            $data   = array();
             
             if($this->patients_model->search_branch_patient($this->session->userdata("BRANCH_ID"), $q) == TRUE)
             {
-                echo json_encode($this->patients_model->fetch_patient());
+                $data = $this->patients_model->fetch_patient();
             }
-            else
-            {
-                $not_found = array();
-                echo json_encode($not_found);
-            }
+            
+            echo json_encode($data);
         }
         
         //search claima patients
@@ -124,6 +122,12 @@
         public function fetch_billing_type()
         {
             
+        }
+        
+        public function fetch_patient_medical_aid()
+        {
+            $patient_id = $this->input->post("id");
+            echo json_encode($this->medical_model->fetch_patient_medical_aid($patient_id));
         }
         
         //

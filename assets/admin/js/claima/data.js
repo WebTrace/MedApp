@@ -145,6 +145,7 @@ $(document).ready(function() {
             success: function (response) {
                 $('#patient_full_name').text(response.first_name);
                 $('#id_number').text(response.id_number);
+                $("#patient-name").text(response.first_name + " " + response.last_name);
             }
         });
         
@@ -159,14 +160,67 @@ $(document).ready(function() {
                     $('#waiting_app_id').attr('value', response[0].appointment_id);
                     $('#reason-header').text(response[0].appointment_title);
                     $('#appointment_reason').text(response[0].reason);
+                    $("#billing_code").attr("value", response[0].billing_type_code);
+                    
+                    //alert(response[0].billing_type_code);
+                    if(response[0].billing_type_code == 1)
+                    {
+                        $(".treatment-details-frm").css("display", "none");
+                        $("#hr-divider").css("display", "none");
+                    }
+                    else
+                    {
+                        $(".treatment-details-frm").css("display", "inline");
+                        $("#hr-divider").css("display", "none", "inline");
+                    }
                 }
                 else
                 {
                     $('#reason-header').text('');
                     $('#appointment_reason').text('');
                 }
+                
+                $("#create_cosultation").modal('show');
             }
         });
+    });
+    
+    $("#appointment_billing_id").on("change", function() {
+        var billing_type_code = $("option:selected", this).attr("data");
+        
+        //billing code value
+        $("#patient_billing_code").attr("value", billing_type_code);
+        
+        if(billing_type_code == 1)
+        {
+            var url             = $("#medical_aid_url").val(),
+                type            = "POST",
+                patient_id      = $("#waiting_room_patient").val();
+            
+            $.ajax({
+                url     : url,
+                type    : type,
+                data    : { id: patient_id },
+                dataType: 'json',
+                success : function(response) {
+                    var medical_aid = "<option>Medical aid scheme</option>",
+                        data_count = response.length;
+                    
+                    for(var i = 0; i < data_count; i ++)
+                    {
+                        medical_aid += "<option value='" + response[i].medical_aid_id + "'>"+ response[i].medical_scheme +"</option>";
+                    }
+                    
+                    $("#medical-aid-scheme").html(medical_aid);
+                }
+            });
+            
+            $(".select-medical-aid").slideDown();
+        }
+        else
+        {
+            $(".select-medical-aid").slideUp();
+        }
     });
     
     //create patient
@@ -305,54 +359,171 @@ $(document).ready(function() {
     $(".waiting-input").slideUp();
     
     $("#branch-patient-search").on("click", function() {
-        var q = $("#q").val();
+    var q                   = $("#q").val(),
+        search_url          = $("#search_url").val(),
+        check_waiting_url   = $("#check_waiting_url").val();
         
+        //ajax call to check if a patient is already in a waiting room
         $.ajax({
-            url     : $("#search_url").val(),
-            type    : "POST",
-            data    : { q: q },
-            dataType: 'json',
-            success : function(response) {
-                if(response.length > 0)
+            url         : check_waiting_url,
+            type        : "POST",
+            data        : { id_number: q },
+            dataType    : 'json',
+            success     : function(response) {
+                if(response[0].is_patient_waiting > 0)
                 {
-                    $("#waiting_room_patient").attr("value", response[0].patient_id);
-                    
-                    var billing_type = "",
-                        url = $("#billing_type_url").val(),
-                        data = $("#waiting_room_patient").val();
-                    
+                    alert("Patient is already in waiting room.");
+                }
+                else
+                {
+                    //ajax call for search patients
                     $.ajax({
-                        url     : url,
+                        url     : search_url,
                         type    : "POST",
-                        data    : { patient_id: data },
+                        data    : { q: q },
                         dataType: 'json',
-                        success : function(res) {
-                            if(res.length > 0)
+                        success : function(response) {
+                            if(response.length > 0)
                             {
-                                billing_type += "<option>Select billing type</options>";
-                                for(var i = 0; i < res.length; i++)
-                                {
-                                    billing_type += "<option value='" + res[i].patient_billing_type_id + "'>" + res[i].billing_name + "</option>";
-                                }
+                                $("#waiting_room_patient").attr("value", response[0].patient_id);
+                                
+                                var checkup_url     = $("#fetch_waiting_room").val(),
+                                    patient_id      = response[0].patient_id,
+                                    last_name       = response[0].last_name,
+                                    title           = response[0].title,
+                                    billing_type    = "",
+                                    billing_object  = [],
+                                    billing_url     = $("#billing_type_url").val(),
+                                    billing_data    = $("#waiting_room_patient").val();
+                                
+                                //fetch patient billing type
+                                $.ajax({
+                                    url     : billing_url,
+                                    type    : "POST",
+                                    data    : { patient_id: billing_data },
+                                    dataType: 'json',
+                                    success : function(res) {
+                                        if(res.length > 0)
+                                        {
+                                            billing_type += "<option>Select billing type</options>";
+                                            
+                                            for(var i = 0; i < res.length; i++)
+                                            {
+                                                billing_object[i] = {
+                                                    billing_type_code       : res[i].billing_type_code,
+                                                    billing_type_id         : res[i].patient_billing_type_id,
+                                                    billing_type_name       : res[i].billing_name
+                                                };
+                                                
+                                                billing_type += "<option data='" + res[i].billing_type_code + "' value='" + res[i].patient_billing_type_id + "'>" + res[i].billing_name + "</option>";
+                                            }
 
-                                $("#appointment_billing_id").html(billing_type);
+                                            $("#appointment_billing_id").html(billing_type);
+                                        }
+                                        else
+                                        {
+                                            billing_type += "<option value='0'>No billing type found.</option>";
+                                            $("#appointment_billing_id").html(billing_type);
+                                        }
+                                        
+                                        console.log(billing_type);
+                                    }
+                                });
+                                
+                                //write data to the view
+                                $("#checkup-par-one").text("Is " + title + " " + last_name + " here for a check?");
+                                
+                                //fetch checkup appointments
+                                $.ajax({
+                                    url         : checkup_url,
+                                    type        : 'POST',
+                                    data        : { id: patient_id },
+                                    dataType    : 'json',
+                                    success     : function(response) {
+                                        if(response.length > 0)
+                                        {
+                                            var num_checkup = response.length,
+                                                checkup_listing     = "",
+                                                form_uaction        = "";
+                                            
+                                            for(var i = 0; i < num_checkup; i ++)
+                                            {
+                                                var date                = new Date(response[i].checkup_date),
+                                                    day                 = date.getDate(),
+                                                    month               = date.getMonth(),
+                                                    //shift_month         = month + 1,
+                                                    months              = Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"),
+                                                    mon                 = months[month],
+                                                    checkup_list_url    = $("#checkup-form-action").val();
+                                                
+                                                //build checkup appointment list view
+                                                checkup_listing += "<a class='checkup-item' href='#'>" +
+                                                    "<form class='checkup-list-frm' action='" + checkup_list_url + "' method='POST'>" +
+                                                        "<div class='media'>" +
+                                                            "<div class='pull-left'>" +
+                                                            "<div class='parent-date-display'>" +
+                                                                "<span class='date-display'>" + day + "</span>" + 
+                                                                "<span class='date-display'>" + mon + "</span>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                        "<div class='media-body'>" +
+                                                            "<h4 style='margin-bottom: 10px; font-size: 16px;' class='media-heading'>" +
+                                                            "<i class='fa fa-fw fa-user-md'></i> Kgatla Emmanuel</h4>" +
+                                                            "<p>" + response[i].reason + "</p>" +
+                                                            "<div class='select-billing-type'>" +
+                                                                "<div class='row checkup-billing-data'>" +
+                                                                    "<div class='col-lg-9'>" +
+                                                                        "<div class='form-input-group'>" +
+                                                                            "<select name='patient_billing_type' class='text-input dr-placeholder'>" +
+                                                                                billing_type +
+                                                                            "</select>" +
+                                                                        "</div>" +
+                                                                    "</div>" +
+                                                                    "<div class='col-lg-3'>" + 
+                                                                        "<input class='btn btn-save pull-right' type='submit' name='add-checkup-app' value='Save'>" +
+                                                                        "<input type='hidden' name='checkup_date_id' value='" + response[i].checkup_date_id + "'>" +
+                                                                        "<input type='hidden' name='checkup_date' value='" + response[i].checkup_date + "'>" +
+                                                                    "</div>" +
+                                                                "</div>" +
+                                                            "</div>" +
+                                                        "</div>" +
+                                                    "</div>" +
+                                                    "</form>" +
+                                                "</a>";
+                                                console.log(response[i]);
+                                            }
+                                             
+                                            $(".checkup-list").html(checkup_listing);
+                                            $(".check-appointment-list").slideDown(400);
+                                        }
+                                    }
+                                });
+
+                                $(".waiting-input").slideDown();
                             }
                             else
                             {
-                                billing_type += "<option value='0'>No billing type found.</option>";
-                                $("#appointment_billing_id").html(billing_type);
+                                $(".waiting-input").slideUp();
                             }
                         }
                     });
                     
-                    $(".waiting-input").slideDown();
-                }
-                else
-                {
                     $(".waiting-input").slideUp();
                 }
             }
         });
+    });
+    
+    $(".checkup-list").on("submit", ".checkup-list-frm", function(e) {
+        e.preventDefault();
+        //alert();
+        /*$.ajax({
+            url     : $(this).attr("action"),
+            type    : $(this).attr("method"),
+            data    : $(this).serialize()
+        });*/
+        
+        console.log($(this).serialize());
     });
     
     $(".manage-waiting").on("click", function() {
@@ -361,11 +532,12 @@ $(document).ready(function() {
     });
     
     //create waiting room
-    $("#add-wating-room").on("submit", function(e) {
-        e.preventDefault();
-        var url     = $(this).attr('action'),
-            type    = $(this).attr('method'),
-            data    = $(this).serialize(),
+    $("#save-to-waiting").on("click", function(e) {
+        //$("#add-new-wating-room").submit();
+        //alert("here");
+        var url     = $("#add-new-wating-room").attr('action'),
+            type    = $("#add-new-wating-room").attr('method'),
+            data    = $("#add-new-wating-room").serialize(),
             link    = $("#link").val();
         
         $.ajax({
@@ -402,9 +574,42 @@ $(document).ready(function() {
                         ;
                         $("#create_waiting_room").modal('hide');
                         $(".refresh-waiting-room-data").hide();
-                        $(".refresh-waiting-room-data").html(output).fadeIn();
+                        $(".refresh-waiting-room-data").html(output).fadeIn(500);
                     }
                 }
+            }
+        });
+    });
+    
+    $(".checkup-item").on("click", function(e) {
+        e.preventDefault();
+        
+        var billing_type = "",
+            url = $("#billing_type_url").val(),
+            data = $("#waiting_room_patient").val();
+
+        //fetch patient billing type
+        $.ajax({
+            url     : url,
+            type    : "POST",
+            data    : { patient_id: data },
+            dataType: 'json',
+            success : function(res) {
+                if(res.length > 0)
+                {
+                    billing_type += "<option>Select billing type</options>";
+                    
+                    for(var i = 0; i < res.length; i++)
+                    {
+                        billing_type += "<option data='" + res[i].billing_type_code + "' value='" + res[i].patient_billing_type_id + "'>" + res[i].billing_name + "</option>";
+                    }
+                }
+                else
+                {
+                    billing_type += "<option value='0'>No billing type found.</option>";
+                }
+                
+                $("#appointment_billing_id").html(billing_type);
             }
         });
     });
@@ -428,10 +633,13 @@ $(document).ready(function() {
         });
     })
     
-    $(".fency").on("click", ".appointment-details", function() {
+    $(".refresh-waiting-room-data").on("click", ".appointment-details", function() {
         var appointment_id = $(this).attr("data-value"),
-            practitioner_app_id = $(this).attr("data-prac-app-id");
+            practitioner_app_id = $(this).attr("data-prac-app-id"),
+            loader = $(this).find(".loading");
         
+        loader.css("display", "inline");
+        //.css("display", "inline") .loader__figure .loader
         $.ajax({
             url: $(this).attr('href'),
             type: 'POST',
@@ -439,10 +647,9 @@ $(document).ready(function() {
             success: function(response) {
                 $("#waiting-room-data").hide();
                 $("#waiting-room-data").fadeIn(2000).html(response);
+                loader.fadeOut(100);
             }
         });
-        
-        
         
         return false;
     });

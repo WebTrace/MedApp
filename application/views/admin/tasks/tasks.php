@@ -1,3 +1,4 @@
+<?Php echo $tasks; ?>
 <div class='row' id='claima-patient'>
     <div class='col-lg-6'>
         <div class='row'>

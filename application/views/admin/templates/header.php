@@ -7,6 +7,8 @@
             <meta name="description" content="">
             <meta name="author" content="">
             <title>CLAIMA</title>
+            <!--Google fonts-->
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
@@ -29,6 +31,8 @@
             
             <!--Ace style reference-->
             <!--<link href="<?Php echo base_url();?>assets/ace.min.css" rel="stylesheet">-->
+            
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
         </head>
         <body>
             <div id="wrapper">
@@ -46,6 +50,9 @@
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
+                        <li class="dropdown">
+                            <a style="font-size: 19px;" href="#"><i class="fa fa-question-circle"></i></a>
+                        </li> 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                             <ul class="dropdown-menu message-dropdown">
