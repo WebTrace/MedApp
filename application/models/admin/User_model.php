@@ -11,33 +11,27 @@
             $id_number          = $this->input->post("id_number");
             $practice_no        = $this->input->post("practice_no");
             $hpcsa_no           = $this->input->post("hpcsa_no");
-            $speciality         = $this->input->post("speciality");
+            $speciality_code    = $this->input->post("speciality");
             $contact_no         = $this->input->post("contact_no");
             $email_address      = $this->input->post("email");
             $username           = $this->input->post("username");
             $password           = $this->input->post("password");
+            $is_default         = "Yes";
+            $hash               = $this->signup_model->create_hash($email_address);
+            $expiry_date        = "2018-04-21";
+            $is_new_account     = "No";
             
             //begin trasaction for creating a new user
             $this->db->trans_start();
             
-            //get user details
-            $user_data = array(
-                'title'         => $title,
-                'first_name'    => $fname,
-                'last_name'     => $lname,
-                'id_number'     => $id_number,
-                'username'      => $username,
-                'password'      => md5($password)
-            );
+            //create user
+            $this->user_data($title, $fname, $lname, $id_number);
             
-            //insert user details
-            $this->db->insert('user', $user_data);
-            
-            /*
-            *retrieve new user id that was generated when a user register. the following insert
-            *statements depend on this new user id.
-            */
+            //get new user id
             $user_id = $this->signup_model->get_new_added_id('user', 'user_id');
+            
+            //create login details
+            $this->signin_model->create_credentials($user_id, $username, $password);
             
             //create user role
             $this->create_user_role($user_id, $role_code);
@@ -45,14 +39,25 @@
             //create user status
             $this->create_user_status($user_id, 2);
             
-            if($role_code == 3 || $role_code == 4)
+            if($role_code == 3)
             {
                 //create practitioner
                 $this->practitioner_model->create_practitioner($user_id, $hpcsa_no, $practice_no);
+                
+                $practitioner_id = $this->signup_model->get_new_added_id('practitioner', 'practitioner_id');
+                
+                //create practitioner speciality
+                $this->practitioner_model->create_practitioner_speciality($practitioner_id, $speciality_code);
             }
+            
+            //create account activation
+            $this->signup_model->create_activate_account($user_id, $expiry_date, $hash);
             
             //assign branch to a user
             $this->branch_model->assign_user_branch($user_id, $branch_id);
+            
+            //create default branch
+            $this->branch_model->default_branch_data($user_id, $branch_id, $is_default);
             
             //create phone contact
             $this->communication_model->create_phone_contact($user_id, $contact_no);
@@ -111,9 +116,24 @@
             
         }
         
-        /*
-        *
+        /*user role
+        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         */
+        
+        public function user_data($title, $fname, $lname, $id_number)
+        {
+            //get user details
+            $user_data = array(
+                'title'         => $title,
+                'first_name'    => $fname,
+                'last_name'     => $lname,
+                'id_number'     => $id_number,
+            );
+
+            //insert user details
+            $this->db->insert('user', $user_data);
+        }
+        
         public function create_user_role($user_id, $role_code)
         {
             $user_role_data = array(
@@ -125,9 +145,36 @@
             $this->db->insert('user_role', $user_role_data);
         }
         
-        /*
-        *
+        public function fetch_user_role($user_id)
+        {
+            $this->db->from('user', 'u');
+            $this->db->join('user_role ur', 'u.user_id = ur.user_id');
+            $this->db->join('role r', 'r.role_code = ur.role_code');
+            $this->db->where('u.user_id', $user_id);
+            
+            return $this->db->get()->result_array();
+        }
+        
+        public function update_user_role($user_role_id, $role_code)
+        {
+            $data = array(
+                'role_code'       => $role_code
+            );
+            
+            $this->db->where('user_role_id', $user_role_id);
+            $this->db->update('user_role', $data);
+        }
+        
+        public function fetch_role()
+        {
+            $this->db->select("*");
+            return $this->db->get("role")->result_array();
+        }
+        
+        /*user status
+        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         */
+        
         public function create_user_status($user_id, $status_code)
         {
             $user_status_data = array(
@@ -139,10 +186,40 @@
             $this->db->insert('user_status', $user_status_data);
         }
         
-        public function fetch_user_role()
+        public function fetch_user_status($user_id)
         {
-            $this->db->select("*");
-            return $this->db->get("role")->result_array();
+            $this->db->from('user', 'u');
+            $this->db->join('user_status us', 'u.user_id = us.user_id');
+            $this->db->join('status s', 's.status_code = us.status_code');
+            $this->db->where('uuser_id', $user_id);
+
+            return $this->db->get()->result_array();
+        }
+        
+        public function update_user_status($user_status_id, $status_code)
+        {
+            $data = array(
+                'status_code'       => $status_code
+            );
+            
+            $this->db->where('user_status_id', $user_status_id);
+            return $this->db->update('user_status', $data);
+        }
+        
+        /*account
+        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        */
+        
+        public function is_new_account()
+        {
+            $is_new_account = true;
+            
+            if($this->session->userdata("IS_NEW_ACCOUNT") == "No")
+            {
+                $is_new_account = false;
+            }
+            
+            return $sis_new_account;
         }
     }
 ?>

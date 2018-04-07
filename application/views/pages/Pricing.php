@@ -10,25 +10,50 @@
 
 <div id="fh5co-main">
     <div class="container">
-        <div class="row" id="fh5co-features">
-            <h1 class="fh5co-uppercase-heading-sm text-center animate-box">Pricing</h1>
-            <div class="col-md-4 col-sm-6 text-center fh5co-feature feature-box">
-
-
-  
-
-
-
-
-
-     
-
-            
-
+        <div class="col-lg-4">
+            <div class="pricing-group">
+                <div class="pricing-header text-center">
+                    <h3 style="margin: 0px; color: #fff;">Trial</h3>
+                </div>
+                <div class="pricing-body text-center">
+                    <div class="price-header">
+                        <div class="feature-price">
+                            <span>R 0</span><br>
+                            <span style="margin: 0px;"> pm</span>
+                        </div>
+                    </div>
+                    <div class="feature-header">
+                        Features
+                    </div>
+                    <div class="feature-body">
+                        <ul>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                            <li>1 user</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pricing-footer">
+                    <div class="text-center">
+                        <a class="signup-btn" href="#">Sign up</a>
+                    </div>
+                </div>
+            </div>
         </div>
-       <!--  end row -->
-        <!-- END row -->
-        <div class="fh5co-spacer fh5co-spacer-md"></div>
+        <div class="col-lg-4">
+            <div class="pricing-header text-center">
+                <h3>Standard</h3>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="pricing-header text-center">
+                <h3>Professional</h3>
+            </div>
+        </div>
     </div>
     <!-- END container -->
 </div>

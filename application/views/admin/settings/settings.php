@@ -30,7 +30,7 @@
 </div>
 <div class="row text-center">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-        <a class="setting-btn" href="#">
+        <a class="setting-btn" href="<?Php echo base_url(); ?>branch/branches">
             <h2 class="icon-size"><i class="fa fa-lock"></i></h2>
             <h4>Branches</h4>
             <p>Manage all branches</p>

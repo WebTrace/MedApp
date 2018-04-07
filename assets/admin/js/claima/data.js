@@ -35,53 +35,27 @@ $(document).ready(function() {
     
     //TODO : display full appointment details using bootstrap popover
     
-    $("#next").on("click", function(e) {
+    $("#signup_practitioner").on("submit", function(e) {
         e.preventDefault();
-        
-        var errcount = 0;
-        
-        errcount = signupStepOneHandler();
-        //disable error checking for testing porpose
-        //errcount = 0;
+
+        var errcount = signupStepOneHandler();
         
         //check if errors exists in a form
-        console.log("Errors : " + errcount);
-        if(errcount == 0) {
-            $("#step-one").css("visibility", "hidden");
-            $("#step-one").slideUp();
-            $("#step-two").css("visibility", "visible");
-            $("#step-two").slideDown();
-        }
-        else {
-            //alert("Err chief fill all from fields.. What are you tring to do!!!");
-        }
-        
-        return false;
-    });
-    
-    $("#signup_practitioner").on("submit", function(e) {
-        //prevent signup form from sending user data
-        e.preventDefault();
-        
-        var errcount = 0;
-        
-        errcount = signupStepTwoHandler();
-        //disable error checking for testing porpose
-        //errcount = 0;
-        
-        //check if form doesnt have errors
         if(errcount == 0) {
             //hide signup form
-            $("#signup_practitioner").hide();
+            $("#reg-row").hide();
+            
             //show spinner
             $(".spn-parent").show();
+            
             //show signup status
             $(".signup-status").slideDown();
+            
             //ajax object properties
             var url     	= $(this).attr('action'),
                 type        = $(this).attr('method'),
                 data        = $(this).serialize();
-            
+
             //perform ajax request and sign up a practitioner
             $.ajax({
                 url: url,
@@ -92,7 +66,7 @@ $(document).ready(function() {
                     $("#signup-status").html(response);
                     console.log(response);
                 },
-                fail : function(response) {
+                error : function(response) {
                     $(".spn-parent").html(response);
                     console.log(response);
                 }
@@ -100,12 +74,29 @@ $(document).ready(function() {
         }
     });
     
+    //create branch
+    $("").on("submit", function() {
+        //prevent signup form from sending user data
+        e.preventDefault();
+
+        var errcount = 0;
+
+        errcount = signupStepTwoHandler();
+        //disable error checking for testing porpose
+        //errcount = 0;
+
+        //check if form doesnt have errors
+        if(errcount == 0) {
+            
+        }
+    })
+    
     /*add new system user
     */
-    $("#frm_add_user").on("submit", function(e) {
+    $("#save-user").on("click", function(e) {
         //prevent the form from submiting by default
         //e.preventDefault();
-        
+        $("#frm_add_user").submit();
         var errcount = 0;
         errcount = addUserHandler();
         
@@ -224,20 +215,20 @@ $(document).ready(function() {
     });
     
     //create patient
-    $("#frm-add-new-patient").on("submit", function(e) {
+    $("#save-patient").on("click", function(e) {
         e.preventDefault();
-        
+        //$("#frm-add-new-patient").submit();
         //show progress
         $("#save-patient-request").show();
         
         //ajax object values
-        var url             = $(this).attr('action'),
-            type            = $(this).attr('method'),
-            data            = $(this).serialize(),
+        var url             = $("#frm-add-new-patient").attr('action'),
+            type            = $("#frm-add-new-patient").attr('method'),
+            data            = $("#frm-add-new-patient").serialize(),
             message_type    = 'success',
             title           = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
             message         = 'Patient saved successfuly.';
-        
+        console.log(data + " " + url);
         //begin ajax request
         $.ajax({
             url: url,
@@ -255,7 +246,27 @@ $(document).ready(function() {
                 notification_message(message_type, title, message);
             }
         });
-    })
+    });
+    
+    //add existing patient for a practitioner
+    $("#new_existng_pat").on("click", function(e) {
+        var url = $("#add-existing-patient").attr("action"),
+            type = $("#add-existing-patient").attr("method"),
+            data = $("#add-existing-patient").serialize();
+        
+        $("#exi-patient-request").show();
+        
+        $.ajax({
+            url     : url,
+            type    : type,
+            data    : data,
+            success : function() {
+                alert('Done');
+            }
+        });
+        
+        console.log(data);
+    });
     
     //search patient exisitng in claima application
     $("#frm-search").on('submit', function(e) {
@@ -297,6 +308,8 @@ $(document).ready(function() {
                     $("#frm-add-new-patient").hide();
                     //hide reset button
                     $("#btn-reset").hide();
+                    $("#save-patient").hide();
+                    $("#new_existng_pat").show();
                     
                     var full_name           = response[0].first_name + ' ' + response[0].last_name,
                         date_of_birth       = response[0].dob,
@@ -321,6 +334,7 @@ $(document).ready(function() {
                     $("#contact-number").text(contact_no);
                     $("#email-address").text(email_address);
                     $("#q_patient_id").val(patient_id);
+                    $("#existing_patient_id").val(patient_id);
                     
                     //show search results
                     $("#claima-patient").show();
@@ -338,8 +352,15 @@ $(document).ready(function() {
             error: function() {
                 
             }
-        })
-    })
+        });
+    });
+    
+    //search exisitng user on claima
+    $("#frm-search-user").on("submit", function(e) {
+        e.preventDefault();
+        
+        
+    });
     
     //clear claima patient search results
     $("#cancel-search").on("click", function() {
@@ -351,8 +372,9 @@ $(document).ready(function() {
         
         //show reset button
         $("#btn-reset").show();
-    })
-    
+        $("#save-patient").show();
+        $("#new_existng_pat").hide();
+    });    
     /*waiting room seaction*/
     
     //search branch patients
@@ -654,9 +676,46 @@ $(document).ready(function() {
         return false;
     });
     
-    $("").on("click", function() {
+    //check email if it exists
+    $("#email_address").on("blur", function() {
+        var val = $(this).val(),
+            url = $("#check_email_url").val();
+
         $.ajax({
-            
+            url: url,
+            type: 'POST',
+            data: { key: val },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+            }
         });
     });
+    
+    //check username if it exists
+    $("#username").on("blur", function() {
+        var val = $(this).val(),
+            url = $("#check_username_url").val();
+        
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: { key: val },
+            dataType: 'json',
+            success: function(response) {
+                if(response[0].is_exists == 1)
+                {
+                    $("#err-username").text("This username is taken.");
+                    $("#err-username").slideDown(100);
+                }
+                else
+                {
+                    $("#err-username").slideUp(100);
+                    $("#err-username").text("Required username.");
+                }
+            }
+        });
+    });
+    
+    
 });

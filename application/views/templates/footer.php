@@ -43,7 +43,7 @@
 					</div>
 					<div class="col-md-12 footer-box" align="center">
 						<div class="fh5co-copyright">
-						<p>&copy;All Rights Reserved. Claima 2017 | <a href="termsAndConditions">Terms and Conditions</a> | Developed by WebTrace</p>
+						<p>&copy;All Rights Reserved. Medics 2017 | <a href="termsAndConditions">Terms and Conditions</a> | Developed by WebTrace</p>
 						</div>
 					</div>
 					

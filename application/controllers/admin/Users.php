@@ -7,20 +7,16 @@
             $user_id = $this->session->userdata("USER_ID");
             
             //get a list of branches
-            $data["branches"]   = $this->branch_model->fetch_user_branch();
-            $data["roles"]      = $this->user_model->fetch_user_role();
-            $data['users']      = $this->data_access->fetch_user_across_branch($user_id);
+            $data["branches"]       = $this->branch_model->fetch_user_branch();
+            $data["roles"]          = $this->user_model->fetch_role();
+            $data['users']          = $this->data_access->fetch_user_across_branch($user_id);
+            $data['branch_name']    = $this->branch_model->fetch_user_branch_name($user_id);
+            $data['specialities']   = $this->practitioner_model->fetch_speciality();
             
             $this->load->view("admin/templates/header");
             $this->load->view("admin/users/users", $data);
             $this->load->view("admin/templates/footer");
         }
-        
-        /*
-        *define crud for user
-        *
-        *
-        */
         
         public function create_user()
         {

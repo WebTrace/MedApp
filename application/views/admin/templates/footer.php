@@ -33,5 +33,18 @@
                 });
             });
         </script>-->
+        <script>
+            $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+                localStorage.setItem('active_tab', $(e.target).attr('href'));
+            });
+
+            var active_tab = localStorage.getItem('active_tab');
+
+            console.log(active_tab);
+
+            if (active_tab) {
+                $('.fi-tabs a[href="' + active_tab + '"]').tab('show');
+            }
+        </script>
     </body>
 </html>

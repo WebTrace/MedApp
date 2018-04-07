@@ -101,10 +101,7 @@
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
                         <h2 class="modal-title">ADD VISITING REASON</h2>
                     </div>
-                    <?Php
-                        $form_attr = array('id' => 'add-wating-room');
-                        echo form_open(base_url() . "appointment/waiting_room", $form_attr);
-                        ?>
+                    <?Php echo form_open(base_url() . "appointment/waiting_room", array('id' => 'add-wating-room')); ?>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -136,7 +133,7 @@
                                 Save
                             </button>
                         </div>
-                    </form>
+                    <?Php echo form_close(); ?>
                 </div>
             </div>
         </div>
@@ -157,13 +154,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <?Php 
-                            $attr = array('id' => 'frm-remove-patient');
-                            echo form_open(base_url() . 'patients/remove_patient', $attr); ?>
+                        <?Php echo form_open(base_url() . 'patients/remove_patient', array('id' => 'frm-remove-patient')); ?>
                             <input type="hidden" name="patient_id" id="remove_patient_id">
                             <a href="#" id="dismiss-remove-patient" class="btn btn-save" onclick="return false;">No</a>
                             <input type="submit" name="btn_submit" class="btn btn-reset" value="Yes"/>
-                        </form>
+                        <?Php echo form_close(); ?>
                     </div>
                 </div>
             </div>
@@ -280,7 +275,9 @@
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div class="form-input-group">
-                                                                    <input type="hidden" name="practitioner" value="<?Php echo $practitioner_id; ?>">
+                                                                    <?Php if($this->session->userdata("USER_ROLE") == 3) : ?>
+                                                                        <input type="hidden" name="practitioner" value="<?Php echo $practitioner_id; ?>">
+                                                                    <?Php endif; ?>
                                                                     <input type="hidden" name="patient_id" id="patient_id">
                                                                     <input type="hidden" name="billing_code" id="billing_code">
                                                                     <input type="hidden" name="" value="">
@@ -449,8 +446,7 @@
                     </div>
                     <div class="modal-body">
                         <?Php
-                            $attribute = array('id' => 'frm-search');
-                            echo form_open(base_url() . 'patients/search_claima_patient', $attribute);
+                            echo form_open(base_url() . 'patients/search_claima_patient', array('id' => 'frm-search'));
                             ?>
                             <div class="row">
                                 <div class="col-lg-4 col-lg-offset-8">
@@ -556,29 +552,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="col-lg-12">
-                                <?Php $att = array('id' => 'frm-add-new-claima-patient');
-                                    echo form_open(base_url() . 'patients/add_claima_patient', $att)
-                                    ?>
-                                    
-                                    <button type="submit" name="" class="btn-save">
-                                        Add patient
-                                    </button>
-                                </form>
-                            </div>-->
+                            <div class="col-lg-12">
+                                <?Php echo form_open(base_url() . 'patients/add_claima_patient', array('id' => 'add-existing-patient')); ?>
+                                    <input type="hidden" name="existing_patient_id" id="existing_patient_id">
+                                    <input type="hidden" name="ex_branch_id" value="<?Php echo $this->session->userdata('BRANCH_ID'); ?>">
+                                <?Php echo form_close(); ?>
+                            </div>
                         </div>
                         <?Php
-                            $attributes = array('id' => 'frm-add-new-patient');
-                            echo form_open(base_url() . 'patients/create_patient', $attributes); 
+                            echo form_open(base_url() . 'patients/create_patient', array('id' => 'frm-add-new-patient')); 
                             ?>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
-                                        <li><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
-                                        <li><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
-                                        <li><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
-                                        <li><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
+                                    <ul id="navi-tabs" class="nav nav-tabs">
+                                        <li style="margin-right: 4px;" class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
+                                        <li style="margin-right: 4px;"><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
+                                        <li style="margin-right: 4px;"><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
+                                        <li style="margin-right: 4px;"><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
+                                        <li style="margin-right: 4px;"><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
                                     </ul>
                                 </div>
                                 <div class="treatment-group">
@@ -857,16 +848,27 @@
                                         </div>
                                         <div class="tab-pane" id="add-visiting-reason">
                                             <div class="col-lg-12 tab-content">
-                                                <?Php
-                                                $form_attr = array('id' => 'add-wating-room');
-                                                echo form_open(base_url() . "appointment/waiting_room", $form_attr);
-                                                ?>
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-input-group">
+                                                            <input type="text" name="appointment_desc" id="app-desc" class="text-input" placeholder="Appointment title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
                                                         <div class="form-input-group">
                                                             <select name="appointment_practitioner" id="appointment_practitioner" class="text-input dr-placeholder">
                                                                 <option value="0">Select practitioner</option>
-                                                                <option value="1">Bongs Maranatha</option>
+                                                                <?Php if(count($practitioners)) : ?>
+                                                                    <?Php foreach($practitioners as $practitioner) :
+                                                                        $practitioner_id    = $practitioner["practitioner_id"];
+                                                                        $first_name         = $practitioner["first_name"];
+                                                                        $last_name          = $practitioner["last_name"];
+                                                                    ?>
+                                                                    <option value="<?Php echo $practitioner_id; ?>"><?Php echo $first_name . " " . $last_name; ?></option>
+                                                                    <?Php endforeach; ?>
+                                                                <?Php else : ?>
+                                                                    <option value="0">No practitioners</option>
+                                                                <?Php endif; ?>
                                                             </select>
                                                             <input type="hidden" name="waiting_room_patient" id="waiting_room_patient">
                                                         </div>
@@ -880,7 +882,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?Php echo form_close(); ?>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="add-account-details">
@@ -925,6 +926,9 @@
                         <button type="submit" name="btn_submit" class="btn btn-save" id="save-patient" title="Save patient and complete later">
                             Add patient <span id="save-patient-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
                         </button>
+                        <button type="submit" name="btn_submit" class="btn btn-save" id="new_existng_pat" title="Save patient and complete later">
+                            Add patient <span id="exi-patient-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -932,27 +936,32 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Patients</h3>
+            </div>
+        </div>
         <div class="user-table">
             <?Php if(count($patients) > 0) : $count = 1; ?>
-                <table class="table table-bordered" id="patients-list">
+                <table class="table table-striped" id="patients-list">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Surname</th>
                             <th>First name</th>
                             <th>ID No.</th>
-                            <th>Date of Birth</th>
+                            <!--<th>Date of Birth</th>-->
                             <th>Age</th>
-                            <th>Gender</th>
-                            <th>Ethnic</th>
-                            <th>Contact number</th>
-                            <th>Next of keen</th>
+                            <!--<th>Gender</th>-->
+                            <!--<th>Ethnic</th>-->
+                            <th>Contact no</th>
+                            <!--<th>Next of keen</th>-->
                             <th colspan="
                                         <?Php
                                             $is_visible = FALSE;
                                             if($this->session->userdata("USER_ROLE") != 2) {
-                                                echo 4;
+                                                echo 3;
                                                 $is_visible = TRUE;
                                             } else {
                                                 echo 3;
@@ -969,12 +978,12 @@
                                 <td class="add-waiting-room"><?Php echo $patient['last_name']; ?></td>
                                 <td class="add-waiting-room"><?Php echo $patient['first_name']; ?></td>
                                 <td class="add-waiting-room"><?Php echo $patient['id_number']; ?></td>
-                                <td class="add-waiting-room"><?Php echo $patient['dob']; ?></td>
+                                <!--<td class="add-waiting-room"><?Php echo $patient['dob']; ?></td>-->
                                 <td class="add-waiting-room"><?Php echo $this->patients_model->calculate_age($patient['dob']); ?></td>
-                                <td class="add-waiting-room"><?Php echo $patient['gender']; ?></td>
-                                <td class="add-waiting-room"><?Php echo $patient['ethnic_group']; ?></td>
+                                <!--<td class="add-waiting-room"><?Php echo $patient['gender']; ?></td>-->
+                                <!--<td class="add-waiting-room"><?Php echo $patient['ethnic_group']; ?></td>-->
                                 <td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>
-                                <td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>
+                                <!--<td class="add-waiting-room"><?Php echo $patient['contact_no']; ?></td>-->
                                 <?Php if($is_visible == TRUE) : ?>
                                 <td>
                                     <a class="consultation-btn" id="<?Php echo $patient['patient_id']; ?>" 
@@ -985,8 +994,8 @@
                                     </a>
                                 </td>
                                 <?Php endif; ?>
-                                <td><a style="font-size: 12px;" class="" href="<?Php echo base_url()?>patients/medical_details/<?Php echo $patient['patient_id']; ?>" title="Pull patient file"><i class="fa fa-fw fa-file-text-o"></i></a></td>
-                                <td><a class="edit-user" href="<?Php echo base_url(); ?>patients/edit_patient/<?Php echo $patient['patient_id']; ?>" title="Edit patient"><i class="fa fa-pencil"></i></a></td>
+                                <td><a style="font-size: 12px;" class="" href="<?Php echo base_url()?>patients/patient_file/<?Php echo $patient['patient_id']; ?>" title="Pull patient file"><i class="fa fa-fw fa-file-text-o"></i></a></td>
+                                <!--<td><a class="edit-user" href="<?Php echo base_url(); ?>patients/edit_patient/<?Php echo $patient['patient_id']; ?>" title="Edit patient"><i class="fa fa-pencil"></i></a></td>-->
                                 <td><a class="delete-user" id="<?Php echo $patient['patient_id']; ?>" href="#" title="Remove patient"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?Php $count++; endforeach; ?>
@@ -1000,6 +1009,13 @@
             <nav>
                 <ul class="pagination"></ul>
             </nav>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Quick Dashboard</h3>
+            </div>
         </div>
     </div>
 </div>

@@ -166,20 +166,21 @@ function signupStepOneHandler()
     var title               = $("#title").val(),
         fname               = $("#fname").val(),
         lname               = $("#lname").val(),
-        hpcsa_no            = $("#hpcsa_no").val(),
+        hpc_no              = $("#hpc_no").val(),
+        practice_no         = $("#practice_no").val(),
         contact_no          = $("#contact_no").val(),
-        /*tel_no              = $("#tel_no").val(),*/
         email_address       = $("#email_address").val(),
         confirm_email       = $("#confirm_email").val(),
         username            = $("#username").val(),
         password            = $("#password").val(),
         confirm_password    = $("#confirm_password").val(),
+        terms               = $("#terms"),
         errcount            = 0;
 
     /*perform client side validation to make sure that user inputs are correct
     *
     */
-
+    
     //validate title field
     //->title must not be empty
     //->title must not contain specail chars, numbers and spaces
@@ -211,12 +212,21 @@ function signupStepOneHandler()
     }
 
     //validate hpcsa number field
-    if(hpcsa_no.trim() == "") {
+    if(hpc_no.trim() == "") {
         errcount ++;
         $("#err-hpcsa-no").slideDown(300);
     }
     else {
         $("#err-hpcsa-no").slideUp(300);
+    }
+    
+    //validate practice number field
+    if(practice_no.trim() == "") {
+        errcount ++;
+        $("#err-practice-no").slideDown(300);
+    }
+    else {
+        $("#err-practice-no").slideUp(300);
     }
 
     //validate contact number field
@@ -227,11 +237,6 @@ function signupStepOneHandler()
     else {
         $("#err-contact-no").slideUp(300);
     }
-
-    //validate tel number field if not empty
-    /*if(tel_no.trim() != "") {
-
-    }*/
 
     //validate email address field
     if(email_address.trim() == "") {
@@ -276,6 +281,15 @@ function signupStepOneHandler()
     }
     else {
         $("#err-confirm-passw").slideUp(300);
+    }
+    
+    //validate terms field
+    if(terms.is(':checked') != true) {
+        errcount ++;
+        $('#err-prac-terms').slideDown(300);
+    }
+    else {
+        $('#err-prac-terms').slideUp(300);
     }
     
     return errcount;
@@ -371,14 +385,6 @@ function signupStepTwoHandler()
         $('#err-prac-province').slideUp(300);
     }
 
-    //validate terms field
-    if(terms.is(':checked') != true) {
-        errcount ++;
-        $('#err-prac-terms').slideDown(300);
-    }
-    else {
-        $('#err-prac-terms').slideUp(300);
-    }
     
     return errcount;
 }

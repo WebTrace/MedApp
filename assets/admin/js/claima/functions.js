@@ -94,7 +94,7 @@ function patient_data_table(response)
 {
     var row = "";
     console.log(response);
-    for(i = 0; i < response.length; i ++)
+    for(var i = 0; i < response.length; i ++)
     {
        // console.log(response[].last_name);
         row =+ "<tr>";
