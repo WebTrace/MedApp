@@ -56,16 +56,12 @@
         <div class="clearfix"></div>
     </div>
     <div class="col-lg-12">
-        <?Php
-            $attributes = array('id' => 'frm_add_user');
-            echo form_open(base_url() . "users/create_user", $attributes); 
-            ?>
             <div class="modal fade" id="add_user_modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h2 class="modal-title">ADD USER</h2>
+                            <h2 class="modal-title">ADD USER </h2>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -92,106 +88,116 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="form-input-group user-search">
-                                                <input type="search" name="q" id="" class="text-input" placeholder="Search user">
-                                                <button type="submit" class="btn-search-icon" id="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
-                                            </div>
+                                            <?Php echo form_open(base_url() . "", array("id" => "frm-search-user")); ?>
+                                                <div class="form-input-group user-search">
+                                                    <input type="search" name="q" id="" class="text-input" placeholder="Search user">
+                                                    <button type="submit" class="btn-search-icon" id="btn-search-icon"><span id="search-waiting" class="glyphicon glyphicon-search"></span></button>
+                                                </div>
+                                            <?Php echo form_close(); ?>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <select name="user_branch" id="user_branch" class="text-input dr-placeholder">
-                                                    <option value="0">Select branch</option>
-                                                    <?Php if(isset($branches)) : ?>
-                                                        <?Php foreach($branches as $branch) : ?>
-                                                            <option value="<?Php echo $branch['branch_id']; ?>"><?Php echo $branch['branch_name']; ?></option>
-                                                        <?Php endforeach; ?>
-                                                    <?Php endif; ?>
-                                                </select>
+                                    <?Php echo form_open(base_url() . "users/create_user", array('id' => 'frm_add_user')); ?>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <select name="user_branch" id="user_branch" class="text-input dr-placeholder">
+                                                        <option value="0">Select branch</option>
+                                                        <?Php if(isset($branches)) : ?>
+                                                            <?Php foreach($branches as $branch) : ?>
+                                                                <option value="<?Php echo $branch['branch_id']; ?>"><?Php echo $branch['branch_name']; ?></option>
+                                                            <?Php endforeach; ?>
+                                                        <?Php endif; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <select name="user_role" id="user_role" class="text-input dr-placeholder">
+                                                        <option value="0">Select role</option>
+                                                        <?Php if(isset($roles)) : ?>
+                                                            <?Php foreach($roles as $role) : ?>
+                                                                <?Php if($role['role_code'] != 1 && $role['role_code'] != 5 && $role['role_code'] != 4) : ?>
+                                                                    <option value="<?Php echo $role['role_code']; ?>"><?Php echo $role['role_name']; ?></option>
+                                                                <?Php endif; ?>
+                                                            <?Php endforeach; ?>
+                                                        <?Php endif; ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="dropdown form-input-group">
+                                                    <select name="title" id="title" class="text-input dr-placeholder">
+                                                        <option value="0">Title</option>
+                                                        <option value="Mr">Mr</option>>
+                                                        <option value="Ms">Ms</option>>
+                                                        <option value="Mrs">Mrs</option>
+                                                        <option value="Dr">Dr</option>
+                                                        <option value="Prof">Prof</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <select name="user_role" id="user_role" class="text-input dr-placeholder">
-                                                    <option value="0">Select role</option>
-                                                    <?Php if(isset($roles)) : ?>
-                                                        <?Php foreach($roles as $role) : ?>
-                                                            <?Php if($role['role_code'] != 1 && $role['role_code'] != 5) : ?>
-                                                                <option value="<?Php echo $role['role_code']; ?>"><?Php echo $role['role_name']; ?></option>
-                                                            <?Php endif; ?>
-                                                        <?Php endforeach; ?>
-                                                    <?Php endif; ?>
-                                                </select>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="id_number" id="id_number" class="text-input" placeholder="ID number">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="dropdown form-input-group">
-                                                <select name="title" id="title" class="text-input dr-placeholder">
-                                                    <option value="0">Title</option>
-                                                    <option value="Mr">Mr</option>>
-                                                    <option value="Ms">Ms</option>>
-                                                    <option value="Mrs">Mrs</option>
-                                                    <option value="Dr">Dr</option>
-                                                    <option value="Prof">Prof</option>
-                                                </select>
+                                        <div class="row" id="practice-details">
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="practice_no" id="practice_no" class="text-input" placeholder="Practice No.">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="hpcsa_no" id="hpcsa_no" class="text-input" placeholder="HPCSA No.">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <select class="reg-input dr-placeholder" name="speciality" id="speciality">
+                                                        <option value="0">Speciality</option>
+                                                        <?Php if(count($specialities) > 0) : ?>
+                                                            <?Php foreach($specialities as $specialitie) : ?>
+                                                                <option value="<?Php echo $specialitie['speciality_code']; ?>"><?Php echo $specialitie['speciality_name']; ?></option>
+                                                            <?Php endforeach; ?>
+                                                        <?Php else : ?>
+                                                            <option value="0">No specialities found</option>
+                                                        <?Php endif; ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="fname" id="fname" class="text-input" placeholder="First name">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="email" id="email_address" class="text-input" placeholder="Email address">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-input-group">
+                                                    <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="lname" id="lname" class="text-input" placeholder="Last name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="id_number" id="id_number" class="text-input" placeholder="ID number">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row" id="practice-details">
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="practice_no" id="practice_no" class="text-input" placeholder="Practice No.">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="hpcsa_no" id="hpcsa_no" class="text-input" placeholder="HPCSA No.">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <select name="speciality" class="text-input" id="speciality">
-                                                    <option value="0">Speciality</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="email" id="email_address" class="text-input" placeholder="Email address">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-input-group">
-                                                <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
+                                        <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-input-group">
                                                 <input type="text" name="username" id="username" class="text-input" placeholder="Username">
@@ -208,23 +214,23 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?Php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" name="btn_submit" class="btn btn-save" value="Save" />
-                            <input type="submit" name="btn_submit" class="btn btn-reset" value="Reset"/>
+                            <input type="button" name="btn_submit" id="" class="btn btn-reset" value="Reset"/>
+                            <input type="button" name="btn_submit" id="save-user" class="btn btn-save" value="Save" />
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="user-table">
-            <table class="table table-bordered" id="user-list">
+            <table class="table table-striped" id="user-list">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -234,14 +240,15 @@
                         <th>ID number</th>
                         <th>Contact number</th>
                         <th>Email address</th>
+                        <th>Branch </th>
                         <th>User role</th>
                         <th>Status</th>
-                        <th>Last login </th>
                         <th colspan="3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                    <?Php if(isset($branches)) : $count = 1; ?>
+                        
                         <?Php foreach($users as $user) : ?>
                             <tr>
                                 <td><?Php echo $count++; ?></td>
@@ -251,9 +258,9 @@
                                 <td><?Php echo $user['id_number']; ?></td>
                                 <td><?Php echo $user['contact_no']; ?></td>
                                 <td><?Php echo $user['email_address']; ?></td>
+                                <td><?Php echo $user['branch_name']; ?></td>
                                 <td><?Php echo $user['role_name']; ?></td>
                                 <td><?Php echo $user['status_name']; ?></td>
-                                <td><?Php echo $user['role_name']; ?></td>
                                 <td><a class="edit-user" href="#" onclick="return false"><i class="fa fa-pencil"></i></a></td>
                                 <td><a href="#"><i class="fa fa-lock"></i></a></td>
                                 <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>

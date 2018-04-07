@@ -8,7 +8,7 @@
             <meta name="author" content="">
             <title>CLAIMA</title>
             <!--Google fonts-->
-            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="<?Php echo base_url(); ?>dashboard">CLAIMA</a>
+                        <a class="navbar-brand" href="<?Php echo base_url(); ?>dashboard">MEDICS</a>
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
@@ -136,11 +136,13 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i> <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-user"></i> Profile</a>
+                                <li class="default-branch">
+                                    <h5><?Php echo $this->session->userdata("BRANCH_NAME"); ?> <span style="font-size: 12px; color: #666;" class="pull-right"><i class="fa fa-chevron-right"></i></span></h5>
+                                    <di><span><?Php echo $this->session->userdata("LOCATION"); ?></span> | <span><?Php echo $this->session->userdata("PROVINCE"); ?></span></di>
+                                    <div><span><?Php echo $this->session->userdata("EMAIL_ADDR"); ?></span> | <span>011 023 2563</span></div>
                                 </li>
                                 <li>
-                                    <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                    <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-user"></i> Profile</a>
                                 </li>
                                 <li>
                                     <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-gear"></i> Settings</a>

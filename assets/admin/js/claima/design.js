@@ -71,10 +71,10 @@ $(document).ready(function() {
     //print button
     $("#print").on("click", function() {
         window.print();
-    })
+    });
     
     $("#user_role").on("change", function() {
-        if($(this).val() == 3)
+        if($(this).val() == 3 || $(this).val() == 4)
         {
             $("#practice-details").slideDown();
         }
@@ -82,7 +82,7 @@ $(document).ready(function() {
         {
             $("#practice-details").slideUp();
         }
-    })
+    });
     
     $("#back").on("click", function() {
         $("#step-two").css("visibility", "hidden");
@@ -91,7 +91,7 @@ $(document).ready(function() {
         $("#step-one").slideDown();
         
         return false;
-    })
+    });
     
     $("#billing_type").on("change", function() {
         var billing_type = $("#billing_type").val();
@@ -124,7 +124,7 @@ $(document).ready(function() {
                 }
             }
         }
-    })
+    });
     
     //radio button code
     /*$("input[name='dependant']").on("click", function() {

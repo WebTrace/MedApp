@@ -188,8 +188,9 @@
             $this->db->join('practitioner_appointment pa', 'a.appointment_id = pa.appointment_id', 'RIGHT');
             $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'RIGHT');
             $this->db->where('appointment_type_code', 2);*/
+            $user_id = $this->session->userdata("USER_ID");
             
-            return $this->data_access->fetch_waiting_room()->result_array();
+            return $this->data_access->fetch_waiting_room($user_id)->result_array();
         }
         
         public function fetch_single_waiting_room($waiting_room_id, $is_ajax)

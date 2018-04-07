@@ -1,11 +1,3 @@
-/*
-//////////////////////////////////////////////////////
-
-FREE HTML5 TEMPLATE 
-DESIGNED & DEVELOPED by FREEHTML5.CO
-
-//////////////////////////////////////////////////////
-*/
 @font-face {
   font-family: 'themify';
   src: url("../fonts/themify/themify.eot?-fvbane");
@@ -13,9 +5,11 @@ DESIGNED & DEVELOPED by FREEHTML5.CO
   font-weight: normal;
   font-style: normal;
 }
+
 html.fh5co-overflow, body.fh5co-overflow {
   overflow-x: auto;
 }
+
 html.fh5co-overflow #fh5co-header-section, html.fh5co-overflow #fh5co-main, html.fh5co-overflow #fh5co-hero, html.fh5co-overflow #fh5co-mobile-menu, html.fh5co-overflow #fh5co-footer, body.fh5co-overflow #fh5co-header-section, body.fh5co-overflow #fh5co-main, body.fh5co-overflow #fh5co-hero, body.fh5co-overflow #fh5co-mobile-menu, body.fh5co-overflow #fh5co-footer {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -29,13 +23,47 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: normal;
-  color: #FFF;
+    color: #4a4a4a;
 }
+
 @media screen and (max-width: 768px) {
   body {
     font-size: 16px;
     line-height: 1.5;
   }
+}
+
+/*Manny
+*+++++++++++++++++++++++++++++++++
+*/
+
+.pricing-body {
+    margin-top: 20px;
+}
+
+.pricing-header {
+    background: #45bbd0;
+    padding: 5px;
+}
+
+.signup-btn {
+    padding: 10px;
+    color: #fff;
+    background: #f86942;
+    display: block;
+}
+
+.feature-header {
+    margin-top: 20px;
+}
+
+.feature-price {
+    height: 90px;
+    width: 90px;
+    padding-top: 20px; 
+    border-radius: 50%;
+    background: #eee;
+    display: inline-block;
 }
 
 ::-webkit-selection {
@@ -286,9 +314,9 @@ margin-top: 50%;
 
 /* Heading */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  margin: 0 0 20px 0;
-  padding: 0;
-  color: #90d7ea;
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #4a4a4a;
 }
 
 h1, .h1 {
@@ -1160,8 +1188,10 @@ body.fh5co-mobile-menu-visible #fh5co-mobile-menu {
   width: 100%;
   font-size: 13px;
   line-height: 20px;
+    background: #90d7ea;
 }
-#fh5co-footer::before {
+
+/*#fh5co-footer::before {
   content: '';
   position: absolute;
   left: 0;
@@ -1177,7 +1207,8 @@ body.fh5co-mobile-menu-visible #fh5co-mobile-menu {
   -ms-transform: skewY(3deg);
   -o-transform: skewY(3deg);
   transform: skewY(3deg);
-}
+}*/
+
 #fh5co-footer .fh5co-arrow {
   position: absolute;
   top: -84px;
@@ -1282,7 +1313,8 @@ body.fh5co-mobile-menu-visible #fh5co-mobile-menu {
 }
 
 .fh5co-spacer-md {
-  height: 80px;
+  /*height: 80px;*/
+    height: 0px;
 }
 @media screen and (max-width: 768px) {
   .fh5co-spacer-md {

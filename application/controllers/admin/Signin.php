@@ -26,18 +26,47 @@
                 {
                     if($this->session->userdata("USER_STATUS") == 1)
                     {
-                        redirect(base_url() . "dashboard");
+                        if($this->session->userdata("USER_ROLE") == 4)
+                        {
+                            //get mamager details
+                            $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
+                            
+                            $manager_id = $manager_data[0]["manager_id"];
+                            $is_new_account = $manager_data[0]["is_new_account"];
+                            
+                            $this->session->set_userdata("MANAGER_ID", $manager_id);
+                            
+                            if($is_new_account == "Yes")
+                            {
+                                redirect(base_url() . "branch/new_branch");
+                            }
+                            else
+                            {
+                                //redirect to dashboard
+                                redirect(base_url() . "dashboard");
+                            }
+                        }
+                        else
+                        {
+                            //redirect to dashboard
+                            redirect(base_url() . "dashboard");
+                        }
                     }
                     else
                     {
+                        //user details
+                        $data['last_name'] = $this->session->userdata("LNAME");
+                        $data['first_name'] = $this->session->userdata("FNAME");
+                        $data['user_title'] = $this->session->userdata("USER_TITLE");
+                        
                         if($this->session->userdata("USER_STATUS") == 2)
                         {
                             $data['icon'] = '<i class="fa fa-check-circle-o" id="confirm-color"></i>';
                             $data['title'] = '<h4 class="confirm-header">Please confirm your account.</h4>';
                             $data['content'] = '<p>Your account is currently inactive. Please activate your account by 
                                                 clicking on the link sent to your emails. Click the button below if 
-                                                you have not recieved a confilation link</p>';
-                            $data['link'] = '<a class="btn btn-save" href="' . base_url() . 'activation_link">Resend link</a>';
+                                                you have not recieved a confirmation link</p>';
+                            $data['link'] = '<a class="btn btn-save" id="account_activation_link" href="' . base_url() . 'signup/activation_link">Resend link</a>';
                         }
                         else
                         {
@@ -55,7 +84,16 @@
                 }
                 else
                 {
-                    $this->session->set_flashdata("SIGNIN_FAILED", "Error occured. Invalid password or username. Err" . var_dump($this->signin_model->user_signin()));
+                    $max_login_reached = $this->session->userdata("MAX_LOGIN_REACHED");
+                    
+                    if($max_login_reached == TRUE)
+                    {
+                        $this->session->set_flashdata("SIGNIN_FAILED", "You have reached a maximum number of failed signin attempts. For security purposes, this account has been locked. Click here for assistance");
+                    }
+                    else
+                    {
+                        $this->session->set_flashdata("SIGNIN_FAILED", "Error occured. Invalid password or username." . $this->session->userdata("REMAINING_ATTEMPTS"));
+                    }
                     
                     redirect(base_url() . "signin");
                 }

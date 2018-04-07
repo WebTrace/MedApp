@@ -41,7 +41,6 @@
         <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/animate.css">
         <!-- Theme Style -->
         <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/style.css">
-
         <!-- Modernizr JS -->
         <script src="<?Php echo base_url()?>assets/js/modernizr-2.6.2.min.js"></script>
     </head>
@@ -59,10 +58,10 @@
                         <li class="active"><a href="<?Php echo base_url(); ?>">Home</a></li>
                         <li class="active"><a href="about">About us</a></li>
                         <li class="active"><a href="how-it-works">How it works</a></li>
-                        <li class="active"><a href="Pricing">Pricing</a></li>
+                        <li class="active"><a href="pricing">Pricing</a></li>
                         <li class="active"><a href="contact">Contact</a></li>
                         <li class="active"><a href="signin" target="_blank">Signin</a></li>
-                        <li class="active"><a href="signup" target="_blank">Sign up</a></li>
+                        <li class="active"><a href="pricing">Sign up</a></li>
                     </ul>
                 </nav>
             <!-- </div> -->

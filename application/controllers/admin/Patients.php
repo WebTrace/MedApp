@@ -11,8 +11,12 @@
             $data['billing_types']              = $this->billing_model->fetch_billing_type();
             $data["dependant_relationships"]    = $this->medical_model->fetch_relationship();
             //$data['patient_billing_types']      = $this->billing_model->fetch_patient_billing_type();
-            //$data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
-            $data["practitioner_id"]            = $this->practitioner_model->fetch_practitioner_id($this->session->userdata('USER_ID'));
+            $data["practitioners"]              = $this->practitioner_model->fetch_branch_practitioner($branch_id);
+            
+            if($this->session->userdata("USER_ROLE") == 3)
+            {
+                $data["practitioner_id"]            = $this->practitioner_model->fetch_practitioner_id($this->session->userdata('USER_ID'));
+            }
             
             $this->load->view("admin/templates/header");
             $this->load->view("admin/patients/patients", $data);
@@ -63,8 +67,8 @@
         
         public function add_claima_patient()
         {
-            $branch_id      = $this->input->post('branch_id');
-            $patient_id     = $this->input->post('patient_id');
+            $branch_id      = $this->input->post('ex_branch_id');
+            $patient_id     = $this->input->post('existing_patient_id');
             
             $this->patients_model->create_treatment_branch($branch_id, $patient_id);
         }
@@ -145,10 +149,10 @@
             echo json_encode($this->patients_model->fetch_all_patient());
         }
         
-        public function medical_details($patient_id)
+        public function patient_file($patient_id)
         {
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/patients/patient_medical_details");
+            $this->load->view("admin/patients/patient_file");
             $this->load->view("admin/templates/footer");
         }
     }

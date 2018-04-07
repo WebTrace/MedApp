@@ -44,6 +44,7 @@
             $is_dependant                   = $this->input->post('dependant');
             
             //get visiting reason data
+            $appointment_title              = $this->input->post('appointment_desc');
             $visiting_reason                = $this->input->post('visiting_reason');
             $practitioner_appointment       = $this->input->post('appointment_practitioner');
             
@@ -63,7 +64,7 @@
             $user_id = $this->signup_model->get_new_added_id('user', 'user_id');
             
             //generate new unique file no
-            $file_no = $this->new_file_no($user_id);
+            $file_no = $this->new_file_no();
             
             //create new patient
             $this->new_patient($user_id, $file_no);
@@ -121,7 +122,7 @@
             //create patient credentials if requested
             if(1 > 2)
             {
-                $this->signin_model->create_credentials($user_id, $username, $password);
+                $this->signin_model->create_credentials($user_id, $username, $password, $hash);
             }
             
             //create treatment branch
@@ -166,7 +167,7 @@
             $this->billing_model->create_patient_billing_type($patient_id, $billing_type);
             
             //add patient to waiting room
-            $this->appointment_mode->waiting_room_data($patient_id, $visiting_reason);
+            $this->appointment_model->waiting_room_data($patient_id, $visiting_reason, $appointment_title);
             
             //get new appointment id
             $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
@@ -368,18 +369,33 @@
         }
         
         //generate a new file number
-        public function new_file_no($user_id)
+        public function new_file_no()
         {
-            $file_no =   'CL' . $user_id;
-            $rand_no = '';
+            //get the privious file number and increment it to create a new file number
+            $query = $this->new_record_value("patient_id", "patient", "file_no");
             
-            for($i = 1; $i <= 5; $i++)
+            if($query->num_rows() == 1)
             {
-                $random_no = rand(1, 100000);
-                $rand_no += $random_no;
+                //get previous file number
+                $previous_file_no = $query->row(0)->file_no;
+                
+                //get integer version of the file number
+                $file_integer_val = substr($previous_file_no, 2, strlen($previous_file_no));
+                
+                return $file_no = sprintf("FI%08d", ++$file_integer_val);
             }
+            else
+            {
+                return null;
+            }
+        }
+        
+        public function new_record_value($id, $table, $column)
+        {
+            //select new user id
+            $query = $this->db->query("SELECT " . $column . " FROM " . $table . " ORDER BY " . $id . " DESC LIMIT 0, 1");
             
-            return $file_no;
+            return $query;
         }
         
         public function new_password()

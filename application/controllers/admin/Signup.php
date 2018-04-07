@@ -16,7 +16,7 @@
             $output = array();
             
             //perfom form validation
-            $this->form_validation->set_rules('title',                  'title',                'required|trim|xss_clean');
+            /*$this->form_validation->set_rules('title',                  'title',                'required|trim|xss_clean');
             $this->form_validation->set_rules('fname',                  'first name',           'required|trim|xss_clean');
             $this->form_validation->set_rules('hpcsa_no',               'HPCSA number',         'required|trim|xss_clean');
             $this->form_validation->set_rules('lname',                  'last name',            'required|trim|xss_clean');
@@ -32,22 +32,17 @@
             $this->form_validation->set_rules('city',                   'city',                 'required|trim|xss_clean');
             $this->form_validation->set_rules('province',               'province',             'required|trim|xss_clean');
             $this->form_validation->set_rules('location',               'location',             'required|trim|xss_clean');
+            */
             
-            if($this->form_validation->run() == FALSE)
-            {
-                //TODO : handle form errors
-            }
-            else
-            {
                 if($this->signup_model->signup_practioner() == TRUE)
                 {
                     //get email and hash from session
                     $to             = $this->session->userdata("registration_email");
-                    $hash           = $this->session->userdata("hash");
+                    $hash           = $this->session->userdata("HASH");
                     $from           = "no-reply@webtrace.co.za";
                     $subejct        = "CLAIMA Account Activation";
-                    $url            = base_url() . "signup/accout_activation/" . $hash;
-                    $message        = $this->email_model->signup_content("");
+                    $url            = base_url() . "signup/account_activation/" . $hash;
+                    $message        = $this->email_model->signup_content($url);
                     
                     //send an email
                     if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
@@ -65,7 +60,7 @@
                     $output .= "</div>";
                     $output .= "<h4 class='confirm-header'>Thank you for choosing CLAIMA.</h4>";
                     $output .= "<p>Your account was created successfully. An email with instructions 
-                    on how activating your account was sent to you.</p>";
+                    on how to activate your account was sent to you.</p>";
                     
                     echo $output;
                 }
@@ -81,8 +76,32 @@
                     
                     echo $output;
                 }
-                
-                //echo validation_errors();
+        }
+        
+        public function check_email()
+        {
+            $email = $this->input->post("key");
+            echo json_encode($this->signup_model->is_val_exists('email_contact', 'email_address', $email));
+        }
+        
+        public function check_username()
+        {
+            $username = $this->input->post("key");
+            echo json_encode($this->signup_model->is_val_exists('login', 'username', $username));
+        }
+        
+        //
+        public function account_activation($hash)
+        {
+            if($this->signup_model->activate_account($hash) == true)
+            {
+                //redirect back to login after successful account activation
+                redirect(base_url() . "signin");
+            }
+            else
+            {
+                echo $this->patients_model->new_file_no();
+                //echo "Failed " . $this->signup_model->create_hash('emmanuel66@live.co.za');
             }
         }
         
