@@ -49,15 +49,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'pages/view';
-$route['registration'] = 'admin/authentication/signup';
-$route['authentication'] = 'admin/authentication/signin';
-$route['signin/user_signin'] = 'admin/signin/user_signin';
-$route['signup'] = 'admin/signup';
-$route['signup/signup_practitioner'] = 'admin/signup/signup_practitioner';
-$route['feedback'] = 'admin/signup/feedback';
-$route['activation_link'] = 'admin/communication/activation_link';
-$route['signin/forgotpassw'] = 'admin/signin/forgot_password';
+$route['default_controller']                        = 'pages/view';
+$route['registration']                              = 'admin/authentication/signup';
+$route['authentication']                            = 'admin/authentication/signin';
+$route['signin/user_signin']                        = 'admin/signin/user_signin';
+$route['signup']                                    = 'admin/signup';
+$route['signup/account_type/(:any)']                = 'admin/account/account_type/$1';
+$route['signup/signup_practitioner']                = 'admin/signup/signup_practitioner';
+$route['feedback']                                  = 'admin/signup/feedback';
+$route['activation_link']                           = 'admin/communication/activation_link';
+$route['signin/forgotpassw']                        = 'admin/signin/forgot_password';
 
 /*
 *private url

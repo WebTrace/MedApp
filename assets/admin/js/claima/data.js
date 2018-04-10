@@ -716,6 +716,4 @@ $(document).ready(function() {
             }
         });
     });
-    
-    
 });

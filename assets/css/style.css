@@ -37,6 +37,10 @@ body {
 *+++++++++++++++++++++++++++++++++
 */
 
+.pricing-group {
+    background: #f3f9f6;
+}
+
 .pricing-body {
     margin-top: 20px;
 }
@@ -47,9 +51,9 @@ body {
 }
 
 .signup-btn {
-    padding: 10px;
+    padding: 6px;
     color: #fff;
-    background: #f86942;
+    background: #ec7d5f;
     display: block;
 }
 
@@ -58,12 +62,43 @@ body {
 }
 
 .feature-price {
-    height: 90px;
-    width: 90px;
-    padding-top: 20px; 
+    height: 100px;
+    width: 100px;
+    padding-top: 10px; 
     border-radius: 50%;
     background: #eee;
     display: inline-block;
+}
+
+.feature-body ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.feature-body ul li {
+    list-style-type: none;
+}
+
+.pricing-footer {
+    margin-top: 15px;
+}
+
+.pricing-footer a:hover, .pricing-footer a:focus, .pricing-footer a:active {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: none;
+    background: #f5957c;
+}
+
+a:hover, a:focus, a:active {
+    color: #50c0de;
+}
+
+a:hover, a:focus, a:active {
+    outline: none;
+    color: #2e2e2e;
+    text-decoration: none;
+    border-bottom: 1px solid #90d7ea;
 }
 
 ::-webkit-selection {
@@ -82,7 +117,8 @@ body {
 }
 
 #header-ribbon {
-	background-image:url(../images/footer.jpg);
+	/*background-image:url(../images/footer.jpg);*/
+    background: #90d7ea;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top left;
@@ -104,15 +140,6 @@ a {
   transition: all 0.2s ease;
   color: #90d7ea;
   /*border-bottom: 1px solid #ccc;*/
-}
-a:hover, a:focus, a:active {
-  color: #50c0de;
-}
-a:hover, a:focus, a:active {
-  outline: none;
-  color: #2e2e2e;
-  text-decoration: none;
-  border-bottom: 1px solid #90d7ea;
 }
 
 input {

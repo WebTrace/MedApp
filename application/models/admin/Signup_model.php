@@ -19,6 +19,7 @@
             $t_and_c            = $this->input->post("terms");
             $expiry_date        = "2018-04-12";
             $is_new_account     = "Yes";
+            $account_type_code  = $this->session->userdata("ACC_TYPE_CODE");
             /*$hpcsa_no           = $this->input->post('hpcsa_no');
             $speciality         = $this->input->post('practice_type');
             $branch_name        = $this->input->post("practice_name");
@@ -34,12 +35,15 @@
             
             //signup process
             $this->db->trans_start(); //BEGIN TRANSACTION
-        
+            
             //create user
             $this->practitioner_data($title, $fname, $lname);
             
             //get new user id
             $user_id = $this->get_new_added_id('user', 'user_id');
+            
+            //create account type
+            $this->account_model->create_user_account_type($account_type_code, $user_id);
             
             //create account activation
             $this->create_activate_account($user_id, $expiry_date, $hash);
@@ -68,10 +72,7 @@
             //create phone contact
             $this->communication_model->create_phone_contact($user_id, $contact_no);
             
-            /*
-            *retrieve new phone contact id that was generated when a user register. the following insert
-            *statements depend on this new user id.
-            */
+            //get new phone contact id
             $phone_contact_id = $this->get_new_added_id('phone_contact', 'phone_contact_id');
             
             //create phone contact priority
@@ -83,10 +84,7 @@
             //create email contact
             $this->communication_model->create_email_contact($user_id, $email);
             
-            /*
-            *retrieve new email contact id that was generated when a user register. the following insert
-            *statements depend on this new user id.
-            */
+            //get new email contact id
             $email_contact_id = $this->get_new_added_id('email_contact', 'email_contact_id');
             
             //create email contact priority
@@ -94,7 +92,6 @@
             
             //create email contact type
             $this->communication_model->create_email_contact_type(1, $email_contact_id);
-            
             
             /*//create branch
             $this->branch_model->create_branch($user_id, $branch_name, $address_line, $city, $province, $location);
