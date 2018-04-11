@@ -138,5 +138,5 @@ $autoload['model'] = array('admin/signup_model', 'admin/signin_model',
     'admin/billing_model', 'admin/data_access', 'admin/communication_model', 
     'admin/diagnosis_model', 'admin/medical_model', 'admin/claim_model',
     'admin/appointment_model', 'admin/email_model', 'admin/tasks_model',
-    'admin/shared_model', 'admin/sessiondata_model', 'admin/manager_model'
+    'admin/shared_model', 'admin/sessiondata_model', 'admin/manager_model', 'admin/Reconcile_model'
 );

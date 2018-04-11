@@ -118,7 +118,7 @@
         <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
             <div class="col-lg-7 col-md-8 col-sm-8">
                 <div class="btn-controls-group">
-                    <a href="#" class="btn-controls" id="add-user" data-toggle="modal" data-target="#add_user_modal" onclick="return false;" accesskey="t">
+                    <a href="#" class="btn-controls" id="add-user" data-toggle="modal" data-target="#add_task_modal" onclick="return false;" accesskey="t">
                         <i class="fa fa-plus"></i> New Task
                     </a>
                     <a href="<?Php echo base_url(); ?>reconciles" class="btn-controls" id="email"><i class="fa fa-files-o"></i> Reconcile</a>
@@ -261,10 +261,9 @@
                         <?Php 
                             $attr = array('id' => 'frm-remove-task');
                             echo form_open(base_url() . 'tasks/delete_task', $attr); ?>
-                            <input type="hidden" name="task_id" id="delete_task_id">
+                            <input type="hidden" name="task_id" id="delete_task_id" class="form-control joseph">
                             <a href="#" id="dismiss-remove-task" class="btn btn-save" onclick="return false;">No</a>
                             <input type="submit" name="btn_submit" class="btn btn-reset" value="Yes"/>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -273,7 +272,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="modal fade" id="add_user_modal">
+        <div class="modal fade" id="add_task_modal">
             <div class="modal-dialog" id="modal-format">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -283,26 +282,62 @@
                     <div class="modal-body">
                        <div class="fieldset">
                     <?php echo validation_errors() ?>
-                    <?php echo form_open(base_url() . 'tasks/create_task') ?>
+                    <?php echo form_open(base_url() . 'tasks/create_task', array('id' => 'frm-add-new-task')) ?>
                     <form>
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">
 			  				<label style="font-size: normal" for="title">Task name</label>
-					    	<input type="text" class="form-control" id="title" name="title" value="<?Php echo set_value('title'); ?>" placeholder=" Enter Name">
+					    	<input type="text" class="form-control joseph" id="title" name="title" value="<?Php echo set_value('title'); ?>" placeholder=" Enter Name" style="height: 48px;
+                                               background-color: #fdfdfb;
+                                               -webkit-border-radius: 2px;
+                                               -moz-border-radius: 2px;
+                                                border-radius: 2px;
+                                                border: 3px solid #e9e6e0;
+                                                -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                 box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                 font-family: 'Montserrat', sans-serif;
+                                                  font-size: 15px;">
 				  		</div>
                         <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    <label for="start_date">Scheduled Start</label>
-					    	        <input type="date" class="form-control" id="start_date" value="<?Php echo set_value('start_date'); ?>" name="start_date" placeholder="Scheduled Start">
+					    	        <input type="date" class="form-control joseph" id="start_date" value="<?Php echo set_value('start_date'); ?>" name="start_date" placeholder="Scheduled Start" style="height: 48px;
+                                                                                           background-color: #fdfdfb;
+                                                                                           -webkit-border-radius: 2px;
+                                                                                           -moz-border-radius: 2px;
+                                                                                            border-radius: 2px;
+                                                                                            border: 3px solid #e9e6e0;
+                                                                                            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                             box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                             font-family: 'Montserrat', sans-serif;
+                                                                                              font-size: 15px;">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    	<label for="due_date">Schedule End</label>
-					    	    <input type="date" class="form-control" id="due_date" name="due_date" value="<?Php echo set_value('due_date'); ?>" placeholder="Schedule End">
+					    	    <input type="date" class="form-control joseph" id="due_date" name="due_date" value="<?Php echo set_value('due_date'); ?>" placeholder="Schedule End" style="height: 48px;
+                                                                   background-color: #fdfdfb;
+                                                                   -webkit-border-radius: 2px;
+                                                                   -moz-border-radius: 2px;
+                                                                    border-radius: 2px;
+                                                                    border: 3px solid #e9e6e0;
+                                                                    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                     box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                     font-family: 'Montserrat', sans-serif;
+                                                                      font-size: 15px;">
                                 </div>
                             </div>
                             <div class="form-group">
 					    	<label for="name">Priorities</label>
-					    	 <select name="priority" id="priority"  class="form-control">
+					    	 <select name="priority" id="priority"  class="form-control joseph" style="height: 48px;
+                                                                                                       background-color: #fdfdfb;
+                                                                                                       -webkit-border-radius: 2px;
+                                                                                                       -moz-border-radius: 2px;
+                                                                                                        border-radius: 2px;
+                                                                                                        border: 3px solid #e9e6e0;
+                                                                                                        -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                                         box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                                         font-family: 'Montserrat', sans-serif;
+                                                                                                          font-size: 15px;">
                                     <option selected value="0">
                                         Choose One:
                                     </option>
@@ -324,15 +359,23 @@
 			  		<div class="col-md-6">
 			  			<div class="form-group">
 			  				<label for ="description"> Description</label>
-			  			 	<textarea  class="form-control" rows="8" value="<?Php echo set_value('description'); ?>" name="description" id="description" placeholder="Enter Your Description"></textarea>
+			  			 	<textarea  class="form-control joseph" rows="8" value="<?Php echo set_value('description'); ?>" name="description" id="description" placeholder="Enter Your Description" style="background-color: #fdfdfb;
+                                                                                           -webkit-border-radius: 2px;
+                                                                                           -moz-border-radius: 2px;
+                                                                                            border-radius: 2px;
+                                                                                            border: 3px solid #e9e6e0;
+                                                                                            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                             box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+                                                                                             font-family: 'Montserrat', sans-serif;
+                                                                                              font-size: 15px;"></textarea>
                         </div>
 					</div>    
                    
                     <div class="modal-footer">
-                        <button type="reset" name="btn_reset" class="btn btn-reset" id="btn-reset">
+                        <button type="reset" name="btn_reset" class="btn btn-reset joseph" id="btn-reset">
                             Reset
                         </button>
-                        <button type="submit" name="btn_submit" class="btn btn-save" id="save-patient" title="Save task and complete later">
+                        <button type="submit" name="btn_submit" class="btn btn-save joseph" id="save-task" title="Save task and complete later">
                             Add task <span id="save-task-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
                         </button>
                     </div>

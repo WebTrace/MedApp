@@ -248,6 +248,31 @@ $(document).ready(function() {
         });
     });
     
+    /** $("#save-task").on("click", function(e){
+        e.preventDefault();
+        
+        $("#save-task-request").show();
+        
+        vahjur url                 = $("#frm-add-new-task").attr('action'),
+            type                = $("#frm-add-new-task").attr('method'),
+            data                = $("#frm-add-new-task").serialize(),
+            message_type        = 'success',
+            title               = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
+            message             = 'Task saved successfully';
+        console.log(data + " " + url);
+        $.ajax({
+            url: url,
+            type: type,
+            success: function(response){
+                $("#save-task-request").hide();
+            
+                $("#add_task_modal").modal('hide');
+
+                notification_message(message_type, title, message);
+            }
+        });
+    });**/
+    
     //add existing patient for a practitioner
     $("#new_existng_pat").on("click", function(e) {
         var url = $("#add-existing-patient").attr("action"),

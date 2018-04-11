@@ -12,7 +12,9 @@
         
         public function start_reconcile()
         {
-            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/reconciles/start_reconcile");
+            $this->load->view("admin/templates/footer");
         }
     }
 ?>
