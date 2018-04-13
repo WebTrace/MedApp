@@ -51,7 +51,7 @@
                                     <ul>
                                         <?Php if(count($account_type["feature_details"]) > 0) : ?>
                                             <?Php foreach($account_type["feature_details"] as $feature_detail) : ?>
-                                                <li>2 <?php echo $feature_detail["feature_name"]; ?></li>
+                                        <li><?php if($feature_detail["unit"] > 0) echo $feature_detail["unit"]; ?> <?php echo $feature_detail["feature_name"]; ?></li>
                                             <?Php endforeach; ?>
                                         <?Php else : ?>
                                         

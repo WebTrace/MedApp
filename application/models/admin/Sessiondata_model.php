@@ -33,5 +33,12 @@
             
             $this->session->set_userdata($branch_data);
         }
+        
+        public function set_account_data($query)
+        {
+            $account_data = array(
+                "ACC_TYPE_CODE"    => ""//$query->row(0)->
+            );
+        }
     }
 ?>
