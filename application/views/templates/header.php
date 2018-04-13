@@ -43,6 +43,7 @@
         <link rel="stylesheet" href="<?Php echo base_url()?>assets/css/style.css">
         <!-- Modernizr JS -->
         <script src="<?Php echo base_url()?>assets/js/modernizr-2.6.2.min.js"></script>
+      
     </head>
     <body>
     <!-- START #fh5co-header -->
