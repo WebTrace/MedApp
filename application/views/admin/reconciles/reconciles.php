@@ -184,9 +184,9 @@
                         <a href="<?Php echo base_url()?>reconciles/start_reconcile" name="btn_submit" class="btn btn-primary btn-md" style="border-radius: 0px" id="btn-start-reconcile">
                             OK
                         </a>
-                        <a href="<?Php echo base_url()?>reconciles" name="btn_cancel" style="border-radius: 0px" class="btn btn-default btn-md" id="save-task" title="Cancel">
+                        <button name="btn_cancel" style="border-radius: 0px" class="btn btn-default btn-md"  data-dismiss="modal" id="save-task" title="Cancel">
                             Cancel
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
