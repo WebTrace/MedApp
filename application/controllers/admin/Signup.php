@@ -112,8 +112,9 @@
         
         public function feedback()
         {
+            var_dump($this->account_model->fetch_account_type());
             //echo $this->patients_model->new_password();
-            echo $this->diagnosis_model->generate_treatment_reference();
+            //echo $this->diagnosis_model->generate_treatment_reference();
             /*$from       = "no-repy@webtrace.co.za";
             $to         = "emmanuel66@live.co.za";
             $subejct    = "CLAIMA Test email";

@@ -11,7 +11,18 @@
             }
             
             $this->load->view("templates/header");
-            $this->load->view("pages/" . $page);
+            
+            //get account type details
+            if($page == "pricing")
+            {
+                $data["account_types"] = $this->account_model->fetch_account_type();
+                $this->load->view("pages/" . $page, $data);
+            }
+            else
+            {
+                $this->load->view("pages/" . $page);
+            }
+            
             $this->load->view("templates/footer");
         }
     }

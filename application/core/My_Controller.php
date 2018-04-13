@@ -16,14 +16,15 @@
             if(!isset($_SESSION['USER_ID']))
             {
                 //redirect back to login page
-                header('Location:' . base_url() . 'signin');
+                redirect(base_url() . 'signin');
                 die();
             }
             else
             {
                 if(!isset($_SESSION['BRANCH_ID']))
                 {
-                    //header('Location:' . base_url() . 'branch/branch_404');
+                    header('Location:' . base_url() . 'branch/branch_404');
+                    die();
                 }
             }
         }

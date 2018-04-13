@@ -741,6 +741,4 @@ $(document).ready(function() {
             }
         });
     });
-    
-    
 });
