@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    trial
+                    <a href="">Demo</a>
                 </div>
             </div>
         </div>
@@ -40,35 +40,41 @@
                                             <span style="font-size: 35px;"><?php echo $account_type["price"]; ?></span>
                                         </div>
                                         <div>
-                                            <span style="margin: 0px;"> pm</span>
+                                            <span style="margin: 0px;">pm</span>
                                         </div>
                                     </div>
+                                    <div class="">
+                                        <p class="vat-display">VAT excluded</p>
+                                    </div>
+                                    <hr>
                                 </div>
                                 <div class="feature-header">
-                                    <h5 style="margin: 0px;">Features</h5>
+                                    <h5 style="margin: 0px; font-size: 18px;">Features</h5>
                                 </div>
                                 <div class="feature-body">
                                     <ul>
                                         <?Php if(count($account_type["feature_details"]) > 0) : ?>
                                             <?Php foreach($account_type["feature_details"] as $feature_detail) : ?>
-                                        <li><?php if($feature_detail["unit"] > 0) echo $feature_detail["unit"]; ?> <?php echo $feature_detail["feature_name"]; ?></li>
+                                        <li>
+                                            
+                                            <?php
+                                            if($feature_detail["unit"] > 0) 
+                                            {
+                                                echo $feature_detail["unit"];
+                                            }
+                                                
+                                            echo " " . $feature_detail["feature_name"]; ?>
+                                        </li>
                                             <?Php endforeach; ?>
                                         <?Php else : ?>
                                         
                                         <?Php endif; ?>
-                                        
-                                        <li>1 Practice</li>
-                                        <li>Unlimited claims</li>
-                                        <li>Electronic remitence</li>
-                                        <li>Eligibilty</li>
-                                        <li>1 user</li>
-                                        <li>1 user</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="pricing-footer">
                                 <div class="text-center">
-                                    <a class="signup-btn" href="<?Php echo base_url()?>signup/account_type/<?php echo strtolower($account_type["name"]); ?>">Sign up</a>
+                                    <a target="_blank" class="signup-btn" href="<?Php echo base_url()?>signup/account_type/<?php echo strtolower($account_type["name"]); ?>">Sign up</a>
                                 </div>
                             </div>
                         </div>

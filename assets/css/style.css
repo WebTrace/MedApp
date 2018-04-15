@@ -70,12 +70,19 @@ body {
     display: inline-block;
 }
 
+.vat-display {
+    font-size: 13px;
+    color: #ec7d5f;
+    margin-top: 15px;
+}
+
 .feature-body ul {
     margin: 0px;
     padding: 0px;
 }
 
 .feature-body ul li {
+    font-size: 13px;
     list-style-type: none;
 }
 

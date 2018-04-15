@@ -17,6 +17,7 @@
         {
             if($this->branch_model->create_branch() == TRUE)
             {
+                
                 echo "Created";
             }
             else
@@ -31,7 +32,7 @@
         
         public function new_branch()
         {
-            $data = "";
+            $data["branch_types"] = $this->branch_model->fetch_branch_type();
             
             $this->load->view("admin/templates/auth-header");
             $this->load->view("admin/branch/new_branch", $data);

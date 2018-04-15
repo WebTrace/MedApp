@@ -30,9 +30,9 @@
             return $this->db->query($sql);
         }
         
-        public function is_default_branch_exists($user)
+        public function is_default_branch_exists($user_id)
         {
-            $sql = "select count(*) as default_exists from default_branch where(user_id = $user)";
+            $sql = "select count(*) as default_exists from default_branch where(user_id = $user_id)";
                 
             return $this->db->query($sql);
         }

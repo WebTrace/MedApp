@@ -47,7 +47,7 @@
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> <!--<b class="caret"></b></a>
                             <ul class="dropdown-menu message-dropdown">
                                 <li class="message-preview">
                                     <a href="#">
@@ -96,7 +96,7 @@
                                 <li class="message-footer">
                                     <a href="#">Read All New Messages</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
@@ -124,6 +124,12 @@
                                     <a href="#">View All</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-question"></i></a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
