@@ -285,7 +285,7 @@
                     <div class="modal-body">
                        <div class="fieldset">
                     <?php echo validation_errors() ?>
-                    <?php echo form_open(base_url() . 'tasks/create_task') ?>
+                    <?php echo form_open(base_url() . 'tasks/create_task', array('id' => 'frm-add-new-task')) ?>
                     <form>
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">

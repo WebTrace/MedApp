@@ -27,10 +27,6 @@
                 {
                     if($this->tasks_model->create_task() == TRUE)
                     {
-                         $this->session->set_flashdata('title', '<h4><i class="fa fa-check-circle-o"></i> Task Added</h4>.');
-                         $this->session->set_flashdata('message_type', 'success.');
-                         $this->session->set_flashdata('message', 'Task added successfully.');
-
                          redirect(base_url() . 'tasks');
                     }
                     else

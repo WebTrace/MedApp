@@ -248,12 +248,12 @@ $(document).ready(function() {
         });
     });
     
-    /** $("#save-task").on("click", function(e){
+    $("#save-task").on("click", function(e){
         e.preventDefault();
         
         $("#save-task-request").show();
         
-        vahjur url                 = $("#frm-add-new-task").attr('action'),
+        var url                 = $("#frm-add-new-task").attr('action'),
             type                = $("#frm-add-new-task").attr('method'),
             data                = $("#frm-add-new-task").serialize(),
             message_type        = 'success',
@@ -271,7 +271,7 @@ $(document).ready(function() {
                 notification_message(message_type, title, message);
             }
         });
-    });**/
+    });
     
     //add existing patient for a practitioner
     $("#new_existng_pat").on("click", function(e) {
