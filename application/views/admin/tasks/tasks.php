@@ -286,7 +286,7 @@
                        <div class="fieldset">
                     <?php echo validation_errors() ?>
                     <?php echo form_open(base_url() . 'tasks/create_task', array('id' => 'frm-add-new-task')) ?>
-                    <form>
+                    <form id="save-task">
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">
 			  				<label style="font-size: normal" for="title">Task name</label>
@@ -379,7 +379,7 @@
                             Reset
                         </button>
                         <button type="submit" name="btn_submit" class="btn btn-save joseph" id="save-task" title="Save task and complete later">
-                            Add task <span id="save-task-request"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                            Add task <span id="save-task-request"><i id="save-task-request" class="fa fa-circle-o-notch fa-spin"></i></span>
                         </button>
                     </div>
                     </form>
