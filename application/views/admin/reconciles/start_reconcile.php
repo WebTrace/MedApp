@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="col-lg-5">
                                      <ul style="font-weight:bold; list-style: none">
-                                         <li style="margin-bottom: 25px"> R 1,515.13
+                                         <li style="margin-bottom: 25px">1,515.13
                                              <ul style="list-style: none">
                                                  <li>729.03</li>
                                                  <li>1232.30</li>
