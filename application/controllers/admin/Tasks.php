@@ -73,17 +73,11 @@
             
              if($this->tasks_model->delete_task() == TRUE)
             {
-                $this->session->set_flashdata('title', '<h4><i class="fa fa-check-circle-o"></i> Task removed</h4>.');
-                $this->session->set_flashdata('message_type', 'success.');
-                $this->session->set_flashdata('message', 'Task deleted successfully.');
                 
                 redirect(base_url() . 'tasks');
             }
             else
             {
-                $this->session->set_flashdata('title', '<h4><i class="fa fa-times-circle-o"></i> Failed</h4>.');
-                $this->session->set_flashdata('message_type', 'danger');
-                $this->session->set_flashdata('message', 'Error occured. Task was not removed.');
                 
                 redirect(base_url() . 'tasks');
             }

@@ -171,19 +171,7 @@
         </div>
     </div>
 <div id="exTab2" class="container">	  
-    <!--<ul class="nav nav-tabs">  
-          <li class="active">  
-              <a  href="#1" data-toggle="tab"><span class="fa fa-eye"></span>  View Task</a>  
-           </li>  
-           <li><a href="#2" data-toggle="tab"><span class="fa fa-plus"></span>  Add New Task</a>  
-          </li>  
-          <li><a href="#3" data-toggle="tab"><span class="fa fa-edit"></span>  Edit Task</a>  
-           </li>  
-           <li><a href="#4" data-toggle="tab"><span class="fa fa-print"></span>  Print Task</a>  
-           </li>  
-          <li><a href="#5" data-toggle="tab"><span class="fa fa-trash-o"></span>  Delete Task</a>  
-           </li>  
-    </ul>-->  
+    
     <table class="table table-bordered table-style table-responsive" style="height: 25px">  
           <tr>  
             <th colspan="2" style="border-right: none"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></th>  
@@ -285,12 +273,13 @@
                     <div class="modal-body">
                        <div class="fieldset">
                     <?php echo validation_errors() ?>
-                    <?php echo form_open(base_url() . 'tasks/create_task', array('id' => 'frm-add-new-task')) ?>
-                    <form id="save-task">
+                    <?php  $attr = array('id' => 'frm-add-new-task');
+                           echo form_open(base_url() . 'tasks/create_task', $attr); ?>
+                   
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">
 			  				<label style="font-size: normal" for="title">Task name</label>
-					    	<input type="text" class="form-control joseph" id="title" name="title" value="<?Php echo set_value('title'); ?>" placeholder=" Enter Name" style="height: 48px;
+					    	<input type="text" class="form-control joseph" id="title" name="title" placeholder=" Enter Name" style="height: 48px;
                                                background-color: #fdfdfb;
                                                -webkit-border-radius: 2px;
                                                -moz-border-radius: 2px;
@@ -304,7 +293,7 @@
                         <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    <label for="start_date">Scheduled Start</label>
-					    	        <input type="date" class="form-control joseph" id="start_date" value="<?Php echo set_value('start_date'); ?>" name="start_date" placeholder="Scheduled Start" style="height: 48px;
+					    	        <input type="date" class="form-control joseph" id="start_date" name="start_date" placeholder="Scheduled Start" style="height: 48px;
                                                                                            background-color: #fdfdfb;
                                                                                            -webkit-border-radius: 2px;
                                                                                            -moz-border-radius: 2px;
@@ -317,7 +306,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    	<label for="due_date">Schedule End</label>
-					    	    <input type="date" class="form-control joseph" id="due_date" name="due_date" value="<?Php echo set_value('due_date'); ?>" placeholder="Schedule End" style="height: 48px;
+					    	    <input type="date" class="form-control joseph" id="due_date" name="due_date" placeholder="Schedule End" style="height: 48px;
                                                                    background-color: #fdfdfb;
                                                                    -webkit-border-radius: 2px;
                                                                    -moz-border-radius: 2px;
@@ -362,7 +351,7 @@
 			  		<div class="col-md-6">
 			  			<div class="form-group">
 			  				<label for ="description"> Description</label>
-			  			 	<textarea  class="form-control joseph" rows="8" value="<?Php echo set_value('description'); ?>" name="description" id="description" placeholder="Enter Your Description" style="background-color: #fdfdfb;
+			  			 	<textarea  class="form-control joseph" rows="8" name="description" id="description" placeholder="Enter Your Description" style="background-color: #fdfdfb;
                                                                                            -webkit-border-radius: 2px;
                                                                                            -moz-border-radius: 2px;
                                                                                             border-radius: 2px;
@@ -372,8 +361,8 @@
                                                                                              font-family: 'Montserrat', sans-serif;
                                                                                               font-size: 15px;"></textarea>
                         </div>
-					</div>    
-                   
+					</div> 
+                   <?Php echo form_close(); ?>
                     <div class="modal-footer">
                         <button type="reset" name="btn_reset" class="btn btn-reset joseph" id="btn-reset">
                             Reset
@@ -382,7 +371,6 @@
                             Add task <span id="save-task-request"><i id="save-task-request" class="fa fa-circle-o-notch fa-spin"></i></span>
                         </button>
                     </div>
-                    </form>
                 </div>
                 </div>
             </div>
