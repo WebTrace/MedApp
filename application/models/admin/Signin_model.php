@@ -3,8 +3,8 @@
     {
         public function user_signin()
         {
-            $username       = $this->input->post("username");
-            $password       = md5($this->input->post("password"));
+            $username       = $this->input->post("username"); //$_POST['username'];
+            $password       = md5($this->input->post("password")); //$_POST['password'];
             $is_signedin    = FALSE;
             $current_date   = date('Y-m-d');
             

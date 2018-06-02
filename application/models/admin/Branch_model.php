@@ -1,9 +1,6 @@
 <?Php
     class Branch_model extends CI_Model
     {
-        /*
-        *
-        */
         public function create_branch()
         {
             $user_id                = $this->session->userdata('USER_ID');
@@ -16,7 +13,7 @@
             $location               = $this->input->post('location');
             $branch_status_code     = 1;
             $is_default             = "No";
-            $is_new_branch              = "No";
+            $is_new_branch          = "No";
             
             $this->db->trans_start(); //START SQL TRANSACTION
             
@@ -29,14 +26,14 @@
             //create branch manager
             $this->create_branch_manager($manager_id, $branch_id);
             
+            //create user branch
+            $this->branch_model->assign_user_branch($user_id, $branch_id);
+            
             //create branch type
             $this->create_user_branch_type($branch_id, $branch_type_code);
             
             //check if there is existing default branch
-            if($this->is_default_branch_exists($user_id) == 0)
-            {
-                $is_default             = "Yes";
-            }
+            if($this->is_default_branch_exists($user_id) == 0) { $is_default = "Yes"; }
             
             //create default branch
             $this->default_branch_data($user_id, $branch_id, $is_default);
@@ -93,9 +90,10 @@
         }
         
         //
-        public function branch_update()
+        public function update_branch($branch_id)
         {
-            
+            $this->db->where('branch_id', $branch_id);
+            return $this->db->get('branch')->result_array();
         }
         
         //
@@ -188,7 +186,8 @@
                 'is_new_account'    => $is_new_account
             );
             
-            $this->where("manager_id", $manager_id);
+            $this->db->where("manager_id", $manager_id);
+            $this->db->update("manager", $data);
         }
         
         public function default_branch_data($user_id, $branch_id, $is_default)
@@ -235,6 +234,5 @@
             
             $this->db->insert('user_branch_status', $data);
         }
-        
     }
 ?>

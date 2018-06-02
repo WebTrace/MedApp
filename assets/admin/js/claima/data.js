@@ -176,6 +176,10 @@ $(document).ready(function() {
         });
     });
     
+    $("#add-new-contact").on("click", function(e) {
+        $("#add-contact-modal").modal("show");
+    });
+    
     $("#appointment_billing_id").on("change", function() {
         var billing_type_code = $("option:selected", this).attr("data");
         

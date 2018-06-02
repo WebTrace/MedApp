@@ -101,14 +101,9 @@
             
         }
         
-        public function fetch_single_user()
+        public function fetch_user($user_id) //recieve manager id
         {
-            
-        }
-        
-        public function fetch_users()
-        {
-            
+            return $this->data_access->fetch_user_across_branch($user_id);
         }
         
         public function remove_user()
@@ -116,9 +111,22 @@
             
         }
         
-        /*user role
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
+        //get gender from id number
+        public function get_gender($id_number)
+        {
+            $gender_code = substr($id_number, 6, 4);
+
+            if($gender_code  < 5000)
+            {
+                $gender = "Female";
+            }
+            else
+            {
+                $gender = "Male";
+            }
+
+            return $gender;
+        }
         
         public function user_data($title, $fname, $lname, $id_number)
         {
@@ -128,11 +136,16 @@
                 'first_name'    => $fname,
                 'last_name'     => $lname,
                 'id_number'     => $id_number,
+                'gender'        => $this->get_gender($id_number)
             );
 
             //insert user details
             $this->db->insert('user', $user_data);
         }
+        
+        /*user role
+        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        */
         
         public function create_user_role($user_id, $role_code)
         {

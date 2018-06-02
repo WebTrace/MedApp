@@ -1,5 +1,28 @@
+<div class="row menu-row">
+    <div class="col-lg-6">
+        <h4>My Branches</h4>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav-controls pull-right">
+                    <li>
+                        <a href="#" class="link-menu" id="add-user" data-toggle="modal" data-target="#create_branch" onclick="return false;" accesskey="t">
+                            <i class="fa fa-plus"></i> New branch
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link-menu" href="#">
+                            <i class="fa fa-lightbulb-o"></i> Tips
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
-    <div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
+    <!--<div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
         <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
             <div class="col-lg-7">
                 <div class="btn-controls-group">
@@ -51,7 +74,7 @@ Show all
 <li><a href="#">Separated link</a></li>
 </ul>
 <input type="hidden" name="rows" id="rows" value="5">
-</div>-->
+</div>
                 </label>
             </div>
             <div class="fix-spacing col-lg-3 col-md-8 col-sm-8 col-xs-8">
@@ -63,7 +86,7 @@ Show all
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
+    </div>-->
     <div class="col-lg-12">
         <div class="modal fade waiting_room" id="create_branch">
             <div class="modal-dialog" id="newbranch-room-modal">
@@ -133,7 +156,6 @@ Show all
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                 <?php endif; ?>
-                                <?php //var_dump($specialities); ?>
                             </div>
                         </div>
                     </div>
@@ -150,7 +172,7 @@ Show all
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <h4 style="margin-bottom: 20px;" class="h5-content">My Branches</h4>
+        
     </div>
 </div>
 <div style="margin-top: 25px;" class="row">
@@ -161,7 +183,7 @@ Show all
                     <div class="row">
                         <div class="br-details-wrap">
                             <div class="col-lg-12">
-                                <h5 style="font-size: 16px; margin: 0px 0px;"><?Php echo $branch['branch_name']; ?>
+                                <h5 style="font-size: 16px; margin: 0px 0px 10px; padding: 10px 0px; border-bottom: #f5f5f5 thin solid;"><?Php echo $branch['branch_name']; ?>
                                     <span class="pull-right">
                                         <?Php
                                             if($this->session->userdata("BRANCH_ID") == $branch['branch_id'])
@@ -169,7 +191,7 @@ Show all
                                                 echo "<span title='Default branch' class='def-branch'><i class='fa fa-check-circle'></i></span> ";
                                             }
                                         ?>
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
+                                        <a href="<?Php echo base_url(); ?>branch/update/<?Php echo $branch['branch_id']; ?>"><i class="fa fa-pencil"></i></a>
                                     </span>
                                 </h5>
                             </div>

@@ -17,8 +17,12 @@
         {
             if($this->branch_model->create_branch() == TRUE)
             {
+                //TODO: set session data
+                $query = $this->data_access->fetch_default_branch($user_id);
+                $this->sesssiondata_model->set_branch_data($query);
                 
-                echo "Created";
+                //redirect to dashboard
+                redirect(base_url() . "dashboard");
             }
             else
             {
@@ -61,9 +65,13 @@
             
         }
         
-        public function update_branch()
+        public function update_branch($branch_id)
         {
+            $data["branch_details"] = $this->branch_model->update_branch($branch_id);
             
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/branch/update", $data);
+            $this->load->view("admin/templates/footer");
         }
     }
 ?>

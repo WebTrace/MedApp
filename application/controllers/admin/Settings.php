@@ -9,5 +9,12 @@
             $this->load->view("admin/settings/settings");
             $this->load->view("admin/templates/footer");
         }
+        
+        public function security_setting()
+        {
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/settings/security");
+            $this->load->view("admin/templates/footer");
+        }
     }
 ?>
