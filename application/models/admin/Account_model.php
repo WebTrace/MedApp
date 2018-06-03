@@ -8,7 +8,7 @@
                 'user_id'               => $user_id
             );
             
-            $this->db->insert('', $data);
+            $this->db->insert('user_account_type', $data);
         }
         
         public function fetch_account_type()

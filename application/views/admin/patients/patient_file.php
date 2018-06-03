@@ -1,4 +1,4 @@
-<div class="row top-spacing">
+<!--<div class="row top-spacing">
     <div class="col-lg-4">
         <div class='media'>
             <span class='pull-left format-span'>
@@ -28,11 +28,11 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row top-spacing">
+</div>-->
+<div class="row menu-row fixed-inner-nav">
     <div class="col-lg-12">
         <ul id="navi-tabs" class="nav nav-tabs fi-tabs">
-            <li class="active"><a href="#fi-dashboard" data-toggle="tab">Dashboard</a></li>
+            <li class="active"><a href="#fi-dashboard" data-toggle="tab">Overview</a></li>
             <li><a href="#fi-diagnosis" data-toggle="tab">Consultations</a></li>
             <li><a href="#fi-appointments" data-toggle="tab">Appontments</a></li>
             <li><a href="#attached-files" data-toggle="tab">Attached files</a></li>
@@ -40,9 +40,19 @@
             <li><a href="#fi-patient-info" data-toggle="tab">Patient information</a></li>
             <li><a href="#next-checkup" data-toggle="tab">Next checkup</a></li>
         </ul>
+    </div>
+</div>
+<div class="row fixed-spacing">
+    <div class="col-lg-12">
         <div class="tab-content clearfix">
             <div class="tab-pane active" id="fi-dashboard">
-                Dashboard
+                <p>Patient summary</p>
+                <p>Profile (names, file number)</p>
+                <p>Flags (notifications)</p>
+                <p>Consultation</p>
+                <p>Billing</p>
+                <p></p>
+                <p></p>
             </div>
             <div class="tab-pane" id="fi-diagnosis">
                 <div class="row">
@@ -269,65 +279,465 @@
                 Appointments
             </div>
             <div class="tab-pane" id="fi-billing">
-                Billing
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 style="display: inline-block; margin: 0px;" class="edit-details-header">Billing Details</h4>
+                        <ul class="nav-controls pull-right">
+                            <li><a class="cus-menu-link link-menu" href="#"><i class="fa fa-plus"></i> Billing: Momentum</a></li>
+                            <li><a class="cus-menu-link link-menu" href="#"><i class="fa fa-plus"></i> New billing type</a></li>
+                            <li><a class="cus-menu-link link-menu" href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        Billing details
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="billing-header"><h4>Billing types</h4></div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="fi-patient-info">
-                Personal details<br>
                 <div class="row">
-                    <div class="col-lg-2">
-                        Title
+                    <div class="col-lg-6 border-right">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="edit-details-header">Personal details</h4>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Title
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="">
+                                    <input type="text" name="title" class="edit-input" value="<?Php echo $patient_details['title']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                First name
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <input type="text" name="firstname" class="edit-input" value="<?Php echo $patient_details['first_name']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Middle name
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <?Php
+                                        $middle_name= $patient_details['middle_name'];
+                                        
+                                        if($middle_name == null || $middle_name == "")
+                                        {
+                                            $middle_name = $non_applicable;
+                                        }
+                                    ?>
+                                    <input type="text" class="edit-input" value="<?Php echo $middle_name; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Last name
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <input type="text" name="lastname" class="edit-input" value="<?Php echo $patient_details['last_name']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Date of birth
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <input type="text" name="lastname" class="edit-input" value="<?Php echo $patient_details['dob']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                ID number
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <input type="text" name="lastname" class="edit-input" value="<?Php echo $patient_details['id_number']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Age
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="non-edit-data-icon"><i class="fa fa-lock"></i></span>
+                                    <input type="text" disabled="disabled" class="edit-input" value="<?Php echo $age; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group">
+                            <div class="col-lg-4">
+                                Gender
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="non-edit-data-icon"><i class="fa fa-lock"></i></span>
+                                    <input type="text" disabled="disabled" name="lastname" class="edit-input" value="<?Php echo $patient_details['gender']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row edit-group item-border-bottom">
+                            <div class="col-lg-4">
+                                Ethnic group
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="edit-input-grouper">
+                                    <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                    <input style="border-bottom: none;" type="text" name="lastname" class="edit-input" value="<?Php echo $patient_details['ethnic_group']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row edit-group">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Work details</h4>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-4">
+                                        Employer
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="text" name="" class="edit-input" value="Sword SA">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-4">
+                                        Occupation
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="text" name="" class="edit-input" value="Junior Technical consultant">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-4">
+                                        Contact number
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="text" name="" class="edit-input" value="011 023 2365">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-4">
+                                        Email address
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="text" name="" class="edit-input" value="hr@swaord-sa.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <input type="text">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Contact details <a id="add-new-contact" title="Add new contact" href="#" class="pull-right add-patient-field"><i class="fa fa-plus"></i></a></h4>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Contact number
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="row">
+                                            <?Php if(count($patient_phone_contacts) > 0) : ?>
+                                                <div class="col-lg-12">
+                                                    <ul class="data-repeat">
+                                                        <?Php foreach($patient_phone_contacts as $phone_contact) : ?>
+                                                            <li class="edit-input-grouper">
+                                                                <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                                                <input type="text" name="contact_no[]" class="edit-input" value="<?Php echo $phone_contact['contact_no']; ?>">
+                                                            </li>
+                                                        <?Php endforeach; ?>
+                                                    </ul>
+                                                </div>
+                                            <?Php else : ?>
+                                                <div class="col-lg-12">
+                                                    <div class="edit-input-grouper">
+                                                        <p class="no-data-found">No contact numbers found.</p>
+                                                    </div>
+                                                </div>
+                                            <?Php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group item-border-bottom">
+                                    <div class="col-lg-5">
+                                        Email address
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="row">
+                                            <?Php if(count($patient_email_contacts) > 0) : ?>
+                                                <div class="col-lg-12">
+                                                    <ul class="data-repeat">
+                                                        <?Php foreach($patient_email_contacts as $email_contact) : ?>
+                                                            <li class="edit-input-grouper">
+                                                                <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                                                <?Php if(count($patient_email_contacts) == 1) { $border_style = "border-bottom: none;"; } else { $border_style = ""; } ?>
+                                                                <input style="<?php echo $border_style; ?>" type="text" name="email_contact[]" 
+                                                                       class="edit-input custom-border-remove" value="<?Php echo $email_contact['email_address']; ?>">
+                                                            </li>
+                                                        <?Php endforeach; ?>
+                                                    </ul>
+                                                </div>
+                                            <?Php else : ?>
+                                                <div class="col-lg-12">
+                                                    <div class="edit-input-grouper">
+                                                        <p class="no-data-found">No email addresses found.</p>
+                                                    </div>
+                                                </div>
+                                            <?Php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Physical address</h4>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Address line 1
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="" class="edit-input" value="7361">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group edit-group">
+                                    <div class="col-lg-5">
+                                        Address line 2
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="" class="edit-input" value="Extension 3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Suburb
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="suburb" class="edit-input" value="Soshanguve East">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        City
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="City" class="edit-input" value="Pretoria">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group item-border-bottom">
+                                    <div class="col-lg-5">
+                                        Postal code
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input style="border-bottom: none;" type="" name="" class="edit-input" value="0152">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row edit-group">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Postal address <a title="Add postal address" href="#" class="pull-right add-patient-field"><i class="fa fa-plus"></i></a></h4>
+                                    </div>
+                                </div>
+                                <div class="row item-border-bottom">
+                                    <div class="col-lg-12">
+                                        <p>Same as physical address</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Next of keen</h4>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Name
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="" class="edit-input" value="Prince Kgatla">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Relationship
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="" class="edit-input" value="Brother">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row edit-group">
+                                    <div class="col-lg-5">
+                                        Contact number
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="edit-input-grouper">
+                                            <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
+                                            <input type="" name="" class="edit-input" value="066 223 8612">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2">
-                        First name
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <input type="text">
+                    <div class="col-lg-6">
+                        <div class="row border-right">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="edit-details-header">Attached documents</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Documents such as ID copy or proof of residents can be found here.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        Middle name
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <input type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        Last name
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <input type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        Middle name
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="">
-                            <input type="text">
-                        </div>
-                    </div>
-                </div>
-                Contant details<br>
-                Contant details<br>
             </div>
             <div class="tab-pane" id="attached-files">
                 Attached files
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="modal fade" id="add-contact-modal">
+            <div class="modal-dialog" id="add-contact">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">Add new contact</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <?Php echo form_open(base_url() . 'patients/remove_patient', array('id' => 'frm-new-contact')); ?>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <select name="" id="" class="">
+                                                <option value="0">Contact type</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <select name="" id="" class="">
+                                                <option value="0">Contact type</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <select name="" id="" class="">
+                                                <option value="0">Contact priority</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="" id="" placeholder="" class="">
+                                        </div>
+                                    </div>
+                                <?Php echo form_close(); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="btn_submit" class="btn btn-save">Save</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

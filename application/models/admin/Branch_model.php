@@ -1,20 +1,19 @@
 <?Php
     class Branch_model extends CI_Model
     {
-        /*
-        *
-        */
         public function create_branch()
         {
             $user_id                = $this->session->userdata('USER_ID');
             $manager_id             = $this->session->userdata('MANAGER_ID');
             $branch_name            = $this->input->post('practice_name');
+            $branch_type_code       = $this->input->post('practice_type');
             $address_line           = $this->input->post('address_line');
             $city                   = $this->input->post('city');
             $province               = $this->input->post('province');
             $location               = $this->input->post('location');
             $branch_status_code     = 1;
             $is_default             = "No";
+            $is_new_branch          = "No";
             
             $this->db->trans_start(); //START SQL TRANSACTION
             
@@ -27,17 +26,23 @@
             //create branch manager
             $this->create_branch_manager($manager_id, $branch_id);
             
+            //create user branch
+            $this->branch_model->assign_user_branch($user_id, $branch_id);
+            
+            //create branch type
+            $this->create_user_branch_type($branch_id, $branch_type_code);
+            
             //check if there is existing default branch
-            if($this->is_default_branch_exists($user) == 0)
-            {
-                $is_default             = "Yes";
-            }
+            if($this->is_default_branch_exists($user_id) == 0) { $is_default = "Yes"; }
             
             //create default branch
             $this->default_branch_data($user_id, $branch_id, $is_default);
             
             //create branch_status
             $this->create_branch_status($branch_id, $branch_status_code);
+            
+            //uodate is new branch
+            $this->update_is_new_branch($manager_id, $is_new_branch);
             
             $this->db->trans_complete(); //END SQL TRANSACTION
             
@@ -85,9 +90,10 @@
         }
         
         //
-        public function branch_update()
+        public function update_branch($branch_id)
         {
-            
+            $this->db->where('branch_id', $branch_id);
+            return $this->db->get('branch')->result_array();
         }
         
         //
@@ -144,6 +150,21 @@
             return $this->db->get('speciality')->result_array();
         }
         
+        public function fetch_branch_type()
+        {
+            return $this->db->get("branch_type")->result_array();
+        }
+        
+        public function create_user_branch_type($branch_id, $branch_type_code)
+        {
+            $data = array(
+                'branch_id'             => $branch_id,
+                'branch_type_code'      => $branch_type_code
+            );
+            
+            $this->db->insert("user_branch_type", $data);
+        }
+        
         public function fetch_branch_speciality($branch_id)
         {
             $this->db->from('branch_speciality bs');
@@ -153,10 +174,20 @@
             return $this->db->get()->result_array();
         }
         
-        public function is_default_branch_exists($user)
+        public function is_default_branch_exists($user_id)
         {
-            $query = $this->data_access->is_default_branch_exists($user);
+            $query = $this->data_access->is_default_branch_exists($user_id);
             return $query->row(0)->default_exists;
+        }
+        
+        public function update_is_new_branch($manager_id, $is_new_account)
+        {
+            $data = array(
+                'is_new_account'    => $is_new_account
+            );
+            
+            $this->db->where("manager_id", $manager_id);
+            $this->db->update("manager", $data);
         }
         
         public function default_branch_data($user_id, $branch_id, $is_default)
@@ -203,7 +234,5 @@
             
             $this->db->insert('user_branch_status', $data);
         }
-        
-        
     }
 ?>

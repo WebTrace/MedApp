@@ -1,12 +1,44 @@
+<div class="row menu-row">
+    <div class="col-lg-6">
+        <div class="search-control">
+            <input type="search" id="search" name="search" class="search" placeholder="Search user">
+            <i id = "mg-glass" class="fa fa-search"></i>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav-controls pull-right">
+                    <li>
+                        <a href="#" class="link-menu" id="add-user" data-toggle="modal" data-target="#add_user_modal" onclick="return false;" accesskey="t">
+                            <i class="fa fa-plus"></i> Add user
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link-menu" href="<?Php echo base_url() ?>settings/users">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link-menu" href="#">
+                            <i class="fa fa-lightbulb-o"></i> Tips
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
-    <div class="controls">
+    <!--<div class="controls">
         <div class="col-lg-7">
             <div class="btn-controls-group">
                 <button class="btn-controls" id="add-user" type="submit" data-toggle="modal" data-target="#add_user_modal">
                     <i class="fa fa-plus"></i> Add user
                 </button>
                 <!--<button class="btn-controls" id="export-pdf" type="submit">Export PDF</button>
-                <button class="btn-controls" id="" type="submit">Export Excel</button>-->
+                <button class="btn-controls" id="" type="submit">Export Excel</button>
                 <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
                 <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
                 <div id="export-control" class="dropdown">
@@ -20,7 +52,7 @@
                         <li><a href="#">Word</a></li>
                         <li><a href="#">Excel</a></li>
                         <!--<li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>-->
+                        <li><a href="#">Separated link</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,7 +72,7 @@
                         <li><a href="#">25</a></li>
                         <li><a href="#">35</a></li>
                         <!--<li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>-->
+                        <li><a href="#">Separated link</a></li>
                     </ul>
                     <input type="hidden" name="rows" id="rows" value="5">
                 </div>
@@ -54,7 +86,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-    </div>
+    </div>-->
     <div class="col-lg-12">
             <div class="modal fade" id="add_user_modal">
                 <div class="modal-dialog">
@@ -228,52 +260,67 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
-        <div class="user-table">
-            <table class="table table-striped" id="user-list">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Picture</th>
-                        <th>Surname</th>
-                        <th>First name</th>
-                        <th>ID number</th>
-                        <th>Contact number</th>
-                        <th>Email address</th>
-                        <th>Branch </th>
-                        <th>User role</th>
-                        <th>Status</th>
-                        <th colspan="3">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?Php if(isset($branches)) : $count = 1; ?>
-                        
-                        <?Php foreach($users as $user) : ?>
-                            <tr>
-                                <td><?Php echo $count++; ?></td>
-                                <td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="25" width="25"></td>
-                                <td><?Php echo $user['last_name']; ?></td>
-                                <td><?Php echo $user['first_name']; ?></td>
-                                <td><?Php echo $user['id_number']; ?></td>
-                                <td><?Php echo $user['contact_no']; ?></td>
-                                <td><?Php echo $user['email_address']; ?></td>
-                                <td><?Php echo $user['branch_name']; ?></td>
-                                <td><?Php echo $user['role_name']; ?></td>
-                                <td><?Php echo $user['status_name']; ?></td>
-                                <td><a class="edit-user" href="#" onclick="return false"><i class="fa fa-pencil"></i></a></td>
-                                <td><a href="#"><i class="fa fa-lock"></i></a></td>
-                                <td><a class="delete-user" href="#"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                        <?Php endforeach; ?>
-                    <?Php endif; ?>
-                </tbody>
-            </table>
+    <div class="col-lg-7 border-right">
+        <div class="row">
+            <div class="col-lg-12 margin-bottom-border">
+                <h3>Users</h3>
+            </div>
         </div>
-        <div class="pagination-container">
-            <nav>
-                <ul class="pagination"></ul>
-            </nav>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="user-table">
+                    <table class="table table-striped" id="user-list">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <!--<th>Picture</th>-->
+                                <th>Surname</th>
+                                <th>First name</th>
+                                <!--<th>ID number</th>-->
+                                <!--<th>Contact number</th>-->
+                                <th>Email address</th>
+                                <th>Branch </th>
+                                <th>User role</th>
+                                <th>Status</th>
+                                <th colspan="2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?Php if(isset($branches)) : $count = 1; ?>
+                                <?Php foreach($users as $user) : ?>
+                                    <tr>
+                                        <td><?Php echo $count++; ?></td>
+                                        <!--<td><img src="<?Php echo base_url()?>assets/images/pic06.jpg" class="img-circle" height="25" width="25"></td>-->
+                                        <td><?Php echo $user['last_name']; ?></td>
+                                        <td><?Php echo $user['first_name']; ?></td>
+                                        <!--<td><?Php echo $user['id_number']; ?></td>-->
+                                        <!--<td><?Php echo $user['contact_no']; ?></td>-->
+                                        <td><?Php echo $user['email_address']; ?></td>
+                                        <td><?Php echo $user['branch_name']; ?></td>
+                                        <td><?Php echo $user['role_name']; ?></td>
+                                        <td><?Php echo $user['status_name']; ?></td>
+                                        <td><a style="color: #999; font-size: 13px;" class="edit-user" href="<?Php echo base_url(); ?>users/update_user/<?Php echo $user['user_id']; ?>"><i class="fa fa-pencil"></i></a></td>
+                                        <!--<td><a href="#"><i class="fa fa-lock"></i></a></td>-->
+                                        <td><a class="delete-user" href="#"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                <?Php endforeach; ?>
+                            <?Php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-container">
+                    <nav>
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="row">
+            <div class="col-lg-12 margin-bottom-border">
+                <h3>Users overview</h3>
+            </div>
         </div>
     </div>
 </div>

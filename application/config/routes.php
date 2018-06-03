@@ -67,7 +67,8 @@ $route['dashboard']                                 = 'admin/dashboard';
 $route['claim']                                     = 'admin/claim';
 $route['appointment']                               = 'admin/appointment';
 $route['reports']                                   = 'admin/reports';
-$route['users']                                     = 'admin/users';
+$route['settings/users']                            = 'admin/users';
+$route['users/update_user/(:num)']                  = 'admin/users/update_user/$1';
 $route['reconciles']                                = 'admin/reconciles';
 $route['reconciles/start_reconcile']                = 'admin/reconciles/start_reconcile';
 $route['tasks']                                     = 'admin/tasks';
@@ -75,42 +76,53 @@ $route['tasks/edit_task/(:num)']                    = 'admin/tasks/edit_task/$1'
 $route['tasks/task_details/(:num)']                 = 'admin/tasks/task_details/$1';
 $route['tasks/create_task']                         = 'admin/tasks/create_task';
 $route['tasks/delete_task']                         = 'admin/tasks/delete_task';
-$route['tasks/search_task']                         = 'admin/tasks/search_task';$route['settings']                                  = 'admin/settings';
+$route['tasks/search_task']                         = 'admin/tasks/search_task';
+$route['settings']                                  = 'admin/settings';
 $route['signin']                                    = 'admin/signin';
 $route['signup/check_email']                        = 'admin/signup/check_email';
 $route['signup/check_username']                     = 'admin/signup/check_username';
 $route['signup/account_activation/(:any)']          = 'admin/signup/account_activation/$1';
 $route['signout']                                   = 'admin/signin/user_signout';
 $route['practice']                                  = 'admin/practice';
-$route['patients']                                  = 'admin/patients';
-$route['patients/create_patient']                   = 'admin/patients/create_patient';
+$route['patients']                                  = 'admin/patient';
+$route['patient/create_patient']                    = 'admin/patient/create_patient';
 $route['appointment/waiting_room']                  = 'admin/appointment/waiting_room';
 $route['appointment/single_waiting_room']           = 'admin/appointment/single_waiting_room';
 $route['appointment/fetch_wating_room']             = 'admin/appointment/fetch_wating_room';
 $route['appointment/create_waiting_room']           = 'admin/appointment/create_waiting_room';
 $route['appointment/create_reffer_patient']         = 'admin/appointment/create_reffer_patient';
-$route['patients/edit_patient/(:num)']              = 'admin/patients/edit_patient/$1';
+$route['patient/edit_patient/(:num)']               = 'admin/patient/edit_patient/$1';
 $route['appointment/patient_waiting_room']          = 'admin/appointment/patient_waiting_room';
 $route['appointment/waiting_patient']               = 'admin/appointment/is_patient_waiting';
 $route['appointment/checkup_appointment']           = 'admin/appointment/fetch_checkup_appointment';
 $route['appointment/create_checkup']                = 'admin/appointment/create_checkup';
 $route['diagnosis/create_diagnosis']                = 'admin/diagnosis/create_diagnosis';
-$route['patients/search_claima_patient']            = 'admin/patients/search_claima_patient';
-$route['patients/search_branch_patient']            = 'admin/patients/search_branch_patient';
-$route['patients/add_claima_patient']               = 'admin/patients/add_claima_patient';
-$route['patients/ajax_fetch_single_user']           = 'admin/patients/ajax_fetch_single_user';
-$route['patients/patient_file/(:num)']              = 'admin/patients/patient_file/$1';
-$route['patients/medical_aid']                      = 'admin/patients/fetch_patient_medical_aid';
-$route['patients/remove_patient']                   = 'admin/patients/remove_patient';
+$route['patient/search_claima_patient']             = 'admin/patient/search_claima_patient';
+$route['patient/search_branch_patient']             = 'admin/patient/search_branch_patient';
+$route['patient/add_claima_patient']                = 'admin/patient/add_claima_patient';
+$route['patient/ajax_fetch_single_user']            = 'admin/patient/ajax_fetch_single_user';
+$route['patient/patient_file/(:any)']               = 'admin/patient/patient_file/$1';
+$route['patient/medical_aid']                       = 'admin/patient/fetch_patient_medical_aid';
+$route['patient/remove_patient']                    = 'admin/patient/remove_patient';
 $route['billing/patient_billing_type']              = 'admin/billing/patient_billing_type';
 $route['consultation']                              = 'admin/consultation';
 $route['consultation/create_consultation']          = 'admin/consultation/create_consultation';
 $route['claim/create_claim']                        = 'admin/claim/create_claim';
 $route['users/create_user']                         = 'admin/users/create_user';
-$route['branch/branches']                           = 'admin/branch';
+$route['user/profile']                              = 'admin/users/update_user';
+$route['settings/branches']                         = 'admin/branch';
+$route['settings/security']                         = 'admin/settings/security_setting';
 $route['branch/create_branch']                      = 'admin/branch/create_branch';
+$route['branch/update/(:num)']                      = 'admin/branch/update_branch/$1';
 $route['branch/new_branch']                         = 'admin/branch/new_branch';
 $route['branch/branch_404']                         = 'admin/branch/branch_404';
+
+/*----------------------------------------Zoho API-----------------------------------------------------*/
+
+$route['zoho']                                      = 'admin/zoho/zoho';
+
+/*----------------------------------------END----------------------------------------------------------*/
+
 $route['(:any)']                                    = 'pages/view/$1';
 $route['404_override']                              = '';
 $route['translate_uri_dashes']                      = FALSE;

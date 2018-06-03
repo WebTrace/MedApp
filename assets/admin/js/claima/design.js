@@ -126,6 +126,14 @@ $(document).ready(function() {
         }
     });
     
+    $(".edit-input").on("focus", function() {
+        $(this).parent().find(".edit-data-icon").css("visibility", "visible");
+    });
+    
+    $(".edit-input").on("blur", function() {
+        $(this).parent().find(".edit-data-icon").css("visibility", "hidden"); 
+    });
+    
     //radio button code
     /*$("input[name='dependant']").on("click", function() {
         var dependant = $("input[name='dependant']:checked").val();

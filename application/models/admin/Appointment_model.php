@@ -182,12 +182,15 @@
         
         public function fetch_waiting_room()
         {
-            /*$this->db->from('user u');
+            $this->db->from('user u');
             $this->db->join('patient p', 'u.user_id = p.user_id');
             $this->db->join('appointment a', 'p.patient_id = a.patient_id');
             $this->db->join('practitioner_appointment pa', 'a.appointment_id = pa.appointment_id', 'RIGHT');
             $this->db->join('app_type t', 'a.appointment_id = t.appointment_id', 'RIGHT');
-            $this->db->where('appointment_type_code', 2);*/
+            $this->db->where('appointment_type_code', 2);
+            
+            return $this->db->get()->result_array();
+            
             $user_id = $this->session->userdata("USER_ID");
             
             return $this->data_access->fetch_waiting_room($user_id)->result_array();

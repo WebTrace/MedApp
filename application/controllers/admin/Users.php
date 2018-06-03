@@ -9,7 +9,7 @@
             //get a list of branches
             $data["branches"]       = $this->branch_model->fetch_user_branch();
             $data["roles"]          = $this->user_model->fetch_role();
-            $data['users']          = $this->data_access->fetch_user_across_branch($user_id);
+            $data['users']          = $this->user_model->fetch_user($user_id);
             $data['branch_name']    = $this->branch_model->fetch_user_branch_name($user_id);
             $data['specialities']   = $this->practitioner_model->fetch_speciality();
             
@@ -65,9 +65,21 @@
             }
         }
         
-        public function update_user()
+        public function update_user($user_id)
         {
+            $manager_id = $this->session->userdata("USER_ID");
+            $data["user"] = array();
             
+            if(count($this->data_access->fetch_single_user($user_id, $manager_id)) > 0)
+            {
+                $data["user"] = $this->data_access->fetch_single_user($user_id, $manager_id)[0];
+                $data["phone_contacts"] = $this->communication_model->fetch_phone_contact($user_id);
+                $data["email_contacts"] = $this->communication_model->fetch_email_contact($user_id);
+            }
+            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/users/update", $data);
+            $this->load->view("admin/templates/footer");
         }
         
         public function fetch_users()

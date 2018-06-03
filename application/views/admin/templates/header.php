@@ -47,7 +47,7 @@
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> <!--<b class="caret"></b></a>
                             <ul class="dropdown-menu message-dropdown">
                                 <li class="message-preview">
                                     <a href="#">
@@ -96,7 +96,7 @@
                                 <li class="message-footer">
                                     <a href="#">Read All New Messages</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
@@ -125,12 +125,24 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-question"></i></a>
+                        </li>
+                        <li>
+                            <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-gear"></i></a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i> <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?> <b class="caret"></b></a>
+                                <i class="fa fa-user"></i> <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?> <b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-user"></i> Profile</a>
+                                    <div class="about-account">
+                                        branch
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="<?Php echo base_url(); ?>user/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                                 </li>
                                 <li>
                                     <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -159,9 +171,9 @@
                                     <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
                                 </li>
                             <?Php endif; ?>
-                            <!--<li>
-                                <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-files-o"></i> Waiting room</a>
-                            </li>-->
+                            <li>
+                                <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-files-o"></i> Collections</a>
+                            </li>
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>

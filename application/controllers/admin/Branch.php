@@ -17,7 +17,12 @@
         {
             if($this->branch_model->create_branch() == TRUE)
             {
-                echo "Created";
+                //TODO: set session data
+                $query = $this->data_access->fetch_default_branch($user_id);
+                $this->sesssiondata_model->set_branch_data($query);
+                
+                //redirect to dashboard
+                redirect(base_url() . "dashboard");
             }
             else
             {
@@ -31,7 +36,7 @@
         
         public function new_branch()
         {
-            $data = "";
+            $data["branch_types"] = $this->branch_model->fetch_branch_type();
             
             $this->load->view("admin/templates/auth-header");
             $this->load->view("admin/branch/new_branch", $data);
@@ -60,9 +65,13 @@
             
         }
         
-        public function update_branch()
+        public function update_branch($branch_id)
         {
+            $data["branch_details"] = $this->branch_model->update_branch($branch_id);
             
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/branch/update", $data);
+            $this->load->view("admin/templates/footer");
         }
     }
 ?>

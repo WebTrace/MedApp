@@ -2,14 +2,26 @@
     class Data_access extends CI_model
     {
         //get all user
-        public function fetch_user_across_branch($user_id)
+        public function fetch_user_across_branch($manager_id)
         {
-            $sql = "select * from user u join user_branch ub on u.user_id = ub.user_id join email_contact e 
+            $sql = "select u.user_id, u.first_name, u.last_name, b.branch_name, r.role_name, s.status_name, e.email_address 
+                    from user u join user_branch ub on u.user_id = ub.user_id join email_contact e 
                     on u.user_id = e.user_id join phone_contact p on u.user_id = p.user_id join user_role ur 
                     on u.user_id = ur.user_id join user_status us on u.user_id = us.user_id join status s on us.status_code = s.status_code
                     join role r on ur.role_code = r.role_code join branch b on ub.branch_id = b.branch_id 
                     where(ub.branch_id in(select branch_id 
-                    from manager m join manager_branch mb on m.manager_id = mb.manager_id where(m.user_id = $user_id)) and ur.role_code <> 4)";
+                    from manager m join manager_branch mb on m.manager_id = mb.manager_id where(m.user_id = $manager_id))) order by u.date_created desc";
+            
+            return $this->db->query($sql)->result_array();
+        }
+        
+        public function fetch_single_user($user_id, $manager_id)
+        {
+            $sql = "select * from user u join user_role ur on u.user_id = ur.user_id join role r on ur.role_code = r.role_code
+                    join user_status us on u.user_id = us.user_id join status s on us.status_code = s.status_code
+                    join login l on u.user_id = l.user_id join user_branch ub on u.user_id = ub.user_id
+                    where(u.user_id = $user_id and ub.branch_id in (select branch_id from manager m join 
+                    manager_branch mb on m.manager_id = mb.manager_id where(m.user_id = $manager_id)))";
             
             return $this->db->query($sql)->result_array();
         }
@@ -30,9 +42,9 @@
             return $this->db->query($sql);
         }
         
-        public function is_default_branch_exists($user)
+        public function is_default_branch_exists($user_id)
         {
-            $sql = "select count(*) as default_exists from default_branch where(user_id = $user)";
+            $sql = "select count(*) as default_exists from default_branch where(user_id = $user_id)";
                 
             return $this->db->query($sql);
         }

@@ -23,8 +23,7 @@
             {
                 if(!isset($_SESSION['BRANCH_ID']))
                 {
-                    header('Location:' . base_url() . 'branch/branch_404');
-                    die();
+                    //header('Location:' . base_url() . 'branch/branch_404');
                 }
             }
         }
