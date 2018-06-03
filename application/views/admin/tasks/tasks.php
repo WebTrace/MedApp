@@ -272,14 +272,14 @@
                     </div>
                     <div class="modal-body">
                        <div class="fieldset">
-                    <?php echo validation_errors() ?>
+                          
                     <?php  $attr = array('id' => 'frm-add-new-task');
                            echo form_open(base_url() . 'tasks/create_task', $attr); ?>
                    
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">
 			  				<label style="font-size: normal" for="title">Task name</label>
-					    	<input type="text" class="form-control joseph" id="title" name="title" placeholder=" Enter Name" style="height: 48px;
+					    	<input type="text" class="form-control joseph" id="title" value="" name="title" placeholder=" Enter Name" style="height: 48px;
                                                background-color: #fdfdfb;
                                                -webkit-border-radius: 2px;
                                                -moz-border-radius: 2px;
@@ -293,7 +293,7 @@
                         <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    <label for="start_date">Scheduled Start</label>
-					    	        <input type="date" class="form-control joseph" id="start_date" name="start_date" placeholder="Scheduled Start" style="height: 48px;
+					    	        <input type="date" class="form-control joseph" value="" id="start_date" name="start_date" placeholder="Scheduled Start" style="height: 48px;
                                                                                            background-color: #fdfdfb;
                                                                                            -webkit-border-radius: 2px;
                                                                                            -moz-border-radius: 2px;
@@ -306,7 +306,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                    	<label for="due_date">Schedule End</label>
-					    	    <input type="date" class="form-control joseph" id="due_date" name="due_date" placeholder="Schedule End" style="height: 48px;
+					    	    <input type="date" class="form-control joseph" value="" id="due_date" name="due_date" placeholder="Schedule End" style="height: 48px;
                                                                    background-color: #fdfdfb;
                                                                    -webkit-border-radius: 2px;
                                                                    -moz-border-radius: 2px;
@@ -320,7 +320,7 @@
                             </div>
                             <div class="form-group">
 					    	<label for="name">Priorities</label>
-					    	 <select name="priority" id="priority"  class="form-control joseph" style="height: 48px;
+					    	 <select name="priority" id="priority"   class="form-control joseph" style="height: 48px;
                                                                                                        background-color: #fdfdfb;
                                                                                                        -webkit-border-radius: 2px;
                                                                                                        -moz-border-radius: 2px;
@@ -351,7 +351,7 @@
 			  		<div class="col-md-6">
 			  			<div class="form-group">
 			  				<label for ="description"> Description</label>
-			  			 	<textarea  class="form-control joseph" rows="8" name="description" id="description" placeholder="Enter Your Description" style="background-color: #fdfdfb;
+			  			 	<textarea  value="" class="form-control joseph" rows="8" name="description" id="description" placeholder="Enter Your Description" style="background-color: #fdfdfb;
                                                                                            -webkit-border-radius: 2px;
                                                                                            -moz-border-radius: 2px;
                                                                                             border-radius: 2px;

@@ -253,8 +253,8 @@ $(document).ready(function() {
         
         $("#save-task-request").show();
         
-        var url                 = $("#frm-add-new-task").attr('action'),
-            type                = $("#frm-add-new-task").attr('method'),
+        var url                 = $("#frm-add-new-task").attr("action"),
+            type                = $("#frm-add-new-task").attr("method"),
             data                = $("#frm-add-new-task").serialize(),
             message_type        = 'success',
             title               = '<h4><i class="fa fa-check-circle-o"></i> Saved</h4>',
@@ -263,6 +263,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: type,
+            data: data
             success: function(response){
                 $("#save-task-request").hide();
             
