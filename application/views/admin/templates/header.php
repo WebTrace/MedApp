@@ -7,6 +7,7 @@
             <meta name="description" content="">
             <meta name="author" content="">
             <title>CLAIMA</title>
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
