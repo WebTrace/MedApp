@@ -3,7 +3,7 @@
         <div class="row tile_count" id="bgcolor">
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <div class="data-dashboard" id="data-dashboard1">
-                    <span class="count_top"><i class="fa fa-user"></i> Accepted claims</span>
+                    <span class="count_top"><i class="fa fa-user"></i> Accepted claims M</span>
                     <div class="count">200</div>
                     <span class="count_bottom"><i class="green">4% </i> Last Week</span>
                 </div>
