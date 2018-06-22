@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Signup for a premium package</h3>
+                <h3 class="text-center">Choose your package and signup for a 15 days trail period.</h3>
             </div>
         </div>
         <div class="row">
@@ -71,10 +71,14 @@
                                         <?Php endif; ?>
                                     </ul>
                                 </div>
+                                <hr />
+                                <div class="feature-header">
+                                    <h5 style="margin: 0px; font-size: 18px;">Add-ons</h5>
+                                </div>
                             </div>
                             <div class="pricing-footer">
                                 <div class="text-center">
-                                    <a target="_blank" class="signup-btn" href="<?Php echo base_url()?>signup/account_type/<?php echo strtolower($account_type["name"]); ?>">Sign up</a>
+                                    <a target="_blank" class="signup-btn" href="<?Php echo base_url()?>signup/account_type/<?php echo strtolower($account_type["name"]); ?>">Try now</a>
                                 </div>
                             </div>
                         </div>
