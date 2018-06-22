@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="">Demo</a>
+                    
                 </div>
             </div>
         </div>
