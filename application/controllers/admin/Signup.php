@@ -3,12 +3,36 @@
     {
         public function index()
         {
-            $data['specialities'] = $this->practitioner_model->fetch_speciality();
-            $data['title'] = 'Sign up';
+            $account_type = $this->input->post("account_type");
             
-            $this->load->view("admin/templates/auth-header", $data);
-            $this->load->view("admin/authentication/signup", $data);
-            $this->load->view("admin/templates/auth-footer");
+            if($account_type == md5(1))
+            {
+                $this->session->set_userdata("ACC_TYPE_CODE", 1);
+            }
+            else if($account_type == md5(2))
+            {
+                $this->session->set_userdata("ACC_TYPE_CODE", 2);
+            }
+            else if($account_type == md5(3))
+            {
+                $this->session->set_userdata("ACC_TYPE_CODE", 3);
+            }
+
+            //check if the accout type session was set
+            if(isset($_SESSION["ACC_TYPE_CODE"]))
+            {
+                $data['specialities'] = $this->practitioner_model->fetch_speciality();
+                $data['title'] = 'Sign up';
+
+                $this->load->view("admin/templates/auth-header", $data);
+                $this->load->view("admin/authentication/signup", $data);
+                $this->load->view("admin/templates/auth-footer");
+            }
+            else
+            {
+                redirect(base_url() . "pricing");
+                //echo "Oops! Technical error occured. Our techincal team is currently working on it.";
+            }
         }
         
         public function signup_practitioner()

@@ -31,8 +31,17 @@
             }
             else
             {
-                echo "Oops! Technical error occured. Our developers are currently working on it.";
+                echo "Oops! Technical error occured. Our techincal team is currently working on it.";
             }
+        }
+        
+        public function upgrade_account()
+        {
+            $data['account_types'] = $this->account_model->fetch_account_type();
+            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/account/upgrade_account", $data);
+            $this->load->view("admin/templates/footer");
         }
     }
 ?>

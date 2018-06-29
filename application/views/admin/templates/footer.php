@@ -1,5 +1,6 @@
                 </div>
             </div>
+            <div class="fixclear"></div>
         </div>
         <!-- /#wrapper -->
 

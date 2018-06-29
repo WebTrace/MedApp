@@ -46,6 +46,7 @@
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
+                        <li><a id="trial-link" href="#">Your trial will expire in 15 days</a></li>
                         <li class="dropdown">
                             <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> <!--<b class="caret"></b></a>
                             <ul class="dropdown-menu message-dropdown">
@@ -156,6 +157,11 @@
                                 </li>
                             </ul>
                         </li>
+                        <?Php if($this->session->userdata("USER_ROLE") != 2) : ?>
+                            <li>
+                                <a class="upgrade-btn" href="<?php echo base_url(); ?>account/upgrade">Upgrade</a>
+                            </li>
+                        <?Php endif; ?>
                     </ul>
                     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">

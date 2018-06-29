@@ -132,12 +132,11 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('admin/signup_model', 'admin/signin_model',
+$autoload['model'] = array('admin/account/signup_model', 'admin/account/signin_model',
     'admin/practitioner_model', 'admin/user_model', 'admin/branch_model',
-    'admin/data_access', 'admin/communication_model', 'admin/patient_model',
-    'admin/billing_model', 'admin/data_access', 'admin/communication_model', 
-    'admin/diagnosis_model', 'admin/medical_model', 'admin/claim_model',
-    'admin/appointment_model', 'admin/email_model', 'admin/tasks_model',
-    'admin/shared_model', 'admin/sessiondata_model', 'admin/manager_model',
-    'admin/account_model', 'admin/shared_model', 'admin/sessiondata_model', 'admin/manager_model', 'admin/reconcile_model'
+    'admin/data/data_access', 'admin/communication/communication_model', 'admin/patient/patient_model',
+    'admin/billing/billing_model', 'admin/data_access', 'admin/diagnosis_model', 'admin/medical_model', 
+    'admin/claims/claim_model', 'admin/appointment_model', 'admin/communication/email_model', 'admin/tasks_model',
+    'admin/shared_model', 'admin/data/sessiondata_model', 'admin/manager_model',
+    'admin/account/account_model', 'admin/shared_model', 'admin/manager_model', 'admin/reconcile_model'
 );

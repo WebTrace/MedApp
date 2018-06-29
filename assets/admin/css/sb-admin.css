@@ -801,6 +801,7 @@ legend {
 
 .nav-btn {
     color: #fff;
+    border: none;
     background: #4fbbab;
     padding: 9px 10px;
     border-radius: 2px;
@@ -1391,6 +1392,10 @@ fi-file-item {
     padding: 0px;
 }
 
+.upgrade-btn {
+    background: #ec873f;
+}
+
 .panel-heading {
     padding: 5px 0px;
     border-bottom: none;
@@ -1480,6 +1485,18 @@ fi-file-item {
 
 .br-details-wrap {
     margin-bottom: 10px;
+}
+
+#trial-link {
+    font-size: 13px; 
+    color: #e4af63 !important; 
+    border-bottom: #ccc thin dashed;
+    padding: 15px 0px 0px 0px;
+    margin-right: 50px;
+}
+
+#trial-link:hover {
+    background: transparent;
 }
 
 .branch-item {
@@ -1695,6 +1712,7 @@ thead tr {
 body {
     font-family: 'Roboto', sans-serif;
     margin-top: 100px;
+    font-weight: 300;
     background-color: #fff;/*Changed #222 color*/
 }
 

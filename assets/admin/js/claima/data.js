@@ -267,7 +267,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: type,
-            data: data
+            data: data,
             success: function(response){
                 $("#save-task-request").hide();
             

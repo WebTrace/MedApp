@@ -1,10 +1,10 @@
-@font-face {
+/*@font-face {
   font-family: 'themify';
   src: url("../fonts/themify/themify.eot?-fvbane");
   src: url("../fonts/themify/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("../fonts/themify/themify.woff?-fvbane") format("woff"), url("../fonts/themify/themify.ttf?-fvbane") format("truetype"), url("../fonts/themify/themify.svg?-fvbane#themify") format("svg");
   font-weight: normal;
   font-style: normal;
-}
+}*/
 
 html.fh5co-overflow, body.fh5co-overflow {
   overflow-x: auto;
@@ -19,7 +19,7 @@ html.fh5co-overflow #fh5co-header-section, html.fh5co-overflow #fh5co-main, html
 }
 
 body {
-  font-family: "Lato", arial, sans-serif;
+  font-family: "roboto", airal;/*"Lato", arial, sans-serif;*/
   font-size: 16px;
   line-height: 1.5;
   font-weight: normal;
@@ -55,10 +55,26 @@ body {
     color: #fff;
     background: #ec7d5f;
     display: block;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.sec-signup {
+    border: none;
+    width: 100%;
 }
 
 .feature-header {
-    margin-top: 20px;
+    margin: 20px 0px;
+}
+
+.feature-header h5 {
+    color: #717171;
+    font-weight: 400;
+}
+
+.feature-price span {
+    font-weight: 300;
 }
 
 .feature-price {
@@ -68,6 +84,20 @@ body {
     border-radius: 50%;
     background: #eee;
     display: inline-block;
+}
+
+.package-header {
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.package-header h3 {
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.pricing-header h3 {
+    font-weight: 300;
 }
 
 .vat-display {
@@ -81,8 +111,10 @@ body {
     padding: 0px;
 }
 
-.feature-body ul li {
-    font-size: 13px;
+.feature-body ul li, .addon-body ul li {
+    font-size: 14px;
+    font-weight: 300;
+    padding-bottom: 10px;
     list-style-type: none;
 }
 
@@ -395,13 +427,13 @@ ul, ol, p {
   margin: 0 0 20px 0;
 }
 
-.fh5co-serif {
+/*.fh5co-serif {
   font-family: "Crimson Text", serif;
 }
 
 .fh5co-sans-serif {
   font-family: "Lato", arial, sans-serif;
-}
+}*/
 
 input[type="text"],
 input[type="password"],
@@ -635,7 +667,7 @@ textarea {
 }
 #fh5co-primary-menu > li > ul li > .sf-with-ul:after {
   border: none !important;
-  font-family: 'themify';
+  /*font-family: 'themify';*/
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -875,7 +907,7 @@ textarea {
   position: relative;
 }
 #fh5co-mobile-menu #fh5co-mobile-menu-ul .fh5co-sub-ddown::after {
-  font-family: 'themify';
+  /*font-family: 'themify';*/
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1692,7 +1724,7 @@ Components
   color: #90d7ea;
 }
 .fh5co-accordion .panel-heading .accordion-toggle:after {
-  font-family: 'themify';
+  /*font-family: 'themify';*/
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1711,7 +1743,7 @@ Components
   color: #2e2e2e !important;
 }
 .fh5co-accordion .panel-heading.collapsed .accordion-toggle:after {
-  font-family: 'themify';
+  /*font-family: 'themify';*/
   speak: none;
   font-style: normal;
   font-weight: normal;

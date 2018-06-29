@@ -94,7 +94,7 @@
             $this->communication_model->create_email_contact_type(1, $email_contact_id);
             
             /*
-            *zoho books account
+            *zoho books account if the account type is not trial
             *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             */
             
@@ -103,7 +103,7 @@
             //TODO: send client as invoice from zoho books
             //TODO: create recurring invoice from zoho books
             
-            /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             */
             
             /*//create branch
