@@ -488,7 +488,7 @@ a:hover, a:focus {
     outline: none;
     color: #949494;
     font-weight: 300;
-    font-size: 14.5px;
+    font-size: 14px;
     border-bottom: #eee thin dashed;
     border-left: #f1d7a2 2px solid;
 }
@@ -501,6 +501,10 @@ a:hover, a:focus {
     position: relative;
 }
 
+.sp-margin {
+    margin-bottom: 19px;
+}
+
 .edit-data-icon, .non-edit-data-icon {
     color: #9a9999;
     font-size: 11px;
@@ -508,6 +512,10 @@ a:hover, a:focus {
     top: 6px;
     position: absolute;
     visibility: hidden;
+}
+
+.pay-label label {
+    font-weight: 300;
 }
 
 .custom-border-remove {
@@ -627,10 +635,15 @@ a:hover, a:focus {
     outline: none !important;
 }
 
+.account-tile {
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    background: #5ecebd;
+}
 
-
-#body-container {
-    /*background: #90d7ea;*/
+.account-tile:hover {
+    background: #52b1a3;
 }
 
 .logo-header {
@@ -816,12 +829,9 @@ legend {
 .nav-btn:focus {
     outline: none;
     text-decoration: none;
-    border: #3aabc1 thin solid;
+    /*border: #3aabc1 thin solid;*/
 }
 
-.upcoming-appointments {
-    /**/
-}
 
 .appointment-preview a {
     color: #666;
@@ -1393,7 +1403,7 @@ fi-file-item {
 }
 
 .upgrade-btn {
-    background: #ec873f;
+    background: #a06a42;
 }
 
 .panel-heading {
@@ -1479,8 +1489,25 @@ fi-file-item {
     color: #333;
 }
 
-.checkup-item {
-    
+.disp-price {
+    font-weight: bold;
+    color: #cc7878;
+}
+
+.upgrade-header {
+    position: relative;
+    margin: 25px 0px;
+}
+
+.upgrade-header::after {
+    bottom: -8px;
+    left: 0px;
+    content: '';
+    width: 25px;
+    height: 4px;
+    background: #f1d7a2;
+    position: absolute;
+    border-radius: 6px;
 }
 
 .br-details-wrap {

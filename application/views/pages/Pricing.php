@@ -9,12 +9,28 @@
 </div>
 
 <div id="fh5co-main">
+<<<<<<< HEAD
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="package-header">
                     <h3 class="text-center">Choose your package and sign up for 15 days free trial.</h3>
                 </div>
+=======
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="text-center">Choose your package and signup for a 15 days trail period.</h3>
+>>>>>>> 82f5726eb659182ca21548e9693a70ecff3ce803
             </div>
         </div>
         <div class="cus-table">
@@ -80,6 +96,7 @@
                                         <?Php else : ?>
 
                                         <?Php endif; ?>
+<<<<<<< HEAD
                                     </div>
                                     <div class="pricing-footer">
                                         <div class="text-center">
@@ -89,6 +106,19 @@
                                         </div>
                                     </div>
                                 <?Php echo form_open(); ?>
+=======
+                                    </ul>
+                                </div>
+                                <hr />
+                                <div class="feature-header">
+                                    <h5 style="margin: 0px; font-size: 18px;">Add-ons</h5>
+                                </div>
+                            </div>
+                            <div class="pricing-footer">
+                                <div class="text-center">
+                                    <a target="_blank" class="signup-btn" href="<?Php echo base_url()?>signup/account_type/<?php echo strtolower($account_type["name"]); ?>">Try now</a>
+                                </div>
+>>>>>>> 82f5726eb659182ca21548e9693a70ecff3ce803
                             </div>
                         </div>
                     <?Php endforeach; ?>
