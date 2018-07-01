@@ -15,7 +15,7 @@
             //get account type details
             if($page == "pricing")
             {
-                $data["account_types"] = $this->account_model->fetch_account_type();
+                $data["account_types"] = $this->account_model->fetch_account_type_details();
                 $this->load->view("pages/" . $page, $data);
             }
             else

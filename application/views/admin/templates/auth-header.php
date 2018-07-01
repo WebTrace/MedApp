@@ -7,11 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-<<<<<<< HEAD
-=======
         <title>CLAIMA</title>
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
->>>>>>> 82f5726eb659182ca21548e9693a70ecff3ce803
         <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">

@@ -15,6 +15,8 @@
                         <div class="col-lg-4">
                             <div class="account-tile">
                                 <?Php echo $account_type['name']; ?>
+                                <?Php echo $account_type['price']; ?>
+                                <?Php echo $account_type['description']; ?>
                                 <input type="hidden" name="account_type" value="<?Php echo $account_type['account_type_code']; ?>" />
                             </div>
                         </div>
