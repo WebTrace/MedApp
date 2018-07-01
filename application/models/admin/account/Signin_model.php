@@ -12,6 +12,8 @@
             
             if($login_query->num_rows() == 1)
             {
+                //check account mode immediately after login
+                
                 //get login id
                 $login_id = $login_query->row(0)->login_id;
                 
@@ -35,7 +37,7 @@
                 $attempt_count = $login_attempts_query->row(0)->attempt_count;
 
                 //check if there is login for current date
-                if($attempt_count < 3)
+                if($attempt_count < MAX_LOGIN)
                 {
                     $login_attempt_id   = $login_attempts_query->row(0)->login_attempt_id;
                     $attempt_count      = 0;
@@ -97,7 +99,7 @@
                     $attempt_count      = $login_attempts_query->row(0)->attempt_count;
                     $login_attempt_id   = $login_attempts_query->row(0)->login_attempt_id;
                     
-                    if($attempt_count == 3)
+                    if($attempt_count == MAX_LOGIN)
                     {
                         //notify the user that they reached maximum login attempt
                         $this->session->set_userdata("MAX_LOGIN_REACHED", TRUE);
@@ -108,7 +110,7 @@
                         
                         //accumulate number of failed attempts and update login attemptss table
                         ++$attempt_count;
-                        $maximum_login          = 3;
+                        $maximum_login          = MAX_LOGIN;
                         
                         $this->update_signin_attempt($login_attempt_id, $attempt_count);
 

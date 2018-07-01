@@ -19,7 +19,6 @@
             $t_and_c            = $this->input->post("terms");
             $expiry_date        = "2018-04-12";
             $is_new_account     = "Yes";
-            $account_type_code  = $this->session->userdata("ACC_TYPE_CODE");
             /*$hpcsa_no           = $this->input->post('hpcsa_no');
             $speciality         = $this->input->post('practice_type');
             $branch_name        = $this->input->post("practice_name");
@@ -43,7 +42,7 @@
             $user_id = $this->get_new_added_id('user', 'user_id');
             
             //create account type
-            $this->account_model->create_user_account_type($account_type_code, $user_id);
+            $this->account_model->create_user_account_type($user_id);
             
             //create account activation
             $this->create_activate_account($user_id, $expiry_date, $hash);

@@ -1,14 +1,30 @@
 <?Php
     class Account_model extends CI_Model
     {
-        public function create_user_account_type($account_type_code, $user_id)
+        public function create_user_account_type($user_id)
         {
-            $data = array(
-                'account_type_code'     => $account_type_code,
-                'user_id'               => $user_id
-            );
+            $account_type_code      = $this->session->userdata("ACC_TYPE_CODE");;
+            $user_id                = $user_id;
+            $date_created           = date('Y-m-d');
+            $expiry_date            = date('Y-m-d', strtotime($date_created . ' + ' . (TRIAL_DAYS + 1) . ' days'));
+            $remaining_days         = TRIAL_DAYS;
+            $account_mode_code      = ACC_MODE_TRIAL;
             
-            $this->db->insert('user_account_type', $data);
+            $this->db->trans_start(); //BEGIN SQL TRANSACTION
+            
+            //create user account
+            $this->user_account_data($account_type_code, $user_id);
+            
+            //get new user account id
+            $user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
+            
+            //create account trial
+            $this->create_trial_account($user_account_type_id, $date_created, $expiry_date, $remaining_days);
+            
+            //create account mode
+            $this->create_account_mode($account_mode_code, $user_account_type_id);
+            
+            $this->db->trans_complete(); //BEGIN SQL TRANSACTION
         }
         
         public function fetch_account_type()
@@ -48,6 +64,61 @@
             $this->db->where("t.account_type_code", $account_type_code);
             
             return $this->db->get()->result_array();
+        }
+        
+        public function fetch_user_account_mode($user_id)
+        {
+            $this->db->from("user_account_type ua");
+            $this->db->join("user_account_trial ut", "ua.user_account_type_id = ut.user_account_type_id");
+            $this->db->join("user_account_type_mode um", "ua.user_account_type_id = um.user_account_type_id");
+            $this->db->where("user_id", $user_id);
+            
+            return $this->db->get()->result_array();
+        }
+        
+        public function create_account_payment()
+        {
+            
+        }
+        
+        public function user_account_data($account_type_code, $user_id)
+        {
+            $data = array(
+                'account_type_code'     => $account_type_code,
+                'user_id'               => $user_id
+            );
+
+            $this->db->insert('user_account_type', $data);
+        }
+        
+        public function create_trial_account($user_account_id, $date_created, $expiry_date, $remaining_days)
+        {
+            $data = array(
+                'user_account_id'   => $user_account_id,
+                'date_created'      => $date_created,
+                'expiry_data'       => $expiry_date,
+                'remaining_days'    => $remaining_days
+            );
+        }
+        
+        public function create_account_mode($account_mode_code, $user_account_type_id)
+        {
+            $data = array(
+                'account_mode_code'         => $account_mode_code,
+                'user_account_type_id'      => $user_account_type_id
+            );
+            
+            $this->db->insert('user_account_type_mode', $data);
+        }
+        
+        public function account_payment_data($user_account_type_id, $total_amount)
+        {
+            $data = array(
+                'user_account_type_id'  => $user_account_type_id,
+                'total_amount'          => $total_amount
+            );
+            
+            $this->db->insert('account_payment', $data);
         }
     }
 ?>

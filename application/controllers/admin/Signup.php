@@ -5,17 +5,17 @@
         {
             $account_type = $this->input->post("account_type");
             
-            if($account_type == md5(1))
+            if($account_type == md5(BASIC_ACC))
             {
-                $this->session->set_userdata("ACC_TYPE_CODE", 1);
+                $this->session->set_userdata("ACC_TYPE_CODE", BASIC_ACC);
             }
-            else if($account_type == md5(2))
+            else if($account_type == md5(STANDARD_ACC))
             {
-                $this->session->set_userdata("ACC_TYPE_CODE", 2);
+                $this->session->set_userdata("ACC_TYPE_CODE", STANDARD_ACC);
             }
-            else if($account_type == md5(3))
+            else if($account_type == md5(PROFESSIONAL_ACC))
             {
-                $this->session->set_userdata("ACC_TYPE_CODE", 3);
+                $this->session->set_userdata("ACC_TYPE_CODE", PROFESSIONAL_ACC);
             }
 
             //check if the accout type session was set
@@ -58,48 +58,48 @@
             $this->form_validation->set_rules('location',               'location',             'required|trim|xss_clean');
             */
             
-                if($this->signup_model->signup_practioner() == TRUE)
+            if($this->signup_model->signup_practioner() == TRUE)
+            {
+                //get email and hash from session
+                $to             = $this->session->userdata("registration_email");
+                $hash           = $this->session->userdata("HASH");
+                $from           = "no-reply@webtrace.co.za";
+                $subejct        = "CLAIMA Account Activation";
+                $url            = base_url() . "signup/account_activation/" . $hash;
+                $message        = $this->email_model->signup_content($url);
+
+                //send an email
+                if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
                 {
-                    //get email and hash from session
-                    $to             = $this->session->userdata("registration_email");
-                    $hash           = $this->session->userdata("HASH");
-                    $from           = "no-reply@webtrace.co.za";
-                    $subejct        = "CLAIMA Account Activation";
-                    $url            = base_url() . "signup/account_activation/" . $hash;
-                    $message        = $this->email_model->signup_content($url);
-                    
-                    //send an email
-                    if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
-                    {
-                        
-                    }
-                    else
-                    {
-                        
-                    }
-                    
-                    //notiy user that their account was created successfully 
-                    $output = "<div class='feedback-header text-center'>";
-                    $output .= "<i class='fa fa-check-circle' id='account-success'></i>";
-                    $output .= "</div>";
-                    $output .= "<h4 class='confirm-header'>Thank you for choosing CLAIMA.</h4>";
-                    $output .= "<p>Your account was created successfully. An email with instructions 
-                    on how to activate your account was sent to you.</p>";
-                    
-                    echo $output;
+
                 }
                 else
                 {
-                    //notify user that their account was not created successfully
-                    //notiy user that their account was created successfully 
-                    $output = "<div class='feedback-header text-center'>";
-                    $output .= "<i class='fa fa-times-circle-o' id='account-failed'></i>";
-                    $output .= "</div>";
-                    $output .= "<h4 class='confirm-header'>Error occured.</h4>";
-                    $output .= "<p>Error occured while creating account.</p>";
-                    
-                    echo $output;
+
                 }
+
+                //notiy user that their account was created successfully 
+                $output = "<div class='feedback-header text-center'>";
+                $output .= "<i class='fa fa-check-circle' id='account-success'></i>";
+                $output .= "</div>";
+                $output .= "<h4 class='confirm-header'>Thank you for choosing CLAIMA.</h4>";
+                $output .= "<p>Your account was created successfully. An email with instructions 
+                on how to activate your account was sent to you.</p>";
+
+                echo $output;
+            }
+            else
+            {
+                //notify user that their account was not created successfully
+                //notiy user that their account was created successfully 
+                $output = "<div class='feedback-header text-center'>";
+                $output .= "<i class='fa fa-times-circle-o' id='account-failed'></i>";
+                $output .= "</div>";
+                $output .= "<h4 class='confirm-header'>Error occured.</h4>";
+                $output .= "<p>Error occured while creating account.</p>";
+
+                echo $output;
+            }
         }
         
         public function check_email()
