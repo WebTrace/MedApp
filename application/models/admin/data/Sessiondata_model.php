@@ -40,5 +40,22 @@
                 "ACC_TYPE_CODE"    => ""//$query->row(0)->
             );
         }
+        
+        public function set_user_account_mode_date($query)
+        {
+            $account_mode_data = array(
+                'user_account_type_id'      => $query->row(0)->user_account_type_id,
+                'account_code'              => $query->row(0)->account_type_code,
+                'remaining_days'            => $query->row(0)->remaining_days,
+                'account_mode_code'         => $query->row(0)->account_mode_code
+            );
+            
+            $this->session->set_userdata($account_mode_data);
+        }
+        
+        public function set_payment_data()
+        {
+            
+        }
     }
 ?>
