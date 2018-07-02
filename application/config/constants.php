@@ -17,6 +17,18 @@ define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);
+
+//-------------Status--------------
+define("ROL_PATIENT", 1);
+define("ROL_RECEPTIONINST", 2);
+define("ROL_PRACTITIONER", 3);
+define("ROL_MANAGER", 4);
+define("ROL_ADMIN", 5);
+
+//-------------Status--------------
+define("STS_ACTIVE", 4);
+define("STS_PENDING", 4);
+define("STS_SUSPENDED", 4);
 /*
 
 |--------------------------------------------------------------------------

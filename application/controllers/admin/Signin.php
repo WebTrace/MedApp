@@ -24,7 +24,7 @@
             {
                 if($this->signin_model->user_signin() ==  TRUE)
                 {
-                    if($this->session->userdata("USER_STATUS") == 1)
+                    if($this->session->userdata("USER_STATUS") == STS_ACTIVE)
                     {
                         $user_id = $this->session->userdata("USER_ID");
                         $account_mode = $this->account_model->fetch_user_account_mode($user_id);
@@ -47,9 +47,9 @@
                             //set remaining days
                             $this->sessiondata_model->set_trial_expiry_days($remaining_days);
                             
-                            if($remaining_days <= 16)
+                            if($remaining_days <= TRIAL_DAYS)
                             {
-                                if($this->session->userdata("USER_ROLE") == 4)
+                                if($this->session->userdata("USER_ROLE") == ROL_MANAGER)
                                 {
                                     //get mamager details
                                     $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
@@ -78,6 +78,7 @@
                             else
                             {
                                 //redirect user to upgrade acccount page
+                                
                             }
                         }
                         else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
