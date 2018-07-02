@@ -26,6 +26,21 @@
                 {
                     if($this->session->userdata("USER_STATUS") == 1)
                     {
+                        $user_id = $this->session->userdata("USER_ID");
+                        $account_mode = $this->account_model->fetch_user_account_mode($user_id);
+                        
+                        //check account mode immediately after login
+                        if($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
+                        {
+                            //if account mode is trial, get trial details
+                            //calculate remaining trial days
+                        }
+                        else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
+                        {
+                            //if account mode is full, get payment details
+                            //check if the account is not in arreas
+                        }
+                        
                         if($this->session->userdata("USER_ROLE") == 4)
                         {
                             //get mamager details

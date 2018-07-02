@@ -34,6 +34,16 @@
             $this->session->set_userdata($branch_data);
         }
         
+        public function set_user_account_mode_data($query)
+        {
+            $branch_data = array(
+                'ACC_TYPE_CODE' => $query->row(0)->branch_id,
+                'REM_TRIAL_DAYS' => $query->row(0)->branch_id,
+                'ACC_MODE' => $query->row(0)->branch_id,
+                'ACC_TYPE_CODE' => $query->row(0)->branch_id,
+            );
+        }
+        
         public function set_account_data($query)
         {
             $account_data = array(
