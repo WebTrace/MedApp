@@ -32,39 +32,58 @@
                         //check account mode immediately after login
                         if($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
                         {
+                            $user_account_type_id = $account_mode->row(0)->user_account_type_id;
+                            
                             //if account mode is trial, get trial details
+                            $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
+                            $this->sessiondata_model->account_trial_data($trial_account_query);
+                            
+                            $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
+                            $date_created = date_create(date('Y-m-d'));
+                            
                             //calculate remaining trial days
+                            $remaining_days = date_diff($expiry_date, $date_created)->format('%d');
+                            
+                            //set remaining days
+                            $this->sessiondata_model->set_trial_expiry_days($remaining_days);
+                            
+                            if($remaining_days <= 16)
+                            {
+                                if($this->session->userdata("USER_ROLE") == 4)
+                                {
+                                    //get mamager details
+                                    $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
+
+                                    $manager_id = $manager_data[0]["manager_id"];
+                                    $is_new_account = $manager_data[0]["is_new_account"];
+
+                                    $this->session->set_userdata("MANAGER_ID", $manager_id);
+
+                                    if($is_new_account == "Yes")
+                                    {
+                                        redirect(base_url() . "branch/new_branch");
+                                    }
+                                    else
+                                    {
+                                        //redirect manager to dashboard
+                                        redirect(base_url() . "dashboard");
+                                    }
+                                }
+                                else
+                                {
+                                    //redirect normal user to dashboard
+                                    redirect(base_url() . "dashboard");
+                                }
+                            }
+                            else
+                            {
+                                //redirect user to upgrade acccount page
+                            }
                         }
                         else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
                         {
                             //if account mode is full, get payment details
                             //check if the account is not in arreas
-                        }
-                        
-                        if($this->session->userdata("USER_ROLE") == 4)
-                        {
-                            //get mamager details
-                            $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
-                            
-                            $manager_id = $manager_data[0]["manager_id"];
-                            $is_new_account = $manager_data[0]["is_new_account"];
-                            
-                            $this->session->set_userdata("MANAGER_ID", $manager_id);
-                            
-                            if($is_new_account == "Yes")
-                            {
-                                redirect(base_url() . "branch/new_branch");
-                            }
-                            else
-                            {
-                                //redirect to dashboard
-                                redirect(base_url() . "dashboard");
-                            }
-                        }
-                        else
-                        {
-                            //redirect to dashboard
-                            redirect(base_url() . "dashboard");
                         }
                     }
                     else

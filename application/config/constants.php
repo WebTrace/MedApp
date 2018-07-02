@@ -15,9 +15,8 @@ define("TRIAL_DAYS", 15);
 define("MAX_LOGIN", 3);
 define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
-define("ACC_MODE_FULL", 1);
-define("ACC_MODE_TRIAL", 2);
-
+define("ACC_MODE_TRIAL", 1);
+define("ACC_MODE_FULL", 2);
 /*
 
 |--------------------------------------------------------------------------

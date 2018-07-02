@@ -7,7 +7,6 @@
             $user_id                = $user_id;
             $date_created           = date('Y-m-d');
             $expiry_date            = date('Y-m-d', strtotime($date_created . ' + ' . (TRIAL_DAYS + 1) . ' days'));
-            $remaining_days         = TRIAL_DAYS;
             $account_mode_code      = ACC_MODE_TRIAL;
             
             $this->db->trans_start(); //BEGIN SQL TRANSACTION
@@ -19,7 +18,7 @@
             $user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
             
             //create account trial
-            $this->create_trial_account($user_account_type_id, $date_created, $expiry_date, $remaining_days);
+            $this->create_trial_account($user_account_type_id, $date_created, $expiry_date);
             
             //create account mode
             $this->create_account_mode($account_mode_code, $user_account_type_id);
@@ -73,7 +72,7 @@
             $this->db->join("user_account_type_mode um", "ua.user_account_type_id = um.user_account_type_id");
             $this->db->where("user_id", $user_id);
             
-            return $this->db->get()->result_array();
+            return $this->db->get();
         }
         
         public function fetch_user_account_mode($user_id)
@@ -88,7 +87,7 @@
         public function fetch_user_account_trial($user_account_trial_id)
         {
             $this->db->from('user_account_trial');
-            $this->db->where('user_account_trial_id', $user_account_trial_id);
+            $this->db->where('user_account_type_id', $user_account_trial_id);
             
             return $this->db->get();
         }
@@ -108,13 +107,12 @@
             $this->db->insert('user_account_type', $data);
         }
         
-        public function create_trial_account($user_account_id, $date_created, $expiry_date, $remaining_days)
+        public function create_trial_account($user_account_id, $date_created, $expiry_date)
         {
             $data = array(
                 'user_account_id'   => $user_account_id,
                 'date_created'      => $date_created,
-                'expiry_data'       => $expiry_date,
-                'remaining_days'    => $remaining_days
+                'expiry_data'       => $expiry_date
             );
         }
         

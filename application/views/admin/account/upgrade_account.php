@@ -2,6 +2,7 @@
     <div class="col-lg-12">
         <h3 style="margin-bottom: 0px;">Upgrade account</h3>
     </div>
+    <?Php var_dump($_SESSION); echo '<br>' . ACC_MODE_TRIAL?>
 </div>
 <div class="row">
     <div class="col-lg-12">

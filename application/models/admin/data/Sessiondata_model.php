@@ -34,6 +34,17 @@
             $this->session->set_userdata($branch_data);
         }
         
+        public function account_trial_data($query)
+        {
+            $account_trial_data = array(
+                'ACC_TYPE_CODE'     => $query->row(0)->account_type_code,
+                'EXPIRY_DATE'       => $query->row(0)->expiry_date,
+                'DATE_CREATED'      => $query->row(0)->date_created
+            );
+            
+            $this->session->set_userdata($account_trial_data);
+        }
+        
         public function set_user_account_mode_data($query)
         {
             $branch_data = array(
@@ -44,11 +55,13 @@
             );
         }
         
-        public function set_account_data($query)
+        public function set_trial_expiry_days($remaining_days)
         {
-            $account_data = array(
-                "ACC_TYPE_CODE"    => ""//$query->row(0)->
+            $account_expiry_days = array(
+                "REM_DAYS"    => $remaining_days
             );
+            
+            $this->session->set_userdata($account_expiry_days);
         }
         
         public function set_user_account_mode_date($query)

@@ -47,7 +47,7 @@
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
-                        <li><a id="trial-link" href="#">Your trial will expire in 15 days</a></li>
+                        <li><a id="trial-link" href="#">Your trial will expire in <?Php echo $this->session->userdata("REM_DAYS"); ?> days</a></li>
                         <li class="dropdown">
                             <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> <!--<b class="caret"></b></a>
                             <ul class="dropdown-menu message-dropdown">
