@@ -12,8 +12,6 @@
             
             if($login_query->num_rows() == 1)
             {
-                //check account mode immediately after login
-                
                 //get login id
                 $login_id = $login_query->row(0)->login_id;
                 

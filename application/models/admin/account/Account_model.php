@@ -66,7 +66,7 @@
             return $this->db->get()->result_array();
         }
         
-        public function fetch_user_account_mode($user_id)
+        public function fetch_user_account_details($user_id)
         {
             $this->db->from("user_account_type ua");
             $this->db->join("user_account_trial ut", "ua.user_account_type_id = ut.user_account_type_id");
@@ -74,6 +74,23 @@
             $this->db->where("user_id", $user_id);
             
             return $this->db->get()->result_array();
+        }
+        
+        public function fetch_user_account_mode($user_id)
+        {
+            $this->db->from('user_account_type ua');
+            $this->db->join('user_account_type_mode um', 'ua.user_account_type_id = um.user_account_type_id');
+            $this->db->where('ua.user_id', $user_id);
+            
+            return $this->db->get();
+        }
+        
+        public function fetch_user_account_trial($user_account_trial_id)
+        {
+            $this->db->from('user_account_trial');
+            $this->db->where('user_account_trial_id', $user_account_trial_id);
+            
+            return $this->db->get();
         }
         
         public function create_account_payment()
