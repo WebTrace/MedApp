@@ -72,7 +72,7 @@
             
             if(count($this->data_access->fetch_single_user($user_id, $manager_id)) > 0)
             {
-                $data["user"] = $this->data_access->fetch_single_user($user_id, $manager_id)[0];
+                $data["user"]           = $this->data_access->fetch_single_user($user_id, $manager_id)[0];
                 $data["phone_contacts"] = $this->communication_model->fetch_phone_contact($user_id);
                 $data["email_contacts"] = $this->communication_model->fetch_email_contact($user_id);
             }

@@ -115,7 +115,7 @@ $route['settings/branches']                         = 'admin/branch';
 $route['settings/security']                         = 'admin/settings/security_setting';
 $route['branch/create_branch']                      = 'admin/branch/create_branch';
 $route['branch/update/(:num)']                      = 'admin/branch/update_branch/$1';
-$route['branch/new_branch']                         = 'admin/branch/new_branch';
+$route['branch/new']                                = 'admin/branch/new_branch';
 $route['branch/branch_404']                         = 'admin/branch/branch_404';
 
 /*----------------------------------------Zoho API-----------------------------------------------------*/

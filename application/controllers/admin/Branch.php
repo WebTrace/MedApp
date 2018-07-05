@@ -36,10 +36,11 @@
         
         public function new_branch()
         {
-            $data["branch_types"] = $this->branch_model->fetch_branch_type();
+            $data["branch_types"]   = $this->branch_model->fetch_branch_type();
+            $data["title"]          = "CLAIMA - Create new branch";
             
-            $this->load->view("admin/templates/auth-header");
-            $this->load->view("admin/branch/new_branch", $data);
+            $this->load->view("admin/templates/auth-header", $data);
+            $this->load->view("admin/branch/new_branch");
             $this->load->view("admin/templates/auth-footer");
         }
         

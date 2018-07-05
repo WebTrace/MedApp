@@ -38,5 +38,18 @@
             $this->load->view("admin/account/trial_expired");
             $this->load->view("admin/templates/auth-footer");
         }
+        
+        /*
+        *zoho books account if the account type is not trial
+        *------------------------------------------------------------------------------------------------------
+        */
+
+        //TODO: create user as a customer in our account application, Zoho books
+        //TODO: create invoice from zoho books
+        //TODO: send client as invoice from zoho books
+        //TODO: create recurring invoice from zoho books
+
+        /*------------------------------------------------------------------------------------------------------
+        */
     }
 ?>

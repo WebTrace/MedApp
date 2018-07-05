@@ -93,7 +93,7 @@
                                         
                                         if($is_new_account == "Yes")
                                         {
-                                            redirect(base_url() . "branch/new_branch");
+                                            redirect(base_url() . "branch/new");
                                         }
                                         else
                                         {
@@ -111,8 +111,7 @@
                                 {
                                     //set trial session
                                     $this->session->set_userdata("TRIAL_STATUS", 0);
-                                    //redirect(base_url() . "trial/expired");
-                                    echo $remaining_days;
+                                    redirect(base_url() . "trial/expired");
                                     //TODO: payment option needed
                                 }
                             }
@@ -212,7 +211,9 @@
             
             if($this->form_validation->run() == FALSE)
             {
-                $this->load->view("admin/templates/auth-header");
+                $data["title"] = "Retrieve password";
+                
+                $this->load->view("admin/templates/auth-header", $data);
                 $this->load->view("admin/authentication/forgotpassw");
                 $this->load->view("admin/templates/auth-footer");
             }

@@ -625,6 +625,26 @@ a:hover, a:focus {
     color: #fff;
 }
 
+.greetings-header {
+    position: relative;
+}
+
+.greetings-header::after {
+    content: '';
+    position: absolute;
+    width: 59px;
+    height: 2px;
+    background: #e2ab55;
+    bottom: -10px;
+    left: 0px;
+}
+
+.wrap-trial-expired {
+    margin-top: 25px;
+    padding: 25px 10px;
+    box-shadow: #ddd 0px 5px 30px -4px;
+}
+
 .btn-reset:hover {
     color: #fff;
     background: #ca7e4e;
