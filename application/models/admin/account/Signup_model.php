@@ -3,30 +3,28 @@
     {
         public function signup_practioner()
         {
-            $title              = $this->input->post("title");          
-            $fname              = $this->input->post("fname");
-            $lname              = $this->input->post("lname");
-            $hpc_no             = $this->input->post("hpc_no");
-            $practice_no        = $this->input->post('practice_no');
-            $speciality_code    = $this->input->post('speciality');
-            $username           = $this->input->post("username");
-            $password           = $this->input->post("password");
-            $confirm_passw      = $this->input->post("confirm_password");
-            $contact_no         = $this->input->post('contact_no');
-            $email              = $this->input->post('email_address');
-            $confirm_email      = $this->input->post('confirm_email');
+            $title              = "Mr";//$this->input->post("title");          
+            $fname              = "Manny";//$this->input->post("fname");
+            $lname              = "Kgatla";//$this->input->post("lname");
+            $hpc_no             = 1234549;//$this->input->post("hpc_no");
+            $practice_no        = 789546;//$this->input->post('practice_no');
+            $speciality_code    = 2;//$this->input->post('speciality');
+            $username           = "Aub";//$this->input->post("username");
+            $password           = "12345";//$this->input->post("password");
+            $confirm_passw      = "12345";//$this->input->post("confirm_password");
+            $contact_no         = "012563252";//$this->input->post('contact_no');
+            $email              = "man@live.com";//$this->input->post('email_address');
+            $confirm_email      = "many";//$this->input->post('confirm_email');
             $hash               = $this->create_hash($email);
-            $t_and_c            = $this->input->post("terms");
+            $t_and_c            = "Yes";//$this->input->post("terms");
             $expiry_date        = "2018-04-12";
             $is_new_account     = "Yes";
-            /*$hpcsa_no           = $this->input->post('hpcsa_no');
-            $speciality         = $this->input->post('practice_type');
-            $branch_name        = $this->input->post("practice_name");
-            $address_line       = $this->input->post("address_line");
-            $city               = $this->input->post("city");
-            $province           = $this->input->post("province");
-            $location           = $this->input->post("location");
-            $default_branch     = "YES";*/
+            
+            $account_type_code  = $this->session->userdata("ACC_TYPE_CODE");;
+            $date_created       = date('Y-m-d');
+            $expiry_date        = date('Y-m-d', strtotime($date_created . ' + ' . (TRIAL_DAYS) . ' days'));
+            $account_mode_code  = ACC_MODE_TRIAL;
+            $is_manager         = "Yes";
             
             //pass email address and hash through a session
             $this->session->set_userdata("registration_email", $email);
@@ -41,14 +39,31 @@
             //get new user id
             $user_id = $this->get_new_added_id('user', 'user_id');
             
-            //create account type
-            $this->account_model->create_user_account_type($user_id);
-            
             //create account activation
             $this->create_activate_account($user_id, $expiry_date, $hash);
             
             //create manager
             $this->manager_model->create_manager($user_id, $is_new_account);
+            
+            //get manager id
+            $manager_id = $this->get_new_added_id('manager', 'manager_id');
+            
+            //-------------------------------create user account type -----------------------------------------//
+            //create user account
+            $this->account_model->user_account_data($account_type_code, $manager_id);
+
+            //get new user account id
+            $user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
+
+            //create account trial
+            $this->account_model->create_trial_account($user_account_type_id, $date_created, $expiry_date);
+
+            //create user accountgroup
+            $this->account_model->user_account_group_data($user_account_type_id, $user_id, $is_manager);
+
+            //create account mode
+            $this->account_model->create_account_mode($account_mode_code, $user_account_type_id);
+            //-------------------------------------------------------------------------------------------------//
             
             //create practitioner
             $this->practitioner_model->create_practitioner($user_id, $hpc_no, $practice_no);

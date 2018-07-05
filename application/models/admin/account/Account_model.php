@@ -1,18 +1,20 @@
 <?Php
     class Account_model extends CI_Model
     {
-        public function create_user_account_type($user_id)
+        //wrap the function call with a transaction
+        public function create_user_account_type($user_id, $manager_id)
         {
             $account_type_code      = $this->session->userdata("ACC_TYPE_CODE");;
             $user_id                = $user_id;
             $date_created           = date('Y-m-d');
             $expiry_date            = date('Y-m-d', strtotime($date_created . ' + ' . (TRIAL_DAYS + 1) . ' days'));
             $account_mode_code      = ACC_MODE_TRIAL;
+            $is_manager             = "Yes";
             
-            $this->db->trans_start(); //BEGIN SQL TRANSACTION
+            $this->db->trans_start();
             
             //create user account
-            $this->user_account_data($account_type_code, $user_id);
+            $this->user_account_data($account_type_code, $manager_id);
             
             //get new user account id
             $user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
@@ -20,10 +22,18 @@
             //create account trial
             $this->create_trial_account($user_account_type_id, $date_created, $expiry_date);
             
+            //create user accountgroup
+            $this->user_account_group_data($user_account_type_id, $user_id, $is_manager);
+            
             //create account mode
             $this->create_account_mode($account_mode_code, $user_account_type_id);
             
-            $this->db->trans_complete(); //BEGIN SQL TRANSACTION
+            $this->db->trans_complete();
+        }
+        
+        public function upgrade_user_account_type()
+        {
+            
         }
         
         public function fetch_account_type()
@@ -67,17 +77,19 @@
         
         public function fetch_user_account_details($user_id)
         {
-            $this->db->from("user_account_type ua");
-            $this->db->join("user_account_trial ut", "ua.user_account_type_id = ut.user_account_type_id");
-            $this->db->join("user_account_type_mode um", "ua.user_account_type_id = um.user_account_type_id");
-            $this->db->where("user_id", $user_id);
+            $this->db->from("user_account_type uc");
+            $this->db->join("user_account_trial ut", "uc.user_account_type_id = ut.user_account_type_id");
+            $this->db->join("user_account_group ua", "uc.user_account_type_id =  ua.user_account_type_id");
+            $this->db->join("user_account_type_mode um", "uc.user_account_type_id = um.user_account_type_id");
+            $this->db->join("account_mode am", "um.account_mode_code = am.account_mode_code");
+            $this->db->where("ua.user_id", $user_id);
             
             return $this->db->get();
         }
         
         public function fetch_user_account_mode($user_id)
         {
-            $this->db->from('user_account_type ua');
+            $this->db->from('user_account_group ua');
             $this->db->join('user_account_type_mode um', 'ua.user_account_type_id = um.user_account_type_id');
             $this->db->where('ua.user_id', $user_id);
             
@@ -97,23 +109,36 @@
             
         }
         
-        public function user_account_data($account_type_code, $user_id)
+        public function user_account_data($account_type_code, $manager_id)
         {
             $data = array(
-                'account_type_code'     => $account_type_code,
-                'user_id'               => $user_id
+                'account_type_code'         => $account_type_code,
+                'manager_id'                => $manager_id
             );
-
+            
             $this->db->insert('user_account_type', $data);
+        }
+        
+        public function user_account_group_data($user_account_type_id, $user_id, $is_manager)
+        {
+            $data = array(
+                'user_account_type_id'      => $user_account_type_id,
+                'user_id'                   => $user_id,
+                'is_manager'                => $is_manager
+            );
+            
+            $this->db->insert("user_account_group", $data);
         }
         
         public function create_trial_account($user_account_id, $date_created, $expiry_date)
         {
             $data = array(
-                'user_account_id'   => $user_account_id,
-                'date_created'      => $date_created,
-                'expiry_data'       => $expiry_date
+                'user_account_type_id'      => $user_account_id,
+                'date_created'              => $date_created,
+                'expiry_date'               => $expiry_date
             );
+            
+            $this->db->insert("user_account_trial", $data);
         }
         
         public function create_account_mode($account_mode_code, $user_account_type_id)

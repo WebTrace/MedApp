@@ -11,11 +11,11 @@
                         <h4>CLAIMA Login</h4>
                         <hr>
                     </div>
-                    <?Php echo form_open(base_url() . 'signin/user_signin'); ?>
+                    <?Php echo form_open(base_url() . 'signin/user'); ?>
                         <div class="access-group">
                             <label class="input-label" for="username">Username</label>
                             <div class="inp-collection">
-                                <input type="text" name="username" class="input-login-reg" id="username">
+                                <input autocomplete="off" type="text" name="username" class="input-login-reg" id="username">
                                 <i class="fa fa-user"></i>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <a href="<?Php echo base_url(); ?>signin/forgotpassw">Forgot password?</a>
                             <!--<a class="pull-right" href="<?Php echo base_url(); ?>signup">Sign up</a>-->
                         </div>
-                    </form>
+                    <?Php echo form_close(); ?>
                 </div>
             </div>
         </div>

@@ -10,13 +10,21 @@
                 'USER_STATUS'       => $query->row(0)->status_code,
                 'FNAME'             => $query->row(0)->first_name,
                 'LNAME'             => $query->row(0)->last_name,
-                //'HASH'              => $query->row(0)->hash,
                 'EMAIL'             => $query->row(0)->email_address,
-                //'IS_NEW_ACCOUNT'    => $query->row(0)->is_new_account,
                 'USER_TITLE'        => $query->row(0)->title
             );
 
             $this->session->set_userdata($user_data);
+        }
+        
+        public function set_manager_acc_data($manager_account_query)
+        {
+            $manager_data = array(
+                'MANAGER_ID'                => $manager_account_query->row(0)->manager_id,
+                'USER_ACCOUNT_TYPE_ID'      => $manager_account_query->row(0)->user_account_type_id
+            );
+            
+            $this->session->set_userdata($manager_data);
         }
         
         public function set_branch_data($query)
@@ -39,13 +47,14 @@
             $account_trial_data = array(
                 'ACC_TYPE_CODE'     => $query->row(0)->account_type_code,
                 'EXPIRY_DATE'       => $query->row(0)->expiry_date,
-                'DATE_CREATED'      => $query->row(0)->date_created
+                'DATE_CREATED'      => $query->row(0)->date_created,
+                'IS_MANAGER'        => $query->row(0)->is_manager
             );
             
             $this->session->set_userdata($account_trial_data);
         }
         
-        public function set_user_account_mode_data($query)
+        /*public function set_user_account_mode_data($query)
         {
             $branch_data = array(
                 'ACC_TYPE_CODE' => $query->row(0)->branch_id,
@@ -53,7 +62,7 @@
                 'ACC_MODE' => $query->row(0)->branch_id,
                 'ACC_TYPE_CODE' => $query->row(0)->branch_id,
             );
-        }
+        }*/
         
         public function set_trial_expiry_days($remaining_days)
         {

@@ -36,12 +36,23 @@
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
-                    <li class="dropdown">
-                        <a href="<?Php echo base_url(); ?>signin" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i> Sign in</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="<?Php echo base_url(); ?>signup" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i> Sign up</a>
-                    </li>
+                    <?Php if(isset($_SESSION['USER_ID'])) : ?>
+                        <li class="dropdown">
+                            <a href="<?Php echo base_url(); ?>signout">
+                                <i class="fa fa-user"></i>  <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?Php echo base_url(); ?>signout"><i class="fa fa-fw fa-power-off"></i> Sign out</a>
+                        </li>
+                    <?Php else: ?>
+                        <li class="dropdown">
+                            <a href="<?Php echo base_url(); ?>signin" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i> Sign in</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="<?Php echo base_url(); ?>signup" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i> Sign up</a>
+                        </li>
+                    <?Php endif; ?>
                 </ul>
             </nav>
             <div class="container-fluid">

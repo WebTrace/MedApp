@@ -19,7 +19,7 @@
                 <div class="col-lg-4 col-lg-offset-4" >
                     <div class="signin-label apply-shadow-effect">
                         <div class="form-group">
-                           <input type="Username" class="form-control" placeholder="Username"required>
+                            <input autocomplete="off" type="Username" class="form-control" placeholder="Username"required>
                         </div>
                         <a href="forgotpassword" class="pull-right mt-10">Forgot Password?</a>
                         <div class="form-group">

@@ -57,6 +57,7 @@
                         //call set_branch_data method from SessionData_model class
                         $this->sessiondata_model->set_branch_data($default_branch_query);
                     }
+                    
                 }
                 else
                 {

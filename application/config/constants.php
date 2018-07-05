@@ -15,8 +15,10 @@ define("TRIAL_DAYS", 15);
 define("MAX_LOGIN", 3);
 define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
+define("PROFESSIONAL_ACC", 3);
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);
+define("IS_MANAGER", "Yes");
 
 //-------------Status--------------
 define("ROL_PATIENT", 1);
@@ -26,9 +28,13 @@ define("ROL_MANAGER", 4);
 define("ROL_ADMIN", 5);
 
 //-------------Status--------------
-define("STS_ACTIVE", 4);
-define("STS_PENDING", 4);
-define("STS_SUSPENDED", 4);
+define("STS_ACTIVE", 1);
+define("STS_PENDING", 2);
+define("STS_SUSPENDED", 3);
+
+//-------------Finance-------------//
+define("VAT", 0.15);
+
 /*
 
 |--------------------------------------------------------------------------

@@ -52,12 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller']                        = 'pages/view';
 $route['registration']                              = 'admin/authentication/signup';
 $route['authentication']                            = 'admin/authentication/signin';
-$route['signin/user_signin']                        = 'admin/signin/user_signin';
+$route['signin/user']                               = 'admin/signin/user_signin';
 $route['signup']                                    = 'admin/signup';
 $route['account/upgrade']                           = 'admin/account/upgrade_account';
-$route['signup/signup_practitioner']                = 'admin/signup/signup_practitioner';
+$route['trial/expired']                             = 'admin/account/expired_trial_version';
+$route['signup/practitioner']                       = 'admin/signup/signup_practitioner';
 $route['feedback']                                  = 'admin/signup/feedback';
-$route['activation_link']                           = 'admin/communication/activation_link';
+$route['account/activation']                        = 'admin/communication/activation_link';
 $route['signin/forgotpassw']                        = 'admin/signin/forgot_password';
 
 /*

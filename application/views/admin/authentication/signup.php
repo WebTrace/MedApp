@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6" id="frm-container">
-                        <?Php echo form_open(base_url() . "signup/signup_practitioner", array('id' => 'signup_practitioner')); ?>
+                        <?Php echo form_open(base_url() . "signup/practitioner", array('id' => 'signup_practitioner')); ?>
                         <div id="step-one" class="frm-register-wrapper current">
                             <div class="signup-step active">
                                 <div class="row">

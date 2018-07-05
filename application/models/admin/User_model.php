@@ -3,23 +3,25 @@
     {
         public function create_user()
         {
-            $branch_id          = $this->input->post("user_branch");
-            $role_code          = $this->input->post("user_role");
-            $title              = $this->input->post("title");
-            $fname              = $this->input->post("fname");
-            $lname              = $this->input->post("lname");
-            $id_number          = $this->input->post("id_number");
-            $practice_no        = $this->input->post("practice_no");
-            $hpcsa_no           = $this->input->post("hpcsa_no");
-            $speciality_code    = $this->input->post("speciality");
-            $contact_no         = $this->input->post("contact_no");
-            $email_address      = $this->input->post("email");
-            $username           = $this->input->post("username");
-            $password           = $this->input->post("password");
-            $is_default         = "Yes";
-            $hash               = $this->signup_model->create_hash($email_address);
-            $expiry_date        = "2018-04-21";
-            $is_new_account     = "No";
+            $branch_id              = $this->input->post("user_branch");
+            $role_code              = $this->input->post("user_role");
+            $title                  = $this->input->post("title");
+            $fname                  = $this->input->post("fname");
+            $lname                  = $this->input->post("lname");
+            $id_number              = $this->input->post("id_number");
+            $practice_no            = $this->input->post("practice_no");
+            $hpcsa_no               = $this->input->post("hpcsa_no");
+            $speciality_code        = $this->input->post("speciality");
+            $contact_no             = $this->input->post("contact_no");
+            $email_address          = $this->input->post("email");
+            $username               = $this->input->post("username");
+            $password               = $this->input->post("password");
+            $is_default             = "Yes";
+            $hash                   = $this->signup_model->create_hash($email_address);
+            $expiry_date            = "2018-04-21";
+            $is_new_account         = "No";
+            $is_manager             = "No";
+            $user_account_type_id   = $this->session->userdata("USER_ACCOUNT_TYPE_ID");
             
             //begin trasaction for creating a new user
             $this->db->trans_start();
@@ -55,6 +57,9 @@
             
             //assign branch to a user
             $this->branch_model->assign_user_branch($user_id, $branch_id);
+            
+            //account user group
+            $this->account_model->user_account_group_data($user_account_type_id, $user_id, $is_manager);
             
             //create default branch
             $this->branch_model->default_branch_data($user_id, $branch_id, $is_default);

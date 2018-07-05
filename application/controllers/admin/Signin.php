@@ -3,11 +3,28 @@
     {
         public function index()
         {
-            $data['title'] = "Sign in";
-            
-            $this->load->view("admin/templates/auth-header", $data);
-            $this->load->view("admin/authentication/signin");
-            $this->load->view("admin/templates/auth-footer");
+            if(!isset($_SESSION["USER_ID"]))
+            {
+                $data['title'] = "Sign in";
+
+                $this->load->view("admin/templates/auth-header", $data);
+                $this->load->view("admin/authentication/signin");
+                $this->load->view("admin/templates/auth-footer");
+            }
+            else
+            {
+                if(isset($_SESSION["TRIAL_STATUS"]))
+                {
+                    if($this->session->userdata("TRIAL_STATUS") == 1)
+                    {
+                        redirect(base_url() . "dashboard");
+                    }
+                    else
+                    {
+                        redirect(base_url() . "trial/expired");
+                    }
+                }
+            }
         }
         
         public function user_signin()
@@ -29,62 +46,86 @@
                         $user_id = $this->session->userdata("USER_ID");
                         $account_mode = $this->account_model->fetch_user_account_mode($user_id);
                         
-                        //check account mode immediately after login
-                        if($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
+                        if($account_mode->num_rows() > 0)
                         {
-                            $user_account_type_id = $account_mode->row(0)->user_account_type_id;
-                            
-                            //if account mode is trial, get trial details
-                            $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
-                            $this->sessiondata_model->account_trial_data($trial_account_query);
-                            
-                            $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
-                            $date_created = date_create(date('Y-m-d'));
-                            
-                            //calculate remaining trial days
-                            $remaining_days = date_diff($expiry_date, $date_created)->format('%d');
-                            
-                            //set remaining days
-                            $this->sessiondata_model->set_trial_expiry_days($remaining_days);
-                            
-                            if($remaining_days <= TRIAL_DAYS)
+                            //check account mode immediately after login
+                            if($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
                             {
-                                if($this->session->userdata("USER_ROLE") == ROL_MANAGER)
+                                $user_account_type_id = $account_mode->row(0)->user_account_type_id;
+
+                                //if account mode is trial, get trial details
+                                $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
+                                $this->sessiondata_model->account_trial_data($trial_account_query);
+
+                                $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
+                                $current_date = date_create(date('Y-m-d'));
+
+                                //calculate remaining trial days
+                                $remaining_days = date_diff($expiry_date, $current_date)->format('%d');
+
+                                //set remaining days
+                                $this->sessiondata_model->set_trial_expiry_days($remaining_days);
+
+                                if($remaining_days > 0 && $remaining_days <= TRIAL_DAYS)
                                 {
-                                    //get mamager details
-                                    $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
-
-                                    $manager_id = $manager_data[0]["manager_id"];
-                                    $is_new_account = $manager_data[0]["is_new_account"];
-
-                                    $this->session->set_userdata("MANAGER_ID", $manager_id);
-
-                                    if($is_new_account == "Yes")
+                                    //set trial session
+                                    $this->session->set_userdata("TRIAL_STATUS", 1);
+                                    
+                                    if($this->session->userdata("USER_ROLE") == ROL_MANAGER)
                                     {
-                                        redirect(base_url() . "branch/new_branch");
+                                        //get mamager details
+                                        $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
+                                        //get manager id
+                                        $manager_id = $manager_data[0]["manager_id"];
+                                        $is_new_account = $manager_data[0]["is_new_account"];
+                                        //set manager id
+                                        $this->session->set_userdata("MANAGER_ID", $manager_id);
+                                        
+                                        //get manager's account details
+                                        $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
+                                        
+                                        if($manager_account_query->num_rows() > 0)
+                                        {
+                                            //set manager's account session
+                                            $this->sessiondata_model->set_manager_acc_data($manager_account_query);
+                                        }
+                                        
+                                        
+                                        if($is_new_account == "Yes")
+                                        {
+                                            redirect(base_url() . "branch/new_branch");
+                                        }
+                                        else
+                                        {
+                                            //redirect manager to dashboard
+                                            redirect(base_url() . "dashboard");
+                                        }
                                     }
                                     else
                                     {
-                                        //redirect manager to dashboard
+                                        //redirect normal user to dashboard
                                         redirect(base_url() . "dashboard");
                                     }
                                 }
                                 else
                                 {
-                                    //redirect normal user to dashboard
-                                    redirect(base_url() . "dashboard");
+                                    //set trial session
+                                    $this->session->set_userdata("TRIAL_STATUS", 0);
+                                    //redirect(base_url() . "trial/expired");
+                                    echo $remaining_days;
+                                    //TODO: payment option needed
                                 }
                             }
-                            else
+                            else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
                             {
-                                //redirect user to upgrade acccount page
-                                
+                                //TODO: if account mode is full, get payment details
+                                //TODO: check if the account is not in arreas
+                                //TODO: lock pages if trial i expired
                             }
                         }
-                        else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
+                        else
                         {
-                            //if account mode is full, get payment details
-                            //check if the account is not in arreas
+                            echo "Error occured. ";
                         }
                     }
                     else
@@ -94,8 +135,10 @@
                         $data['first_name'] = $this->session->userdata("FNAME");
                         $data['user_title'] = $this->session->userdata("USER_TITLE");
                         
-                        if($this->session->userdata("USER_STATUS") == 2)
+                        if($this->session->userdata("USER_STATUS") == STS_PENDING)
                         {
+                            $title = "Signin - Account confirmation needed";
+                            
                             $data['icon'] = '<i class="fa fa-check-circle-o" id="confirm-color"></i>';
                             $data['title'] = '<h4 class="confirm-header">Please confirm your account.</h4>';
                             $data['content'] = '<p>Your account is currently inactive. Please activate your account by 
@@ -105,15 +148,19 @@
                         }
                         else
                         {
+                            $title = "Signin - Account suspended";
+                            
                             $data['icon'] = '<i class="fa fa-lock" id="suspension-color"></i>';
                             $data['title'] = '<h4 class="confirm-header">Account suspended</h4>';
                             $data['content'] = '<p>This account is suspended due to system rules violation. Code : ERR_0102</p>';
                             //$data['link'] = '<a href="' . base_url() . '"></a>';
                         }
                         
+                        $data["title"] = $title;
+                        
                         /*load feedback view*/
-                        $this->load->view("admin/templates/auth-header");
-                        $this->load->view("admin/feedback/feedback", $data);
+                        $this->load->view("admin/templates/auth-header", $data);
+                        $this->load->view("admin/feedback/feedback");
                         $this->load->view("admin/templates/auth-footer");
                     }
                 }

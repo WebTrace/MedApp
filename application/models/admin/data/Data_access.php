@@ -28,9 +28,9 @@
         
         public function signin_user($username, $password)
         {
-            $sql = "SELECT * FROM user u JOIN login l ON u.user_id = l.user_id JOIN user_role ur ON u.user_id = ur.user_id
-                    JOIN user_status us ON u.user_id = us.user_id JOIN email_contact ec ON u.user_id = ec.user_id
-                    JOIN role r ON r.role_code = ur.role_code WHERE(username = '$username' AND password = '$password')";
+            $sql = "select * from user u join login l on u.user_id = l.user_id join user_role ur on u.user_id = ur.user_id
+                    join user_status us on u.user_id = us.user_id join email_contact ec on u.user_id = ec.user_id
+                    join role r on r.role_code = ur.role_code where(username = '$username' AND password = '$password')";
             
             return $this->db->query($sql);
         }

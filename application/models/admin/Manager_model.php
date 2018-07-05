@@ -26,5 +26,14 @@
             $this->db->where("user_id", $user_id);
             return $this->db->get("manager")->result_array();
         }
+        
+        public function fetch_manager_account($user_id)
+        {
+            $this->db->from("manager m");
+            $this->db->join("user_account_type a", "m.manager_id = a.manager_id");
+            $this->db->where("m.user_id", $user_id);
+            
+            return $this->db->get();
+        }
     }
 ?>
