@@ -42,6 +42,11 @@
             $this->session->set_userdata($branch_data);
         }
         
+        public function set_account_type_data()
+        {
+            //TODO: set global account type
+        }
+        
         public function account_trial_data($query)
         {
             $account_trial_data = array(

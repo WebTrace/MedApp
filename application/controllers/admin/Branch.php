@@ -18,8 +18,10 @@
             if($this->branch_model->create_branch() == TRUE)
             {
                 //TODO: set session data
+                $user_id = $this->session->userdata('USER_ID');
+                
                 $query = $this->data_access->fetch_default_branch($user_id);
-                $this->sesssiondata_model->set_branch_data($query);
+                $this->sessiondata_model->set_branch_data($query);
                 
                 //redirect to dashboard
                 redirect(base_url() . "dashboard");

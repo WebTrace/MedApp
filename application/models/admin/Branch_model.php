@@ -234,5 +234,15 @@
             
             $this->db->insert('user_branch_status', $data);
         }
+        
+        public function count_branch_users($branch_id)
+        {
+            return $this->db->query("select count(*) as num_branch_users from user_branch where(branch_id = $branch_id");
+        }
+        
+        public function count_account_branches($manager_id)
+        {
+            return $this->db->query("select count(*) as num_mngr_branches from branch b join manager_branch mb on b.branch_id = mb.branch_id where(manager_id = $manager_id)");
+        }
     }
 ?>

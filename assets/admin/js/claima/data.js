@@ -746,4 +746,40 @@ $(document).ready(function() {
             }
         });
     });
+    
+    $(".addon-branch").on("click", function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            url: $(this).attr("href"),
+            type: "post",
+            dataType: 'json',
+            success: function(res) {
+                if(res.num_account_branch === false)
+                {
+                    var price           = res.branch_addon.price,
+                        item_name       = res.branch_addon.item_name,
+                        vat             = res.branch_addon.vat,
+                        total_price     = res.branch_addon.total_price;
+                    
+                    //assign addon details to html elements
+                    $("#item_name").text(item_name);
+                    $("#price").text(price);
+                    $("#vat").text(vat);
+                    $("#total_price").text(total_price);
+                    
+                    //buy addon modal
+                    $("#buy-branch").modal("show");
+                    
+                }
+                else
+                {
+                    //add branch modal
+                    $("#create_branch").modal("show");
+                }
+                
+                console.log(res);
+            }
+        });
+    });
 });

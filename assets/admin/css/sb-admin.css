@@ -19,7 +19,7 @@
 /*mobile optimization*/
 @media (max-width: 768px) {
     .nav > li > a {
-        padding-top: 0px !imprtant;
+        padding-top: 0px !impOrtant;
     }
     
     .top-nav > li > a:first-child {
@@ -29,7 +29,7 @@
 
 @media (min-width: 768px) {
     .nav > li > a {
-        padding-top: 15px !imprtant;
+        padding-top: 15px !impOrtant;
     }
 
     .top-nav > li > a:first-child {
@@ -57,11 +57,11 @@
 }
 
 .top-nav>li>a {
-    color: #fff !important;
+    color: #cccdce  !important;
 }
 
 .navbar-fixed-top .navbar-brand {
-    color: #fff !important;
+    color: #cccdce  !important;
 }
 
 .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.open>a:hover {

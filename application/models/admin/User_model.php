@@ -148,10 +148,6 @@
             $this->db->insert('user', $user_data);
         }
         
-        /*user role
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
-        
         public function create_user_role($user_id, $role_code)
         {
             $user_role_data = array(
@@ -189,10 +185,6 @@
             return $this->db->get("role")->result_array();
         }
         
-        /*user status
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
-        
         public function create_user_status($user_id, $status_code)
         {
             $user_status_data = array(
@@ -223,10 +215,6 @@
             $this->db->where('user_status_id', $user_status_id);
             return $this->db->update('user_status', $data);
         }
-        
-        /*account
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
         
         public function is_new_account()
         {

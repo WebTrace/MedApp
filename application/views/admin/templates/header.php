@@ -135,7 +135,7 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i> <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?> <b class="caret"></b>
+                                <i class="fa fa-user-o"></i> <?Php echo substr($this->session->userdata("FNAME"), 0, 1) . " " . $this->session->userdata("LNAME"); ?> <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>

@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <ul class="nav-controls pull-right">
                     <li>
-                        <a href="#" class="link-menu" id="add-user" data-toggle="modal" data-target="#create_branch" onclick="return false;" accesskey="t">
+                        <a href="<?Php echo base_url()?>addon/branch" class="link-menu addon-branch" id="addon-branch" accesskey="t">
                             <i class="fa fa-plus"></i> New branch
                         </a>
                     </li>
@@ -22,71 +22,42 @@
     </div>
 </div>
 <div class="row">
-    <!--<div style="background-image: url(<?Php echo base_url(); ?>assets/images/bg1.jpg)">
-        <div class="controls" style="background: rgba(255, 255, 255, 0.9);" class="overlay-bg">
-            <div class="col-lg-7">
-                <div class="btn-controls-group">
-                    <a href="<?Php echo base_url(); ?>patients" id="back-btn" class="back-btn" title="Back"><i class="fa fa-arrow-left"></i></a>
-                    <a href="#" class="btn-controls" id="add-to-waiting-room"  data-toggle="modal" data-target="#create_branch" accesskey="t">
-                        <i class="fa fa-plus"></i> New Branch
-                    </a>
-                    <button class="btn-controls" id="email" type="submit"><i class="fa fa-envelope"></i> Email</button>
-                    <button class="btn-controls" id="print" type="submit"><i class="fa fa-print"></i> Print</button>
-                    <div id="export-control" class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="export-option" 
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <i class="fa fa-exchange"></i> Export
-                            <span class="caret"></span>
-                        </button>
-                        <ul style="margin: 12px 0px 0px -2px; border-radius: 0px; font-size: 13px;
-                                   border: none;" class="dropdown-menu dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">PDF</a></li>
-                            <li><a href="#">Word</a></li>
-                            <li><a href="#">Excel</a></li>
-                        </ul>
-                    </div>
+    <div class="col-lg-12">
+        <div class="modal fade waiting_room" id="buy-branch">
+            <div class="modal-dialog" id="buy-branch-addon">
+                <div class="modal-content">
+                    <?Php echo form_open(base_url() . "addon/buy", array('id' => 'frm-buy-branch')); ?>
+                        <div class="modal-header">
+                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                            <h2 class="modal-title">BUY A BRANCH</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4>Your branch edition limit is reached.</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <span id="item_name"></span>
+                                    <span id="price"></span>
+                                    <span id="vat"></span>
+                                    <span id="total_price"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="" id="" value="branch_it">
+                            <input type="hidden" name="" id="" value="">
+                            <input type="hidden" name="" id="" value="">
+                            <input type="hidden" name="" id="" value="">
+                            <button type="submit" class="btn btn-save" id="">Buy</button>
+                        </div>
+                    <?Php echo form_close(); ?>
                 </div>
             </div>
-            <div class="fix-spacing col-lg-2 col-md-4 col-sm-4 col-xs-4">
-                Show
-                <select name="limit" id="limit" class="limit">
-                    <option value="0">---</option>
-                    <option value="">10</option>
-                    <option value="">20</option>
-                    <option value="">30</option>
-                    <option value="">40</option>
-                    <option value="">50</option>
-                    <option value="">Show all</option>
-                </select>
-                <label id="control-show-lbl">
-                    <!--<div id="view-control" class="dropdown">
-<button class="btn btn-default dropdown-toggle" type="button" id="diplay-option" 
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-Show all
-<span class="caret"></span>
-</button>
-<ul id="width-fix" class="dropdown-menu  dropdown-menu-fix" aria-labelledby="dropdownMenu1">
-<li><a href="#">5</a></li>
-<li><a href="#">15</a></li>
-<li><a href="#">25</a></li>
-<li><a href="#">35</a></li>
-<!--<li role="separator" class="divider"></li>
-<li><a href="#">Separated link</a></li>
-</ul>
-<input type="hidden" name="rows" id="rows" value="5">
-</div>
-                </label>
-            </div>
-            <div class="fix-spacing col-lg-3 col-md-8 col-sm-8 col-xs-8">
-                <div class="search-control">
-                    <input type="search" id="search" name="search" class="search">
-                    <span id = "mg-glass" class="glyphicon glyphicon-search"></span>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
         </div>
-    </div>-->
+    </div>
     <div class="col-lg-12">
         <div class="modal fade waiting_room" id="create_branch">
             <div class="modal-dialog" id="newbranch-room-modal">

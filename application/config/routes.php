@@ -118,6 +118,10 @@ $route['branch/update/(:num)']                      = 'admin/branch/update_branc
 $route['branch/new']                                = 'admin/branch/new_branch';
 $route['branch/branch_404']                         = 'admin/branch/branch_404';
 
+//------------------------------------------------Account----------------------------------------------//
+$route['addon/branch']                              = 'admin/addon/add_account_branch';
+$route['addon/buy']                                 = 'admin/addon/addon_payment';
+
 /*----------------------------------------Zoho API-----------------------------------------------------*/
 
 $route['zoho']                                      = 'admin/zoho/zoho';
