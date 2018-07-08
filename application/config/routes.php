@@ -69,7 +69,7 @@ $route['claim']                                     = 'admin/claim';
 $route['appointment']                               = 'admin/appointment';
 $route['reports']                                   = 'admin/reports';
 $route['settings/users']                            = 'admin/users';
-$route['users/update_user/(:num)']                  = 'admin/users/update_user/$1';
+$route['user/update/(:any)']                        = 'admin/users/update_user/$1';
 $route['reconciles']                                = 'admin/reconciles';
 $route['reconciles/start_reconcile']                = 'admin/reconciles/start_reconcile';
 $route['tasks']                                     = 'admin/tasks';
@@ -114,7 +114,7 @@ $route['user/profile']                              = 'admin/users/update_user';
 $route['settings/branches']                         = 'admin/branch';
 $route['settings/security']                         = 'admin/settings/security_setting';
 $route['branch/create_branch']                      = 'admin/branch/create_branch';
-$route['branch/update/(:num)']                      = 'admin/branch/update_branch/$1';
+$route['branch/update/(:any)']                      = 'admin/branch/update_branch/$1';
 $route['branch/new']                                = 'admin/branch/new_branch';
 $route['branch/branch_404']                         = 'admin/branch/branch_404';
 

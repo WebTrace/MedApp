@@ -47,61 +47,12 @@
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
-                        <li><a id="trial-link" href="#">Your trial will expire in <?Php echo $this->session->userdata("REM_DAYS"); ?> days</a></li>
+<!--                        <li><a id="trial-link" href="#">Your trial will expire in <?Php echo $this->session->userdata("REM_DAYS"); ?> days</a></li>-->
                         <li class="dropdown">
-                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> <!--<b class="caret"></b></a>
-                            <ul class="dropdown-menu message-dropdown">
-                                <li class="message-preview">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="pull-left">
-                                                <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><strong>B Maranatha</strong></h5>
-                                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="message-preview">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="pull-left">
-                                                <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><strong>T Mojela</strong>
-                                                </h5>
-                                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="message-preview">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="pull-left">
-                                                <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><strong>S Sakoane</strong>
-                                                </h5>
-                                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="message-footer">
-                                    <a href="#">Read All New Messages</a>
-                                </li>
-                            </ul>-->
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                            <a style="position: relative;" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i> 
+                                <span class="notifi-counter text-center">10</span>
+                            </a>
                             <ul class="dropdown-menu alert-dropdown">
                                 <li>
                                     <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
@@ -128,7 +79,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-question"></i></a>
+                            <a style="position: reltive;" href="<?Php echo base_url(); ?>messages">
+                                <i class="fa fa-fw fa-envelope-o"></i>
+                                <span class="notifi-counter text-center">5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-question"></i></a>
                         </li>
                         <li>
                             <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-gear"></i></a>
@@ -139,15 +96,24 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <div class="about-account">
-                                        branch
+                                    <div class="default-branch text-center">
+                                        <div><h4>Default branch</h4></div>
+                                        <p>
+                                            <span class="de-br-label">Name</span>
+                                            <span class=de-br-data><?Php echo $this->session->userdata("BRANCH_NAME"); ?></span>
+                                        </p>
+                                        <p>
+                                            <span class="de-br-label">Contact</span>
+                                            <span class=de-br-data><?Php echo $this->session->userdata("CONTACT_NO"); ?></span>
+                                        </p>
+                                        <p>
+                                            <span class="de-br-label">Email</span>
+                                            <span class=de-br-data><?Php echo $this->session->userdata("EMAIL_ADDR"); ?></span>
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
                                     <a href="<?Php echo base_url(); ?>user/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
-                                </li>
-                                <li>
-                                    <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                                 </li>
                                 <li>
                                     <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -158,11 +124,13 @@
                                 </li>
                             </ul>
                         </li>
+                        <!--
                         <?Php if($this->session->userdata("USER_ROLE") != 2) : ?>
                             <li>
                                 <a class="upgrade-btn" href="<?php echo base_url(); ?>account/upgrade">Upgrade</a>
                             </li>
                         <?Php endif; ?>
+                        -->
                     </ul>
                     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -173,6 +141,9 @@
                             <li>
                                 <a href="<?Php echo base_url(); ?>patients"><i class="fa fa-fw fa-user-md"></i> Patients</a>
                             </li>
+                            <li>
+                                <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
+                            </li>
                             <?Php if($this->session->userdata("USER_ROLE") != 2) : ?>
                                 <li>
                                     <a href="<?Php echo base_url(); ?>claim"><i class="fa fa-fw fa-file-text-o"></i> Claims</a>
@@ -180,9 +151,6 @@
                             <?Php endif; ?>
                             <li>
                                 <a href="<?Php echo base_url(); ?>appointment/waiting_room"><i class="fa fa-files-o"></i> Collections</a>
-                            </li>
-                            <li>
-                                <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
                             </li>
                             <li>
                                 <a href="<?Php echo base_url(); ?>tasks"><i class="fa fa-check-square-o"></i> Tasks</a>

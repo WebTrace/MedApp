@@ -1,6 +1,119 @@
+<div class="row menu-row">
+    <div class="col-lg-6">
+        <h3 style="margin: 10px 0px;">Appointments</h3>
+    </div>
+    <div class="col-lg-6">
+        <ul class="nav-controls pull-right">
+            <li>
+                <a href="#" class="link-menu" id="add-appointment" data-toggle="modal" data-target="#create-appointment" onclick="return false;" accesskey="t">
+                    <i class="fa fa-plus"></i> New appointment
+                </a>
+            </li>
+            <li>
+                <a href="#" class="link-menu" id="add-appointment"><i class="fa fa-wheelchair"></i> Waiting room</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="upgrade-header">21 Jun 2018</h4>
+            </div>
+        </div>
+        <div class="row">
+            <?Php for($i = 0; $i < 4; $i ++) : ?>
+                <div class="col-lg-3">
+                    <a href="#" class="appointment-item" data-toggle="modal" data-target="#patient-app-details">
+                        <div class="app-item-header">
+                            <h5>A Mosweu</h5>
+                        </div>
+                        <div class="app-item-body">
+
+                        </div>
+                    </a>
+                </div>
+            <?Php endfor; ?>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="upgrade-header">21 Jun 2018</h4>
+            </div>
+        </div>
+        <div class="row">
+            <?Php for($i = 0; $i < 4; $i ++) : ?>
+                <div class="col-lg-3">
+                    <a href="#" class="appointment-item">
+                        <div class="app-item-header">
+                            <h5>A Mosweu</h5>
+                        </div>
+                        <div class="app-item-body">
+
+                        </div>
+                    </a>
+                </div>
+            <?Php endfor; ?>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        App
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
-        <!-- Notification -->
+        <div class="modal fade" id="create-appointment">
+            <div class="modal-dialog" id="appointment-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">NEW APPOINTMENT</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="modal fade" id="patient-app-details">
+            <div class="modal-dialog" id="app-details-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">A MOSWEU</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="row">
+    <div class="col-lg-12">
+         Notification 
         <div class="alert"></div>
         <div class="row clearfix">
             <div class="col-md-12 column">
@@ -77,4 +190,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
