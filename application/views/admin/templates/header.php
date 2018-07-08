@@ -50,7 +50,7 @@
 <!--                        <li><a id="trial-link" href="#">Your trial will expire in <?Php echo $this->session->userdata("REM_DAYS"); ?> days</a></li>-->
                         <li class="dropdown">
                             <a style="position: relative;" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell"></i> 
+                                <i class="fa fa-bell-o"></i> 
                                 <span class="notifi-counter text-center">10</span>
                             </a>
                             <ul class="dropdown-menu alert-dropdown">

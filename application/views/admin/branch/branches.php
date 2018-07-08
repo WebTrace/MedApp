@@ -162,7 +162,7 @@
                                                 echo "<span title='Default branch' class='def-branch'><i class='fa fa-check-circle'></i></span> ";
                                             }
                                         ?>
-                                        <a href="<?Php echo base_url(); ?>branch/update/<?Php echo $branch['branch_id']; ?>"><i class="fa fa-pencil"></i></a>
+                                        <a href="<?Php echo base_url(); ?>branch/update/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-pencil"></i></a>
                                     </span>
                                 </h5>
                             </div>

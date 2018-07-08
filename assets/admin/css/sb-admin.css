@@ -612,17 +612,18 @@ a:hover, a:focus {
 }
 
 .greetings-header {
+    display: inline-block;
     position: relative;
 }
 
 .greetings-header::after {
     content: '';
     position: absolute;
-    width: 59px;
-    height: 2px;
+    width: 30px;
+    height: 3px;
     background: #e2ab55;
     bottom: -10px;
-    left: 0px;
+    left: 25px;
 }
 
 .wrap-trial-expired {
@@ -846,6 +847,22 @@ legend {
     margin-bottom: 10px;
     text-decoration: none;
     border-bottom: #eaefef thin solid;
+}
+
+.appointment-item {
+    color: #fff;
+    display: block;
+    background: #ccc;
+}
+
+.app-item-header {
+    font-size: 15px;
+    padding: 10px;
+    background: #3f9292;
+}
+
+.app-item-header h5 {
+    margin: 0px;
 }
 
 .text-muted {

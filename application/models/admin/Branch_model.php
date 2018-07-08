@@ -92,7 +92,7 @@
         //
         public function update_branch($branch_id)
         {
-            $this->db->where('branch_id', $branch_id);
+            $this->db->where('MD5(branch_id)', $branch_id);
             return $this->db->get('branch')->result_array();
         }
         

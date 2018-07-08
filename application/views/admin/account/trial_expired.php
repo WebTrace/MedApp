@@ -14,7 +14,7 @@
                                     <h4 class="greetings-header">Hi Manny,</h4>
                                     <p style="padding: 23px 0px; font-size: 15px;">
                                         Thank you for using CLAIMA trial version, unfortunately your 15 days trial have expired. 
-                                        Click the button below to updrade your license.
+                                        Click the button below to upgrade to a premium version.
                                     </p>
                                     <p>
                                         <a href="<?Php echo base_url() ?>account/upgrade" class="btn nav-btn"><i class="fa fa-cloud-upload"></i> Upgrade account</a>
