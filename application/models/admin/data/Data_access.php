@@ -20,7 +20,7 @@
             $sql = "select * from user u join user_role ur on u.user_id = ur.user_id join role r on ur.role_code = r.role_code
                     join user_status us on u.user_id = us.user_id join status s on us.status_code = s.status_code
                     join login l on u.user_id = l.user_id join user_branch ub on u.user_id = ub.user_id
-                    where(u.user_id = $user_id and ub.branch_id in (select branch_id from manager m join 
+                    where(MD5(u.user_id) = '$user_id' and ub.branch_id in (select branch_id from manager m join 
                     manager_branch mb on m.manager_id = mb.manager_id where(m.user_id = $manager_id)))";
             
             return $this->db->query($sql)->result_array();
@@ -115,14 +115,4 @@
             return $this->db->query($sql);
         }
     }
-    /*Login pre-requisite
-    -Check username and password
-    -Check login attempts
-    -Swap between defaults branches
-    -Check if user is not block through exceeded login attempts
-    -Check user status
-    -Check user role
-    -Check if branch is not in arreas
-    -Check default branch
-    */
 ?>

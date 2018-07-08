@@ -20,6 +20,11 @@
 
         <!-- Custom Fonts -->
         <link href="<?Php echo base_url();?>assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style>
+            #body-container {
+                /*background-image: url("<?Php echo base_url(); ?>assets/images/bg/md-bg.jpg");*/
+            }
+        </style>
     </head>
     <body id="body-container">
         <div class="wrapper">

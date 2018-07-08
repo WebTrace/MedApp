@@ -299,7 +299,10 @@
                                         <td><?Php echo $user['branch_name']; ?></td>
                                         <td><?Php echo $user['role_name']; ?></td>
                                         <td><?Php echo $user['status_name']; ?></td>
-                                        <td><a style="color: #999; font-size: 13px;" class="edit-user" href="<?Php echo base_url(); ?>users/update_user/<?Php echo $user['user_id']; ?>"><i class="fa fa-pencil"></i></a></td>
+                                        <td>
+                                            <a style="color: #999; font-size: 13px;" class="edit-user" href="<?Php echo base_url(); ?>user/update/<?Php echo md5($user['user_id']); ?>"><i class="fa fa-pencil"></i>
+                                            </a>
+                                        </td>
                                         <!--<td><a href="#"><i class="fa fa-lock"></i></a></td>-->
                                         <td><a class="delete-user" href="#"><i class="fa fa-times"></i></a></td>
                                     </tr>
