@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row menu-row">
     <div class="col-lg-12">
         <h3>Settings</h3>
     </div>

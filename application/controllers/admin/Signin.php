@@ -90,7 +90,6 @@
                                             $this->sessiondata_model->set_manager_acc_data($manager_account_query);
                                         }
                                         
-                                        
                                         if($is_new_account == "Yes")
                                         {
                                             redirect(base_url() . "branch/new");

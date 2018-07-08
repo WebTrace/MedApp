@@ -105,17 +105,18 @@
                 <p>If you have multiple branches, a default branch will always load when you login.</p>
                 <p>Make it a default branch?</p>
                 <p>
-                    <input type="radio" name="" id="" value="Yes"> Yes
+                    <input type="radio" name="default_branch" id="" value="Yes"> Yes
                 </p>
                 <p>
-                    <input type="radio" name="" id="" value="No"> No
+                    <input type="radio" name="default_branch" id="" value="No"> No
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
                 <input type="hidden" name="branch_id" value="<?Php echo $branch["branch_id"]; ?>" />
-                <input type="submit" value="Save" name="" class="btn nav-btn">
+                <button class="btn" type="submit" class="btn nav-btn"><i class="fa fa-floppy-o"></i> Save</button>
+<!--                <input type="submit" value="Save" name="" class="btn nav-btn">-->
             </div>
         </div>
     <?Php echo form_close(); ?>

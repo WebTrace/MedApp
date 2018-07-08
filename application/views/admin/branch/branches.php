@@ -23,6 +23,28 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <div class="modal fade waiting_room" id="buy-branch-denied">
+            <div class="modal-dialog" id="buy-branch-addon-denied">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">Denied</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Your branch edition limit is reached.</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-save" id="">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
         <div class="modal fade waiting_room" id="buy-branch">
             <div class="modal-dialog" id="buy-branch-addon">
                 <div class="modal-content">
@@ -154,7 +176,7 @@
                     <div class="row">
                         <div class="br-details-wrap">
                             <div class="col-lg-12">
-                                <h5 style="font-size: 16px; margin: 0px 0px 10px; padding: 10px 0px; border-bottom: #f5f5f5 thin solid;"><?Php echo $branch['branch_name']; ?>
+                                <h5 style="font-size: 16px; font-weight: bold; margin: 0px 0px 10px; padding: 10px 0px; border-bottom: #f5f5f5 thin solid;"><?Php echo $branch['branch_name']; ?>
                                     <span class="pull-right">
                                         <?Php
                                             if($this->session->userdata("BRANCH_ID") == $branch['branch_id'])

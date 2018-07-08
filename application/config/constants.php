@@ -16,11 +16,16 @@ define("MAX_LOGIN", 3);
 define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
 define("PROFESSIONAL_ACC", 3);
+define("BSC_BRANCH_CAPACITY", 1);
+define("STD_BRANCH_CAPACITY", 1);
+define("PRO_BRANCH_CAPACTIY", 2);
+
+//---------------------------------------------
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);
 define("IS_MANAGER", "Yes");
 
-//-------------Status--------------
+//-------------Status--------------------------
 define("ROL_PATIENT", 1);
 define("ROL_RECEPTIONINST", 2);
 define("ROL_PRACTITIONER", 3);

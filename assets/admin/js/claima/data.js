@@ -755,27 +755,34 @@ $(document).ready(function() {
             type: "post",
             dataType: 'json',
             success: function(res) {
-                if(res.num_account_branch === false)
+                if(res.allow_branch === true)
                 {
-                    var price           = res.branch_addon.price,
-                        item_name       = res.branch_addon.item_name,
-                        vat             = res.branch_addon.vat,
-                        total_price     = res.branch_addon.total_price;
-                    
-                    //assign addon details to html elements
-                    $("#item_name").text(item_name);
-                    $("#price").text(price);
-                    $("#vat").text(vat);
-                    $("#total_price").text(total_price);
-                    
-                    //buy addon modal
-                    $("#buy-branch").modal("show");
-                    
+                    if(res.num_account_branch === false)
+                    {
+                        var price           = res.branch_addon.price,
+                            item_name       = res.branch_addon.item_name,
+                            vat             = res.branch_addon.vat,
+                            total_price     = res.branch_addon.total_price;
+
+                        //assign addon details to html elements
+                        $("#item_name").text(item_name);
+                        $("#price").text(price);
+                        $("#vat").text(vat);
+                        $("#total_price").text(total_price);
+
+                        //buy addon modal
+                        $("#buy-branch").modal("show");
+
+                    }
+                    else
+                    {
+                        //add branch modal
+                        
+                    }
                 }
                 else
                 {
-                    //add branch modal
-                    $("#create_branch").modal("show");
+                    $("#buy-branch-denied").modal("show");
                 }
                 
                 console.log(res);
