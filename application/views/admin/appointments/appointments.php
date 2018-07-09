@@ -23,12 +23,13 @@
             </div>
         </div>
         <div style="margin-top: 20px;" class="row">
-            <?Php for($i = 0; $i < 4; $i ++) : ?>
+            <?Php for($i = 0; $i < 6; $i ++) : ?>
                 <div class="col-lg-4">
                     <a href="#" class="appointment-item" data-toggle="modal" data-target="#patient-app-details">
                         <div class="app-item-header">
                             <h5>Alfred Mosweu</h5>
                         </div>
+                        <hr style="margin: 0px;">
                         <div class="app-item-body">
                             <p>
                                 <span class="app-label">Date</span>
@@ -49,7 +50,7 @@
         </div>
     </div>
     <div class="col-lg-4">
-        App
+        <h4 class="upgrade-header">Appointments overview</h4>
     </div>
 </div>
 <div class="row">

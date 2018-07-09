@@ -854,7 +854,7 @@ legend {
     display: block;
     outline: none;
     height: 210px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     position: relative;
     box-shadow: #e1dfdf 0px 4px 18px 0px;
 }
@@ -891,7 +891,7 @@ legend {
 }
 
 .app-label {
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     font-weight: bold;
 }
