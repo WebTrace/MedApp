@@ -263,7 +263,7 @@
     <div class="col-lg-7 border-right">
         <div class="row">
             <div class="col-lg-12 margin-bottom-border">
-                <h3>Users</h3>
+                <h4>Users</h3>
             </div>
         </div>
         <div class="row">
@@ -322,7 +322,7 @@
     <div class="col-lg-5">
         <div class="row">
             <div class="col-lg-12 margin-bottom-border">
-                <h3>Users overview</h3>
+                <h4>Users overview</h4>
             </div>
         </div>
     </div>

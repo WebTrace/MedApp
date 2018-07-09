@@ -1,6 +1,6 @@
 <div class="row menu-row">
     <div class="col-lg-6">
-        <h3 style="margin: 10px 0px;">Appointments</h3>
+        <h4>Appointments</h4>
     </div>
     <div class="col-lg-6">
         <ul class="nav-controls pull-right">

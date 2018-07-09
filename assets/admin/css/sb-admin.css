@@ -857,6 +857,7 @@ legend {
     margin-bottom: 25px;
     position: relative;
     box-shadow: #e1dfdf 0px 4px 18px 0px;
+    background: #f4fff7;
 }
 
 .appointment-item::after {

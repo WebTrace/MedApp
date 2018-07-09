@@ -135,7 +135,7 @@
     <div class="col-lg-7 border-right">
         <div class="row">
             <div class="col-lg-12 margin-bottom-border">
-                <h3>Patients</h3>
+                <h4>Patients</h4>
             </div>
         </div>
         <div class="user-table">
@@ -210,7 +210,7 @@
     <div class="col-lg-5">
         <div class="row margin-bottom-border">
             <div class="col-lg-12">
-                <h3>Patients overview</h3>
+                <h4>Patients overview</h4>
             </div>
         </div>
     </div>
