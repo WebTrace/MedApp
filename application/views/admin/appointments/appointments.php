@@ -19,37 +19,29 @@
     <div class="col-lg-8">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="upgrade-header">21 Jun 2018</h4>
+                <h4 class="upgrade-header">Appointments list</h4>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-top: 20px;" class="row">
             <?Php for($i = 0; $i < 4; $i ++) : ?>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <a href="#" class="appointment-item" data-toggle="modal" data-target="#patient-app-details">
                         <div class="app-item-header">
-                            <h5>A Mosweu</h5>
+                            <h5>Alfred Mosweu</h5>
                         </div>
                         <div class="app-item-body">
-
-                        </div>
-                    </a>
-                </div>
-            <?Php endfor; ?>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <h4 class="upgrade-header">21 Jun 2018</h4>
-            </div>
-        </div>
-        <div class="row">
-            <?Php for($i = 0; $i < 4; $i ++) : ?>
-                <div class="col-lg-3">
-                    <a href="#" class="appointment-item">
-                        <div class="app-item-header">
-                            <h5>A Mosweu</h5>
-                        </div>
-                        <div class="app-item-body">
-
+                            <p>
+                                <span class="app-label">Date</span>
+                                <span class="app-data"><i class="fa fa-calendar"></i> 21 Jul 2018</span>
+                            </p>
+                            <p>
+                                <span class="app-label">Time</span>
+                                <span class="app-data"><i class="fa fa-clock-o"></i> 09:30</span>
+                            </p>
+                            <p>
+                                <span class="app-label">Service</span>
+                                <span class="app-data"><i class="fa fa-heart-o"></i> Dentist</span>
+                            </p>
                         </div>
                     </a>
                 </div>

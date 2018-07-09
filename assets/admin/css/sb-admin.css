@@ -850,19 +850,56 @@ legend {
 }
 
 .appointment-item {
-    color: #fff;
+    color: #666;
     display: block;
-    background: #ccc;
+    outline: none;
+    height: 210px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: #e1dfdf 0px 4px 18px 0px;
+}
+
+.appointment-item::after {
+    content: '';
+    background: #6ceff5;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: 0;
+}
+
+.appointment-item:hover, .appointment-item:focus {
+    color: #666;
+    outline: none;
+    text-decoration: none;
 }
 
 .app-item-header {
     font-size: 15px;
-    padding: 10px;
-    background: #3f9292;
+    padding: 25px 10px 10px 10px;
 }
 
 .app-item-header h5 {
     margin: 0px;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.app-item-body {
+    padding: 10px;
+}
+
+.app-label {
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+}
+
+.app-data {
+    font-size: 11px;
+    font-weight: 600;
+    color: #868686;
 }
 
 .text-muted {
