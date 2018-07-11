@@ -789,4 +789,36 @@ $(document).ready(function() {
             }
         });
     });
+    
+    $("#add-app-new-user").on("click", function(e) {
+        e.preventDefault();
+        //$("#create-appointment").modal("hide");
+        $("#add_user_modal").modal("show");
+    });
+    
+    $("#add-details-appointment").on("click", function(e) {
+        e.preventDefault();
+        $("#create-appointment").modal("hide");
+        $("#add-appointment-details").modal("show");
+    })
+    
+    
+    //ajax timeout
+    /*
+    //ajax timeout
+    
+    $.ajax({
+        url: "/your_ajax_method/",
+        type: "GET",
+        dataType: "json",
+        timeout: 3000, //Set your timeout value in milliseconds or 0 for unlimited
+        success: function(response) { alert(response); },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if(textStatus==="timeout") {  
+                alert("Call has timed out"); //Handle the timeout
+            } else {
+                alert("Another error was returned"); //Handle other error type
+            }
+        }
+    });​*/
 });

@@ -65,12 +65,23 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
+                                <p>Add new or search existing patient.</p>
+                            </div>
+                            <div class="col-lg-12">
+                                <?Php echo form_open(base_url() . "", array()); ?>
+                                    <div style="margin-bottom: 50px;" class="app-search-grp">
+                                        <input type="text" name="app_search_patient"  placeholder="Search patient" id="app-search-patient" />
+                                        <span id="app-se-icon"><i class="fa fa-search"></i></span>
+                                    </div>
+                                <?Php echo form_close(); ?>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="row">
                             <div class="col-lg-12">
+                                <a id="add-details-appointment" class="btn btn-save pull-right" href="#">Continue <i class="fa fa-angle-right"></i></a>
+                                <a style="margin-right: 15px;" id="add-app-new-user" class="btn btn-save pull-right" href=""><i class="fa fa-plus"></i> New patient</a>
                             </div>
                         </div>
                     </div>
@@ -95,6 +106,83 @@
                     <div class="modal-footer">
                         <div class="row">
                             <div class="col-lg-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="modal fade" id="add-appointment-details">
+            <div class="modal-dialog" id="add-app-details-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">APPOINTMENT DETAILS</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="app-field-group">
+                                    <label class="input-label" for="">Date</label>
+                                    <input type="" name="" class="app-input-field" id="" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="app-field-group">
+                                    <label class="input-label" for="">Time</label>
+                                    <select name="" class="app-input-field" id="">
+                                        <option></option>
+                                    </select>
+                                    <!--<div class="select" tabindex="1">
+                                        <input class="selectopt" name="test" type="radio" id="opt1" checked>
+                                        <label for="opt1" class="option">Oranges</label>
+                                        <input class="selectopt" name="test" type="radio" id="opt2">
+                                        <label for="opt2" class="option">Apples</label>
+                                        <input class="selectopt" name="test" type="radio" id="opt3">
+                                        <label for="opt3" class="option">Grapefruit</label>
+                                        <input class="selectopt" name="test" type="radio" id="opt4">
+                                        <label for="opt4" class="option">Bananas</label>
+                                        <input class="selectopt" name="test" type="radio" id="opt5">
+                                        <label for="opt5" class="option">Watermelon</label>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="app-field-group">
+                                    <label class="input-label" for="">Service</label>
+                                    <select name="" class="app-input-field" id="">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="app-field-group">
+                                    <label class="input-label" for="">Service provider</label>
+                                    <select name="" class="app-input-field" id="">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="app-field-group">
+                                    <p>
+                                        <label style="margin: 10px 0px 0px 0px" class="input-label" for="">Notes</label>
+                                        <textarea rows="4" name="" class="app-multi-field" id=""></textarea>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a id="add-app-new-user" class="btn btn-save pull-right" href="">Save appointment</a>
                             </div>
                         </div>
                     </div>

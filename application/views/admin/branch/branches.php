@@ -184,7 +184,7 @@
                                                 echo "<span title='Default branch' class='def-branch'><i class='fa fa-check-circle'></i></span> ";
                                             }
                                         ?>
-                                        <a href="<?Php echo base_url(); ?>branch/update/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-pencil"></i></a>
+                                        <a title="Branch settings" id="branch-setup-link" href="<?Php echo base_url(); ?>branch/update/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-gear"></i></a>
                                     </span>
                                 </h5>
                             </div>

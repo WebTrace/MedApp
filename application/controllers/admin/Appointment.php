@@ -5,6 +5,7 @@
         {
             $this->load->view("admin/templates/header");
             $this->load->view("admin/appointments/appointments");
+            $this->load->view("admin/patients/partial/add-patient-form");
             $this->load->view("admin/templates/footer");
         }
         
