@@ -1,7 +1,7 @@
 <?Php if(count($branch_details) > 0) : $branch = $branch_details[0] ?>
     <div class="row menu-row">
         <div class="col-lg-12">
-            <h4>Branch settings</h4>
+            <h4><a class="nav-back-btn" href="<?Php echo base_url(); ?>branch/settings/<?Php echo md5($this->session->userdata("")); ?>"><i class="fa fa-angle-left"></i></a> Branch settings</h4>
         </div>
     </div>
     <?Php echo form_open(base_url() . "", array()); ?>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7">
+            <!--<div class="col-lg-7">
                 <div class="row">
                     <div class="col-lg-12">
                         <h5 class="sub-branch-header upgrade-header">Manage branch services</h5>
@@ -133,16 +133,16 @@
                         <h5 class="sub-branch-header upgrade-header">Appointment schedular settings</h5>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
                 <input type="hidden" name="branch_id" value="<?Php echo $branch["branch_id"]; ?>" />
                 <button class="btn btn-save" type="submit" class="btn nav-btn"><i class="fa fa-floppy-o"></i> Save</button>
-<!--                <input type="submit" value="Save" name="" class="btn nav-btn">-->
+                <!--<input type="submit" value="Save" name="" class="btn nav-btn">-->
             </div>
         </div>
     <?Php echo form_close(); ?>
 <?Php else : ?>
-    
+    here
 <?Php endif; ?>

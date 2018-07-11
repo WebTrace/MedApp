@@ -21,6 +21,118 @@
         </div>
     </div>
 </div>
+<div style="margin-top: 25px;" class="row">
+    <?Php if(count($branches) > 0) : ?>
+        <?Php foreach($branches as $branch) : ?>
+            <div class="col-lg-4">
+                <div class="branch-item">
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-12">
+                                <h5 style="font-size: 16px; font-weight: bold; margin: 0px 0px 10px; padding: 10px 0px; border-bottom: #f5f5f5 thin solid;"><?Php echo $branch['branch_name']; ?>
+                                    <span class="pull-right">
+                                        <?Php
+                                            if($this->session->userdata("BRANCH_ID") == $branch['branch_id'])
+                                            {
+                                                echo "<span title='Default branch' class='def-branch'><i class='fa fa-check-circle'></i></span> ";
+                                            }
+                                        ?>
+                                        <a title="Branch settings" id="branch-setup-link" href="<?Php echo base_url(); ?>branch/settings/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-gear"></i></a>
+                                    </span>
+                                </h5>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Reference number
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo 56899745;//$branch['branch_name']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Contact number
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo $branch['email_address']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Address line
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo $branch['address_line']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                City
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo $branch['city']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Province
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo $branch['province']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Location
+                            </div>
+                            <div class="col-lg-7">
+                                <span><?Php echo $branch['location']; ?></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="br-details-wrap">
+                            <div class="col-lg-5">
+                                Date created
+                            </div>
+                            <div class="col-lg-7">
+                                <span>
+                                    <?Php
+                                        $timestamp = strtotime($branch['date_created']);
+                                        echo date('d M Y', $timestamp);
+                                    ?>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?Php endforeach; ?>
+    <?Php else : ?>
+        <p>No branches</p>
+    <?Php endif; ?>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="modal fade waiting_room" id="buy-branch-denied">
@@ -162,121 +274,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        
-    </div>
-</div>
-<div style="margin-top: 25px;" class="row">
-    <?Php if(count($branches) > 0) : ?>
-        <?Php foreach($branches as $branch) : ?>
-            <div class="col-lg-4">
-                <div class="branch-item">
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-12">
-                                <h5 style="font-size: 16px; font-weight: bold; margin: 0px 0px 10px; padding: 10px 0px; border-bottom: #f5f5f5 thin solid;"><?Php echo $branch['branch_name']; ?>
-                                    <span class="pull-right">
-                                        <?Php
-                                            if($this->session->userdata("BRANCH_ID") == $branch['branch_id'])
-                                            {
-                                                echo "<span title='Default branch' class='def-branch'><i class='fa fa-check-circle'></i></span> ";
-                                            }
-                                        ?>
-                                        <a title="Branch settings" id="branch-setup-link" href="<?Php echo base_url(); ?>branch/update/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-gear"></i></a>
-                                    </span>
-                                </h5>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Reference number
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo 56899745;//$branch['branch_name']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Contact number
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo $branch['email_address']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Address line
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo $branch['address_line']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                City
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo $branch['city']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Province
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo $branch['province']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Location
-                            </div>
-                            <div class="col-lg-7">
-                                <span><?Php echo $branch['location']; ?></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="br-details-wrap">
-                            <div class="col-lg-5">
-                                Date created
-                            </div>
-                            <div class="col-lg-7">
-                                <span>
-                                    <?Php
-                                        $timestamp = strtotime($branch['date_created']);
-                                        echo date('d M Y', $timestamp);
-                                    ?>
-                                </span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?Php endforeach; ?>
-    <?Php else : ?>
-        <p>No branches</p>
-    <?Php endif; ?>
 </div>

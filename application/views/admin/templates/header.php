@@ -116,6 +116,9 @@
                                     <a href="<?Php echo base_url(); ?>user/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                                 </li>
                                 <li>
+                                    <a href="<?Php echo base_url(); ?>user/profile"><i class="fa fa-fw fa-calendar-times-o"></i> My schedule</a>
+                                </li>
+                                <li>
                                     <a href="<?Php echo base_url(); ?>settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
                                 </li>
                                 <li class="divider"></li>

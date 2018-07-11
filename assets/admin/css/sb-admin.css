@@ -1217,6 +1217,15 @@ legend {
     margin: 0px;
 }
 
+.nav-back-btn {
+    margin-right: 10px;
+    padding: 10px 10px 10px 0px;
+}
+
+.branch-setting-icon {
+    font-size: 25px;
+}
+
 .setting-btn {
     color: #4e4f50;
     display: block;

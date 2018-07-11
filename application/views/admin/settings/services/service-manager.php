@@ -1,6 +1,6 @@
 <div class="row menu-row">
     <div class="col-lg-6">
-        <h4>Services manager</h4>
+        <h4><a class="nav-back-btn" href="<?Php echo base_url(); ?>branch/settings/<?Php echo md5($branch_id); ?>"><i class="fa fa-angle-left"></i></a> Services manager</h4>
     </div>
     <div class="col-lg-6">
         <div class="row">
@@ -19,5 +19,15 @@
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="sub-branch-header upgrade-header">Manage branch services</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        
     </div>
 </div>

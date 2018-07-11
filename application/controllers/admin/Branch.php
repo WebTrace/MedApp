@@ -76,5 +76,23 @@
             $this->load->view("admin/branch/update", $data);
             $this->load->view("admin/templates/footer");
         }
+        
+        public function branch_settings($branch_id)
+        {
+            $data['branch_id'] = $branch_id;
+            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/branch/settings", $data);
+            $this->load->view("admin/templates/footer");
+        }
+        
+        public function set_working_hours($branch_id)
+        {
+            $data['branch_id'] = $branch_id;
+            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/branch/working-hours", $data);
+            $this->load->view("admin/templates/footer");
+        }
     }
 ?>
