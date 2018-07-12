@@ -1770,6 +1770,16 @@ fi-file-item {
     background: #eee;
 }
 
+.edit-oprational-hours table thead > tr > th {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.operational-hours-view table thead > tr > th {
+    font-size: 15px;
+    font-weight: bold;
+}
+
 @media (min-width: 768px) {
     #modal-format {
         width: 736px;
@@ -1781,6 +1791,10 @@ fi-file-item {
     
     #waiting-room-modal {
         width: 570px;
+    }
+    
+    #working-hours {
+        width: 400px;
     }
 
     #remove-confirm {

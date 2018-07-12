@@ -90,6 +90,17 @@
         {
             $data['branch_id'] = $branch_id;
             
+            $branch_working_days = $this->branch_model->get_branch_working_days($branch_id)->result_array();
+            
+            if(count($branch_working_days) > 0)
+            {
+                $data['working_days'] = $branch_working_days;
+            }
+            else
+            {
+                $data['working_days'] = $this->branch_model->get_default_working_hours()->result_array();
+            }
+            
             $this->load->view("admin/templates/header");
             $this->load->view("admin/branch/working-hours", $data);
             $this->load->view("admin/templates/footer");

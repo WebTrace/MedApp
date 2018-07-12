@@ -215,6 +215,35 @@
             $this->db->insert('branch', $branch_data);
         }
         
+        public function_create_working_day($branch_id, $weekday_code, $from, $to)
+        {
+            $data = array(
+                'branch_id'         => $branch_id,
+                'weekday_code'      => $weekday_code,
+                'from'              => $from,
+                'to'                => $to
+            );
+            
+            $this->insert('branch_working_day', $data);
+        }
+        
+        public function get_branch_working_days($branch_id)
+        {
+            $this->db->from("weekday w");
+            $this->db->join("branch_working_day b", "w.weekday_code = b.weekday_code");
+            $this->db->where("md5(branch_working_day_id)", $branch_id);
+            
+            return $this->db->get();
+        }
+        
+        public function get_default_working_hours()
+        {
+            $this->db->from("weekday w");
+            $this->db->join("default_working_day d", "w.weekday_code = d.weekday_code");
+            
+            return $this->db->get();
+        }
+        
         public function create_branch_manager($manager_id, $branch_id)
         {
             $data = array(

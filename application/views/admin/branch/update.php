@@ -1,7 +1,7 @@
 <?Php if(count($branch_details) > 0) : $branch = $branch_details[0] ?>
     <div class="row menu-row">
         <div class="col-lg-12">
-            <h4><a class="nav-back-btn" href="<?Php echo base_url(); ?>branch/settings/<?Php echo md5($this->session->userdata("")); ?>"><i class="fa fa-angle-left"></i></a> Branch settings</h4>
+            <h4><a class="nav-back-btn" href="<?Php echo base_url(); ?>branch/settings/<?Php echo md5($branch['branch_id']); ?>"><i class="fa fa-angle-left"></i></a> Branch settings</h4>
         </div>
     </div>
     <?Php echo form_open(base_url() . "", array()); ?>
