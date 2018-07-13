@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-lg-7">
         <h5 class="sub-branch-header upgrade-header">
-            Manage working hours <a class="pull-right" href="#" data-toggle="modal" data-target="#edit-working-hours"><span><i class="fa fa-pencil"></i></span></a>
+            Manage working days <a class="pull-right" href="#" data-toggle="modal" data-target="#edit-working-hours"><span><i class="fa fa-pencil"></i></span> Edit</a>
         </h5>
     </div>
 </div>
@@ -43,17 +43,22 @@
                 </thead>
                 <tbody>
                     <?Php if(count($working_days) > 0) : ?>
-                        <?Php foreach($working_days as $working_day) : ?>
+                        <?Php foreach($working_days as $working_day) : 
+                            $o_time = strtotime($working_day["to_time"]);
+                            $from_time = strtotime($working_day["from_time"]);
+                    
+                            $total_working_hours = round(abs($o_time - $from_time) / 3600, 2)
+                        ?>
                             <tr>
                                 <td><?Php echo $working_day["weekday_name"]; ?></td>
-                                <td><?Php echo $working_day["from"]; ?></td>
-                                <td><?Php echo $working_day["to"]; ?></td>
-                                <td>9 hrs</td>
+                                <td><?Php echo date('h:i', strtotime($working_day["from_time"])); ?> - am</td>
+                                <td><?Php echo date('h:i', strtotime($working_day["to_time"])); ?> - pm</td>
+                                <td><?Php echo $total_working_hours; ?></td>
                                 <td><i class="fa fa-check"></i></td>
                             </tr>
                         <?Php endforeach; ?>
                     <?Php else : ?>
-                    
+                        
                     <?Php endif; ?>
                 </tbody>
             </table>
@@ -72,75 +77,349 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="edit-oprational-hours">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Day</th>
-                                                <th>From</th>
-                                                <th>To</th>
-                                                <th>24 hours</th>
-                                                <th>Block</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Mon</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tue</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Wed</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Thu</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fri</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sat</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sun</td>
-                                                <td>08:00</td>
-                                                <td>18:00</td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                <td><input type="checkbox" name=""  class="" id=""/></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <?Php echo form_open(base_url() . "workdays/add", array("id" => "")); ?>
+                                    <div class="edit-oprational-hours">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Day</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>Block</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Mon</td>
+                                                    <td>
+                                                        <select name="mon_hr_start" id="mon_start_hr">
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="mon_hr_start_fmt" id="mon_start_fmt" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select name="mon_hr_end" id="mon_end_hr">
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="mon_hr_end_fmt" id="mon_end_fmt" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name="mon_block"  class="" id="mon_block"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tue</td>
+                                                    <td>
+                                                        <select name="tue_start_hr" id="tue_start_hr">
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="tue_start_fmt" id="tue_start_fmt">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select name="tue_end_hr" id="tue_end_hr">
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="tue_end_fmt" id="tue_end_fmt">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id="tue_block"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Wed</td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Thu</td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fri</td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sat</td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sun</td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option value="06:00">06:00</option>
+                                                            <option value="06:30">06:30</option>
+                                                            <option value="07:00">07:00</option>
+                                                            <option value="07:30">07:30</option>
+                                                            <option value="08:00">08:00</option>
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:00">09:00</option>
+                                                            <option value="09:30">09:30</option>
+                                                            <option value="10:00">10:00</option>
+                                                            <option value="10:30">10:30</option>
+                                                            <option value="11:00">11:00</option>
+                                                            <option value="11:30">11:30</option>
+                                                            <option value="12:00">12:00</option>
+                                                        </select>
+                                                        <select name="" class="">
+                                                            <option>am</option>
+                                                            <option>pm</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <?Php echo form_close(); ?>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-save" id="">Save</button>
+                        <button type="button" class="btn btn-save" id="update_branch_working_hrs">Save</button>
                     </div>
                 </div>
             </div>

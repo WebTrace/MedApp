@@ -802,6 +802,46 @@ $(document).ready(function() {
         $("#add-appointment-details").modal("show");
     })
     
+    $("#update_branch_working_hrs").on("click", function() {
+        /*var mon_start_hr    = $("#mon_start_hr").val(),
+            mon_start_fmt   = $("#mon_start_fmt").val(),
+            mon_end_hr      = $("#mon_end_hr").val(),
+            mon_end_fmt     = $("#mon_end_fmt").val(),
+            mon_block       = false;
+        
+        if($("#mon_block").is(":checked"))
+        {
+            mon_block = true;
+        }
+        
+        //----------------------------------------------------------
+        var tue_start_hr    = $("#tue_start_hr").val(),
+            tue_start_fmt   = $("#tue_start_fmt").val(),
+            tue_end_hr      = $("#tue_end_hr").val(),
+            tue_end_fmt     = $("#tue_end_fmt").val(),
+            tue_block       = false;
+        
+        if($("#tue_block").is(":checked"))
+        {
+            tue_block = true;
+        }
+        
+        var tue_start_hr    = $("#tue_start_hr").val(),
+            tue_start_fmt   = $("#tue_start_fmt").val(),
+            tue_end_hr      = $("#tue_end_hr").val(),
+            tue_end_fmt     = $("#tue_end_fmt").val(),
+            tue_block       = false;
+        
+        if($("#tue_block").is(":checked"))
+        {
+            tue_block = true;
+        }
+        
+        alert(mon_start_hr + mon_start_fmt + mon_end_hr + mon_end_fmt, mon_block);
+        alert(tue_start_hr + tue_start_fmt + tue_end_hr + tue_end_fmt, tue_block);*/
+        
+        
+    });
     
     //ajax timeout
     /*

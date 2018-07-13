@@ -215,8 +215,9 @@
             $this->db->insert('branch', $branch_data);
         }
         
-        public function_create_working_day($branch_id, $weekday_code, $from, $to)
+        public function create_working_day($branch_id, $weekday_code, $from, $to)
         {
+            $this->input->post("");
             $data = array(
                 'branch_id'         => $branch_id,
                 'weekday_code'      => $weekday_code,

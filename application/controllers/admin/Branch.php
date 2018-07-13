@@ -86,6 +86,11 @@
             $this->load->view("admin/templates/footer");
         }
         
+        public function create_working_day()
+        {
+            
+        }
+        
         public function set_working_hours($branch_id)
         {
             $data['branch_id'] = $branch_id;

@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <ul class="nav-controls pull-right">
                     <li>
-                        <a href="<?Php echo base_url()?>addon/branch" class="link-menu addon-branch" id="addon-branch" accesskey="t">
+                        <a data-toggle="modal" data-target="#add-service-modal" href="#" accesskey="t">
                             <i class="fa fa-plus"></i> New service
                         </a>
                     </li>
@@ -33,6 +33,31 @@
             <p>
                 
             </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="modal fade add-service-modal" id="add-service-modal">
+            <div class="modal-dialog" id="add-branch-service">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h2 class="modal-title">ADD SERVICE</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="edit-oprational-hours">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-save" id="">Save</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
