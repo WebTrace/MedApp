@@ -22,14 +22,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-7">
-        <h5 class="sub-branch-header upgrade-header">
-            Manage working days <a class="pull-right" href="#" data-toggle="modal" data-target="#edit-working-hours"><span><i class="fa fa-pencil"></i></span> Edit</a>
-        </h5>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-7 border-right">
+        <div class="row">
+            <div class="col-lg-12">
+                <h5 class="sub-branch-header upgrade-header">
+                    Manage working days <a class="app-edit-link pull-right" href="#" data-toggle="modal" data-target="#edit-working-hours"><span><i class="fa fa-pencil"></i></span> Edit</a>
+                </h5>
+            </div>
+        </div>
         <div class="operational-hours-view">
             <table class="table table-striped">
                 <thead>
@@ -64,6 +64,49 @@
             </table>
         </div>
     </div>
+    <div class="col-lg-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h5 class="sub-branch-header upgrade-header">
+                    Appointments settings <a class="app-edit-link pull-right" href="#" data-toggle="modal" data-target="#edit-working-hours"><span><i class="fa fa-pencil"></i></span> Edit</a>
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                    <label for="">Appoontment start time</label>
+                    <select name="">
+                        <option>06:00</option>
+                        <option>06:30</option>
+                        <option>07:00</option>
+                        <option>07:30</option>
+                        <option>08:00</option>
+                        <option>08:30</option>
+                        <option>09:00</option>
+                        <option>09:30</option>
+                        <option>10:00</option>
+                        <option>10:30</option>
+                        <option>11:00</option>
+                        <option>11:30</option>
+                        <option>12:00</option>
+                    </select>
+                    <select name="">
+                        <option>am</option>
+                        <option>pm</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="">Appointment duration</label>
+                    <select name="appointment_duration">
+                        <option></option>
+                        <option>15 minutes</option>
+                        <option>30 minutes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -85,6 +128,7 @@
                                                     <th>Day</th>
                                                     <th>From</th>
                                                     <th>To</th>
+                                                    <th>Allow appointments</th>
                                                     <th>Block</th>
                                                 </tr>
                                             </thead>
@@ -134,6 +178,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name="mon_block"  class="" id="mon_block"/></td>
+                                                    <td><input type="checkbox" name="mon_block"  class="" id="mon_block"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tue</td>
@@ -179,6 +224,7 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
+                                                    <td><input type="checkbox" name=""  class="" id="tue_block"/></td>
                                                     <td><input type="checkbox" name=""  class="" id="tue_block"/></td>
                                                 </tr>
                                                 <tr>
@@ -226,6 +272,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Thu</td>
@@ -271,6 +318,7 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
@@ -318,6 +366,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sat</td>
@@ -364,6 +413,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sun</td>
@@ -409,6 +459,7 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
+                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                             </tbody>

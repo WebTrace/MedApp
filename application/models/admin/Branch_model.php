@@ -228,7 +228,7 @@
             $this->insert('branch_working_day', $data);
         }
         
-        public function get_branch_working_days($branch_id)
+        public function fetch_branch_working_days($branch_id)
         {
             $this->db->from("weekday w");
             $this->db->join("branch_working_day b", "w.weekday_code = b.weekday_code");
@@ -237,12 +237,33 @@
             return $this->db->get();
         }
         
-        public function get_default_working_hours()
+        public function fetch_single_user_branch_workday($day, $branch_id)
+        {
+            $this->db->from("workday w");
+            $this->db->join("default_working_day d", "w.weekday_code = d.weekday_code");
+            $this->db->where("w.weekday_number = d.weekday_code");
+        }
+        
+        public function fetch_single_branch_workday($day)
+        {
+            $this->db->from("weekday w");
+            $this->db->join("default_working_day d", "w.weekday_code = d.weekday_code");
+            $this->db->where("w.weekday_number", $day);
+            
+            return $this->db->get();
+        }
+        
+        public function fetch_default_working_hours()
         {
             $this->db->from("weekday w");
             $this->db->join("default_working_day d", "w.weekday_code = d.weekday_code");
             
             return $this->db->get();
+        }
+        
+        public function fetch_appointment_start_time()
+        {
+            return $this->db->get("default_appointment_setting");
         }
         
         public function create_branch_manager($manager_id, $branch_id)

@@ -145,7 +145,6 @@
         
         
         
-        
 
         /*Get all Appointments */
 

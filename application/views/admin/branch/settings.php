@@ -26,10 +26,10 @@
         </a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-        <a href="<?Php echo base_url(); ?>schedule/appointment/<?Php echo $branch_id; ?>" class="setting-btn">
+        <a href="<?Php echo base_url(); ?>branch/schedular/<?Php echo $branch_id; ?>" class="setting-btn">
             <h2 class="branch-setting-icon icon-size"><i class="fa fa-calendar-minus-o"></i></h2>
             <h4>Appointment schedule</h4>
-            <p>Manage appointment schedule</p>
+            <p>Manage appointment duration</p>
         </a>
     </div>
 </div>

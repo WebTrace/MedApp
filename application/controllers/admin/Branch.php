@@ -91,11 +91,11 @@
             
         }
         
-        public function set_working_hours($branch_id)
+        public function fetch_working_hours($branch_id)
         {
             $data['branch_id'] = $branch_id;
             
-            $branch_working_days = $this->branch_model->get_branch_working_days($branch_id)->result_array();
+            $branch_working_days = $this->branch_model->fetch_branch_working_days($branch_id)->result_array();
             
             if(count($branch_working_days) > 0)
             {
@@ -103,8 +103,37 @@
             }
             else
             {
-                $data['working_days'] = $this->branch_model->get_default_working_hours()->result_array();
+                $data['working_days'] = $this->branch_model->fetch_default_working_hours()->result_array();
             }
+            
+            $this->load->view("admin/templates/header");
+            $this->load->view("admin/branch/working-hours", $data);
+            $this->load->view("admin/templates/footer");
+            
+            $default_time = $this->branch_model->fetch_appointment_start_time()->result_array()[0];
+            $single_workday = $this->branch_model->fetch_single_branch_workday(2)->result_array()[0];
+            
+            $appointemnt_start_time = strtotime($default_time['appointment_start_time']);
+            $appointment_duration = $default_time['appointment_duration'];
+            
+            $formula = (10 * 60) / $appointment_duration;
+            
+            for($i = 0; $i < $formula; $i ++)
+            {
+                $new_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
+                echo $new_time . "<br>";
+                
+                $appointemnt_start_time = strtotime($new_time);
+            }
+            
+            $appointment_duration_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
+            
+            //echo "Date: " . date("w") . " Start: " . date('H:i', $appointemnt_start_time) . ", Duration: " . $appointment_duration . ", " . $appointment_duration_time;
+        }
+        
+        public function appointment_settings($branch_id)
+        {
+            $data['branch_id'] = $branch_id;
             
             $this->load->view("admin/templates/header");
             $this->load->view("admin/branch/working-hours", $data);

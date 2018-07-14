@@ -114,11 +114,11 @@ $route['user/profile']                              = 'admin/users/update_user';
 $route['settings/branches']                         = 'admin/branch';
 $route['settings/security']                         = 'admin/settings/security_setting';
 $route['branch/services/(:any)']                    = 'admin/services/update_services/$1';
-$route['settings/schedular']                        = 'admin/schedular';
+$route['branch/schedular/(:any)']                   = 'admin/schedular/schedular_settings/$1';
 $route['branch/create_branch']                      = 'admin/branch/create_branch';
 $route['branch/update/(:any)']                      = 'admin/branch/update_branch/$1';
 $route['branch/settings/(:any)']                    = 'admin/branch/branch_settings/$1';
-$route['branch/workingdays/(:any)']                 = 'admin/branch/set_working_hours/$1';
+$route['branch/workingdays/(:any)']                 = 'admin/branch/fetch_working_hours/$1';
 $route['branch/new']                                = 'admin/branch/new_branch';
 $route['branch/branch_404']                         = 'admin/branch/branch_404';
 

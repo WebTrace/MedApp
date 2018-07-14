@@ -374,7 +374,7 @@
         public function new_record_value($id, $table, $column)
         {
             //select new user id
-            $query = $this->db->query("SELECT " . $column . " FROM " . $table . " ORDER BY " . $id . " DESC LIMIT 0, 1");
+            $query = $this->db->query("select " . $column . " from " . $table . " order by " . $id . " desc limit 0, 1");
             
             return $query;
         }
