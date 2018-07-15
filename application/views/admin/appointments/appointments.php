@@ -126,13 +126,14 @@
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Date</label>
-                                    <input type="" name="" class="app-input-field" id="" placeholder="">
+                                    <input type="text" name="appointment_date" class="app-input-field" id="appointment-date" placeholder="">
+                                    <input type="hidden" id="appointment-slots-url" value="<?Php echo base_url(); ?>appointment/slots">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Time</label>
-                                    <select name="" class="app-input-field" id="">
+                                    <select name="" class="app-input-field" id="available-time-slots">
                                         <option></option>
                                     </select>
                                     <!--<div class="select" tabindex="1">

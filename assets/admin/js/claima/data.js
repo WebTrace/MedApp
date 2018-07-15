@@ -843,6 +843,32 @@ $(document).ready(function() {
         
     });
     
+    $("#appointment-date").on("change", function() {
+        var appoitntment_date = $(this).val();
+        
+        $.ajax({
+            url: $("#appointment-slots-url").val(),
+            type: 'post',
+            data: { app_date: appoitntment_date },
+            //dataType: 'json',
+            success: function(response) {
+                /*if(response.length > 0)
+                {
+                    var num_slots = response.length,
+                        append_slot = "";
+                    
+                    for(var i = 0; i < num_slots; i ++)
+                    {
+                        append_slot += "<option value='" + response[i] + "'>" + response[i] + "</option>"
+                    }
+                    
+                    $("#available-time-slots").append(append_slot);
+                }*/
+                console.log(response);
+            }
+        });
+    })
+    
     //ajax timeout
     /*
     //ajax timeout

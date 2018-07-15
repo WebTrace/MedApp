@@ -8,7 +8,6 @@
             /*$this->load->view("admin/templates/header");
             $this->load->view("admin/settings/scheduler/schedule-manager", $data);
             $this->load->view("admin/templates/footer");*/
-            
         }
     }
 ?>

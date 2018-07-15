@@ -110,25 +110,48 @@
             $this->load->view("admin/branch/working-hours", $data);
             $this->load->view("admin/templates/footer");
             
-            $default_time = $this->branch_model->fetch_appointment_start_time()->result_array()[0];
-            $single_workday = $this->branch_model->fetch_single_branch_workday(2)->result_array()[0];
+        }
+        
+        public function appointment_slots()
+        {
+            $appointment_date   = $this->input->post("app_date");
+            $weekday            = date('w', strtotime($appointment_date));
+            $actual_weekday     = $weekday + 1;
             
-            $appointemnt_start_time = strtotime($default_time['appointment_start_time']);
-            $appointment_duration = $default_time['appointment_duration'];
-            
-            $formula = (10 * 60) / $appointment_duration;
-            
-            for($i = 0; $i < $formula; $i ++)
+            if($this->branch_model->fetch_single_branch_workday($actual_weekday)->num_rows() > 0)
             {
-                $new_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
-                echo $new_time . "<br>";
-                
-                $appointemnt_start_time = strtotime($new_time);
+                //fetch single appointment work day
+                $single_workday = $this->branch_model->fetch_single_branch_workday($actual_weekday)->result_array()[0];
+
+                //fetch appointment duration
+                $default_time = $this->branch_model->fetch_appointment_start_time()->result_array()[0];
+
+
+                $appointemnt_start_time = strtotime($single_workday['from_time']);
+                $appointment_duration   = $default_time['appointment_duration'];
+                $single_workday_hours   = round(abs(strtotime($single_workday['to_time']) - strtotime($single_workday['from_time'])) / 3600, 2);
+
+                //create appointment slots
+                $appointment_slots      = ($single_workday_hours * 60) / $appointment_duration;
+
+                //store appointment slots in a new a array;
+                $appointment_time       = array(date('h:i', $appointemnt_start_time));
+
+                for($i = 1; $i <= $appointment_slots - 1; $i ++)
+                {
+                    $new_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
+                    $appointment_time[$i] = $new_time;
+
+                    $appointemnt_start_time = strtotime($new_time);
+                }
+
+                echo "Date: " . $appointment_date . " -- " . $actual_weekday;
+                //echo json_encode($appointment_time);
             }
-            
-            $appointment_duration_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
-            
-            //echo "Date: " . date("w") . " Start: " . date('H:i', $appointemnt_start_time) . ", Duration: " . $appointment_duration . ", " . $appointment_duration_time;
+            else
+            {
+                echo "No slots available";
+            }
         }
         
         public function appointment_settings($branch_id)
@@ -138,6 +161,16 @@
             $this->load->view("admin/templates/header");
             $this->load->view("admin/branch/working-hours", $data);
             $this->load->view("admin/templates/footer");
+        }
+        
+        public function fetch_branch_service()
+        {
+            $branch_id = $this->session->userdata("BRANCH_ID");
+        }
+        
+        public function fetch_branch_service_practitioner()
+        {
+            
         }
     }
 ?>

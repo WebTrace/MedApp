@@ -253,6 +253,11 @@
             return $this->db->get();
         }
         
+        public function fetch_branch_service()
+        {
+            
+        }
+        
         public function fetch_default_working_hours()
         {
             $this->db->from("weekday w");
