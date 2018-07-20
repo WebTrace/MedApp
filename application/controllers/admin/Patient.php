@@ -123,6 +123,24 @@
             }
         }
         
+        public function patient_app_search()
+        {
+            $search_param   = $this->input->post('query');
+            $ajax_flag      = $this->input->post('flag');
+            $branch_id      = $this->session->userdata('BRANCH_ID');
+            
+            $search_results = $this->patient_model->search_app_patient($search_param, $branch_id)->result_array();
+            
+            if(isset($ajax_flag) && $ajax_flag == 1)
+            {
+                echo json_encode($search_results);
+            }
+            else
+            {
+                return $search_results;
+            }
+        }
+        
         //fetch billing types
         public function fetch_billing_type()
         {

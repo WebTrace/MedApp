@@ -37,7 +37,7 @@
         
         public function count_login_attempt($login_id, $current_date)
         {
-            $sql = "SELECT login_attempt_id, COUNT(*) AS today_login FROM login_attempt WHERE(login_id = $login_id AND login_date = '$current_date')";
+            $sql = "select login_attempt_id, count(*) AS today_login from login_attempt where(login_id = $login_id and login_date = '$current_date')";
             
             return $this->db->query($sql);
         }
@@ -51,34 +51,43 @@
         
         public function search_branch_patient($id_number)
         {
-            $sql = "SELECT * FROM user WHERE($id_number IN(SELECT id_number FROM 
-                    user u JOIN patient p ON u.user_id = p.user_id JOIN treatment_branch t ON p.patient_id = t.patient_id)";
+            $sql = "select * from user where($id_number in(select id_number from 
+                    user u join patient p on u.user_id = p.user_id join treatment_branch t ON p.patient_id = t.patient_id)";
+            
+            return $this->db->query($sql);
+        }
+        
+        public function search_app_patient($search_param, $branch_id)
+        {
+            $sql = "select first_name, last_name, id_number, p.patient_id, tb.branch_id from user u join patient p 
+                    on u.user_id = p.user_id join treatment_branch tb on p.patient_id = tb.patient_id 
+                    where((first_name like '%$search_param%' or last_name like '%$search_param%' or id_number like '%$search_param%') and branch_id = $branch_id)";
             
             return $this->db->query($sql);
         }
         
         public function fetch_patient_wating_room($patient_id)
         {
-            $sql = "SELECT * FROM appointment a JOIN app_type at ON a.appointment_id = at.appointment_id
-                    LEFT JOIN patient_appointment_status s ON a.appointment_id = s.appointment_id
-                    JOIN appointment_status ap ON s.appointment_status_code = ap.appointment_status_code
-                    JOIN appointment_billing ab ON a.appointment_id = ab.appointment_id
-                    JOIN patient_billing_type pb ON ab.patient_billing_type_id = pb.patient_billing_type_id
-                    WHERE((s.appointment_status_code = 1 OR s.appointment_status_code = 2) AND a.patient_id = $patient_id)";
+            $sql = "select * from appointment a join app_type at on a.appointment_id = at.appointment_id
+                    left join patient_appointment_status s on a.appointment_id = s.appointment_id
+                    join appointment_status ap ON s.appointment_status_code = ap.appointment_status_code
+                    join appointment_billing ab ON a.appointment_id = ab.appointment_id
+                    join patient_billing_type pb ON ab.patient_billing_type_id = pb.patient_billing_type_id
+                    where((s.appointment_status_code = 1 OR s.appointment_status_code = 2) and a.patient_id = $patient_id)";
             
             return $this->db->query($sql);
         }
         
         public function fetch_waiting_room($user_id)
         {
-            $sql = "SELECT u.user_id, p.patient_id, a.appointment_id, pr.practitioner_appointment_id, pr.practitioner_id, b.appointment_billing_id, b.patient_billing_type_id,
+            $sql = "select u.user_id, p.patient_id, a.appointment_id, pr.practitioner_appointment_id, pr.practitioner_id, b.appointment_billing_id, b.patient_billing_type_id,
                     first_name, last_name, appointment_title, reason, at.appointment_type_code, t.name, s.appointment_status_code, i.name, bt.billing_type_code, bi.billing_name
-                    FROM user u JOIN patient p ON u.user_id = p.user_id LEFT JOIN appointment a ON p.patient_id = a.patient_id
-                    JOIN app_type at ON a.appointment_id = at.appointment_id JOIN appointment_type t ON at.appointment_type_code = t.appointment_type_code
-                    LEFT JOIN patient_appointment_status s ON a.appointment_id = s.appointment_id LEFT JOIN appointment_status i ON s.appointment_status_code = i.appointment_status_code
-                    LEFT JOIN practitioner_appointment pr ON a.appointment_id = pr.appointment_id LEFT JOIN appointment_billing b ON a.appointment_id = b.appointment_id
-                    LEFT JOIN patient_billing_type bt ON b.patient_billing_type_id = bt.patient_billing_type_id LEFT JOIN billing_type bi ON bt.billing_type_code = bi.billing_type_code
-                    WHERE((s.appointment_status_code = 1 OR s.appointment_status_code = 3) AND at.appointment_type_code = 2 AND u.user_id = $user_id)";
+                    from user u JOIN patient p ON u.user_id = p.user_id left join appointment a on p.patient_id = a.patient_id
+                    join app_type at ON a.appointment_id = at.appointment_id JOIN appointment_type t on at.appointment_type_code = t.appointment_type_code
+                    left join patient_appointment_status s on a.appointment_id = s.appointment_id left join appointment_status i ON s.appointment_status_code = i.appointment_status_code
+                    left join practitioner_appointment pr on a.appointment_id = pr.appointment_id left join appointment_billing b ON a.appointment_id = b.appointment_id
+                    left join patient_billing_type bt on b.patient_billing_type_id = bt.patient_billing_type_id left join billing_type bi ON bt.billing_type_code = bi.billing_type_code
+                    where((s.appointment_status_code = 1 OR s.appointment_status_code = 3) and at.appointment_type_code = 2 AND u.user_id = $user_id)";
             
             return $this->db->query($sql);
         }

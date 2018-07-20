@@ -337,6 +337,12 @@
             }
         }
         
+        //appointment patient search
+        public function search_app_patient($search_param, $branch_id)
+        {
+            return $this->data_access->search_app_patient($search_param, $branch_id);
+        }
+        
         //convert date to MySQL date
         public function to_mysql_date($row_date)
         {

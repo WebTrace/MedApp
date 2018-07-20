@@ -869,6 +869,59 @@ $(document).ready(function() {
         });
     })
     
+    $("#response").hide();
+    $("#app-search-patient").on("keyup", function() {
+        var q       = $(this).val().trim(),
+            url     = $("#search-ex-patient").attr("action"),
+            method  = $("#search-ex-patient").attr("method");
+        console.log(q);
+        if(q.length > 0)
+        {
+            $.ajax({
+                url: url,
+                type: method,
+                dataType: 'json',
+                data: { query: q, flag: 1 },
+                success: function(response) {
+                    var html = "<ul id='search-results'>";
+                    
+                    if(response.length > 0)
+                    {
+                        for(var i = 0; i < response.length; i ++)
+                        {
+                            html += "<li>" + "<span class='patient-alias'>" + response[i].first_name + " " + response[i].last_name + "</span>" + "<span class='pull-right id-display'>" + response[i].id_number + "</span>" + "</li>";
+                        }
+                    }
+                    else
+                    {
+                        html += "<li id='no-data'>No patient found</li>";
+                    }
+                    
+                    html += "<ul>";
+                    
+                    $("#response").html(html);
+                    $("#response").show();
+                    
+                    console.log(html);
+                    console.log(response);
+                }
+            });
+        }
+    })
+    
+    $(".app-search-grp").on("click", "#response li", function() {
+        var name = $(this).find(".patient-alias").text();
+        
+        $("#app-search-patient").val(name);
+        $("#response").html("");
+        $("#response").hide();
+    })
+    
+    $("#create-appointment").on("click", function() {
+        $("#response").html("");
+        $("#response").hide();
+    });
+    
     //ajax timeout
     /*
     //ajax timeout

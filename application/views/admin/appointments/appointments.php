@@ -68,12 +68,15 @@
                                 <p>Add new or search existing patient.</p>
                             </div>
                             <div class="col-lg-12">
-                                <?Php echo form_open(base_url() . "", array()); ?>
-                                    <div style="margin-bottom: 50px;" class="app-search-grp">
-                                        <input type="text" name="app_search_patient"  placeholder="Search patient" id="app-search-patient" />
-                                        <span id="app-se-icon"><i class="fa fa-search"></i></span>
-                                    </div>
-                                <?Php echo form_close(); ?>
+                                <div class="">
+                                    <?Php echo form_open(base_url() . "patient/search", array("id" => "search-ex-patient")); ?>
+                                        <div style="margin-bottom: 50px; position: relative;" class="app-search-grp">
+                                            <input autocomplete="off" type="text" name="app_search_patient"  placeholder="Search patient" id="app-search-patient" />
+                                            <span id="app-se-icon"><i class="fa fa-search"></i></span>
+                                            <div id="response"></div>
+                                        </div>
+                                    <?Php echo form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>

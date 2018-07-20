@@ -145,7 +145,7 @@
                                 <a href="<?Php echo base_url(); ?>patients"><i class="fa fa-fw fa-user-md"></i> Patients</a>
                             </li>
                             <li>
-                                <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar"></i> Appointments</a>
+                                <a href="<?Php echo base_url(); ?>appointment"><i class="fa fa-fw fa-calendar-times-o"></i> Appointments</a>
                             </li>
                             <?Php if($this->session->userdata("USER_ROLE") != 2) : ?>
                                 <li>
