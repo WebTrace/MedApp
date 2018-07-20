@@ -9,6 +9,10 @@
             <title>CLAIMA</title>
 			<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
             <link href="<?Php echo base_url();?>assets/admin/css/bootstrap.css" rel="stylesheet">
+            
+            <!--Bootstrap datepicker-->
+            <link href="<?Php echo base_url();?>assets/admin/libs/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+            
             <!-- Custom CSS -->
             <link href="<?Php echo base_url();?>assets/admin/css/sb-admin.css" rel="stylesheet">
             <link href="<?Php echo base_url();?>assets/admin/css/joseph-tasks.css" rel="stylesheet">
@@ -23,9 +27,9 @@
             <link href="<?Php echo base_url();?>assets/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             
             <!--Tshego's library references-->
-            <link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
+            <!--<link href='<?php echo base_url();?>assets/admin/css/fullcalendar.css' rel='stylesheet' />
             <link href="<?php echo base_url();?>assets/admin/css/bootstrapValidator.min.css" rel="stylesheet" />        
-            <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+            <link href="<?php echo base_url();?>assets/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet" />-->
             <!--<link href="<?php echo base_url();?>assets/admin/css/custom.css" rel="stylesheet" /> //This file conflicts with our styles-->
             
             <!--Ace style reference-->

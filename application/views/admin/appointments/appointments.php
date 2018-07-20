@@ -10,6 +10,9 @@
                 </a>
             </li>
             <li>
+                <a href="#" class="link-menu" id="my-schedule"><i class="fa fa-fw fa-calendar-minus-o"></i> My schedule</a>
+            </li>
+            <li>
                 <a href="#" class="link-menu" id="add-appointment"><i class="fa fa-wheelchair"></i> Waiting room</a>
             </li>
         </ul>
@@ -62,20 +65,54 @@
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
                         <h2 class="modal-title">NEW APPOINTMENT</h2>
                     </div>
-                    <div class="modal-body">
+                    <div style="margin-bottom: 50px;" class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <p>Add new or search existing patient.</p>
-                            </div>
+                            <!--<div class="col-lg-12">
+                                <h5 style="font-size: 16px; font-weight: bold;" class="upgrade-header">Add new or search existing patient.</h5>
+                            </div>-->
                             <div class="col-lg-12">
                                 <div class="">
                                     <?Php echo form_open(base_url() . "patient/search", array("id" => "search-ex-patient")); ?>
-                                        <div style="margin-bottom: 50px; position: relative;" class="app-search-grp">
+                                        <div style="position: relative;" class="app-search-grp">
                                             <input autocomplete="off" type="text" name="app_search_patient"  placeholder="Search patient" id="app-search-patient" />
                                             <span id="app-se-icon"><i class="fa fa-search"></i></span>
                                             <div id="response"></div>
                                         </div>
                                     <?Php echo form_close(); ?>
+                                </div>
+                                <div id="patient-details-grp" class="row">
+                                    <!--<div class="col-lg-12">
+                                        <h5 style="font-size: 16px; font-weight: bold;" class="upgrade-header">Patient details</h5>
+                                    </div>-->
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h5 style="font-size: 15px; font-weight: bold;" class="upgrade-header">Patient details</h5>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                First name, Last name, ID number, Gender, Contact number
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h5 style="font-size: 15px; font-weight: bold;" class="upgrade-header">Appointment billing <span class="collapse-menu pull-right"><i class="fa fa-ellipsis-v"></i></span></h5>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="">
+                                                    <?Php echo form_open(base_url() . "", array("id" => "frm-billing-data")); ?>
+                                                        <p style="margin: 25px 0px 20px">Select patient billing type</p>
+                                                        <select name="" class="text-input dr-placeholder">
+                                                            <option value="">Select billing</option>
+                                                        </select>
+                                                        <input type="hidden" name="patient_id" id="patient_id" />
+                                                    <?Php echo form_close(); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,16 +166,20 @@
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Date</label>
-                                    <input type="text" name="appointment_date" class="app-input-field" id="appointment-date" placeholder="">
+                                    <input type="text" name="appointment_date" class="app-input-field patient-appointment" id="appointment-date" placeholder="">
                                     <input type="hidden" id="appointment-slots-url" value="<?Php echo base_url(); ?>appointment/slots">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Time</label>
-                                    <select name="" class="app-input-field" id="available-time-slots">
+                                    <div>
+                                        <input type="" name="" id="" class="app-input-field">
+                                        <div class="" id="app-slots"></div>
+                                    </div>
+                                    <!--<select name="" class="app-input-field" id="available-time-slots">
                                         <option></option>
-                                    </select>
+                                    </select>-->
                                     <!--<div class="select" tabindex="1">
                                         <input class="selectopt" name="test" type="radio" id="opt1" checked>
                                         <label for="opt1" class="option">Oranges</label>

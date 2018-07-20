@@ -61,7 +61,9 @@
         {
             $sql = "select first_name, last_name, id_number, p.patient_id, tb.branch_id from user u join patient p 
                     on u.user_id = p.user_id join treatment_branch tb on p.patient_id = tb.patient_id 
-                    where((first_name like '%$search_param%' or last_name like '%$search_param%' or id_number like '%$search_param%') and branch_id = $branch_id)";
+                    where((first_name like '%$search_param%' or last_name like '%$search_param%' or id_number 
+                    like '%$search_param%' or concat(first_name, ' ', last_name) like '%$search_param%' or 
+                    concat(last_name, ' ', first_name) like '%$search_param%') and branch_id = $branch_id)";
             
             return $this->db->query($sql);
         }

@@ -843,30 +843,38 @@ $(document).ready(function() {
         
     });
     
-    $("#appointment-date").on("change", function() {
+    $(".patient-appointment").on("change", function() {
         var appoitntment_date = $(this).val();
         
-        $.ajax({
-            url: $("#appointment-slots-url").val(),
-            type: 'post',
-            data: { app_date: appoitntment_date },
-            //dataType: 'json',
-            success: function(response) {
-                /*if(response.length > 0)
-                {
-                    var num_slots = response.length,
-                        append_slot = "";
-                    
-                    for(var i = 0; i < num_slots; i ++)
+        if(appoitntment_date.trim() != "")
+        {
+            $.ajax({
+                url: $("#appointment-slots-url").val(),
+                type: 'post',
+                data: { app_date: appoitntment_date },
+                dataType: 'json',
+                success: function(response) {
+                    if(response.length > 0)
                     {
-                        append_slot += "<option value='" + response[i] + "'>" + response[i] + "</option>"
+                        var num_slots = response.length,
+                            append_slot = "";
+
+                        for(var i = 0; i < num_slots; i ++)
+                        {
+                            append_slot += "<span class='slot'>" + response[i] + "</span>";
+                        }
+
+                        $("#app-slots").html(append_slot);
+                    }
+                    else
+                    {
+                        $("#app-slots").html(append_slot);
                     }
                     
-                    $("#available-time-slots").append(append_slot);
-                }*/
-                console.log(response);
-            }
-        });
+                    console.log(response);
+                }
+            });
+        }
     })
     
     $("#response").hide();
@@ -874,7 +882,7 @@ $(document).ready(function() {
         var q       = $(this).val().trim(),
             url     = $("#search-ex-patient").attr("action"),
             method  = $("#search-ex-patient").attr("method");
-        console.log(q);
+        
         if(q.length > 0)
         {
             $.ajax({
@@ -889,7 +897,9 @@ $(document).ready(function() {
                     {
                         for(var i = 0; i < response.length; i ++)
                         {
-                            html += "<li>" + "<span class='patient-alias'>" + response[i].first_name + " " + response[i].last_name + "</span>" + "<span class='pull-right id-display'>" + response[i].id_number + "</span>" + "</li>";
+                            html += "<li>" + "<span class='patient-alias'>" + response[i].first_name + " " + 
+                                response[i].last_name + "</span>" + "<span class='pull-right id-display'>" + 
+                                response[i].id_number + "</span>" + "</li>";
                         }
                     }
                     else
@@ -901,25 +911,31 @@ $(document).ready(function() {
                     
                     $("#response").html(html);
                     $("#response").show();
-                    
-                    console.log(html);
-                    console.log(response);
                 }
             });
         }
-    })
+    });
     
+    $("#patient-details-grp").hide();
     $(".app-search-grp").on("click", "#response li", function() {
         var name = $(this).find(".patient-alias").text();
         
         $("#app-search-patient").val(name);
         $("#response").html("");
         $("#response").hide();
-    })
+        
+        //fetch patient details
+        $("#patient-details-grp").slideDown();
+    });
     
     $("#create-appointment").on("click", function() {
         $("#response").html("");
         $("#response").hide();
+    });
+    
+    //datepicker
+    $("#appointment-date").datepicker({
+        format: 'dd-mm-yyyy'
     });
     
     //ajax timeout
@@ -939,5 +955,5 @@ $(document).ready(function() {
                 alert("Another error was returned"); //Handle other error type
             }
         }
-    });​*/
+    });*/
 });

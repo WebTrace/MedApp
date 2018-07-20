@@ -41,6 +41,21 @@
     box-shadow: #8c8c8c 0px 3px 6px 0px;
 }
 
+.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-bottom {
+    top: 145px !important;
+}
+
+.collapse-menu {
+    color: #ada8a8;
+    background: #f0efef;
+    width: 11px;
+    height: 19px;
+    cursor: pointer;
+    line-height: 21px;
+    text-align: center;
+    border-radius: 3px;
+}
+
 #search-results li {
     list-style-type: none;
     padding: 11px;
@@ -66,6 +81,23 @@
 #search-results {
     margin: 0px;
     padding: 0px;
+}
+
+span.slot {
+    padding: 5px 9px;
+    display: inline-block;
+    background: #eff7f8;
+    margin: 2px 1px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+div#app-slots {
+    padding: 3px;
+    box-shadow: #e4e2e2 0px 3px 5px 1px;
+    position: absolute;
+    z-index: 100;
+    background: #fff;
 }
 
 .side-nav {

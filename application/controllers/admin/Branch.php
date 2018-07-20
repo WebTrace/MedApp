@@ -122,21 +122,20 @@
             {
                 //fetch single appointment work day
                 $single_workday = $this->branch_model->fetch_single_branch_workday($actual_weekday)->result_array()[0];
-
+                
                 //fetch appointment duration
                 $default_time = $this->branch_model->fetch_appointment_start_time()->result_array()[0];
-
-
+                
                 $appointemnt_start_time = strtotime($single_workday['from_time']);
                 $appointment_duration   = $default_time['appointment_duration'];
                 $single_workday_hours   = round(abs(strtotime($single_workday['to_time']) - strtotime($single_workday['from_time'])) / 3600, 2);
-
+                
                 //create appointment slots
                 $appointment_slots      = ($single_workday_hours * 60) / $appointment_duration;
-
+                
                 //store appointment slots in a new a array;
                 $appointment_time       = array(date('h:i', $appointemnt_start_time));
-
+                
                 for($i = 1; $i <= $appointment_slots - 1; $i ++)
                 {
                     $new_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
@@ -144,13 +143,12 @@
 
                     $appointemnt_start_time = strtotime($new_time);
                 }
-
-                echo "Date: " . $appointment_date . " -- " . $actual_weekday;
-                //echo json_encode($appointment_time);
+                
+                echo json_encode($appointment_time);
             }
             else
             {
-                echo "No slots available";
+                echo json_encode(array("err" => "No slots available"));
             }
         }
         
