@@ -42,7 +42,7 @@
 }
 
 .datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-bottom {
-    top: 145px !important;
+    top: 165px !important;
 }
 
 .collapse-menu {
@@ -54,6 +54,20 @@
     line-height: 21px;
     text-align: center;
     border-radius: 3px;
+}
+
+#add-details-appointment {
+    background: #e8e6e6;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.hide-slots {
+    display: none !important;
+}
+
+#add-details-appointment {
+    
 }
 
 #search-results li {
@@ -86,10 +100,16 @@
 span.slot {
     padding: 5px 9px;
     display: inline-block;
-    background: #eff7f8;
+    /*background: #eff7f8;*/
     margin: 2px 1px;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
     cursor: pointer;
+    box-shadow: #ccc 0px 1px 1px 0px;
+}
+
+span.slot:hover {
+    background: #9dcdcf;
+    color: #fff;
 }
 
 div#app-slots {
@@ -98,6 +118,9 @@ div#app-slots {
     position: absolute;
     z-index: 100;
     background: #fff;
+    max-width: 276px;
+    max-height: 205px;
+    overflow-y: scroll;
 }
 
 .side-nav {
@@ -1436,19 +1459,18 @@ legend {
 } 
 
 ::-webkit-scrollbar-thumb {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
     background: #eee;
     border-radius: 5px;
 }
 
-#response::-webkit-scrollbar-thumb {
+#response::-webkit-scrollbar-thumb, #app-slots::-webkit-scrollbar-thumb {
     background: #bbb;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
-#response::-webkit-scrollbar-track {
+#response::-webkit-scrollbar-track, #app-slots::-webkit-scrollbar-track {
     background: #fff;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 #save-patient-request {

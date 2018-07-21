@@ -871,10 +871,23 @@ $(document).ready(function() {
                         $("#app-slots").html(append_slot);
                     }
                     
+                    //$("#app-slots").show();
+                    
                     console.log(response);
                 }
             });
         }
+    })
+    
+    $("#app-slots").on("click", ".slot" , function() {
+        var slot = $(this).text();
+        
+        $("#app-time-slot").val(slot);
+        $(".available-slots").toggleClass("hide-slots");
+    })
+    
+    $("#app-time-slot").on("click", function() {
+        $(".available-slots").toggleClass("hide-slots");
     })
     
     $("#response").hide();
@@ -935,7 +948,8 @@ $(document).ready(function() {
     
     //datepicker
     $("#appointment-date").datepicker({
-        format: 'dd-mm-yyyy'
+        format: 'dd-mm-yyyy',
+        autoclose: true
     });
     
     //ajax timeout

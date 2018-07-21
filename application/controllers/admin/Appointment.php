@@ -3,8 +3,11 @@
     {
         Public function index()
         {
+            $branch_id = $this->session->userdata("BRANCH_ID");
+            $data["branch_services"] = $this->branch_model->fetch_branch_speciality($branch_id);
+            
             $this->load->view("admin/templates/header");
-            $this->load->view("admin/appointments/appointments");
+            $this->load->view("admin/appointments/appointments", $data);
             $this->load->view("admin/patients/partial/add-patient-form");
             $this->load->view("admin/templates/footer");
         }

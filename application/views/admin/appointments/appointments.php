@@ -67,9 +67,6 @@
                     </div>
                     <div style="margin-bottom: 50px;" class="modal-body">
                         <div class="row">
-                            <!--<div class="col-lg-12">
-                                <h5 style="font-size: 16px; font-weight: bold;" class="upgrade-header">Add new or search existing patient.</h5>
-                            </div>-->
                             <div class="col-lg-12">
                                 <div class="">
                                     <?Php echo form_open(base_url() . "patient/search", array("id" => "search-ex-patient")); ?>
@@ -81,9 +78,6 @@
                                     <?Php echo form_close(); ?>
                                 </div>
                                 <div id="patient-details-grp" class="row">
-                                    <!--<div class="col-lg-12">
-                                        <h5 style="font-size: 16px; font-weight: bold;" class="upgrade-header">Patient details</h5>
-                                    </div>-->
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -174,24 +168,9 @@
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Time</label>
                                     <div>
-                                        <input type="" name="" id="" class="app-input-field">
-                                        <div class="" id="app-slots"></div>
+                                        <input maxlength="0" type="" name="app_time_slot" id="app-time-slot" class="app-input-field">
+                                        <div class="available-slots hide-slots" id="app-slots"></div>
                                     </div>
-                                    <!--<select name="" class="app-input-field" id="available-time-slots">
-                                        <option></option>
-                                    </select>-->
-                                    <!--<div class="select" tabindex="1">
-                                        <input class="selectopt" name="test" type="radio" id="opt1" checked>
-                                        <label for="opt1" class="option">Oranges</label>
-                                        <input class="selectopt" name="test" type="radio" id="opt2">
-                                        <label for="opt2" class="option">Apples</label>
-                                        <input class="selectopt" name="test" type="radio" id="opt3">
-                                        <label for="opt3" class="option">Grapefruit</label>
-                                        <input class="selectopt" name="test" type="radio" id="opt4">
-                                        <label for="opt4" class="option">Bananas</label>
-                                        <input class="selectopt" name="test" type="radio" id="opt5">
-                                        <label for="opt5" class="option">Watermelon</label>
-                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -201,6 +180,13 @@
                                     <label class="input-label" for="">Service</label>
                                     <select name="" class="app-input-field" id="">
                                         <option></option>
+                                        <?Php if(count($branch_services) > 0) : ?>
+                                            <?Php foreach($branch_services as $branch_service) : ?>
+                                                <option value="<?Php echo $branch_service['branch_service_code']; ?>"><?Php echo $branch_service['name']; ?></option>
+                                            <?Php endforeach ?>
+                                        <?Php else : ?>
+                                        
+                                        <?Php endif; ?>
                                     </select>
                                 </div>
                             </div>

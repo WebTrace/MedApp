@@ -167,8 +167,8 @@
         
         public function fetch_branch_speciality($branch_id)
         {
-            $this->db->from('branch_speciality bs');
-            $this->db->join('speciality s', 'bs.speciality_code = s.speciality_code');
+            $this->db->from('user_branch_service bs');
+            $this->db->join('branch_service s', 'bs.branch_service_code = s.branch_service_code');
             $this->db->where('bs.branch_id', $branch_id);
             
             return $this->db->get()->result_array();
