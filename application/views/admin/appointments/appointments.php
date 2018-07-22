@@ -83,8 +83,51 @@
                                             <div class="col-lg-12">
                                                 <h5 style="font-size: 15px; font-weight: bold;" class="upgrade-header">Patient details</h5>
                                             </div>
-                                            <div class="col-lg-12">
-                                                First name, Last name, ID number, Gender, Contact number
+                                            <div class="col-lg-12 border-right">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>First name</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>: <span id="app-fname"></span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>Last name</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>: <span id="app-lname"></span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>ID number</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>: <span id="app-id-num"></span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>Gender</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>: <span id="app-gender"></span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>Contact number</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <p>: <span id="app-contact"></span></p>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="file_no" id="pid">
+                                                <input type="hidden" name="patient_id" id="getid">
+                                                <input type="hidden" name="single_patient_url" id="get-single-patient" value="<?Php echo base_url(); ?>patient/single">
+                                                <input type="hidden" name="patient_billing_type_url" id="patient-billing-type" value="<?Php echo base_url(); ?>patient/billing/type">
                                             </div>
                                         </div>
                                     </div>
@@ -96,8 +139,7 @@
                                             <div class="col-lg-12">
                                                 <div class="">
                                                     <?Php echo form_open(base_url() . "", array("id" => "frm-billing-data")); ?>
-                                                        <p style="margin: 25px 0px 20px">Select patient billing type</p>
-                                                        <select name="" class="text-input dr-placeholder">
+                                                        <select name="" class="text-input dr-placeholder" id="patient_billing">
                                                             <option value="">Select billing</option>
                                                         </select>
                                                         <input type="hidden" name="patient_id" id="patient_id" />
@@ -168,7 +210,10 @@
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Time</label>
                                     <div>
-                                        <input maxlength="0" type="" name="app_time_slot" id="app-time-slot" class="app-input-field">
+                                        <div style="position: relative;">
+                                            <input maxlength="0" type="" name="app_time_slot" id="app-time-slot" class="app-input-field">
+                                            <!--<span style="position: absolute;"><i class="fa fa-angle-down"></i></span>-->
+                                        </div>
                                         <div class="available-slots hide-slots" id="app-slots"></div>
                                     </div>
                                 </div>
@@ -178,8 +223,9 @@
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Service</label>
-                                    <select name="" class="app-input-field" id="">
-                                        <option></option>
+                                    <select name="branch_service" class="app-input-field" id="branch-service">
+                                        <option value="0"></option>
+                                        <option value="Any">Any service</option>
                                         <?Php if(count($branch_services) > 0) : ?>
                                             <?Php foreach($branch_services as $branch_service) : ?>
                                                 <option value="<?Php echo $branch_service['branch_service_code']; ?>"><?Php echo $branch_service['name']; ?></option>
@@ -193,9 +239,10 @@
                             <div class="col-lg-6">
                                 <div class="app-field-group">
                                     <label class="input-label" for="">Service provider</label>
-                                    <select name="" class="app-input-field" id="">
-                                        <option></option>
+                                    <select name="provider" class="app-input-field" id="serv-provider">
+                                        <option value="0"></option>
                                     </select>
+                                    <input type="hidden" name="pr-service-url" value="<?Php echo base_url(); ?>practitioner/service" id="pr-service-url">
                                 </div>
                             </div>
                         </div>

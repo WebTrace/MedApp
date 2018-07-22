@@ -279,22 +279,16 @@
             return $this->db->get()->result_array();
         }
         
-        /*patient file
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
-        
         public function fetch_single_patient($patient_file)
         {
             $this->db->from('patient p');
             $this->db->join('user u', 'p.user_id = u.user_id');
+            $this->db->join('phone_contact pc', 'u.user_id = pc.user_id');
             $this->db->where('p.file_no', $patient_file);
             
             return $this->db->get()->row_array();
         }
         
-        /*
-        *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        */
         //fetch medical aid number
         public function fetch_medical_aid_no($medical_aid_no)
         {

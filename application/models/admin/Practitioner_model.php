@@ -41,9 +41,22 @@
             return $this->db->get()->result_array();
         }
         
-        /*
-        *fetch practice specality
-        */
+        public function fetch_practitioner_service($branch_id, $service_code)
+        {
+            $this->db->from("user_branch_service bs");
+            $this->db->join("practitioner_service p", "bs.user_branch_service_id = p.user_branch_service_id");
+            $this->db->join("practitioner pr", "p.practitioner_id = pr.practitioner_id");
+            $this->db->join("user u", "pr.user_id = u.user_id");
+            $this->db->where("bs.branch_id", $branch_id);
+            
+            if($service_code != "Any")
+            {
+                $this->db->where("bs.branch_service_code", $service_code);
+            }
+            
+           return $this->db->get()->result_array();
+        }
+        
         public function fetch_speciality()
         {
             return $this->db->get('speciality')->result_array();

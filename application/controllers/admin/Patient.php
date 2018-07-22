@@ -141,6 +141,18 @@
             }
         }
         
+        //fetch single patient
+        public function fetch_single_patient()
+        {
+            $patient_file = $this->input->post("file_no");
+            $flag = $this->input->post("flag");
+            
+            if(isset($flag) && $flag == 1)
+            {
+                echo json_encode($this->patient_model->fetch_single_patient($patient_file));
+            }
+        }
+        
         //fetch billing types
         public function fetch_billing_type()
         {

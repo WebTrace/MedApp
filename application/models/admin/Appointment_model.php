@@ -20,7 +20,7 @@
             $medical_aid_id         = $this->input->post("medical_aid_scheme");
             $appointment_type_code  = 2;
             
-            $this->db->trans_start(); //START SQL TRANSACTION-
+            $this->db->trans_start(); //START SQL TRANSACTION
             
             //create appointment type of wating room
             $this->waiting_room_data($patient_id, $visiting_reason, $appointment_title);

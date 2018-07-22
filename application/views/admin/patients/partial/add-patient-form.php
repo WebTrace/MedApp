@@ -6,21 +6,19 @@
                 <h2 class="modal-title"><i class="fa fa-user-plus"></i> ADD NEW PATIENT</h2>
             </div>
             <div class="modal-body">
-                <?Php
-                echo form_open(base_url() . 'patients/search_claima_patient', array('id' => 'frm-search'));
-                ?>
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-8">
-                        <div class="form-input-group">
-                            <div class="patient-search-grp">
-                                <input type="hidden" name="branch_id" value="<?Php echo $this->session->userdata('BRANCH_ID'); ?>" id="branch_id">
-                                <input type="hidden" name="patient_id" id="q_patient_id">
-                                <input type="search" name="q" id="q" class="text-input" placeholder="Search by patient ID no" maxlength="13">
-                                <button type="submit" class="btn-search-icon"><i id="search-waiting" class="fa fa-search"></i></button>
+                <?Php echo form_open(base_url() . 'patients/search_claima_patient', array('id' => 'frm-search')); ?>
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-8">
+                            <div class="form-input-group">
+                                <div class="patient-search-grp">
+                                    <input type="hidden" name="branch_id" value="<?Php echo $this->session->userdata('BRANCH_ID'); ?>" id="branch_id">
+                                    <input type="hidden" name="patient_id" id="q_patient_id">
+                                    <input type="search" name="q" id="q" class="text-input" placeholder="Search by patient ID no" maxlength="13">
+                                    <button type="submit" class="btn-search-icon"><i id="search-waiting" class="fa fa-search"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <?Php echo form_close(); ?>
                 <hr class="hr-margin">
                 <div class='row' id='claima-patient'>

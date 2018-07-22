@@ -33,8 +33,6 @@ $(document).ready(function() {
         $('.progress .progress-bar').progressbar();
     }
     
-    //TODO : display full appointment details using bootstrap popover
-    
     $("#signup_practitioner").on("submit", function(e) {
         e.preventDefault();
 
@@ -670,10 +668,6 @@ $(document).ready(function() {
         $("#create_waiting_room").modal('show');
     });
         
-    /*$(".appointment-details").on("click", function() {
-        $("#practitioner_app_id").attr("value", $(this).attr("data"));
-    });*/
-    
     $("#add_diagnosis").on("submit", function() {
         $.ajax({
             url: $(this).attr("action"),
@@ -792,14 +786,24 @@ $(document).ready(function() {
     
     $("#add-app-new-user").on("click", function(e) {
         e.preventDefault();
-        //$("#create-appointment").modal("hide");
+        
         $("#add_user_modal").modal("show");
     });
     
     $("#add-details-appointment").on("click", function(e) {
         e.preventDefault();
-        $("#create-appointment").modal("hide");
-        $("#add-appointment-details").modal("show");
+        
+        var pid = $("#pid").val();
+        
+        if(pid.trim() != "")
+        {
+            $("#create-appointment").modal("hide");
+            $("#add-appointment-details").modal("show");
+        }
+        else
+        {
+            alert("Select a patient");
+        }
     })
     
     $("#update_branch_working_hrs").on("click", function() {
@@ -912,7 +916,8 @@ $(document).ready(function() {
                         {
                             html += "<li>" + "<span class='patient-alias'>" + response[i].first_name + " " + 
                                 response[i].last_name + "</span>" + "<span class='pull-right id-display'>" + 
-                                response[i].id_number + "</span>" + "</li>";
+                                response[i].id_number + "</span>" + "<span class='uid' style='display: none;'>" + 
+                                response[i].file_no + "</span><span class='patient_id' style='display: none;'>" + response[i].patient_id + "</span></li>";
                         }
                     }
                     else
@@ -930,21 +935,111 @@ $(document).ready(function() {
     });
     
     $("#patient-details-grp").hide();
+    
     $(".app-search-grp").on("click", "#response li", function() {
-        var name = $(this).find(".patient-alias").text();
+        var name        = $(this).find(".patient-alias").text(),
+            temp_uid    = $(this).find(".uid").text(),
+            patient_id  = $(this).find(".patient_id").text();
         
+        console.log(temp_uid);
         $("#app-search-patient").val(name);
+        $("#pid").val(temp_uid);
+        
         $("#response").html("");
         $("#response").hide();
         
-        //fetch patient details
-        $("#patient-details-grp").slideDown();
+        //fetch patient
+        $.ajax({
+            url: $("#get-single-patient").val(),
+            type: 'post',
+            dataType: 'json',
+            data: { file_no: temp_uid, flag: 1 },
+            success: function(response) {
+                if(response != null)
+                {
+                    $("#app-fname").text(response.first_name);
+                    $("#app-lname").text(response.last_name);
+                    $("#app-id-num").text(response.id_number);
+                    $("#app-gender").text(response.gender);
+                    $("#app-contact").text(response.contact_no);
+                    
+                    //fetch patient details
+                    $("#patient-details-grp").slideDown();
+                }
+                
+                //enable continue button
+                $("#add-details-appointment").css("background", "#79decf");
+                $("#add-details-appointment").css("color", "#fff");
+                $("#add-details-appointment").css("cursor", "pointer");
+                
+                console.log(response);
+            }
+        })
+        
+        //fetch billing type
+        $.ajax({
+            url: $("#patient-billing-type").val(),
+            type: 'post',
+            data: { patient_id: patient_id },
+            dataType: 'json',
+            success: function(response) {
+                var html = "<option value='0'>Select billing</option>";
+                
+                if(response.length > 0)
+                {
+                    for(var i = 0; i < response.length; i ++)
+                    {
+                        html += "<option value='" + response[i].billing_type_code + "'>" + response[i].billing_name + "</option>";
+                    }
+                }
+                else
+                {
+                    html += "<option value='0'>No billing data found</option>";
+                }
+                
+                $("#patient_billing").html(html);
+                
+                console.log(response);
+            }
+        })
     });
     
     $("#create-appointment").on("click", function() {
         $("#response").html("");
         $("#response").hide();
     });
+    
+    $("#branch-service").on("change", function() {
+        var url = $("#pr-service-url").val(),
+            service_code = $(this).val();
+        
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: { service_code: service_code, flag: 1 },
+            dataType: 'json',
+            success: function(response) {
+                var html = "<option value='0'></option>";
+                
+                if(response.length > 0)
+                {
+                    for(var i = 0; i < response.length; i ++)
+                    {
+                        html += "<option value='" + response[i].practitioner_id + "'>" + response[i].first_name 
+                            + " " + response[i].last_name + "</option>";
+                    }
+                }
+                else
+                {
+                    html += "<option value='0'>No service provider found</option>";
+                }
+                
+                $("#serv-provider").html(html);
+                   
+                console.log(response);
+            }
+        })
+    })
     
     //datepicker
     $("#appointment-date").datepicker({

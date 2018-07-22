@@ -59,7 +59,7 @@
         
         public function search_app_patient($search_param, $branch_id)
         {
-            $sql = "select first_name, last_name, id_number, p.patient_id, tb.branch_id from user u join patient p 
+            $sql = "select first_name, last_name, id_number, p.file_no, p.patient_id, tb.branch_id from user u join patient p 
                     on u.user_id = p.user_id join treatment_branch tb on p.patient_id = tb.patient_id 
                     where((first_name like '%$search_param%' or last_name like '%$search_param%' or id_number 
                     like '%$search_param%' or concat(first_name, ' ', last_name) like '%$search_param%' or 
