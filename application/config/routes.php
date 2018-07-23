@@ -91,6 +91,7 @@ $route['appointment/waiting_room']                  = 'admin/appointment/waiting
 $route['appointment/single_waiting_room']           = 'admin/appointment/single_waiting_room';
 $route['appointment/fetch_wating_room']             = 'admin/appointment/fetch_wating_room';
 $route['appointment/create_waiting_room']           = 'admin/appointment/create_waiting_room';
+$route['appointment/new']                           = 'admin/appointment/create_appointment';
 $route['appointment/create_reffer_patient']         = 'admin/appointment/create_reffer_patient';
 $route['patient/edit_patient/(:num)']               = 'admin/patient/edit_patient/$1';
 $route['appointment/patient_waiting_room']          = 'admin/appointment/patient_waiting_room';

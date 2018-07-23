@@ -20,6 +20,12 @@ define("BSC_BRANCH_CAPACITY", 1);
 define("STD_BRANCH_CAPACITY", 1);
 define("PRO_BRANCH_CAPACTIY", 2);
 
+define("APP_TYPE_WALKIN", 2);
+define("APPOINTMENT", 1);
+define("APP_OPEN", 1);
+define("APP_CLOSED", 2);
+define("APP_REFERRED", 3);
+
 //---------------------------------------------
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);

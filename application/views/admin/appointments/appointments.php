@@ -58,6 +58,14 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <input type="hidden" id="appointment-slots-url" value="<?Php echo base_url(); ?>appointment/slots">
+        <input type="hidden" name="single_patient_url" id="get-single-patient" value="<?Php echo base_url(); ?>patient/single">
+        <input type="hidden" name="patient_billing_type_url" id="patient-billing-type" value="<?Php echo base_url(); ?>patient/billing/type">
+        <input type="hidden" name="pr-service-url" value="<?Php echo base_url(); ?>practitioner/service" id="pr-service-url">
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
         <div class="modal fade" id="create-appointment">
             <div class="modal-dialog" id="appointment-modal">
                 <div class="modal-content">
@@ -124,10 +132,6 @@
                                                         <p>: <span id="app-contact"></span></p>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="file_no" id="pid">
-                                                <input type="hidden" name="patient_id" id="getid">
-                                                <input type="hidden" name="single_patient_url" id="get-single-patient" value="<?Php echo base_url(); ?>patient/single">
-                                                <input type="hidden" name="patient_billing_type_url" id="patient-billing-type" value="<?Php echo base_url(); ?>patient/billing/type">
                                             </div>
                                         </div>
                                     </div>
@@ -138,12 +142,10 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="">
-                                                    <?Php echo form_open(base_url() . "", array("id" => "frm-billing-data")); ?>
-                                                        <select name="" class="text-input dr-placeholder" id="patient_billing">
-                                                            <option value="">Select billing</option>
-                                                        </select>
-                                                        <input type="hidden" name="patient_id" id="patient_id" />
-                                                    <?Php echo form_close(); ?>
+                                                    <select name="patient_billing" class="text-input dr-placeholder" id="patient_billing">
+                                                        <option value="">Select billing</option>
+                                                    </select>
+                                                    <input type="hidden" name="patient_id" id="patient_id" />
                                                 </div>
                                             </div>
                                         </div>
@@ -197,73 +199,84 @@
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
                         <h2 class="modal-title">APPOINTMENT DETAILS</h2>
                     </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="app-field-group">
-                                    <label class="input-label" for="">Date</label>
-                                    <input type="text" name="appointment_date" class="app-input-field patient-appointment" id="appointment-date" placeholder="">
-                                    <input type="hidden" id="appointment-slots-url" value="<?Php echo base_url(); ?>appointment/slots">
+                    <?Php echo form_open(base_url() . "appointment/new", array("id" => "frm-create-app")); ?>
+                        <input type="hidden" name="file_no" id="pid">
+                        <input type="hidden" name="patient_id" id="getid">
+                        <input type="hidden" name="billing" id="bill_type">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="app-field-group">
+                                        <p>Select appointment type</p>
+                                        <input type="checkbox" value="<?Php echo APP_TYPE_WALKIN; ?>" name="appointment_type" id="app-walkin"> <label>Walk-in</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="app-field-group">
-                                    <label class="input-label" for="">Time</label>
-                                    <div>
-                                        <div style="position: relative;">
-                                            <input maxlength="0" type="" name="app_time_slot" id="app-time-slot" class="app-input-field">
-                                            <!--<span style="position: absolute;"><i class="fa fa-angle-down"></i></span>-->
+                            <div class="app-type-walk-in row">
+                                <div class="col-lg-6">
+                                    <div class="app-field-group">
+                                        <label class="input-label" for="">Date</label>
+                                        <input autocomplete="off" type="text" name="appointment_date" class="app-input-field patient-appointment" id="appointment-date" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="app-field-group">
+                                        <label class="input-label" for="">Time</label>
+                                        <div>
+                                            <div style="position: relative;">
+                                                <input autocomplete="off" maxlength="0" type="" name="app_time_slot" id="app-time-slot" class="app-input-field">
+                                                <!--<span style="position: absolute;"><i class="fa fa-angle-down"></i></span>-->
+                                            </div>
+                                            <div class="available-slots hide-slots" id="app-slots"></div>
                                         </div>
-                                        <div class="available-slots hide-slots" id="app-slots"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="app-field-group">
+                                        <label class="input-label" for="">Service</label>
+                                        <select name="branch_service" class="app-input-field" id="branch-service">
+                                            <option value="0"></option>
+                                            <option value="Any">Any service</option>
+                                            <?Php if(count($branch_services) > 0) : ?>
+                                                <?Php foreach($branch_services as $branch_service) : ?>
+                                                    <option value="<?Php echo $branch_service['branch_service_code']; ?>"><?Php echo $branch_service['name']; ?></option>
+                                                <?Php endforeach ?>
+                                            <?Php else : ?>
+
+                                            <?Php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="app-field-group">
+                                        <label class="input-label" for="">Service provider</label>
+                                        <select name="provider" class="app-input-field" id="serv-provider">
+                                            <option value="0"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="app-field-group">
+                                        <p>
+                                            <label style="margin: 10px 0px 0px 0px" class="input-label" for="">Visiting reason</label>
+                                            <textarea rows="4" name="visiting_reason" class="app-multi-field" id=""></textarea>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="app-field-group">
-                                    <label class="input-label" for="">Service</label>
-                                    <select name="branch_service" class="app-input-field" id="branch-service">
-                                        <option value="0"></option>
-                                        <option value="Any">Any service</option>
-                                        <?Php if(count($branch_services) > 0) : ?>
-                                            <?Php foreach($branch_services as $branch_service) : ?>
-                                                <option value="<?Php echo $branch_service['branch_service_code']; ?>"><?Php echo $branch_service['name']; ?></option>
-                                            <?Php endforeach ?>
-                                        <?Php else : ?>
-                                        
-                                        <?Php endif; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="app-field-group">
-                                    <label class="input-label" for="">Service provider</label>
-                                    <select name="provider" class="app-input-field" id="serv-provider">
-                                        <option value="0"></option>
-                                    </select>
-                                    <input type="hidden" name="pr-service-url" value="<?Php echo base_url(); ?>practitioner/service" id="pr-service-url">
-                                </div>
-                            </div>
-                        </div>
+                        <div class="modal-footer">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="app-field-group">
-                                    <p>
-                                        <label style="margin: 10px 0px 0px 0px" class="input-label" for="">Notes</label>
-                                        <textarea rows="4" name="" class="app-multi-field" id=""></textarea>
-                                    </p>
-                                </div>
+                                <button type="submit" id="add-app-new-user" class="btn btn-save pull-right">Save appointment</button>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a id="add-app-new-user" class="btn btn-save pull-right" href="">Save appointment</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?Php echo form_close(); ?>
                 </div>
             </div>
         </div>

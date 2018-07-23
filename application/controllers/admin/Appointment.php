@@ -12,6 +12,18 @@
             $this->load->view("admin/templates/footer");
         }
         
+        public function create_appointment()
+        {
+            if($this->appointment_model->create_appointment() == true)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+        
         public function waiting_room()
         {
             //get patient id
@@ -91,11 +103,6 @@
             ";
             
             echo $output;
-        }
-        
-        public function create_appointment()
-        {
-            
         }
         
         public function create_reffer_patient()

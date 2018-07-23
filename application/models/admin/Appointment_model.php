@@ -5,34 +5,61 @@
     {
         public function create_appointment()
         {
-            $this->create_appointment_schedule($appointment_id, $appointment_date);
-        }
-        
-        public function create_waiting_room()
-        {
-            $patient_id             = $this->input->post("waiting_room_patient");
-            $billing_type_id        = $this->input->post("appointment_billing_id");
-            $billing_code           = $this->input->post("patient_billing_code");
+            //appointment fields
+            $patient_id             = $this->input->post("patient_id");
             $visiting_reason        = $this->input->post("visiting_reason");
-            $appointment_title      = $this->input->post("appointment_title");
+            $appointment_type       = $this->input->post("appointment_type");
+            
+            if(!isset($appointment_type))
+            {
+                $appointment_type   = APPOINTMENT;
+            }
+            
+            //appointment schedule fields
+            $appointment_date       = $this->input->post("app_date");
+            $appointment_time       = $this->input->post("app_time");
+            
+            //service type fileds
+            $service_type           = $this->input->post("branch_service");
+            
+            //appointment status fields
+            $appointment_status     = APP_OPEN;
+            
+            //billing type fields
+            $billing_type_id        = $this->input->post("billing");
+            $billing_code           = 2;
+            
+            //practitioner appointment fields
             $pratitioner_id         = $this->input->post("appointment_practitioner");
-            $appointment_date       = $this->input->post("");
+            
+            //medical billing fileds
             $medical_aid_id         = $this->input->post("medical_aid_scheme");
-            $appointment_type_code  = 2;
             
             $this->db->trans_start(); //START SQL TRANSACTION
             
-            //create appointment type of wating room
-            $this->waiting_room_data($patient_id, $visiting_reason, $appointment_title);
+            //create appointment
+            $this->appointment_data($patient_id, $visiting_reason);
             
             //get new added appointment id
             $appointment_id = $this->signup_model->get_new_added_id('appointment', 'appointment_id');
             
             //create appointment status
-            $this->create_appointment_status($appointment_id);
+            $this->create_appointment_status($appointment_id, $appointment_status);
             
             //create appointment billing
             $this->create_appointment_billing($appointment_id, $billing_type_id);
+            
+            //create appointment schedule
+            if($appointment_type == 1)
+            {
+                $this->create_appointment_schedule($appointment_id, $appointment_date, $appointment_time);
+            }
+            
+            //create appointment type
+            $this->create_appointment_type($appointment_id, $appointment_type);
+            
+            //assign appointment to a practitioner if pratitioner is selected
+            $this->create_practitioner_appointment($pratitioner_id, $appointment_id);
             
             //create medical aid billing
             if($billing_code == 1)
@@ -44,15 +71,14 @@
                 $this->create_medical_aid_billing($appointment_billing_id, $medical_aid_id);
             }
             
-            //create appointment type
-            $this->create_appointment_type($appointment_id, $appointment_type_code);
-            
-            //assign appointment to a practitioner if pratitioner is selected
-            $this->create_practitioner_appointment($pratitioner_id, $appointment_id);
-            
             $this->db->trans_complete(); //END SQL TRANSACTION
             
             return $this->db->trans_status();
+        }
+        
+        public function create_appointment_()
+        {
+            $this->create_appointment_schedule($appointment_id, $appointment_date, $appointment_time);
         }
         
         public function update_waiting_room()
@@ -69,25 +95,25 @@
             );
         }
         
-        public function create_appointment_schedule($appointment_id, $appointment_date)
-        {
-            $appointment_data = array(
-                'appointment_id'    => $appointment_id,
-                'appoitment_date'   => $appointment_date
-            );
-            
-            $this->db->insert('appointment_schedulde', $appointment_data);
-        }
-        
-        public function waiting_room_data($patient_id, $visiting_reason, $appointment_title)
+        public function appointment_data($patient_id, $visiting_reason)
         {
             $visiting_reason_data = array(
                 'patient_id'            => $patient_id,
-                'reason'                => $visiting_reason,
-                'appointment_title'     => $appointment_title
+                'reason'                => $visiting_reason
             );
             
             $this->db->insert('appointment', $visiting_reason_data);
+        }
+        
+        public function create_appointment_schedule($appointment_id, $appointment_date, $appointment_time)
+        {
+            $appointment_data = array(
+                'appointment_id'    => $appointment_id,
+                'appoitment_date'   => $appointment_date,
+                'appointment_time'  => $appointment_time
+            );
+            
+            $this->db->insert('appointment_schedude', $appointment_data);
         }
         
         public function create_practitioner_appointment($pratitioner_id, $appointment_id)
@@ -131,10 +157,11 @@
             $this->db->insert('appointment_referrer', $data);
         }
         
-        public function create_appointment_status($appointment_id)
+        public function create_appointment_status($appointment_id, $appointment_status)
         {
             $data = array(
-                'appointment_id'    => $appointment_id
+                'appointment_id'            => $appointment_id,
+                'appointment_status_code'   => $appointment_status
             );
             
             $this->db->insert('patient_appointment_status', $data);

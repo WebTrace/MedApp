@@ -944,6 +944,7 @@ $(document).ready(function() {
         console.log(temp_uid);
         $("#app-search-patient").val(name);
         $("#pid").val(temp_uid);
+        $("#getid").val(patient_id);
         
         $("#response").html("");
         $("#response").hide();
@@ -989,7 +990,7 @@ $(document).ready(function() {
                 {
                     for(var i = 0; i < response.length; i ++)
                     {
-                        html += "<option value='" + response[i].billing_type_code + "'>" + response[i].billing_name + "</option>";
+                        html += "<option value='" + response[i].patient_billing_type_id + "'>" + response[i].billing_name + "</option>";
                     }
                 }
                 else
@@ -1004,10 +1005,29 @@ $(document).ready(function() {
         })
     });
     
+    $("#patient_billing").on("change", function() {
+        var bill_type = $(this).val();
+        $("#bill_type").val(bill_type);
+        
+        alert($("#bill_type").val());
+    })
+    
+    //hide search results
     $("#create-appointment").on("click", function() {
         $("#response").html("");
         $("#response").hide();
     });
+    
+    $("#app-walkin").on("click", function() {
+        if($(this).is(":checked"))
+        {
+            $(".app-type-walk-in").slideUp();
+        }
+        else
+        {
+            $(".app-type-walk-in").slideDown();
+        }
+    })
     
     $("#branch-service").on("change", function() {
         var url = $("#pr-service-url").val(),
@@ -1039,6 +1059,12 @@ $(document).ready(function() {
                 console.log(response);
             }
         })
+    })
+    
+    //create appointment
+    $("#frm-create-app").on("submit", function(e) {
+        //e.preventDefault();
+        console.log($(this).serialize());
     })
     
     //datepicker
