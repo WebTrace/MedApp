@@ -22,9 +22,9 @@
                 $data['content'] = "<p>An error occrued while sending a confirmation email.</p>";
             }
             
-            $this->load->view("admin/templates/auth-header");
-            $this->load->view("admin/feedback/feedback", $data);
-            $this->load->view("admin/templates/auth-footer");
+            $this->load->view("app/templates/auth-header");
+            $this->load->view("app/feedback/feedback", $data);
+            $this->load->view("app/templates/auth-footer");
         }
         
         //send

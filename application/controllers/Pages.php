@@ -3,27 +3,22 @@
     {
         public function view($page = 'home')
         {
-            $path = APPPATH . 'views/pages/' . $page . '.php';
+            $path = APPPATH . 'views/site/' . $page . '.php';
             
             if(!file_exists($path))
             {
                 show_404();
             }
             
-            $this->load->view("templates/header");
+            $data["account_types"] = $this->account_model->fetch_account_type_details();
             
-            //get account type details
-            if($page == "pricing")
-            {
-                $data["account_types"] = $this->account_model->fetch_account_type_details();
-                $this->load->view("pages/" . $page, $data);
-            }
-            else
-            {
-                $this->load->view("pages/" . $page);
-            }
-            
-            $this->load->view("templates/footer");
+            $this->load->view("site/templates/header");
+            $this->load->view("site/slider");
+            $this->load->view("site/about");
+            $this->load->view("site/features");
+            $this->load->view("site/pricing", $data);
+            $this->load->view("site/contact");
+            $this->load->view("site/templates/footer");
         }
     }
 ?>
