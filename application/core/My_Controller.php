@@ -23,7 +23,7 @@
                 }
                 else if(isset($_SESSION['PARTIAL_ACCESS']))
                 {
-
+                    
                 }
             }
             else

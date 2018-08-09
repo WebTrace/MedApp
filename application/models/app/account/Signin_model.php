@@ -7,7 +7,8 @@
             $password       = md5($this->input->post("password")); //$_POST['password'];
             $is_signedin    = FALSE;
             $current_date   = date('Y-m-d');
-            
+            $actions        = array();
+
             $login_query = $this->data_access->signin_user($username, $password);
             
             if($login_query->num_rows() == 1)
@@ -42,9 +43,6 @@
                     
                     //reset login attempt to 0
                     $this->update_signin_attempt($login_attempt_id, $attempt_count);
-                    
-                    //set access type and action
-                    $actions = array();
                     
                     //get user id
                     $user_id = $login_query->row(0)->user_id;
