@@ -1,5 +1,5 @@
 <?Php
-    class Signup extends CI_Controller
+    class Signup extends My_Controller
     {
         public function index()
         {

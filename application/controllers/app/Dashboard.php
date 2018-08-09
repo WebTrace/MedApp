@@ -1,7 +1,4 @@
 <?Php if( ! defined('BASEPATH')) exit('No direct access allowed');
-    /*
-    *
-    */
     class Dashboard extends My_Controller
     {
         public function index()

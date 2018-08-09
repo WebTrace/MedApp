@@ -152,17 +152,21 @@
         
         public function fetch_branch_type()
         {
-            return $this->db->get("branch_type")->result_array();
+            return $this->db->get("branch_service")->result_array();
         }
         
         public function create_user_branch_type($branch_id, $branch_type_code)
         {
-            $data = array(
-                'branch_id'             => $branch_id,
-                'branch_type_code'      => $branch_type_code
-            );
             
-            $this->db->insert("user_branch_type", $data);
+            if(count($branch_type_code) > 0)
+            {
+                $data = array(
+                    'branch_id'             => $branch_id,
+                    'branch_type_code'      => $branch_type_code
+                );
+                
+                $this->db->insert("user_branch_type", $data);
+            }
         }
         
         public function fetch_branch_speciality($branch_id)

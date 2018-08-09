@@ -1,5 +1,5 @@
 <?Php
-    class Invoice extends CI_Controller
+    class Invoice extends My_Controller
     {
         public function index()
         {

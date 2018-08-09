@@ -1,5 +1,5 @@
 <?Php
-    class Account extends MY_Controller
+    class Account extends My_Controller
     {
         public function account_type($account_type = null)
         {

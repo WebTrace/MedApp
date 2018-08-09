@@ -1,5 +1,5 @@
 <?Php
-    class Permissions extends CI_Controller
+    class Permissions extends My_Controller
     {
         public function index()
         {
