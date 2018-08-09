@@ -7,7 +7,8 @@
             $password       = md5($this->input->post("password")); //$_POST['password'];
             $is_signedin    = FALSE;
             $current_date   = date('Y-m-d');
-            
+            $actions        = array();
+
             $login_query = $this->data_access->signin_user($username, $password);
             
             if($login_query->num_rows() == 1)
@@ -42,22 +43,28 @@
                     
                     //reset login attempt to 0
                     $this->update_signin_attempt($login_attempt_id, $attempt_count);
-
-                    //call set_user_data method from SessionData_model class
-                    $this->sessiondata_model->set_user_data($login_query);
                     
                     //get user id
-                    $user_id = $this->session->userdata("USER_ID");
+                    $user_id = $login_query->row(0)->user_id;
                     
                     //default branch query
                     $default_branch_query = $this->data_access->fetch_default_branch($user_id);
-
+                    
                     if($default_branch_query->num_rows() == 1)
                     {
                         //call set_branch_data method from SessionData_model class
                         $this->sessiondata_model->set_branch_data($default_branch_query);
                     }
+                    else
+                    {
+                        $actions["new_branch"] = true;
+                    }
+
+                    //set actions session
+                    $this->session->set_userdata("actions", $actions);
                     
+                    //call set_user_data method from SessionData_model class
+                    $this->sessiondata_model->set_full_access_data($login_query);
                 }
                 else
                 {

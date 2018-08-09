@@ -93,24 +93,24 @@
                                         
                                         if($is_new_account == "Yes")
                                         {
-                                            //redirect(base_url() . "branch/new");
-                                            echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                                            redirect(base_url() . "branch/new");
+                                            // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                                            // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                         }
                                         else
                                         {
                                             //redirect manager to dashboard
-                                            //redirect(base_url() . "dashboard");
-                                            echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                                            redirect(base_url() . "dashboard");
+                                            // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                                            // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                         }
                                     }
                                     else
                                     {
                                         //redirect normal user to dashboard
-                                        //redirect(base_url() . "dashboard");
-                                        echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                                        redirect(base_url() . "dashboard");
+                                        // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                                        //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                     }
                                 }
                                 else

@@ -1,7 +1,7 @@
 <?Php
     class Sessiondata_model extends CI_Model
     {
-        public function set_user_data($query)
+        public function set_full_access_data($query)
         {
             $user_data = array(
                 'USER_ID'           => $query->row(0)->user_id,
@@ -12,6 +12,22 @@
                 'LNAME'             => $query->row(0)->last_name,
                 'EMAIL'             => $query->row(0)->email_address,
                 'USER_TITLE'        => $query->row(0)->title
+            );
+
+            $this->session->set_userdata($user_data);
+        }
+
+        public function set_partial_access($query)
+        {
+            $user_data = array(
+                'PARTIAL_ACC_USER_ID'   => $query->row(0)->user_id,
+                'USER_ROLE'             => $query->row(0)->role_code,
+                'ROLE_NAME'             => $query->row(0)->role_name,
+                'USER_STATUS'           => $query->row(0)->status_code,
+                'FNAME'                 => $query->row(0)->first_name,
+                'LNAME'                 => $query->row(0)->last_name,
+                'EMAIL'                 => $query->row(0)->email_address,
+                'USER_TITLE'            => $query->row(0)->title
             );
 
             $this->session->set_userdata($user_data);

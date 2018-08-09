@@ -1,5 +1,5 @@
 <?Php
-    class Manager extends MY_Controller
+    class Manager extends My_Controller
     {
         
     }

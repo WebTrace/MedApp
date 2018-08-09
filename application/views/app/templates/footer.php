@@ -17,9 +17,9 @@
         <script src="<?Php echo base_url()?>assets/app/js/bootstrap-progressbar.min.js"></script>
         <!--<script src="<?Php echo base_url()?>assets/admin/js/modal.js"></script>-->
         <!--<script src="<?Php echo base_url()?>assets/js/bootstrap-notify.js"></script>-->
-        <script src="<?Php echo base_url()?>assets/app/js/claima/functions.js"></script>
-        <script src="<?Php echo base_url()?>assets/app/js/claima/handler.js"></script>
-        <script src="<?Php echo base_url()?>assets/app/js/claima/data.js"></script>
-        <script src="<?Php echo base_url()?>assets/app/js/claima/design.js"></script>
+        <script src="<?Php echo base_url()?>assets/app/js/medics/functions.js"></script>
+        <script src="<?Php echo base_url()?>assets/app/js/medics/handler.js"></script>
+        <script src="<?Php echo base_url()?>assets/app/js/medics/data.js"></script>
+        <script src="<?Php echo base_url()?>assets/app/js/medics/design.js"></script>
     </body>
 </html>

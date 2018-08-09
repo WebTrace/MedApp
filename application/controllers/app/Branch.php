@@ -1,5 +1,5 @@
 <?Php
-    class Branch extends MY_Controller
+    class Branch extends My_Controller
     {
         public function index()
         {
@@ -39,7 +39,7 @@
         public function new_branch()
         {
             $data["branch_types"]   = $this->branch_model->fetch_branch_type();
-            $data["title"]          = "CLAIMA - Create new branch";
+            $data["title"]          = "Medics - Create new branch";
             
             $this->load->view("app/templates/auth-header", $data);
             $this->load->view("app/branch/new_branch");

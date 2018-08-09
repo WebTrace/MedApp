@@ -15,7 +15,7 @@
                 <div class="frm-register-wrapper">
                     <div class="row">
                         <div class="col-lg-6">
-
+                            
                         </div>
                         <div class="col-lg-6">
                             <div class="row">
@@ -43,7 +43,7 @@
                                                     <option value="0">Practice type</option>
                                                     <?Php if(count($branch_types) > 0) : ?>
                                                         <?Php foreach($branch_types as $branch_type) : ?>
-                                                            <option value="<?php echo $branch_type['branch_type_code']; ?>"><?Php echo $branch_type['name']; ?></option>
+                                                            <option value="<?php echo $branch_type['branch_service_code']; ?>"><?Php echo $branch_type['name']; ?></option>
                                                         <?Php endforeach; ?>
                                                     <?Php else : ?>
                                                         <option value="0">No branch type found</option>
