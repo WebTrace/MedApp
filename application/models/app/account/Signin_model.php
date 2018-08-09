@@ -7,7 +7,6 @@
             $password       = md5($this->input->post("password")); //$_POST['password'];
             $is_signedin    = FALSE;
             $current_date   = date('Y-m-d');
-            $actions        = array();
 
             $login_query = $this->data_access->signin_user($username, $password);
             
@@ -55,13 +54,6 @@
                         //call set_branch_data method from SessionData_model class
                         $this->sessiondata_model->set_branch_data($default_branch_query);
                     }
-                    else
-                    {
-                        $actions["new_branch"] = true;
-                    }
-
-                    //set actions session
-                    $this->session->set_userdata("actions", $actions);
                     
                     //call set_user_data method from SessionData_model class
                     $this->sessiondata_model->set_full_access_data($login_query);

@@ -93,13 +93,15 @@
                                         
                                         if($is_new_account == "Yes")
                                         {
+                                            //$this->session->set_userdata("DASH_REDIRECT", true);
                                             redirect(base_url() . "branch/new");
-                                            // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                                            //echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                                            //date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                         }
                                         else
                                         {
                                             //redirect manager to dashboard
+                                            //$this->session->set_userdata("DASH_REDIRECT", true);
                                             redirect(base_url() . "dashboard");
                                             // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
                                             // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
@@ -108,7 +110,7 @@
                                     else
                                     {
                                         //redirect normal user to dashboard
-                                        redirect(base_url() . "dashboard");
+                                        //redirect(base_url() . "dashboard");
                                         // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
                                         //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                     }
