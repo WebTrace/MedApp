@@ -3,20 +3,37 @@
     {
         public function signup_practioner()
         {
-            $title              = "Mr";//$this->input->post("title");          
-            $fname              = "Manny";//$this->input->post("fname");
-            $lname              = "Kgatla";//$this->input->post("lname");
-            $hpc_no             = 1234549;//$this->input->post("hpc_no");
-            $practice_no        = 789546;//$this->input->post('practice_no');
-            $speciality_code    = 2;//$this->input->post('speciality');
-            $username           = "Aub";//$this->input->post("username");
-            $password           = "12345";//$this->input->post("password");
-            $confirm_passw      = "12345";//$this->input->post("confirm_password");
-            $contact_no         = "012563252";//$this->input->post('contact_no');
-            $email              = "man@live.com";//$this->input->post('email_address');
-            $confirm_email      = "many";//$this->input->post('confirm_email');
+            // $title              = "Mr";       
+            // $fname              = "Manny";
+            // $lname              = "Kgatla";
+            // $hpc_no             = 1234549;
+            // $practice_no        = 789546;
+            // $speciality_code    = 2;
+            // $username           = "Aub";
+            // $password           = "12345";
+            // $confirm_passw      = "12345";
+            // $contact_no         = "012563252";
+            // $email              = "man@live.com";
+            // $confirm_email      = "many";
+            // $hash               = $this->create_hash($email);
+            // $t_and_c            = "Yes";
+            // $expiry_date        = "2018-04-12";
+            // $is_new_account     = "Yes";
+
+            // $title              = $this->input->post("title");          
+            $fname              = $this->input->post("fname");
+            $lname              = $this->input->post("lname");
+            // $hpc_no             = $this->input->post("hpc_no");
+            $practice_no        = $this->input->post('practice_no');
+            // $speciality_code    = $this->input->post('speciality');
+            $username           = $this->input->post("username");
+            $password           = $this->input->post("password");
+            $confirm_passw      = $this->input->post("confirm_password");
+            $contact_no         = $this->input->post('contact_no');
+            $email              = $this->input->post('email_address');
+            $confirm_email      = $this->input->post('confirm_email');
             $hash               = $this->create_hash($email);
-            $t_and_c            = "Yes";//$this->input->post("terms");
+            $t_and_c            = $this->input->post("terms");
             $expiry_date        = "2018-04-12";
             $is_new_account     = "Yes";
             

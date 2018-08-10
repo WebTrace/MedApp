@@ -226,9 +226,9 @@
         public function create_appointment_schedule($appointment_id, $appointment_date, $appointment_time)
         {
             $appointment_data = array(
-                'appointment_id'    => $appointment_id,
-                'appointment_date'   => $appointment_date,
-                'appointment_time'  => $appointment_time
+                'appointment_id'        => $appointment_id,
+                'appointment_date'      => $appointment_date,
+                'appointment_time'      => $appointment_time
             );
             
             $this->db->insert('appointment_schedule', $appointment_data);

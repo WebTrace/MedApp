@@ -48,6 +48,9 @@
                         
                         if($account_mode->num_rows() > 0)
                         {
+                            //set account mode
+                            $this->session->set_userdata("ACC_MODE", $account_mode->row(0)->account_mode_code);
+
                             //check account mode immediately after login
                             if($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
                             {
@@ -76,14 +79,18 @@
                                     {
                                         //get mamager details
                                         $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
-                                        //get manager id
-                                        $manager_id = $manager_data[0]["manager_id"];
-                                        $is_new_account = $manager_data[0]["is_new_account"];
-                                        //set manager id
-                                        $this->session->set_userdata("MANAGER_ID", $manager_id);
-                                        
+
                                         //get manager's account details
                                         $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
+
+                                        if($manager_account_query->num_rows() > 0)
+                                        {
+                                            //get manager id
+                                            $manager_id = $manager_account_query->result_array()[0]["manager_id"];
+                                        }
+
+                                        //set manager id
+                                        $this->session->set_userdata("MANAGER_ID", $manager_id);
                                         
                                         if($manager_account_query->num_rows() > 0)
                                         {
@@ -91,9 +98,9 @@
                                             $this->sessiondata_model->set_manager_acc_data($manager_account_query);
                                         }
                                         
-                                        if($is_new_account == "Yes")
+                                        if(count($manager_data) < 1)
                                         {
-                                            //$this->session->set_userdata("DASH_REDIRECT", true);
+                                            $this->session->set_userdata("NEW_BRANCH", true);
                                             redirect(base_url() . "branch/new");
                                             //echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
                                             //date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
@@ -101,8 +108,7 @@
                                         else
                                         {
                                             //redirect manager to dashboard
-                                            //$this->session->set_userdata("DASH_REDIRECT", true);
-                                            redirect(base_url() . "dashboard");
+                                            edirect(base_url() . "dashboard");
                                             // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
                                             // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                         }
@@ -110,7 +116,7 @@
                                     else
                                     {
                                         //redirect normal user to dashboard
-                                        //redirect(base_url() . "dashboard");
+                                        redirect(base_url() . "dashboard");
                                         // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
                                         //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
                                     }

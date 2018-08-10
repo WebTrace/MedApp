@@ -853,6 +853,10 @@ a:hover, a:focus {
     box-shadow: #dadada 0px 0px 8px 0px;
 }
 
+.trial-header {
+    font-size: 35px;
+}
+
 .input-label {
     /*color: #fff;*/
     display: block;
@@ -869,6 +873,11 @@ a:hover, a:focus {
     border-radius: 2px;
 }
 
+.signup-step {
+    padding: 15px;
+    box-shadow: rgb(224, 224, 224) 0px 4px 11px 0px;
+}
+
 .inp-collection .fa-lock, .inp-collection .fa-user, #env {
     top: 32%;
     left: 10px;
@@ -879,15 +888,22 @@ a:hover, a:focus {
 .reg-input {
     width: 100%;
     outline: none;
-    border: #ededed thin solid;
-    color: #666;
-    padding: 8px 5px;
-    font-size: 14px;
-    border-radius: 2px;
+    border: none;
+    border-bottom: #ccc thin solid;
+    color: #9b9b9b;
+    padding: 8px 0px;
+    font-size: 16px;
+    /* border-radius: 2px; */
 }
 
 .reg-input:focus {
-    border: #3aabc1 thin solid;
+    border-bottom: #3aabc1 thin solid;
+}
+
+.reg-label {
+    font-size: 17px;
+    margin: 0px;
+    font-weight: normal;
 }
 
 .access-container #username, .access-container #password, #email-fgt {
@@ -982,11 +998,11 @@ legend {
 }
 
 .frm-register-wrapper {
-    /*margin-top: 50px;
-    margin-bottom: 50px;*/
+    /*margin-top: 50px;*/
+    margin-top: 50px;
     padding: 15px;
     position: relative;
-    background: #f7f7f7;
+    /* background: #f7f7f7; */
     /*box-shadow: #dadada 0px 0px 8px 0px;*/
 }
 
@@ -995,11 +1011,11 @@ legend {
 }
 
 .reg-wrap {
-    background: #dff3f1;
+    /* background: #dff3f1; */
 }
 
 .reg-group {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #btn-section {
@@ -2014,7 +2030,7 @@ button[disabled], html input[disabled] {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: #ccc;
+    color: #eee;
 }
 
 ::-webkit-input-disabled {
@@ -2022,19 +2038,19 @@ button[disabled], html input[disabled] {
 }
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #ccc;
+    color: #eee;
 }
 
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #ccc;
+    color: #eee;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #ccc;
+    color: #eee;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #ccc;
+    color: #eee;
 }
 
 .diagnosis-input {

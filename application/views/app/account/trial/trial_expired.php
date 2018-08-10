@@ -11,9 +11,9 @@
                                     <hr />
                                 </div>
                                 <div class="col-lg-12">
-                                    <h4 class="greetings-header">Hi Manny,</h4>
+                                    <h4 class="greetings-header">Hi <?php if (isset($_SESSION['FNAME'])) echo $this->session->userdata('FNAME'); ?>,</h4>
                                     <p style="padding: 23px 0px; font-size: 15px;">
-                                        Thank you for using <b>Medics</b> trial version, unfortunately your 15 days trial have expired. 
+                                        Thank you for using <b>Medics</b> trial version, unfortunately your <b><?php echo $remaining_days; ?> days</b> trial have expired. 
                                         Click the button below to upgrade your account to a premium version.
                                     </p>
                                     <p>
@@ -33,8 +33,7 @@
                                 <div class="col-lg-12">
                                     <h4>Hi Mr Emmanuel,</h4>
                                     <p>
-                                        Thank you for using CLAIMA trial version, unfortunately your 15 days trail have expired. 
-                                        Click the button below to updrade your license.
+                                        Thank you for using CLAIMA trial version, unfortunately your 15 days trail have expired. Please contact practice manager for assistance.
                                     </p>
                                 </div>
                             </div>

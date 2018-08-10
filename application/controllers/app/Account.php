@@ -21,15 +21,6 @@
             
         }
         
-        public function expired_trial_version()
-        {
-            $data['title'] = "Trial expired";
-            
-            $this->load->view("app/templates/auth-header", $data);
-            $this->load->view("app/account/trial_expired");
-            $this->load->view("app/templates/auth-footer");
-        }
-        
         /*
         *zoho books account if the account type is not trial
         *------------------------------------------------------------------------------------------------------

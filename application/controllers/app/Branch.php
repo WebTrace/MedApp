@@ -36,16 +36,6 @@
         *createe new branch only if the manager's account is new
         */
         
-        public function new_branch()
-        {
-            $data["branch_types"]   = $this->branch_model->fetch_branch_type();
-            $data["title"]          = "Medics - Create new branch";
-            
-            $this->load->view("app/templates/auth-header", $data);
-            $this->load->view("app/branch/new_branch");
-            $this->load->view("app/templates/auth-footer");
-        }
-        
         public function is_branch_set()
         {
             

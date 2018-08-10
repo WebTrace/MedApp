@@ -8,7 +8,7 @@
                 </div>-->
                 <div class="access-container">
                     <div class="access-header">
-                        <h4>CLAIMA Login</h4>
+                        <h4>Medics Login</h4>
                         <hr>
                     </div>
                     <?Php echo form_open(base_url() . 'signin/user'); ?>

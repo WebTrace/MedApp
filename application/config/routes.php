@@ -55,7 +55,7 @@ $route['authentication']                            = 'app/authentication/signin
 $route['signin/user']                               = 'app/signin/user_signin';
 $route['signup']                                    = 'app/signup';
 $route['account/upgrade']                           = 'app/account/upgrade_account';
-$route['trial/expired']                             = 'app/account/expired_trial_version';
+$route['trial/expired']                             = 'app/setup/expired_trial_version';
 $route['signup/practitioner']                       = 'app/signup/signup_practitioner';
 $route['feedback']                                  = 'app/signup/feedback';
 $route['account/activation']                        = 'app/communication/activation_link';
@@ -126,7 +126,7 @@ $route['branch/update/(:any)']                      = 'app/branch/update_branch/
 $route['branch/settings/(:any)']                    = 'app/branch/branch_settings/$1';
 $route['branch/workingdays/(:any)']                 = 'app/branch/fetch_working_hours/$1';
 $route['appointment/slots']                         = 'app/branch/appointment_slots';
-$route['branch/new']                                = 'app/branch/new_branch';
+$route['branch/new']                                = 'app/setup/new_branch';
 $route['branch/branch_404']                         = 'app/branch/branch_404';
 
 //------------------------------------------------Account----------------------------------------------//

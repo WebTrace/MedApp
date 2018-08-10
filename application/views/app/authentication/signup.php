@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="header-sec">
@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3 signup-status">
@@ -38,15 +38,12 @@
                     </div>
                     <div class="col-lg-6" id="frm-container">
                         <?Php echo form_open(base_url() . "signup/practitioner", array('id' => 'signup_practitioner')); ?>
-                        <div id="step-one" class="frm-register-wrapper current">
+                        <div style="margin: 35px 0px;" class="frm-register-wrapper current">
                             <div class="signup-step active">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="reg-header">
-                                            <h3 style="color: #3ea09b;">Create an account with Medics</h3>
-                                            <p class="text-center" style="color: #eca7a7; font-size: 12px; margin: 5px 0px 0px;">
-                                                All fields are required.</p>
-                                            <hr>
+                                        <div style="margin: 10px 0px 25px;" class="reg-header">
+                                            <h3 style="font-size: 35px;">Create account</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -64,14 +61,16 @@
                                                 </select>
                                             </div>-->
                                             <div class="inp-collection">
+                                                <label for="fname" class="reg-label">First name</label>
                                                 <input type="text" name="fname" class="reg-input" id="fname" placeholder="First name">
                                             </div>
                                             <p class="error" id="err-title">Required title and first name.</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-5 col-sm-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="lname" class="reg-label">Last name</label>
                                                 <input type="text" name="lname" class="reg-input" id="lname" placeholder="Last name">
                                             </div>
                                             <p class="error" id="err-lname">Required last name.</p>
@@ -87,12 +86,22 @@
                                             <p class="error" id="err-hpcsa-no">Required HPC no.</p>
                                         </div>
                                     </div>-->
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="practice_no" class="reg-label">Practice number</label>
                                                 <input type="text" name="practice_no" class="reg-input" id="practice_no" placeholder="Practice number">
                                                 <p class="error" id="err-practice-no">Required practice no.</p>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="reg-group">
+                                            <div class="inp-collection">
+                                                <label for="contact_no" class="reg-label">Contact no</label>
+                                                <input type="text" name="contact_no" class="reg-input" id="contact_no" placeholder="Contact no">
+                                            </div>
+                                            <p class="error" id="err-contact-no">Required contact no.</p>
                                         </div>
                                     </div>
                                     <!--<div class="col-lg-4 col-md-4 col-sm-4">
@@ -117,52 +126,49 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
-                                                <input type="text" name="contact_no" class="reg-input" id="contact_no" placeholder="Contact no">
-                                            </div>
-                                            <p class="error" id="err-contact-no">Required contact no.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="reg-group">
-                                            <div class="inp-collection">
+                                                <label for="email_address" class="reg-label">Email address</label>
                                                 <input type="text" name="email_address" class="reg-input" id="email_address" placeholder="Email address">
                                                 <input type="hidden" name="check_email_url" id="check_email_url" value="<?Php echo base_url(); ?>signup/check_email">
                                             </div>
                                             <p class="error" id="err-email">Required email address.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="confirm_email" class="reg-label">Confirm email</label>
                                                 <input type="text" name="confirm_email" class="reg-input" id="confirm_email" placeholder="Confirm email">
                                             </div>
                                             <p class="error" id="err-confirm-email">Email dont match.</p>
                                         </div>
-                                    </div>-->
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="username" class="reg-label">Username</label>
                                                 <input type="text" name="username" class="reg-input" id="username" placeholder="Username">
                                                 <input type="hidden" name="check_username_url" id="check_username_url" value="<?Php echo base_url(); ?>signup/check_username">
                                             </div>
                                             <p class="error" id="err-username">Required username.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="password" class="reg-label">Password</label>
                                                 <input type="password" name="password" class="reg-input" id="password" placeholder="Password">
                                             </div>
                                             <p class="error" id="err-password">Required password.</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="reg-group">
                                             <div class="inp-collection">
+                                                <label for="confirm_password" class="reg-label">Confirm password</label>
                                                 <input type="password" name="confirm_password" class="reg-input" id="confirm_password" placeholder="Confirm password">
                                             </div>
                                             <p class="error" id="err-confirm-passw">Password dont match.</p>
