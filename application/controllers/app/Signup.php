@@ -69,9 +69,9 @@
                 $message        = $this->email_model->signup_content($url);
 
                 //send an email
-                if($this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
+                if(@$this->communication_model->send_email($from, $to, $subejct, $message) == TRUE)
                 {
-
+                    
                 }
                 else
                 {

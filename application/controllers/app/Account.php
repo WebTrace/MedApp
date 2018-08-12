@@ -6,16 +6,6 @@
             
         }
         
-        public function upgrade_account()
-        {
-            $data['account_types'] = $this->account_model->fetch_account_type();
-            $data['title'] = "Upgrade account";
-            
-            $this->load->view("app/templates/auth-header", $data);
-            $this->load->view("app/account/upgrade_account");
-            $this->load->view("app/templates/auth-footer");
-        }
-        
         public function process_account_upgrade()
         {
             

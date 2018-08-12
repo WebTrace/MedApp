@@ -36,8 +36,25 @@
                         {
                             if ($_SESSION['TRIAL_STATUS'] == 0)
                             {
-                                redirect(base_url() . "trial_expired");
+                                redirect(base_url() . "trial/expired");
                                 die();
+                            }
+                        }
+
+                        //app confirmation
+                        if (isset($_SESSION['APP_CONFIRM']))
+                        {
+                            if ($_SESSION['APP_CONFIRM'] == true)
+                            {
+                                redirect(base_url() . "account/confirmation");
+                            }
+                        }
+
+                        if (isset($_SESSION['APP_SUSPEND']))
+                        {
+                            if ($_SESSION['APP_SUSPEND'] == true)
+                            {
+                                redirect(base_url() . "account/suspended");
                             }
                         }
                     }
@@ -58,15 +75,5 @@
                 die();
             }
         }
-
-        protected function is_branch_set()
-        {
-            
-        }
-    }
-
-    class My_Security extends CI_Controller
-    {
-        
     }
 ?>

@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
     
     $("#signup_practitioner").on("submit", function(e) {
-        //e.preventDefault();
+        e.preventDefault();
 
         var errcount = signupStepOneHandler();
         

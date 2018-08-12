@@ -137,7 +137,7 @@
         {
             $data = array(
                 'user_account_type_id'      => $user_account_id,
-                'date_created'              => $date_created,
+                'acc_date_created'          => $date_created,
                 'expiry_date'               => $expiry_date
             );
             

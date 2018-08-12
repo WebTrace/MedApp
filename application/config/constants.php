@@ -30,6 +30,7 @@ define("APP_REFERRED", 3);
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);
 define("IS_MANAGER", "Yes");
+define("TRIAL_EX", 0);
 
 //-------------Status--------------------------
 define("ROL_PATIENT", 1);

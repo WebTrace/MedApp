@@ -1,11 +1,10 @@
 <?Php
     class Manager_model extends CI_Model
     {
-        public function create_manager($user_id, $is_new_account)
+        public function create_manager($user_id)
         {
             $data = array(
-                'user_id'               => $user_id,
-                'is_new_account'        => $is_new_account
+                'user_id'               => $user_id
             );
             
             $this->db->insert("manager", $data);

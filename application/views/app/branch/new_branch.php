@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <?Php echo form_open(base_url() . "branch/create_branch", array('id' => 'create_new_practice')); ?>
+                            <?Php echo form_open(base_url() . "setup/branch/new", array('id' => 'create_new_practice')); ?>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="reg-group">

@@ -13,7 +13,7 @@
                                 <div class="col-lg-12">
                                     <h4 class="greetings-header">Hi <?php if (isset($_SESSION['FNAME'])) echo $this->session->userdata('FNAME'); ?>,</h4>
                                     <p style="padding: 23px 0px; font-size: 15px;">
-                                        Thank you for using <b>Medics</b> trial version, unfortunately your <b><?php echo $remaining_days; ?> days</b> trial have expired. 
+                                        Thank you for using <b>Medics</b> trial version, unfortunately your <b><?php echo TRIAL_DAYS; ?> days</b> trial have expired. 
                                         Click the button below to upgrade your account to a premium version.
                                     </p>
                                     <p>

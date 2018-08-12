@@ -34,8 +34,6 @@
             $confirm_email      = $this->input->post('confirm_email');
             $hash               = $this->create_hash($email);
             $t_and_c            = $this->input->post("terms");
-            $expiry_date        = "2018-04-12";
-            $is_new_account     = "Yes";
             
             $account_type_code  = $this->session->userdata("ACC_TYPE_CODE");;
             $date_created       = date('Y-m-d');
@@ -51,7 +49,7 @@
             $this->db->trans_start(); //BEGIN TRANSACTION
             
             //create user
-            $this->practitioner_data($title, $fname, $lname);
+            $this->practitioner_data($fname, $lname);
             
             //get new user id
             $user_id = $this->get_new_added_id('user', 'user_id');
@@ -60,7 +58,7 @@
             $this->create_activate_account($user_id, $expiry_date, $hash);
             
             //create manager
-            $this->manager_model->create_manager($user_id, $is_new_account);
+            $this->manager_model->create_manager($user_id);
             
             //get manager id
             $manager_id = $this->get_new_added_id('manager', 'manager_id');
@@ -83,13 +81,13 @@
             //-------------------------------------------------------------------------------------------------//
             
             //create practitioner
-            $this->practitioner_model->create_practitioner($user_id, $hpc_no, $practice_no);
+            $this->practitioner_model->create_practitioner($user_id, $practice_no);
             
             //get new practitioner id
             $practitioner_id = $this->get_new_added_id('practitioner', 'practitioner_id');
             
             //create practitioner speciality
-            $this->practitioner_model->create_practitioner_speciality($practitioner_id, $speciality_code);
+            //$this->practitioner_model->create_practitioner_speciality($practitioner_id, $speciality_code);
             
             //create practitioner login details
             $this->signin_model->create_credentials($user_id, $username, $password);
@@ -147,11 +145,10 @@
             return $this->db->trans_status();
         }
         
-        public function practitioner_data($title, $fname, $lname)
+        public function practitioner_data($fname, $lname)
         {
             //get practitioner personal details
             $user_data = array(
-                'title'             => $title,
                 'first_name'        => $fname,
                 'last_name'         => $lname,
             );
