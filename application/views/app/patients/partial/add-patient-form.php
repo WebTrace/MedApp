@@ -123,7 +123,7 @@
                     <div class="col-lg-12">
                         <ul id="navi-tabs" class="nav nav-tabs">
                             <li style="margin-right: 4px;" class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
-                            <li style="margin-right: 4px;"><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Contact details</a></li>
+                            <li style="margin-right: 4px;"><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Communication details</a></li>
                             <li style="margin-right: 4px;"><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
                             <li style="margin-right: 4px;"><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
                             <li style="margin-right: 4px;"><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
@@ -177,6 +177,19 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-input-group">
+                                                <div class="form-input-group">
+                                                    <select name="mstatus" id="mstatus" class="text-input dr-placeholder">
+                                                        <option value="0">Marital status</option>
+                                                        <option value="African">Single</option>
+                                                        <option value="Coloured">Married</option>
+                                                        <option value="White">Divorced</option>
+                                                        <option value="Indian">Widow</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-input-group">
                                                 <select name="ethnic_group" id="ethnic_group" class="text-input dr-placeholder">
                                                     <option value="0">Ethnic group</option>
                                                     <option value="African">African</option>
@@ -208,7 +221,7 @@
                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <h5 class="details-header">Physical address </h5>
+                                                    <h5 class="details-header">Physical address</h5>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-input-group">
@@ -217,7 +230,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-input-group">
-                                                        <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Street name">
+                                                        <input type="text" name="phy_street_name" id="phy_street_name" class="text-input" placeholder="Address line 2">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -231,8 +244,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h5 class="details-header">Postal address 
@@ -245,12 +256,12 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line">
+                                                            <input type="text" name="pos_address_line" id="pos_address_line" class="text-input" placeholder="Address line 1">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-input-group">
-                                                            <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Street name">
+                                                            <input type="text" name="pos_street_name" id="pos_street_name" class="text-input" placeholder="Address line 2">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
@@ -266,26 +277,56 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-lg-6">
-                                            <div class="form-input-group">
-                                                <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h5 class="details-header">Contact details</h5>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="sec_email_address" id="sec_email_address" class="text-input" placeholder="Secondary email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
+                                                    </div>
+                                                </div> -->
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-input-group">
-                                                <input type="text" name="relative_contact_no" id="relative_contact_no" class="text-input" placeholder="Next of keen number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-input-group">
-                                                <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-input-group">
-                                                <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h5 class="details-header">Next of keen</h5>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="keen_first_name" id="keen_first_name" class="text-input" placeholder="First name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="keen_last_name" id="keen_last_name" class="text-input" placeholder="Last name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="keen_contact_no" id="keen_contact_no" class="text-input" placeholder="Contact number">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-6">
+                                                    <div class="form-input-group">
+                                                        <input type="text" name="keen_email" id="keen_email" class="text-input" placeholder="Email address">
+                                                    </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>

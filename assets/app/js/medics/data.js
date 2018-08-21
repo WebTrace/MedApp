@@ -218,7 +218,7 @@ $(document).ready(function() {
     
     //create patient
     $("#save-patient").on("click", function(e) {
-        e.preventDefault();
+        //e.preventDefault();
         //$("#frm-add-new-patient").submit();
         //show progress
         $("#save-patient-request").show();
@@ -234,8 +234,15 @@ $(document).ready(function() {
         //begin ajax request
         $.ajax({
             url: url,
+            timeout: 3000,
             type: type,
             data: data,
+            statusCode: {
+                500: function() {
+                    $("#save-patient-request").hide();
+                    alert("Internal error");
+                }
+            },
             success: function(response) {
                 console.log("Data " + response);
                 //hide progress
@@ -246,6 +253,16 @@ $(document).ready(function() {
                 
                 //show notification
                 notification_message(message_type, title, message);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (textStatus == "timeout")
+                {
+                    //close modal
+                    $("#add_user_modal").modal('hide');
+
+                    alert("Error");
+                    
+                }
             }
         });
     });
@@ -941,7 +958,6 @@ $(document).ready(function() {
             temp_uid    = $(this).find(".uid").text(),
             patient_id  = $(this).find(".patient_id").text();
         
-        console.log(temp_uid);
         $("#app-search-patient").val(name);
         $("#pid").val(temp_uid);
         $("#getid").val(patient_id);
@@ -964,14 +980,14 @@ $(document).ready(function() {
                     $("#app-gender").text(response.gender);
                     $("#app-contact").text(response.contact_no);
                     
+                    //enable continue button
+                    $("#add-details-appointment").css("background", "#79decf");
+                    $("#add-details-appointment").css("color", "#fff");
+                    $("#add-details-appointment").css("cursor", "pointer");
+
                     //fetch patient details
                     $("#patient-details-grp").slideDown();
                 }
-                
-                //enable continue button
-                $("#add-details-appointment").css("background", "#79decf");
-                $("#add-details-appointment").css("color", "#fff");
-                $("#add-details-appointment").css("cursor", "pointer");
                 
                 console.log(response);
             }

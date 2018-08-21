@@ -73,10 +73,10 @@
                                 $remaining_days = TRIAL_EX;
                                 
                                 //compare current date and expiry date
-                                if ($str_ex_date > $str_curr_date)
+                                if ($str_ex_date >= $str_curr_date)
                                 {
                                     //calculate remaining trial days
-                                    $remaining_days = date_diff($expiry_date, $current_date)->format('%d');
+                                    $remaining_days = date_diff($expiry_date, $current_date)->format('%d') + CURR_DAY;
                                 }
 
                                 //set remaining days
@@ -175,7 +175,7 @@
                             {
                                 //set confirmation session
                                 $this->session->set_userdata("APP_SUSPEND", true);
-                                redirect("account/suspended");
+                                redirect(base_url() . "account/suspended");
                             }
                             
                             $data["title"] = $title;
@@ -188,7 +188,7 @@
                         else
                         {
                             //TODO: destroy login
-
+                            
                         }
                     }
                 }

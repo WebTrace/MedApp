@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 define("TRIAL_DAYS", 15);
+define("CURR_DAY", 1);
 define("MAX_LOGIN", 3);
 define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
