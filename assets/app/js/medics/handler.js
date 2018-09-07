@@ -166,16 +166,16 @@ function signupStepOneHandler()
     //var title               = $("#title").val(),
     var fname               = $("#fname").val(),
         lname               = $("#lname").val(),
-        //hpc_no              = $("#hpc_no").val(),
         practice_no         = $("#practice_no").val(),
         contact_no          = $("#contact_no").val(),
         email_address       = $("#email_address").val(),
-        //confirm_email       = $("#confirm_email").val(),
+        confirm_email       = $("#confirm_email").val(),
         username            = $("#username").val(),
         password            = $("#password").val(),
         confirm_password    = $("#confirm_password").val(),
         terms               = $("#terms"),
         errcount            = 0;
+        //hpc_no              = $("#hpc_no").val(),
 
     /*perform client side validation to make sure that user inputs are correct
     *
@@ -248,13 +248,13 @@ function signupStepOneHandler()
     }
 
     //validate confirm email address field
-  /*  if(confirm_email.trim() == "") {
+    if(confirm_email.trim() == "") {
         errcount ++;
         $("#err-confirm-email").slideDown(300);
     }
     else {
         $("#err-confirm-email").slideUp(300);
-    }*/
+    }
 
     //validate username field
     if(username.trim() == "") {

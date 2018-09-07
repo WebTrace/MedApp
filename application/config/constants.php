@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 define("TRIAL_DAYS", 15);
+define("CURR_DAY", 1);
 define("MAX_LOGIN", 3);
 define("BASIC_ACC", 1);
 define("STANDARD_ACC", 2);
@@ -30,6 +31,7 @@ define("APP_REFERRED", 3);
 define("ACC_MODE_TRIAL", 1);
 define("ACC_MODE_FULL", 2);
 define("IS_MANAGER", "Yes");
+define("TRIAL_EX", 0);
 
 //-------------Status--------------------------
 define("ROL_PATIENT", 1);

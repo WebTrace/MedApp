@@ -35,8 +35,8 @@
                 <thead>
                     <tr>
                         <th>Day</th>
-                        <th>From</th>
-                        <th>To</th>
+                        <th>Start time</th>
+                        <th>End time</th>
                         <th>Hours</th>
                         <th>Working days</th>
                     </tr>
@@ -126,9 +126,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Day</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>Allow appointments</th>
+                                                    <th>Start time</th>
+                                                    <th>End time</th>
                                                     <th>Block</th>
                                                 </tr>
                                             </thead>
@@ -178,7 +177,6 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name="mon_block"  class="" id="mon_block"/></td>
-                                                    <td><input type="checkbox" name="mon_block"  class="" id="mon_block"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tue</td>
@@ -224,7 +222,6 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="checkbox" name=""  class="" id="tue_block"/></td>
                                                     <td><input type="checkbox" name=""  class="" id="tue_block"/></td>
                                                 </tr>
                                                 <tr>
@@ -272,7 +269,6 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Thu</td>
@@ -318,7 +314,6 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
@@ -366,7 +361,6 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sat</td>
@@ -413,7 +407,6 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
-                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sun</td>
@@ -459,7 +452,6 @@
                                                             <option>pm</option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="checkbox" name=""  class="" id=""/></td>
                                                     <td><input type="checkbox" name=""  class="" id=""/></td>
                                                 </tr>
                                             </tbody>

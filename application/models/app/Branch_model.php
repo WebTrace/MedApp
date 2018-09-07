@@ -6,11 +6,11 @@
             $user_id                = $this->session->userdata('USER_ID');
             $manager_id             = $this->session->userdata('MANAGER_ID');
             $branch_name            = $this->input->post('practice_name');
-            $branch_type_code       = $this->input->post('practice_type');
+            //$branch_type_code       = $this->input->post('practice_type');
             $address_line           = $this->input->post('address_line');
             $city                   = $this->input->post('city');
             $province               = $this->input->post('province');
-            $location               = $this->input->post('location');
+            $suburb                 = $this->input->post('suburb');
             $branch_status_code     = 1;
             $is_default             = "No";
             $is_new_branch          = "No";
@@ -18,7 +18,7 @@
             $this->db->trans_start(); //START SQL TRANSACTION
             
             //create branch
-            $this->branch_data($branch_name, $address_line, $city, $province, $location);
+            $this->branch_data($branch_name, $address_line, $city, $province, $suburb);
             
             //get new user branch id
             $branch_id = $this->signup_model->get_new_added_id('branch', 'branch_id');
@@ -30,7 +30,7 @@
             $this->branch_model->assign_user_branch($user_id, $branch_id);
             
             //create branch type
-            $this->create_user_branch_type($branch_id, $branch_type_code);
+            //$this->create_user_branch_type($branch_id, $branch_type_code);
             
             //check if there is existing default branch
             if($this->is_default_branch_exists($user_id) == 0) { $is_default = "Yes"; }

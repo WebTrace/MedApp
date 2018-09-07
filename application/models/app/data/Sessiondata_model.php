@@ -16,22 +16,6 @@
 
             $this->session->set_userdata($user_data);
         }
-
-        public function set_partial_access($query)
-        {
-            $user_data = array(
-                'PARTIAL_ACC_USER_ID'   => $query->row(0)->user_id,
-                'USER_ROLE'             => $query->row(0)->role_code,
-                'ROLE_NAME'             => $query->row(0)->role_name,
-                'USER_STATUS'           => $query->row(0)->status_code,
-                'FNAME'                 => $query->row(0)->first_name,
-                'LNAME'                 => $query->row(0)->last_name,
-                'EMAIL'                 => $query->row(0)->email_address,
-                'USER_TITLE'            => $query->row(0)->title
-            );
-
-            $this->session->set_userdata($user_data);
-        }
         
         public function set_manager_acc_data($manager_account_query)
         {

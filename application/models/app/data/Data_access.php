@@ -118,10 +118,10 @@
         
         public function fetch_default_branch($user_id)
         {
-            $sql = "SELECT * FROM user u JOIN default_branch db ON u.user_id = db.user_id
-                    JOIN branch b ON b.branch_id = db.branch_id JOIN user_branch_status bs ON b.branch_id = bs.branch_id
-                    JOIN branch_status s ON bs.branch_status_code = s.branch_status_code
-                    WHERE(u.user_id = $user_id AND db.is_default = 'Yes')";
+            $sql = "select * from user u join default_branch db on u.user_id = db.user_id
+                    join branch b on b.branch_id = db.branch_id join user_branch_status bs on b.branch_id = bs.branch_id
+                    join branch_status s on bs.branch_status_code = s.branch_status_code
+                    where(u.user_id = $user_id and db.is_default = 'Yes')";
             
             return $this->db->query($sql);
         }

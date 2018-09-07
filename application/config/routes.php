@@ -54,10 +54,12 @@ $route['registration']                              = 'app/authentication/signup
 $route['authentication']                            = 'app/authentication/signin';
 $route['signin/user']                               = 'app/signin/user_signin';
 $route['signup']                                    = 'app/signup';
-$route['account/upgrade']                           = 'app/account/upgrade_account';
-$route['trial/expired']                             = 'app/account/expired_trial_version';
+$route['account/upgrade']                           = 'app/setup/upgrade_account';
+$route['trial/expired']                             = 'app/setup/expired_trial_version';
 $route['signup/practitioner']                       = 'app/signup/signup_practitioner';
 $route['feedback']                                  = 'app/signup/feedback';
+$route['account/confirmation']                      = 'app/setup/account_confirm';
+$route['account/suspended']                         = 'app/setup/account_suspended';
 $route['account/activation']                        = 'app/communication/activation_link';
 $route['signin/forgotpassw']                        = 'app/signin/forgot_password';
 
@@ -122,11 +124,12 @@ $route['branch/practitioners']                      = 'app/practitioner/fetch_br
 $route['branch/services/(:any)']                    = 'app/services/update_services/$1';
 $route['branch/schedular/(:any)']                   = 'app/schedular/schedular_settings/$1';
 $route['branch/create_branch']                      = 'app/branch/create_branch';
+$route['setup/branch/new']                          = 'app/setup/create_startup_branch';
 $route['branch/update/(:any)']                      = 'app/branch/update_branch/$1';
 $route['branch/settings/(:any)']                    = 'app/branch/branch_settings/$1';
 $route['branch/workingdays/(:any)']                 = 'app/branch/fetch_working_hours/$1';
 $route['appointment/slots']                         = 'app/branch/appointment_slots';
-$route['branch/new']                                = 'app/branch/new_branch';
+$route['branch/new']                                = 'app/setup/new_branch';
 $route['branch/branch_404']                         = 'app/branch/branch_404';
 
 //------------------------------------------------Account----------------------------------------------//
