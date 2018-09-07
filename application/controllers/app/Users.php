@@ -21,22 +21,22 @@
         public function create_user()
         {
             $this->form_validation->set_rules("user_role"           , "user role"               , "required|trim|xss_clean");
-            $this->form_validation->set_rules("title"               , "title"                   , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("title"               , "title"                   , "required|trim|xss_clean");
             $this->form_validation->set_rules("fname"               , "first name"              , "required|trim|xss_clean");
             $this->form_validation->set_rules("lname"               , "last name"               , "required|trim|xss_clean");
-            $this->form_validation->set_rules("id_number"           , "id number"               , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("id_number"           , "id number"               , "required|trim|xss_clean");
             $this->form_validation->set_rules("user_branch"         , "branch"                  , "required|trim|xss_clean");
-            $this->form_validation->set_rules("contact_no"          , "contact number"          , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("contact_no"          , "contact number"          , "required|trim|xss_clean");
             $this->form_validation->set_rules("email"               , "email address"           , "required|trim|xss_clean");
-            $this->form_validation->set_rules("confirm_email"       , "confirm email"           , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("confirm_email"       , "confirm email"           , "required|trim|xss_clean");
             $this->form_validation->set_rules("username"            , "username"                , "required|trim|xss_clean");
-            $this->form_validation->set_rules("password"            , "password"                , "required|trim|xss_clean");
-            $this->form_validation->set_rules("confirm_passw"       , "confirm password"        , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("password"            , "password"                , "required|trim|xss_clean");
+            //$this->form_validation->set_rules("confirm_passw"       , "confirm password"        , "required|trim|xss_clean");
             
             if($this->input->post("user_role") == 1)
             {
                 $this->form_validation->set_rules("practice_no"     , "practice number"         , "required|trim|xss_clean");
-                $this->form_validation->set_rules("hpcsa_no"        , "HPCSA number"            , "required|trim|xss_clean");
+                //$this->form_validation->set_rules("hpcsa_no"        , "HPCSA number"            , "required|trim|xss_clean");
                 $this->form_validation->set_rules("speciality"      , "seciality"               , "required|trim|xss_clean");
             }
             

@@ -130,7 +130,7 @@
                 {
                     $new_time = date("h:i", strtotime("+$appointment_duration minutes", $appointemnt_start_time));
                     $appointment_time[$i] = $new_time;
-                    
+
                     $appointemnt_start_time = strtotime($new_time);
                 }
                 

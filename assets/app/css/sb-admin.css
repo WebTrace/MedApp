@@ -589,6 +589,7 @@ a:hover, a:focus {
     color: #666;
     outline: none;
     padding: 8px 6px;
+    font-size: 15px;
     border: #dcd8d8 thin solid;
 }
 
@@ -1989,7 +1990,7 @@ fi-file-item {
 
 @media (min-width: 768px) {
     #modal-format {
-        width: 785px;
+        width: 746px;
     }
 
     #treatment-modal {

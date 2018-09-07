@@ -3,23 +3,23 @@
     {
         public function create_user()
         {
-            $branch_id              = $this->input->post("user_branch");
-            $role_code              = $this->input->post("user_role");
-            $title                  = $this->input->post("title");
             $fname                  = $this->input->post("fname");
             $lname                  = $this->input->post("lname");
-            $id_number              = $this->input->post("id_number");
+            $branch_id              = $this->input->post("user_branch");
+            $role_code              = $this->input->post("user_role");
+            //$title                  = $this->input->post("title");
+            //$id_number              = $this->input->post("id_number");
             $practice_no            = $this->input->post("practice_no");
-            $hpcsa_no               = $this->input->post("hpcsa_no");
+            //$hpcsa_no               = $this->input->post("hpcsa_no");
             $speciality_code        = $this->input->post("speciality");
-            $contact_no             = $this->input->post("contact_no");
+            //$contact_no             = $this->input->post("contact_no");
             $email_address          = $this->input->post("email");
             $username               = $this->input->post("username");
-            $password               = $this->input->post("password");
+            $password               = md5(12345);
             $is_default             = "Yes";
             $hash                   = $this->signup_model->create_hash($email_address);
-            $expiry_date            = "2018-04-21";
-            $is_new_account         = "No";
+            //$expiry_date            = "2018-04-21";
+            //$is_new_account         = "No";
             $is_manager             = "No";
             $user_account_type_id   = $this->session->userdata("USER_ACCOUNT_TYPE_ID");
             
@@ -27,7 +27,7 @@
             $this->db->trans_start();
             
             //create user
-            $this->user_data($title, $fname, $lname, $id_number);
+            $this->user_data($fname, $lname);
             
             //get new user id
             $user_id = $this->signup_model->get_new_added_id('user', 'user_id');
@@ -44,7 +44,7 @@
             if($role_code == 3)
             {
                 //create practitioner
-                $this->practitioner_model->create_practitioner($user_id, $hpcsa_no, $practice_no);
+                $this->practitioner_model->create_practitioner($user_id, $practice_no);
                 
                 $practitioner_id = $this->signup_model->get_new_added_id('practitioner', 'practitioner_id');
                 
@@ -53,7 +53,7 @@
             }
             
             //create account activation
-            $this->signup_model->create_activate_account($user_id, $expiry_date, $hash);
+            //$this->signup_model->create_activate_account($user_id, $expiry_date, $hash);
             
             //assign branch to a user
             $this->branch_model->assign_user_branch($user_id, $branch_id);
@@ -65,27 +65,24 @@
             $this->branch_model->default_branch_data($user_id, $branch_id, $is_default);
             
             //create phone contact
-            $this->communication_model->create_phone_contact($user_id, $contact_no);
+            //$this->communication_model->create_phone_contact($user_id, $contact_no);
             
             /*
             *retrieve new phone contact id that was generated when a user register. the following insert
             *statements depend on this new user id.
             */
-            $phone_contact_id = $this->signup_model->get_new_added_id('phone_contact', 'phone_contact_id');
+            //$phone_contact_id = $this->signup_model->get_new_added_id('phone_contact', 'phone_contact_id');
             
             //phone contact priority
-            $this->communication_model->create_phone_contact_priority(1, $phone_contact_id);
+            //$this->communication_model->create_phone_contact_priority(1, $phone_contact_id);
             
             //create phone contact type
-            $this->communication_model->create_phone_contact_type(1, $phone_contact_id);
+            //$this->communication_model->create_phone_contact_type(1, $phone_contact_id);
             
             //create  email contact
             $this->communication_model->create_email_contact($user_id, $email_address);
             
-            /*
-            *retrieve new email contact id that was generated when a user register. the following insert
-            *statements depend on this new user id.
-            */
+            //
             $email_contact_id = $this->signup_model->get_new_added_id('email_contact', 'email_contact_id');
             
             //create email contact type
@@ -121,27 +118,22 @@
         {
             $gender_code = substr($id_number, 6, 4);
 
-            if($gender_code  < 5000)
-            {
+            if ($gender_code  < 5000) {
                 $gender = "Female";
             }
-            else
-            {
+            else {
                 $gender = "Male";
             }
 
             return $gender;
         }
         
-        public function user_data($title, $fname, $lname, $id_number)
+        public function user_data($fname, $lname)
         {
             //get user details
             $user_data = array(
-                'title'         => $title,
                 'first_name'    => $fname,
-                'last_name'     => $lname,
-                'id_number'     => $id_number,
-                'gender'        => $this->get_gender($id_number)
+                'last_name'     => $lname
             );
 
             //insert user details

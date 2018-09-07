@@ -16,7 +16,7 @@
             $this->load->view("app/branch/new_branch");
             $this->load->view("app/templates/auth-footer");
         }
-
+        
         public function create_startup_branch()
         {
             if($this->branch_model->create_branch() == TRUE)

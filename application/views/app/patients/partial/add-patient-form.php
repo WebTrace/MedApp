@@ -124,9 +124,11 @@
                         <ul id="navi-tabs" class="nav nav-tabs">
                             <li style="margin-right: 4px;" class="active"><a href="#add-personal-details" data-toggle="tab"><i class="fa fa-user"></i> Personal Details</a></li>
                             <li style="margin-right: 4px;"><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Communication details</a></li>
+                            <li style="margin-right: 4px;"><a href="#add-family-mem" data-toggle="tab"><i class="fa fa-heart-o"></i> Next of keen</a></li>
+                            <li style="margin-right: 4px;"><a href="#add-work-details" data-toggle="tab"><i class="fa fa-briefcase"></i> Work Details</a></li>
                             <li style="margin-right: 4px;"><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
-                            <li style="margin-right: 4px;"><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
-                            <li style="margin-right: 4px;"><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li>
+                            <!-- <li style="margin-right: 4px;"><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
+                            <li style="margin-right: 4px;"><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li> -->
                         </ul>
                     </div>
                     <div class="treatment-group">
@@ -444,7 +446,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="add-visiting-reason">
+                            <!-- <div class="tab-pane" id="add-visiting-reason">
                                 <div class="col-lg-12 tab-content">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -476,13 +478,13 @@
                                                 <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
                                                 <!--<script>
 CKEDITOR.replace('visiting_reason');
-</script>-->
+</script>--
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="add-account-details">
+                            </div> -->
+                            <!-- <div class="tab-pane" id="add-account-details">
                                 <div class="col-lg-12 tab-content">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -508,10 +510,10 @@ CKEDITOR.replace('visiting_reason');
 <div class="form-input-group">
 <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
 </div>
-</div>-->
+</div>--
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
