@@ -589,6 +589,7 @@ a:hover, a:focus {
     color: #666;
     outline: none;
     padding: 8px 6px;
+    font-size: 15px;
     border: #dcd8d8 thin solid;
 }
 
@@ -909,7 +910,7 @@ a:hover, a:focus {
 
 .access-container #username, .access-container #password, #email-fgt {
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 2px;
 }
 
 .access-group {
@@ -1989,9 +1990,9 @@ fi-file-item {
 
 @media (min-width: 768px) {
     #modal-format {
-        width: 785px;
+        width: 746px;
     }
-
+    
     #treatment-modal {
         width: 650px;
     }

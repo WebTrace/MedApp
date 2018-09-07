@@ -45,102 +45,19 @@
                     $user_id = $this->session->userdata("USER_ID");
                     $account_mode = $this->account_model->fetch_user_account_mode($user_id);
 
+                    //set account mode
+                    $this->session->set_userdata("ACC_MODE", $account_mode->row(0)->account_mode_code);
+                    
                     if ($this->session->userdata("USER_STATUS") == STS_ACTIVE)
                     {
                         if ($account_mode->num_rows() > 0)
                         {
-                            //set account mode
-                            $this->session->set_userdata("ACC_MODE", $account_mode->row(0)->account_mode_code);
-
                             //check account mode immediately after login
                             if ($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
                             {
-                                $user_account_type_id = $account_mode->row(0)->user_account_type_id;
-
-                                //if account mode is trial, get trial details
-                                $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
-                                $this->sessiondata_model->account_trial_data($trial_account_query);
-                                
-                                $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
-                                //$date_created = date_create($this->session->userdata("DATE_CREATED"));
-                                $current_date = date_create(date('Y-m-d'));
-
-                                //get expiry date and current date from a date object
-                                $str_ex_date = strtotime($expiry_date->format("Y-m-d"));
-                                $str_curr_date = strtotime($current_date->format("Y-m-d"));
-                                
-                                //initials trial days to 0
-                                $remaining_days = TRIAL_EX;
-                                
-                                //compare current date and expiry date
-                                if ($str_ex_date >= $str_curr_date)
-                                {
-                                    //calculate remaining trial days
-                                    $remaining_days = date_diff($expiry_date, $current_date)->format('%d') + CURR_DAY;
-                                }
-
-                                //set remaining days
-                                $this->sessiondata_model->set_trial_expiry_days($remaining_days);
-
-                                if ($remaining_days > 0 && $remaining_days <= TRIAL_DAYS)
-                                {
-                                    //set trial session
-                                    $this->session->set_userdata("TRIAL_STATUS", 1);
-                                    
-                                    if ($this->session->userdata("USER_ROLE") == ROL_MANAGER)
-                                    {
-                                        //get mamager details
-                                        $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
-
-                                        //get manager's account details
-                                        $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
-
-                                        if ($manager_account_query->num_rows() > 0)
-                                        {
-                                            //get manager id
-                                            $manager_id = $manager_account_query->result_array()[0]["manager_id"];
-                                        }
-
-                                        //set manager id
-                                        $this->session->set_userdata("MANAGER_ID", $manager_id);
-                                        
-                                        if ($manager_account_query->num_rows() > 0)
-                                        {
-                                            //set manager's account session
-                                            $this->sessiondata_model->set_manager_acc_data($manager_account_query);
-                                        }
-                                        
-                                        if (count($manager_data) < 1)
-                                        {
-                                            $this->session->set_userdata("NEW_BRANCH", true);
-                                            redirect(base_url() . "branch/new");
-                                            //echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            //date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                                        }
-                                        else
-                                        {
-                                            //redirect manager to dashboard
-                                            redirect(base_url() . "dashboard");
-                                            // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                            // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //redirect normal user to dashboard
-                                        redirect(base_url() . "dashboard");
-                                        // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                                        //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                                    }
-                                }
-                                else
-                                {
-                                    //set trial session
-                                    $this->session->set_userdata("TRIAL_STATUS", 0);
-                                    redirect(base_url() . "trial/expired");
-                                }
+                                $this->user_tial_signin();
                             }
-                            else if($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
+                            else if ($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
                             {
                                 //TODO: if account mode is full, get payment details
                                 //TODO: check if the account is not in arreas
@@ -155,40 +72,58 @@
                     }
                     else
                     {
-                        //set account mode;
-                        if ($account_mode->num_rows() > 0)
+                        if($this->session->userdata("USER_STATUS") == STS_PENDING)
                         {
-                            $this->session->set_userdata("ACC_MODE", $account_mode->row(0)->account_mode_code);
+                            //set confirmation session
+                            $this->session->set_userdata("APP_CONFIRM", true);
 
-                            //user details
-                            $data['last_name'] = $this->session->userdata("LNAME");
-                            $data['first_name'] = $this->session->userdata("FNAME");
-                            $data['user_title'] = $this->session->userdata("USER_TITLE");
-                            
-                            if($this->session->userdata("USER_STATUS") == STS_PENDING)
+                            //set account mode;
+                            if ($account_mode->num_rows() > 0)
                             {
-                                //set confirmation session
-                                $this->session->set_userdata("APP_CONFIRM", true);
-                                redirect(base_url() . "account/confirmation");
+                                //user details
+                                $data['last_name'] = $this->session->userdata("LNAME");
+                                $data['first_name'] = $this->session->userdata("FNAME");
+                                $data['user_title'] = $this->session->userdata("USER_TITLE");
+
+                                if ($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
+                                {
+                                    $this->user_tial_signin();
+                                }
+                                else if ($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
+                                {
+
+                                }
                             }
                             else
                             {
-                                //set confirmation session
-                                $this->session->set_userdata("APP_SUSPEND", true);
-                                redirect(base_url() . "account/suspended");
+                                //TODO:
                             }
-                            
-                            $data["title"] = $title;
-                            
-                            /*load feedback view*/
-                            $this->load->view("app/templates/auth-header", $data);
-                            $this->load->view("app/feedback/feedback");
-                            $this->load->view("app/templates/auth-footer");
                         }
                         else
                         {
-                            //TODO: destroy login
-                            
+                            //set confirmation session
+                            $this->session->set_userdata("APP_SUSPEND", true);
+
+                            if($account_mode->num_rows() > 0)
+                            {
+                                if ($account_mode->row(0)->account_mode_code == ACC_MODE_TRIAL)
+                                {
+                                    $this->user_tial_signin();
+                                }
+                                else if ($account_mode->row(0)->account_mode_code == ACC_MODE_FULL)
+                                {
+                                    
+                                }
+                            }
+                            else
+                            {
+                                //TODO:
+                            }
+
+                            //redirect(base_url() . "account/suspended");
+
+                            //stop executing
+                            die();
                         }
                     }
                 }
@@ -209,12 +144,90 @@
                 }
             }
         }
+
+        private function user_tial_signin()
+        {
+            //$user_account_type_id = $account_mode->row(0)->user_account_type_id;
+            $user_id = $this->session->userdata("USER_ID");
+            $account_mode = $this->account_model->fetch_user_account_mode($user_id);
+
+            //if account mode is trial, get trial details
+            $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
+            $this->sessiondata_model->account_trial_data($trial_account_query);
+            
+            $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
+            $current_date = date_create(date('Y-m-d'));
+
+            //get trail days
+            $remaining_days = $this->calculate_trial_days($expiry_date, $current_date);
+
+            //set remaining days
+            $this->sessiondata_model->set_trial_expiry_days($remaining_days);
+            
+            if ($remaining_days > 0 & $remaining_days <= TRIAL_DAYS)
+            {
+                //set trial session
+                $this->session->set_userdata("TRIAL_STATUS", 1);
+                
+                if ($this->session->userdata("USER_ROLE") == ROL_MANAGER)
+                {
+                    //get mamager details
+                    $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
+
+                    //get manager's account details
+                    $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
+
+                    if ($manager_account_query->num_rows() > 0)
+                    {
+                        //get manager id
+                        $manager_id = $manager_account_query->result_array()[0]["manager_id"];
+                    }
+
+                    //set manager id
+                    $this->session->set_userdata("MANAGER_ID", $manager_id);
+                    
+                    if ($manager_account_query->num_rows() > 0)
+                    {
+                        //set manager's account session
+                        $this->sessiondata_model->set_manager_acc_data($manager_account_query);
+                    }
+                    
+                    if (count($manager_data) < 1)
+                    {
+                        $this->session->set_userdata("NEW_BRANCH", true);
+                        redirect(base_url() . "branch/new");
+                        //echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                        //date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                    }
+                    else
+                    {
+                        //redirect manager to dashboard
+                        redirect(base_url() . "dashboard");
+                        // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                        // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                    }
+                }
+                else
+                {
+                    //redirect normal user to dashboard
+                    redirect(base_url() . "dashboard");
+                    // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
+                    //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
+                }
+            }
+            else
+            {
+                //set trial session
+                $this->session->set_userdata("TRIAL_STATUS", 0);
+                redirect(base_url() . "trial/expired");
+                die();
+            }
+        }
         
         public function current_user()
         {
             $fname = $this->session->userdata("FNAME");
             $lname = $this->session->userdata("LNAME");
-            
             $display_name = $lname . " " . substr($fname, 0, 1);
             
             return $display_name;
@@ -322,6 +335,25 @@
         public function send_email()
         {
             
+        }
+
+        private function calculate_trial_days($expiry_date, $current_date)
+        {
+            //get expiry date and current date from a date object
+            $str_ex_date = strtotime($expiry_date->format("Y-m-d"));
+            $str_curr_date = strtotime($current_date->format("Y-m-d"));
+            
+            //initials trial days to 0
+            $remaining_days = TRIAL_EX;
+            
+            //compare current date and expiry date
+            if ($str_ex_date >= $str_curr_date)
+            {
+                //calculate remaining trial days
+                $remaining_days = date_diff($expiry_date, $current_date)->format('%d') + CURR_DAY;
+            }
+
+            return $remaining_days;
         }
     }
 ?>

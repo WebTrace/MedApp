@@ -164,6 +164,24 @@
             $this->db->insert('account_payment', $data);
         }
         
+        public function calculate_trial_days($expiry_date, $current_date)
+        {
+            //get expiry date and current date from a date object
+            $str_ex_date = strtotime($expiry_date->format("Y-m-d"));
+            $str_curr_date = strtotime($current_date->format("Y-m-d"));
+            
+            //initials trial days to 0
+            $remaining_days = TRIAL_EX;
+            
+            //compare current date and expiry date
+            if ($str_ex_date >= $str_curr_date)
+            {
+                //calculate remaining trial days
+                $remaining_days = date_diff($expiry_date, $current_date)->format('%d') + CURR_DAY;
+            }
+            return $remaining_days;
+        }
+
         //--------------------------------------------------------------------------------------------//
         
         //--------------------------------------------------------------------------------------------//

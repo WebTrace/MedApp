@@ -15,7 +15,8 @@
                         <div class="col-lg-7">
                             <div class="edit-input-grouper">
                                 <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
-                                <input type="text" name="" id="" class="edit-input" value="<?Php echo $user["title"]; ?>">
+                                <input type="text" name="" id="" class="edit-input" value="<?Php if ($user["title"] == "") 
+                                    echo "N/A"; else echo $user["title"]; ?>">
                             </div>
                         </div>
                     </div>
@@ -26,7 +27,8 @@
                         <div class="col-lg-7">
                             <div class="edit-input-grouper">
                                 <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
-                                <input type="text" name="" id="" class="edit-input" value="<?Php echo $user["first_name"]; ?>">
+                                <input type="text" name="" id="" class="edit-input" value="<?Php if ($user["first_name"] == "") 
+                                    echo "N/A"; else echo $user["first_name"]; ?>">
                             </div>
                         </div>
                     </div>
@@ -37,7 +39,8 @@
                         <div class="col-lg-7">
                             <div class="edit-input-grouper">
                                 <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
-                                <input type="text" name="" id="" class="edit-input" value="<?Php echo $user["last_name"]; ?>">
+                                <input type="text" name="" id="" class="edit-input" value="<?Php if ($user["last_name"] == "") 
+                                    echo "N/A"; else echo $user["last_name"]; ?>">
                             </div>
                         </div>
                     </div>
@@ -48,7 +51,8 @@
                         <div class="col-lg-7">
                             <div class="edit-input-grouper">
                                 <span class="edit-data-icon"><i class="fa fa-pencil"></i></span>
-                                <input type="text" name="" id="" class="edit-input" value="<?Php echo $user["id_number"]; ?>">
+                                <input type="text" name="" id="" class="edit-input" value="<?Php if ($user["id_number"] == "") 
+                                    echo "N/A"; else echo $user["id_number"]; ?>">
                             </div>
                         </div>
                     </div>
@@ -59,7 +63,8 @@
                         <div class="col-lg-7">
                             <div class="edit-input-grouper">
                                 <span class="non-edit-data-icon"><i class="fa fa-lock"></i></span>
-                                <input type="text" name="" id="" disabled="disabled" class="edit-input" value="<?Php echo $user["gender"]; ?>">
+                                <input type="text" name="" id="" disabled="disabled" class="edit-input" value="<?Php if ($user["gender"] == "") 
+                                    echo "N/A"; else echo $user["gender"]; ?>">
                             </div>
                         </div>
                     </div>
