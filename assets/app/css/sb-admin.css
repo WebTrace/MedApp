@@ -910,7 +910,7 @@ a:hover, a:focus {
 
 .access-container #username, .access-container #password, #email-fgt {
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 2px;
 }
 
 .access-group {
