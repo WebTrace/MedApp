@@ -147,150 +147,142 @@
 
         private function user_tial_signin()
         {
-            //$user_account_type_id = $account_mode->row(0)->user_account_type_id;
-            $user_id = $this->session->userdata("USER_ID");
-            $account_mode = $this->account_model->fetch_user_account_mode($user_id);
+          //$user_account_type_id = $account_mode->row(0)->user_account_type_id;
+          $user_id = $this->session->userdata("USER_ID");
+          $account_mode = $this->account_model->fetch_user_account_mode($user_id);
 
-            //if account mode is trial, get trial details
-            $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
-            $this->sessiondata_model->account_trial_data($trial_account_query);
-            
-            $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
-            $current_date = date_create(date('Y-m-d'));
+          //if account mode is trial, get trial details
+          $trial_account_query = $this->account_model->fetch_user_account_details($user_id);
+          $this->sessiondata_model->account_trial_data($trial_account_query);
+          
+          $expiry_date = date_create($this->session->userdata("EXPIRY_DATE"));
+          $current_date = date_create(date('Y-m-d'));
 
-            //get trail days
-            $remaining_days = $this->calculate_trial_days($expiry_date, $current_date);
+          //get trail days
+          $remaining_days = $this->calculate_trial_days($expiry_date, $current_date);
 
-            //set remaining days
-            $this->sessiondata_model->set_trial_expiry_days($remaining_days);
-            
-            if ($remaining_days > 0 & $remaining_days <= TRIAL_DAYS)
-            {
-                //set trial session
-                $this->session->set_userdata("TRIAL_STATUS", 1);
-                
-                if ($this->session->userdata("USER_ROLE") == ROL_MANAGER)
-                {
-                    //get mamager details
-                    $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
+          //set remaining days
+          $this->sessiondata_model->set_trial_expiry_days($remaining_days);
+          
+          if ($remaining_days > 0 & $remaining_days <= TRIAL_DAYS)
+          {
+              //set trial session
+              $this->session->set_userdata("TRIAL_STATUS", 1);
+              
+              if ($this->session->userdata("USER_ROLE") == ROL_MANAGER)
+              {
+                  //get mamager details
+                  $manager_data = $this->manager_model->get_manager_id($this->session->userdata("USER_ID"));
 
-                    //get manager's account details
-                    $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
+                  //get manager's account details
+                  $manager_account_query = $this->manager_model->fetch_manager_account($user_id);
 
-                    if ($manager_account_query->num_rows() > 0)
-                    {
-                        //get manager id
-                        $manager_id = $manager_account_query->result_array()[0]["manager_id"];
-                    }
+                  if ($manager_account_query->num_rows() > 0)
+                  {
+                      //get manager id
+                      $manager_id = $manager_account_query->result_array()[0]["manager_id"];
+                  }
 
-                    //set manager id
-                    $this->session->set_userdata("MANAGER_ID", $manager_id);
+                  //set manager id
+                  $this->session->set_userdata("MANAGER_ID", $manager_id);
+                  
+                  if ($manager_account_query->num_rows() > 0)
+                  {
+                      //set manager's account session
+                      $this->sessiondata_model->set_manager_acc_data($manager_account_query);
+                  }
+                  
+                  if (count($manager_data) < 1)
+                  {
+                      $this->session->set_userdata("NEW_BRANCH", true);
+                      redirect(base_url() . "branch/new");
+                  }
+                  else
+                  {
+                      //redirect manager to dashboard
+                      redirect(base_url() . "dashboard");
+                  }
+              }
+              else
+              {
+                  //redirect normal user to dashboard
+                  redirect(base_url() . "dashboard");
+              }
+          }
+          else
+          {
+              //set trial session
+              $this->session->set_userdata("TRIAL_STATUS", 0);
+              redirect(base_url() . "trial/expired");
+              die();
+          }
+      }
+      
+      public function current_user()
+      {
+          $fname = $this->session->userdata("FNAME");
+          $lname = $this->session->userdata("LNAME");
+          $display_name = $lname . " " . substr($fname, 0, 1);
+          
+          return $display_name;
+      }
+      
+      public function user_signout()
+      {
+          $this->session->unset_userdata("USER_ID");
+          $this->session->unset_userdata("USER_ROLE");
+          $this->session->unset_userdata("USER_STATUS");
+          $this->session->unset_userdata("FNAME");
+          $this->session->unset_userdata("LNAME");
+          $this->session->unset_userdata("HASH");
+          $this->session->unset_userdata("EMAIL");
+          
+          $this->session->sess_destroy();
+          redirect(base_url() . "signin");
+      }
+      
+      public function forgot_password()
+      {
+          $this->form_validation->set_rules("email_address", "email", "required|trim");
+          
+          if($this->form_validation->run() == FALSE)
+          {
+              $data["title"] = "Retrieve password";
+              
+              $this->load->view("app/templates/auth-header", $data);
+              $this->load->view("app/authentication/forgotpassw");
+              $this->load->view("app/templates/auth-footer");
+          }
+          else
+          {
+              if($this->signin_model->forgot_password() == TRUE)
+              {
+                  if($this->signin_model->update_password($this->generate_password()) == TRUE)
+                  {
+                    $data['icon']       = '<i class="fa fa-check-circle-o"></i>';
+                    $data['title']      = '<h4>Password successfully retrieved</h4>';
+                    $data['content']    = '<p>A password was sent to your via email. You can change it in the settings.</p>';
+                    $data['link']       = '';
                     
-                    if ($manager_account_query->num_rows() > 0)
-                    {
-                        //set manager's account session
-                        $this->sessiondata_model->set_manager_acc_data($manager_account_query);
-                    }
+                    //call feeback view and display success message
+                    $this->load->view("app/templates/auth-header");
+                    $this->load->view("app/feedback/feedback", $data);
+                    $this->load->view("app/templates/auth-footer");
                     
-                    if (count($manager_data) < 1)
-                    {
-                        $this->session->set_userdata("NEW_BRANCH", true);
-                        redirect(base_url() . "branch/new");
-                        //echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                        //date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                    }
-                    else
-                    {
-                        //redirect manager to dashboard
-                        redirect(base_url() . "dashboard");
-                        // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                        // date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                    }
-                }
-                else
-                {
-                    //redirect normal user to dashboard
-                    redirect(base_url() . "dashboard");
-                    // echo $remaining_days . "Expiry: " . date_format($date_created, 'Y-m-d') . " Current: " . 
-                    //     date_format($current_date, 'Y-m-d') . " Sess Date: " . $this->session->userdata("DATE_CREATED");
-                }
-            }
-            else
-            {
-                //set trial session
-                $this->session->set_userdata("TRIAL_STATUS", 0);
-                redirect(base_url() . "trial/expired");
-                die();
-            }
-        }
-        
-        public function current_user()
-        {
-            $fname = $this->session->userdata("FNAME");
-            $lname = $this->session->userdata("LNAME");
-            $display_name = $lname . " " . substr($fname, 0, 1);
-            
-            return $display_name;
-        }
-        
-        public function user_signout()
-        {
-            $this->session->unset_userdata("USER_ID");
-            $this->session->unset_userdata("USER_ROLE");
-            $this->session->unset_userdata("USER_STATUS");
-            $this->session->unset_userdata("FNAME");
-            $this->session->unset_userdata("LNAME");
-            $this->session->unset_userdata("HASH");
-            $this->session->unset_userdata("EMAIL");
-            
-            $this->session->sess_destroy();
-            redirect(base_url() . "signin");
-        }
-        
-        public function forgot_password()
-        {
-            $this->form_validation->set_rules("email_address", "email", "required|trim");
-            
-            if($this->form_validation->run() == FALSE)
-            {
-                $data["title"] = "Retrieve password";
-                
-                $this->load->view("app/templates/auth-header", $data);
-                $this->load->view("app/authentication/forgotpassw");
-                $this->load->view("app/templates/auth-footer");
-            }
-            else
-            {
-                if($this->signin_model->forgot_password() == TRUE)
-                {
-                    if($this->signin_model->update_password($this->generate_password()) == TRUE)
-                    {
-                        $data['icon']       = '<i class="fa fa-check-circle-o"></i>';
-                        $data['title']      = '<h4>Password successfully retrieved</h4>';
-                        $data['content']    = '<p>A password was sent to your via email. You can change it in the settings.</p>';
-                        $data['link']       = '';
-                        
-                        //call feeback view and display success message
-                        $this->load->view("app/templates/auth-header");
-                        $this->load->view("app/feedback/feedback", $data);
-                        $this->load->view("app/templates/auth-footer");
-                        
-                        //TODO : send new password to the user
-                    }
-                    else
-                    {
-                        
-                        //TODO : DB could not be updated
-                    }
-                }
-                else
-                {
-                    //TODO : call feeback view and display error
-                    $this->session->set_flashdata("ERR_PASSSW_RESET", "<p class='alert alert-danger'>This email <i>" . $this->session->userdata("USER_EML") . "</i> was not found.</p>");
-                    redirect(base_url() . 'signin/forgotpassw');
-                    
-                }
-            }
+                    //TODO : send new password to the user
+                  }
+                  else
+                  {
+                    //TODO : DB could not be updated
+                  }
+              }
+              else
+              {
+                //TODO : call feeback view and display error
+                $this->session->set_flashdata("ERR_PASSSW_RESET", "<p class='alert alert-danger'>This email <i>" . $this->session->userdata("USER_EML") . "</i> was not found.</p>");
+                redirect(base_url() . 'signin/forgotpassw');
+              }
+          }
         }
         
         //generate passsword

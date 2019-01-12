@@ -77,15 +77,13 @@
         
         public function fetch_user_account_details($user_id)
         {
-            $this->db->select("uc.account_type_code, ut.expiry_date, ut.acc_date_created, ua.is_manager");
+            $this->db->select("uc.account_type_code, ut.acc_expiry_date, ut.acc_date_created, ua.is_manager");
             $this->db->from("user_account_type uc");
             $this->db->join("user_account_trial ut", "uc.user_account_type_id = ut.user_account_type_id");
             $this->db->join("user_account_group ua", "uc.user_account_type_id =  ua.user_account_type_id");
             $this->db->join("user_account_type_mode um", "uc.user_account_type_id = um.user_account_type_id");
             $this->db->join("account_mode am", "um.account_mode_code = am.account_mode_code");
             $this->db->where("ua.user_id", $user_id);
-            
-            
             
             return $this->db->get();
         }

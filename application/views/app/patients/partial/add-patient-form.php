@@ -126,7 +126,7 @@
                             <li style="margin-right: 4px;"><a href="#add-contact-details" data-toggle="tab"><i class="fa fa-envelope-o"></i> Communication details</a></li>
                             <li style="margin-right: 4px;"><a href="#add-family-mem" data-toggle="tab"><i class="fa fa-heart-o"></i> Next of keen</a></li>
                             <li style="margin-right: 4px;"><a href="#add-work-details" data-toggle="tab"><i class="fa fa-briefcase"></i> Work Details</a></li>
-                            <li style="margin-right: 4px;"><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
+                            <li style="margin-right: 0px;"><a href="#add-billing-details" data-toggle="tab"><i class="fa fa-credit-card"></i> Billing details</a></li>
                             <!-- <li style="margin-right: 4px;"><a href="#add-visiting-reason" data-toggle="tab"><i class="fa fa-sticky-note-o"></i> Visiting reason</a></li>
                             <li style="margin-right: 4px;"><a href="#add-account-details" data-toggle="tab"><i class="fa fa-lock"></i> Account details</a></li> -->
                         </ul>
@@ -220,6 +220,31 @@
                             <div class="tab-pane" id="add-contact-details">
                                 <div class="col-lg-12 tab-content">
                                     <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5 class="details-header">Contact details</h5>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="sec_email_address" id="sec_email_address" class="text-input" placeholder="Secondary email">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
@@ -246,6 +271,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                        </div>
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h5 class="details-header">Postal address 
@@ -279,56 +307,51 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="add-family-mem">
+                                <div class="col-lg-12 tab-content">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5 class="details-header">Next of keen</h5>
+                                        </div>
                                         <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <h5 class="details-header">Contact details</h5>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="contact_no" id="contact_no" class="text-input" placeholder="Contact number">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="email_address" id="email_address" class="text-input" placeholder="Email address">
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="col-lg-6">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="sec_email_address" id="sec_email_address" class="text-input" placeholder="Secondary email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="confirm_email" id="confirm_email" class="text-input" placeholder="Confirm email address">
-                                                    </div>
-                                                </div> -->
+                                            <div class="form-input-group">
+                                                <input type="text" name="keen_first_name" id="keen_first_name" class="text-input" placeholder="First name">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <h5 class="details-header">Next of keen</h5>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="keen_first_name" id="keen_first_name" class="text-input" placeholder="First name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="keen_last_name" id="keen_last_name" class="text-input" placeholder="Last name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="keen_contact_no" id="keen_contact_no" class="text-input" placeholder="Contact number">
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="col-lg-6">
-                                                    <div class="form-input-group">
-                                                        <input type="text" name="keen_email" id="keen_email" class="text-input" placeholder="Email address">
-                                                    </div>
-                                                </div> -->
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="keen_last_name" id="keen_last_name" class="text-input" placeholder="Last name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-input-group">
+                                                <input type="text" name="keen_contact_no" id="keen_contact_no" class="text-input" placeholder="Contact number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="add-work-details">
+                                <div class="col-lg-12 tab-content">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="employer" id="employer" class="text-input" placeholder="Employer">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="employer" id="employer" class="text-input" placeholder="Occupation">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-input-group">
+                                                <input type="text" name="employer" id="employer" class="text-input" placeholder="Employer">
                                             </div>
                                         </div>
                                     </div>
@@ -477,40 +500,40 @@
                                             <div class="form-input-group">
                                                 <textarea name="visiting_reason" id="visiting_reason" class="textarea" placeholder="Reason *"></textarea>
                                                 <!--<script>
-CKEDITOR.replace('visiting_reason');
-</script>--
-                                            </div>
-                                        </div>
-                                    </div>
+                                CKEDITOR.replace('visiting_reason');
+                                </script>--
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+                                                            <!-- <div class="tab-pane" id="add-account-details">
+                                                                <div class="col-lg-12 tab-content">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-input-group">
+                                                                                <input type="text" name="" id="" class="text-input" placeholder="Username">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <div class="">
+                                                                                <h5 style="font-size: 18px;">Automatic password</h5>
+                                                                                <p>
+                                                                                    The system will generate automatic password and send it to patient through provided email.
+                                                                                    This password can be changed at anytime.
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--<div class="col-lg-6">
+                                <div class="form-input-group">
+                                <input type="text" name="" id="" class="text-input" placeholder="Password">
                                 </div>
-                            </div> -->
-                            <!-- <div class="tab-pane" id="add-account-details">
-                                <div class="col-lg-12 tab-content">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-input-group">
-                                                <input type="text" name="" id="" class="text-input" placeholder="Username">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="">
-                                                <h5 style="font-size: 18px;">Automatic password</h5>
-                                                <p>
-                                                    The system will generate automatic password and send it to patient through provided email.
-                                                    This password can be changed at anytime.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!--<div class="col-lg-6">
-<div class="form-input-group">
-<input type="text" name="" id="" class="text-input" placeholder="Password">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="form-input-group">
-<input type="text" name="" id="" class="text-input" placeholder="Confirm password">
-</div>
-</div>--
+                                </div>
+                                <div class="col-lg-6">
+                                <div class="form-input-group">
+                                <input type="text" name="" id="" class="text-input" placeholder="Confirm password">
+                                </div>
+                                </div>--
                                     </div>
                                 </div>
                             </div> -->

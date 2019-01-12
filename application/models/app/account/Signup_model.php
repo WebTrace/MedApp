@@ -3,7 +3,7 @@
     {
         public function signup_practioner()
         {
-            // $title              = "Mr";       
+            // $title              = "Mr";
             // $fname              = "Manny";
             // $lname              = "Kgatla";
             // $hpc_no             = 1234549;
@@ -63,21 +63,21 @@
             //get manager id
             $manager_id = $this->get_new_added_id('manager', 'manager_id');
             
-            //-------------------------------create user account type -----------------------------------------//
+            //-------------------------------create user account type-----------------------------------------//
             //create user account
-            $this->account_model->user_account_data($account_type_code, $manager_id);
+            //$this->account_model->user_account_data($account_type_code, $manager_id);
 
             //get new user account id
-            $user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
+            //$user_account_type_id = $this->signup_model->get_new_added_id("user_account_type", "user_account_type_id");
 
             //create account trial
-            $this->account_model->create_trial_account($user_account_type_id, $date_created, $expiry_date);
+            //$this->account_model->create_trial_account($user_account_type_id, $date_created, $expiry_date);
 
             //create user accountgroup
-            $this->account_model->user_account_group_data($user_account_type_id, $user_id, $is_manager);
+            //$this->account_model->user_account_group_data($user_account_type_id, $user_id, $is_manager);
 
             //create account mode
-            $this->account_model->create_account_mode($account_mode_code, $user_account_type_id);
+            //$this->account_model->create_account_mode($account_mode_code, $user_account_type_id);
             //-------------------------------------------------------------------------------------------------//
             
             //create practitioner

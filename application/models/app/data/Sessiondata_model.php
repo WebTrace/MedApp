@@ -51,7 +51,7 @@
         {
             $account_trial_data = array(
                 'ACC_TYPE_CODE'     => $query->row(0)->account_type_code,
-                'EXPIRY_DATE'       => $query->row(0)->expiry_date,
+                'EXPIRY_DATE'       => $query->row(0)->acc_expiry_date,
                 'DATE_CREATED'      => $query->row(0)->acc_date_created,
                 'IS_MANAGER'        => $query->row(0)->is_manager
             );
